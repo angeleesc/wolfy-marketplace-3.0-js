@@ -9,6 +9,7 @@ import ColectionsExplorer from "../pagers/ColectionsExplorer";
 import TokenFullInfoData from "../pagers/TokenFullInfoData";
 import Page404 from "../pagers/Page404";
 import ExplorerCollectionERC721 from "../pagers/ExplorerCollectionERC721";
+import MintNewNft from "../pagers/MintNewNft";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,16 @@ const router = createBrowserRouter([
 
         ]
 
+    },
+    {
+        path:"/",
+        element: <WollfyLayout isProtected={true} />,
+        children: [
+            {
+                path: "create-new-nft",
+                element: <MintNewNft/>
+            }
+        ]
     },
     {
         path: "/",
