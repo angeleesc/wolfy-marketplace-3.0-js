@@ -10,6 +10,9 @@ import TokenFullInfoData from "../pagers/TokenFullInfoData";
 import Page404 from "../pagers/Page404";
 import ExplorerCollectionERC721 from "../pagers/ExplorerCollectionERC721";
 import MintNewNft from "../pagers/MintNewNft";
+import CheckoutPage from "../pagers/CheckoutPage";
+import UserProfile from "../pagers/profile/UserProfile";
+import ListNftToMarketPlace from "../pagers/ListNftToMarketPlace";
 
 const router = createBrowserRouter([
     {
@@ -34,20 +37,38 @@ const router = createBrowserRouter([
             },
             {
                 path: "collection/:id",
-                element: <ExplorerCollectionERC721/>
-            }
+                element: <ExplorerCollectionERC721 />
+            },
+            {
+                path: "user/:id",
+                element: <UserProfile />
+            },
+        
 
         ]
 
     },
     {
-        path:"/",
+        path: "/",
         element: <WollfyLayout isProtected={true} />,
         children: [
             {
                 path: "create-new-nft",
-                element: <MintNewNft/>
-            }
+                element: <MintNewNft />
+            },
+            {
+                path: "checkout",
+                element: <CheckoutPage />
+            },
+            {
+                path: "profile/:id",
+                element: <UserProfile />
+            },
+            {
+                path: "sell-nft",
+                element: <ListNftToMarketPlace/>
+            },
+
         ]
     },
     {
@@ -62,7 +83,7 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <Page404/>
+        element: <Page404 />
     }
 ])
 
