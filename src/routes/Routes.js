@@ -7,6 +7,7 @@ import LoginWallet from "../pagers/LoginWallet";
 import ExplorerNFTS from "../pagers/ExplorerNFTS";
 import ColectionsExplorer from "../pagers/ColectionsExplorer";
 import TokenFullInfoData from "../pagers/TokenFullInfoData";
+import Page404 from "../pagers/Page404";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
                 element: <LoginWallet />
             }
         ]
+    },
+    {
+        path: "*",
+        element: <Page404/>
     }
 ])
 
