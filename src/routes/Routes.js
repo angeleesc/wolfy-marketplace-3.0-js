@@ -8,6 +8,7 @@ import ExplorerNFTS from "../pagers/ExplorerNFTS";
 import ColectionsExplorer from "../pagers/ColectionsExplorer";
 import TokenFullInfoData from "../pagers/TokenFullInfoData";
 import Page404 from "../pagers/Page404";
+import ExplorerCollectionERC721 from "../pagers/ExplorerCollectionERC721";
 
 const router = createBrowserRouter([
     {
@@ -29,8 +30,11 @@ const router = createBrowserRouter([
             {
                 path: "token/:id",
                 element: <TokenFullInfoData />
+            },
+            {
+                path: "collection/:id",
+                element: <ExplorerCollectionERC721/>
             }
-
 
         ]
 
