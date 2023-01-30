@@ -3,12 +3,4 @@
 @tailwind utilities;
 
 @import "./fonts-theme";
-
-body {
-    background-color: theme("colors.wolf-gray.0");
-}
-
-h3{
-    color: red;
-    font-family: "open-sans";
-}
+@import "./html-elements";
