@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import PcNavbar from "../navbar/PcNavbar";
 
 export default function WollfyLayout({ isProtected, children, rediredTo }) {
   const user = true;
@@ -7,22 +8,24 @@ export default function WollfyLayout({ isProtected, children, rediredTo }) {
   if (isProtected) {
     if (user) {
       return (
-        <div>
-          <h3>Menu wolfy logeado</h3>
-          { children? children :  <Outlet />}
-        </div>
+        <>
+          <PcNavbar />
+          {children ? children : <Outlet />}
+        </>
       );
     }
 
-    return <div>
+    return (
+      <div>
         <h3>Es nesesario logear</h3>
-    </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h3>Menu wolfy</h3>
-      { children? children :  <Outlet />}
-    </div>
+    <>
+      <PcNavbar />
+      {children ? children : <Outlet />}
+    </>
   );
 }
