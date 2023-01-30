@@ -13,10 +13,14 @@ import MintNewNft from "../pagers/MintNewNft";
 import CheckoutPage from "../pagers/CheckoutPage";
 import UserProfile from "../pagers/profile/UserProfile";
 import ListNftToMarketPlace from "../pagers/ListNftToMarketPlace";
+import { staticRoutes } from "../helpers/static-routes";
+
+
+
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: staticRoutes.root,
         element: <WollfyLayout />,
         children: [
             {
@@ -24,26 +28,26 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "explorer-nfts",
+                path: staticRoutes.exporersNfts,
                 element: <ExplorerNFTS />
             },
             {
-                path: "explorer-collections",
+                path: staticRoutes.exporersColections,
                 element: <ColectionsExplorer />
             },
             {
-                path: "token/:id",
+                path: staticRoutes.tokenInfoData(),
                 element: <TokenFullInfoData />
             },
             {
-                path: "collection/:id",
+                path: staticRoutes.colectionInfoData(),
                 element: <ExplorerCollectionERC721 />
             },
             {
-                path: "user/:id",
+                path: staticRoutes.userData(),
                 element: <UserProfile />
             },
-        
+
 
         ]
 
@@ -53,20 +57,20 @@ const router = createBrowserRouter([
         element: <WollfyLayout isProtected={true} />,
         children: [
             {
-                path: "create-new-nft",
+                path: staticRoutes.createNft,
                 element: <MintNewNft />
             },
             {
-                path: "checkout",
+                path: staticRoutes.checkout,
                 element: <CheckoutPage />
             },
             {
-                path: "profile/:id",
+                path: staticRoutes.profile(),
                 element: <UserProfile />
             },
             {
-                path: "sell-nft",
-                element: <ListNftToMarketPlace/>
+                path: staticRoutes.sellNft,
+                element: <ListNftToMarketPlace />
             },
 
         ]
@@ -76,7 +80,7 @@ const router = createBrowserRouter([
         element: <LoginLayout />,
         children: [
             {
-                path: "login",
+                path:staticRoutes.login,
                 element: <LoginWallet />
             }
         ]
