@@ -26,6 +26,9 @@ export default function PcNavbar() {
           <li>
             <Link to={staticRoutes.exporersNfts}>{exporeOptionTextUi}</Link>
           </li>
+          <li>
+            <Link to={staticRoutes.resources}>Recursos</Link>
+          </li>
         </ul>
       </div>
     </div>

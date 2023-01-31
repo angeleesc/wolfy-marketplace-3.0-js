@@ -14,6 +14,7 @@ import CheckoutPage from "../pagers/CheckoutPage";
 import UserProfile from "../pagers/profile/UserProfile";
 import ListNftToMarketPlace from "../pagers/ListNftToMarketPlace";
 import { staticRoutes } from "../helpers/static-routes";
+import ResurcesPage from "../pagers/ResurcesPage";
 
 
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
                 path: staticRoutes.userData(),
                 element: <UserProfile />
             },
+            {
+                path: staticRoutes.resources,
+                element: <ResurcesPage/> 
+            }
 
 
         ]

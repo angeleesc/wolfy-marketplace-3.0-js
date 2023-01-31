@@ -9,5 +9,6 @@ export const staticRoutes = {
     checkout: "checkout",
     profile: (id)=> `profile/${id?id:":id"}`,
     sellNft: "sell-nft",
-    login: "login"
+    login: "login",
+    resources: "resources"
 }
