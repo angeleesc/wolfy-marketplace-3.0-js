@@ -3,6 +3,8 @@ import Logo from "../icons/Logo";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
+import { FiCreditCard, FiPlus, FiSearch } from "react-icons/fi";
+import Menu from "../icons/Menu";
 
 export default function PcNavbar() {
   const uiNavbarInfo = useSelector((state) => state.language.navBar);
@@ -15,7 +17,7 @@ export default function PcNavbar() {
       <div className="logo">
         <Link
           to={staticRoutes.root}
-          className="h-[100%] bg-slate-600 flex items-center"
+          className="h-[100%] flex items-center"
         >
           <Logo />
           <h3 className="ml-2 text-wolf-gray-950">Wolf Inu</h3>
@@ -24,10 +26,38 @@ export default function PcNavbar() {
       <div className="main-option">
         <ul className="wolf-drop-menu-container">
           <li>
-            <Link to={staticRoutes.exporersNfts}>{exporeOptionTextUi}</Link>
+            <Link to={staticRoutes.exporersNfts} className="wolf-nav-link">
+              {exporeOptionTextUi}
+            </Link>
           </li>
           <li>
-            <Link to={staticRoutes.resources}>Recursos</Link>
+            <Link to={staticRoutes.resources} className="wolf-nav-link">
+              Recursos
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div className="main-option">
+        <ul className="wolf-drop-menu-container">
+          <li>
+            <Link to="/" className="wolf-nav-link">
+              <FiSearch />
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="wolf-nav-link">
+              <FiPlus />
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="wolf-nav-link">
+              <FiCreditCard />
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="wolf-nav-link">
+              <Menu />
+            </Link>
           </li>
         </ul>
       </div>

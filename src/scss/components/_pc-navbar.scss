@@ -16,4 +16,20 @@
         padding    : 0 30px;
     }
 
+    .main-option {
+        padding: 0 30px;
+    }
+
+    .wolf-drop-menu-container {
+        // background-color: red;
+        display         : flex;
+        height          : 100%;
+        align-items     : center;
+
+        .wolf-nav-link{
+            color:theme("colors.wolf-gray.850") ;
+        }
+
+    }
+
 }
