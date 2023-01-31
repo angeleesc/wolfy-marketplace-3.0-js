@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
- const languageSlice = createSlice({
+const languageSlice = createSlice({
     name: "languageSettings",
     initialState: {
-        navaBar: {
+        languageDef: "es",
+        navBar: {
             exporeOptionTextUi: "explorar",
             createOptionUi: "Crear",
             resurseOptionUi: "Recursos",
-        
         }
     },
     reducers: {
