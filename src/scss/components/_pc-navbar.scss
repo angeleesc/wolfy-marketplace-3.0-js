@@ -22,13 +22,45 @@
 
     .wolf-drop-menu-container {
         // background-color: red;
-        display         : flex;
-        height          : 100%;
-        align-items     : center;
+        display    : flex;
+        height     : 100%;
+        align-items: center;
 
-        .wolf-nav-link{
-            color:theme("colors.wolf-gray.850") ;
+        li {
+            // background-color: blue;
         }
+
+        .wolf-nav-link {
+            color      : theme("colors.wolf-gray.850");
+            font-family: "open-sans";
+            font-weight: 300;
+            font-size  : 14px;
+            margin     : 0 15px;
+
+            svg {
+                // background-color: red;
+                width: 16px;
+            }
+
+
+        }
+
+        .wolf-nav-link-icon {
+            // background-color: red !important;
+            // margin: 40px;
+            display        : block;
+            font-size      : 16px;
+            margin         : 0 10px;
+            width          : 36px;
+            height         : 36px;
+            border         : 1px solid theme("colors.wolf-gray.500");
+            border-radius  : 50%;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+
+
 
     }
 

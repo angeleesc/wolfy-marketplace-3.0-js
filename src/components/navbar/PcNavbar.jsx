@@ -20,7 +20,7 @@ export default function PcNavbar() {
           className="h-[100%] flex items-center"
         >
           <Logo />
-          <h3 className="ml-2 text-wolf-gray-950">Wolf Inu</h3>
+          <h3 className="ml-2 text-wolf-gray-950 text-[16px]">Wolf Inu</h3>
         </Link>
       </div>
       <div className="main-option">
@@ -40,22 +40,22 @@ export default function PcNavbar() {
       <div className="main-option">
         <ul className="wolf-drop-menu-container">
           <li>
-            <Link to="/" className="wolf-nav-link">
+            <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <FiSearch />
             </Link>
           </li>
           <li>
-            <Link to="/" className="wolf-nav-link">
+            <Link to="/" className="wolf-nav-link wolf-nav-link-icon">
               <FiPlus />
             </Link>
           </li>
           <li>
-            <Link to="/" className="wolf-nav-link">
+            <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <FiCreditCard />
             </Link>
           </li>
           <li>
-            <Link to="/" className="wolf-nav-link">
+            <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <Menu />
             </Link>
           </li>
