@@ -8,7 +8,18 @@ const languageSlice = createSlice({
             exporeOptionTextUi: "explorar",
             createOptionUi: "Crear",
             resurseOptionUi: "Recursos",
-        }
+
+            dropMenuSection:{
+                exporeOptionTextUi: {
+                    name: "explorar",
+                    dorpMenuOptions:{
+                        NftsTextUi:"Nfts",
+                        CollectionTextUi: "Coleciones"
+                    }
+                }
+            }
+        },
+
     },
     reducers: {
 
