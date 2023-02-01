@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import { FiCreditCard, FiPlus, FiSearch } from "react-icons/fi";
 import Menu from "../icons/Menu";
+import WolfTooltip from "../tooltip/WolfTooltip";
 
 export default function PcNavbar() {
   const [openEplorerDpopOption, setopenEplorerDpopOption] = useState(false);
@@ -42,28 +43,30 @@ export default function PcNavbar() {
             <Link to={staticRoutes.exporersNfts} className="wolf-nav-link">
               {dropMenuSection.exporeOptionTextUi.name}
             </Link>
-           { openEplorerDpopOption && <div className="wolf-drop-menu-box">
-              <div className="explorer-option">
-                <ul>
-                  <li>
-                    <Link to="/">
-                      {
-                        dropMenuSection.exporeOptionTextUi.dorpMenuOptions
-                          .NftsTextUi
-                      }
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/">
-                      {
-                        dropMenuSection.exporeOptionTextUi.dorpMenuOptions
-                          .CollectionTextUi
-                      }
-                    </Link>
-                  </li>
-                </ul>
+            {openEplorerDpopOption && (
+              <div className="wolf-drop-menu-box">
+                <div className="explorer-option">
+                  <ul>
+                    <li>
+                      <Link to="/">
+                        {
+                          dropMenuSection.exporeOptionTextUi.dorpMenuOptions
+                            .NftsTextUi
+                        }
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/">
+                        {
+                          dropMenuSection.exporeOptionTextUi.dorpMenuOptions
+                            .CollectionTextUi
+                        }
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>}
+            )}
           </li>
           <li className="wolf-drop-down-menu">
             <Link to={staticRoutes.resources} className="wolf-nav-link">
@@ -76,7 +79,11 @@ export default function PcNavbar() {
         <ul className="wolf-drop-menu-container">
           <li>
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
-              <FiSearch />
+              <WolfTooltip title="Buscar">
+                {/* <button> */}
+                  <FiSearch />
+                {/* </button> */}
+              </WolfTooltip>
             </Link>
           </li>
           <li>
