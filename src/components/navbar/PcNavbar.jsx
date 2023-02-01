@@ -81,15 +81,20 @@ export default function PcNavbar() {
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <WolfTooltip title="Buscar">
                 {/* <button> */}
-                  <FiSearch />
+                <FiSearch />
                 {/* </button> */}
               </WolfTooltip>
             </Link>
           </li>
           <li>
-            <Link to="/" className="wolf-nav-link wolf-nav-link-icon">
-              <FiPlus />
-            </Link>
+            <div className="wolf-link-tooptip-container">
+              <Link to="/" className="wolf-nav-link wolf-nav-link-icon">
+                <FiPlus />
+              </Link>
+              <div className="wolf-link-toooltip-body" >
+                        <span>Crear Nueva Nft</span>
+              </div>
+            </div>
           </li>
           <li>
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
