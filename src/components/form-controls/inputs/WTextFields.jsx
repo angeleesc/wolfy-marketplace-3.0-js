@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function WTextFields({
+  id,
   register,
-  labelText,
+  textLabel,
   info,
   errorMessage,
   warningMessage,
@@ -10,13 +12,23 @@ export default function WTextFields({
 }) {
   return (
     <div className="wolf-form-control">
-      <label htmlFor="">
-        <span className="wolft-form-control-label">Label</span>
-        <input type="text" className="wolf-form-control-text-input" />
-      </label>
-      <p className="wolf-form-control-info">Info</p>
-      <p className="wolf-form-control-error">Info</p>
-      <p className="wolf-form-control-warrnig">Info</p>
+      {textLabel && (
+        <label htmlFor={id}>
+          <span className="wolft-form-control-label">{textLabel}</span>
+        </label>
+      )}
+      <input id={id} type="text" className="wolf-form-control-text-input" />
+      {info && <p className="wolf-form-control-info">{info}</p>}
+      {errorMessage && (
+        <p className="wolf-form-control-error">{errorMessage}</p>
+      )}
+      {warningMessage && (
+        <p className="wolf-form-control-warrnig">{warningMessage}</p>
+      )}
     </div>
   );
 }
+
+WTextFields.prototype = {
+  id: PropTypes.string.isRequired,
+};

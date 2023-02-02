@@ -80,11 +80,11 @@ export default function PcNavbar() {
         <ul className="wolf-drop-menu-container">
           <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
-              <WolfTooltip title="Buscar">
+              {/* <WolfTooltip title="Buscar"> */}
                 {/* <button> */}
                 <FiSearch />
                 {/* </button> */}
-              </WolfTooltip>
+              {/* </WolfTooltip> */}
             </Link>
           </li>
           <li className="li-item wolf-link-tooptip-container">
