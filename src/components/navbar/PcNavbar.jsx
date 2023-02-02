@@ -88,17 +88,21 @@ export default function PcNavbar() {
             </Link>
           </li>
           <li className="li-item wolf-link-tooptip-container">
-            <Link to="/" className="wolf-nav-link wolf-nav-link-icon"
-            onMouseOver={()=>{
-              setCreateNftDrop(true)
-            }}
-
+            <Link
+              to="/"
+              className="wolf-nav-link wolf-nav-link-icon"
+              onMouseOver={() => {
+                setCreateNftDrop(true);
+              }}
+              onMouseOut={() => {
+                setCreateNftDrop(false);
+              }}
             >
               <FiPlus />
             </Link>
-            <div className="wolf-link-toooltip-body">
+           { createNftDrop &&  <div className="wolf-link-toooltip-body">
               <span>Crear Nueva Nft</span>
-            </div>
+            </div>}
           </li>
           <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
