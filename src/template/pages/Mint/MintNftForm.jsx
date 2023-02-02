@@ -1,9 +1,11 @@
 import React from 'react'
+import WTextFields from '../../../components/form-controls/inputs/WTextFields'
 
 export default function MintNftForm() {
   return (
 <form className='wolf-form'>
-    formulario de nft
+    formulario de nft XD
+    <WTextFields/>
 </form>
   )
 }
