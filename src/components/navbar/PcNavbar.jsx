@@ -89,7 +89,7 @@ export default function PcNavbar() {
           </li>
           <li className="li-item wolf-link-tooptip-container">
             <Link
-              to="/"
+              to={staticRoutes.createNft}
               className="wolf-nav-link wolf-nav-link-icon"
               onMouseOver={() => {
                 setCreateNftDrop(true);
