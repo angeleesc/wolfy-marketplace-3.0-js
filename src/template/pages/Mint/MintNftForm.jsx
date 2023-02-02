@@ -6,6 +6,7 @@ export default function MintNftForm() {
     <form className="wolf-form">
       formulario de nft XD
       <WTextFields
+        id="nft-name"
         textLabel="Nombre de la nft"
         errorMessage="este campo es requerido"
       />
