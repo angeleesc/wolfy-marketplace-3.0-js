@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function MintNftForm() {
   return (
-<form>
+<form className='wolf-form'>
     formulario de nft
 </form>
   )

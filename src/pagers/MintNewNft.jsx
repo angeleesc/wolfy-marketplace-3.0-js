@@ -9,7 +9,7 @@ export default function MintNewNft() {
           <MintNftForm />
         </div>
         <div className="w-[100%`] h-[100%] ">
-          <h3>Previsualizacion</h3>
+          <h3>Previsualizacion </h3>
         </div>
       </section>
     </div>
