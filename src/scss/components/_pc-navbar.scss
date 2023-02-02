@@ -35,6 +35,11 @@
             align-items    : center;
         }
 
+        .li-item{
+            // background-color: blue;
+            margin: 0 6px;
+        }
+
         .wolf-drop-down-menu {
             // background-color: red;
             position: relative;
@@ -91,7 +96,7 @@
             // margin: 40px;
             display        : block;
             font-size      : 16px;
-            margin         : 0 10px;
+            margin         : 0px;
             width          : 36px;
             height         : 36px;
             border         : 1px solid theme("colors.wolf-gray.500");
@@ -122,18 +127,21 @@
     .wolf-link-toooltip-body {
         position        : absolute;
         padding         : 10px;
-        background-color: theme("colors.wolf-gray.175");
+        background-color: theme("colors.wolf-gray.125");
         display         : flex;
-        top             : 100%;
+        top             : calc(100%);
         box-sizing      : content-box;
+        border-radius   : 8px;
+        border: 1px solid theme("colors.wolf-gray.450");
+
 
 
         span {
-            display: block;
-            color: theme("colors.wolf-gray.800");
-            font-size: 12px;
+            display      : block;
+            color        : theme("colors.wolf-gray.800");
+            font-size    : 12px;
             overflow-wrap: normal;
-            white-space: nowrap;
+            white-space  : nowrap;
             // width: 300px;
 
             // word-Break: 

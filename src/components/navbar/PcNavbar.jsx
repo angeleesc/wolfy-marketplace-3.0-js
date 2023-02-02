@@ -9,6 +9,7 @@ import WolfTooltip from "../tooltip/WolfTooltip";
 
 export default function PcNavbar() {
   const [openEplorerDpopOption, setopenEplorerDpopOption] = useState(false);
+  const [createNftDrop, setCreateNftDrop] = useState(false);
 
   const uiNavbarInfo = useSelector((state) => state.language.navBar);
   const {
@@ -77,7 +78,7 @@ export default function PcNavbar() {
       </div>
       <div className="main-option">
         <ul className="wolf-drop-menu-container">
-          <li>
+          <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <WolfTooltip title="Buscar">
                 {/* <button> */}
@@ -86,22 +87,25 @@ export default function PcNavbar() {
               </WolfTooltip>
             </Link>
           </li>
-          <li>
-            <div className="wolf-link-tooptip-container">
-              <Link to="/" className="wolf-nav-link wolf-nav-link-icon">
-                <FiPlus />
-              </Link>
-              <div className="wolf-link-toooltip-body" >
-                        <span>Crear Nueva Nft</span>
-              </div>
+          <li className="li-item wolf-link-tooptip-container">
+            <Link to="/" className="wolf-nav-link wolf-nav-link-icon"
+            onMouseOver={()=>{
+              setCreateNftDrop(true)
+            }}
+
+            >
+              <FiPlus />
+            </Link>
+            <div className="wolf-link-toooltip-body">
+              <span>Crear Nueva Nft</span>
             </div>
           </li>
-          <li>
+          <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <FiCreditCard />
             </Link>
           </li>
-          <li>
+          <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               <Menu />
             </Link>
