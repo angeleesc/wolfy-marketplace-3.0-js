@@ -13,8 +13,8 @@ export default function WTextFields({
   return (
     <div className="wolf-form-control">
       {textLabel && (
-        <label htmlFor={id}>
-          <span className="wolft-form-control-label">{textLabel}</span>
+        <label  className="wolft-form-control-label" htmlFor={id}>
+          <span>{textLabel}</span>
         </label>
       )}
       <input id={id} type="text" className="wolf-form-control-text-input" />

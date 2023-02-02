@@ -20,9 +20,22 @@
     display       : flex;
     flex-direction: column;
 
-    label {
-        display       : flex;
-        flex-direction: column;
+    .wolft-form-control-label {
+        span {
+            color      : theme("colors.wolf-gray-light.1600");
+            font-weight: 500;
+        }
+    }
+
+    .wolf-form-control-text-input {
+        background-color: theme("colors.wolf-gray-dark.600");
+        padding         : 5px 10px ;
+        font-size       : 15px;
+        font-family     : open-sans;
+        color: theme("colors.wolf-gray-light.1800");
+        font-weight: 400;
+        border-radius: 8px;
+        border: 1px solid theme("colors.wolf-gray-light.100");
     }
 
 }
