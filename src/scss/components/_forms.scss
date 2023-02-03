@@ -22,20 +22,48 @@
 
     .wolft-form-control-label {
         span {
-            color      : theme("colors.wolf-gray-light.1600");
+            color      : theme("colors.wolf-gray-light.1800");
             font-weight: 500;
+            font-size  : 15px;
         }
     }
 
     .wolf-form-control-text-input {
         background-color: theme("colors.wolf-gray-dark.600");
-        padding         : 5px 10px ;
-        font-size       : 15px;
-        font-family     : open-sans;
-        color: theme("colors.wolf-gray-light.1800");
+        padding         : 5px 10px;
+        font-size       : 16px;
+        font-family     : "open-sans";
+        color           : theme("colors.wolf-gray.725");
+        font-weight     : 400;
+        border-radius   : 8px;
+        border          : 1px solid theme("colors.wolf-gray-light.100");
+        margin-bottom   : 4px;
+
+        &::placeholder {
+            color      : theme("colors.wolf-gray-light.100");
+            font-family: "open-sans";
+            font-weight: 400;
+        }
+    }
+
+    p {
+        font-size  : 12px;
         font-weight: 400;
-        border-radius: 8px;
-        border: 1px solid theme("colors.wolf-gray-light.100");
+        // color: theme("colors.wolf-gray-light.300");
+    }
+
+    .wolf-form-control-info {
+        color: theme("colors.wolf-gray-light.500");
+    }
+
+    .wolf-form-control-error {
+        // background-color: blue;
+        color: theme("colors.wollf-red.500");
+
+    }
+
+    .wolf-form-control-warrnig {
+        color: theme("colors.wolf-yellow.500");
     }
 
 }

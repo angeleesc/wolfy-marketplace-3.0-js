@@ -17,7 +17,7 @@ export default function WTextFields({
           <span>{textLabel}</span>
         </label>
       )}
-      <input id={id} type="text" className="wolf-form-control-text-input" />
+      <input id={id} type="text" className="wolf-form-control-text-input" {...props} />
       {info && <p className="wolf-form-control-info">{info}</p>}
       {errorMessage && (
         <p className="wolf-form-control-error">{errorMessage}</p>
