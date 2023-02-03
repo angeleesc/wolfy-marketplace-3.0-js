@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function WTextAreaInput({
   id,
@@ -9,6 +9,17 @@ export default function WTextAreaInput({
   warningMessage,
   ...props
 }) {
+  const [value, setValue] = useState();
+
+  const textAreaRef = useRef();
+
+  const resizeTextArea = () => {
+    textAreaRef.current.style.height = "auto";
+    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
+  };
+
+  useEffect(resizeTextArea, [value]);
+
   return (
     <div className="wolf-form-control">
       {textLabel && (
@@ -20,8 +31,12 @@ export default function WTextAreaInput({
       <textarea
         id={id}
         type="text"
-        className="wolf-form-control-text-input"
+        className="wolf-form-control-text-input text-arear"
         {...props}
+        ref={textAreaRef}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
       ></textarea>
 
       {info && <p className="wolf-form-control-info">{info}</p>}

@@ -39,6 +39,15 @@
         border          : 1px solid theme("colors.wolf-gray-light.100");
         margin-bottom   : 4px;
 
+        &.text-arear{
+            resize: none;
+            height: 60px;
+
+            &::-webkit-scrollbar{
+                width: 0px;
+            }
+        }
+
         &::placeholder {
             color      : theme("colors.wolf-gray-light.100");
             font-family: "open-sans";
