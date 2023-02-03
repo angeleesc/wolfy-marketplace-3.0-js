@@ -4,16 +4,16 @@ import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 export default function MintNftForm() {
   return (
     <form className="wolf-form">
-      formulario de nft XD
+      <h3 className="my-4" >Datos Basico de la nft</h3>
+
       <WTextFields
         id="nft-name"
         textLabel="Nombre de la nft"
-        errorMessage="este campo es requerido"
         info="Coloque un nombre para la nft unico"
-        warningMessage="advertencia este nomber no es original"
+        // errorMessage="este campo es requerido"
+        // warningMessage="advertencia este nomber no es original"
         placeholder="Gato fans 151"
       />
-
     </form>
   );
 }
