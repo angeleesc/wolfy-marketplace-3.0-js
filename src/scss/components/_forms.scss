@@ -29,7 +29,7 @@
     }
 
     .wolf-form-control-text-input {
-        background-color: theme("colors.wolf-gray-dark.600");
+        background-color: theme("colors.wolf-gray-dark.500");
         padding         : 5px 10px;
         font-size       : 16px;
         font-family     : "open-sans";
@@ -38,6 +38,7 @@
         border-radius   : 8px;
         border          : 1px solid theme("colors.wolf-gray-light.100");
         margin-bottom   : 4px;
+        transition: border .5s;
 
         &.text-arear{
             resize: none;
@@ -53,6 +54,14 @@
             font-family: "open-sans";
             font-weight: 400;
         }
+
+        
+        &:focus{
+            outline: none;
+            background-color: theme("colors.wolf-gray-dark.800");
+            border: 1px solid theme("colors.wolf-blue.600");
+        }
+
     }
 
     p {
