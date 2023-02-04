@@ -4,9 +4,8 @@ import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaIn
 import { FormControlLabel, Switch } from "@mui/material";
 
 export default function MintNftForm() {
+  const [isAddAtribute, setIsAddAtribute] = useState(false);
 
-  const [isAddAtribute, setIsAddAtribute] = useState(false)
-  
   return (
     <form className="wolf-form">
       <h3 className="my-4">Datos Basico de la nft</h3>
@@ -37,13 +36,40 @@ export default function MintNftForm() {
       />
 
       <FormControlLabel
-       label="Agregar los atribhutos a esta nft" 
-       control={
-        <Switch   name="isAddPropieties"  checked={isAddAtribute} onChange={e=>{
-          setIsAddAtribute(e.target.checked)
-        }} />
-       }
-       />
+        label="Agregar los atribhutos a esta nft"
+        className="my-[15px]"
+        control={
+          <Switch
+            name="isAddPropieties"
+            checked={isAddAtribute}
+            onChange={(e) => {
+              setIsAddAtribute(e.target.checked);
+            }}
+          />
+        }
+      />
+
+      <div className="my-[10px]">
+        <p>
+          Puedes agregar propiedades a tu nft para indicar su valor (prude ser
+          opcional )
+        </p>
+      </div>
+      {
+        <div>
+          <div className="wolft-form-control-label mb-[5px]">
+            <span>Atributo 1</span>
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="mr-[5px]">
+              <WTextFields id={"atributo-1"} placeholder="Proiedad" />
+            </div>
+            <div className="ml-[5px]">
+              <WTextFields id={"atributo-1"} placeholder="Valor" />
+            </div>
+          </div>
+        </div>
+      }
     </form>
   );
 }
