@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaInput";
 import { FormControlLabel, Switch } from "@mui/material";
+import "./style/botom-group-box.scss";
+import CAdd from "../../../components/icons/CAdd";
+import Logo from "../../../components/icons/Logo";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -70,6 +73,34 @@ export default function MintNftForm() {
           </div>
         </div>
       }
+
+      <div className="my-[15px]">
+        <div className="wolft-form-control-label mb-[5px]">
+          <span>Colecion donde se guradara</span>
+          <div className="grid grid-cols-3">
+            <button className="botom-group-box">
+              <div className="botom-group-body">
+                <h4>Nueva</h4>
+                <span>ERC-721</span>
+                <CAdd />
+              </div>
+            </button>
+            <button className="boton-group-box">
+              <div className="botom-group-body">
+                <h4>Wolfy</h4>
+                <span>ERC-721</span>
+                <Logo />
+              </div>
+            </button>
+            <button className="boton-group-box">
+              <div className="botom-group-body">
+                <h4>Existente</h4>
+                <span>Ver Coleciones</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }
