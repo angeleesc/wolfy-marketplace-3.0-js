@@ -1,3 +1,27 @@
-.botom-group-box{
-    background-color: red;
+.boton-group-box {
+    // background-color: red;
+    padding         : 5px;
+
+    .botom-group-body {
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+        background-color: theme("colors.wolf-gray-dark.400");
+        min-height: 120px;
+        border-radius: 8px;
+        border: 1.5px solid theme("colors.wolf-gray-dark.1000");
+
+        h4{
+            font-size: 14px;
+        }
+        span{
+            font-size: 12px;
+        }
+
+        svg{
+            margin-top: 8px;
+        }
+
+    }
 }

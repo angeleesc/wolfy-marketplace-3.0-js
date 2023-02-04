@@ -5,6 +5,7 @@ import { FormControlLabel, Switch } from "@mui/material";
 import "./style/botom-group-box.scss";
 import CAdd from "../../../components/icons/CAdd";
 import Logo from "../../../components/icons/Logo";
+import CSearch from "../../../components/icons/CSearch";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -75,10 +76,11 @@ export default function MintNftForm() {
       }
 
       <div className="my-[15px]">
-        <div className="wolft-form-control-label mb-[5px]">
+        <div className="wolft-form-control-label mb-[10px]">
           <span>Colecion donde se guradara</span>
+        </div>
           <div className="grid grid-cols-3">
-            <button className="botom-group-box">
+            <button className="boton-group-box">
               <div className="botom-group-body">
                 <h4>Nueva</h4>
                 <span>ERC-721</span>
@@ -96,10 +98,10 @@ export default function MintNftForm() {
               <div className="botom-group-body">
                 <h4>Existente</h4>
                 <span>Ver Coleciones</span>
+                <CSearch/>
               </div>
             </button>
           </div>
-        </div>
       </div>
     </form>
   );
