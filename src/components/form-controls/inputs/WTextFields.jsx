@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 export default function WTextFields({
   id,
-  register,
   textLabel,
   info,
   errorMessage,

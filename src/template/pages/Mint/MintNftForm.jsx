@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaInput";
-import { FormControlLabel, Switch } from "@mui/material";
+import { FormControlLabel, Switch, TextField } from "@mui/material";
 import "./style/botom-group-box.scss";
 import CAdd from "../../../components/icons/CAdd";
 import Logo from "../../../components/icons/Logo";
@@ -79,30 +79,53 @@ export default function MintNftForm() {
         <div className="wolft-form-control-label mb-[10px]">
           <span>Colecion donde se guradara</span>
         </div>
-          <div className="grid grid-cols-3">
-            <button className="boton-group-box">
-              <div className="botom-group-body">
-                <h4>Nueva</h4>
-                <span>ERC-721</span>
-                <CAdd />
-              </div>
-            </button>
-            <button className="boton-group-box">
-              <div className="botom-group-body">
-                <h4>Wolfy</h4>
-                <span>ERC-721</span>
-                <Logo />
-              </div>
-            </button>
-            <button className="boton-group-box">
-              <div className="botom-group-body">
-                <h4>Existente</h4>
-                <span>Ver Coleciones</span>
-                <CSearch/>
-              </div>
-            </button>
-          </div>
+        <div className="grid grid-cols-3">
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Nueva</h4>
+              <span>ERC-721</span>
+              <CAdd />
+            </div>
+          </button>
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Wolfy</h4>
+              <span>ERC-721</span>
+              <Logo />
+            </div>
+          </button>
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Existente</h4>
+              <span>Ver Coleciones</span>
+              <CSearch />
+            </div>
+          </button>
+        </div>
       </div>
+
+      <h3 className="my-[15px]">Datos de la colecion *</h3>
+      <WTextFields
+        id="colection-name"
+        textLabel="Nombre de la colecion"
+        placeholder="Ej: Gatos Cryptos"
+        info="Coloca el nombre de la colecion" 
+      />
+
+      <WTextFields
+      id="colection-symbol"
+      textLabel="Simbolo *"
+      placeholder="Ej: CGATO"
+      />
+
+      <WTextFields
+      id="colection-fee"
+      textLabel="Retgalias"
+      placeholder="Ej: 5%"
+      info ="colola el marjen de regalias entre 1 y 50%"
+
+      />
+
     </form>
   );
 }
