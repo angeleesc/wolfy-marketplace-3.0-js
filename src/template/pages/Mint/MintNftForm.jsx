@@ -6,9 +6,12 @@ import "./style/botom-group-box.scss";
 import CAdd from "../../../components/icons/CAdd";
 import Logo from "../../../components/icons/Logo";
 import CSearch from "../../../components/icons/CSearch";
+import TagBlack from "../../../components/icons/TagBlack";
+import ClockBlack from "../../../components/icons/ClockBlack";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
+  const [isMarketAtribute, setIsMarketAtribute] = useState(true);
 
   return (
     <form className="wolf-form">
@@ -109,23 +112,56 @@ export default function MintNftForm() {
         id="colection-name"
         textLabel="Nombre de la colecion"
         placeholder="Ej: Gatos Cryptos"
-        info="Coloca el nombre de la colecion" 
+        info="Coloca el nombre de la colecion"
       />
 
       <WTextFields
-      id="colection-symbol"
-      textLabel="Simbolo *"
-      placeholder="Ej: CGATO"
+        id="colection-symbol"
+        textLabel="Simbolo *"
+        placeholder="Ej: CGATO"
       />
 
       <WTextFields
-      id="colection-fee"
-      textLabel="Retgalias"
-      placeholder="Ej: 5%"
-      info ="colola el marjen de regalias entre 1 y 50%"
-
+        id="colection-fee"
+        textLabel="Retgalias"
+        placeholder="Ej: 5%"
+        info="colola el marjen de regalias entre 1 y 50%"
       />
 
+      <FormControlLabel
+        label="Poner en venta la nft en la marketplace"
+        className="my-[15px]"
+        control={
+          <Switch
+            name="isAddPropieties"
+            checked={isMarketAtribute}
+            onChange={(e) => {
+              setIsMarketAtribute(e.target.checked);
+            }}
+          />
+        }
+      />
+
+      <div>
+        <div className="wolft-form-control-label mb-[10px]">
+          <span>Metodo de operacion</span>
+        </div>
+        <div className="grid grid-cols-2">
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Precio fijo</h4>
+              <TagBlack/>
+            </div>
+          </button>
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Subasta</h4>
+              <span>Cronometrada</span>
+              <ClockBlack/>
+            </div>
+          </button>
+        </div>
+      </div>
     </form>
   );
 }
