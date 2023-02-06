@@ -8,6 +8,7 @@ import Logo from "../../../components/icons/Logo";
 import CSearch from "../../../components/icons/CSearch";
 import TagBlack from "../../../components/icons/TagBlack";
 import ClockBlack from "../../../components/icons/ClockBlack";
+import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -150,24 +151,27 @@ export default function MintNftForm() {
           <button className="boton-group-box">
             <div className="botom-group-body">
               <h4>Precio fijo</h4>
-              <TagBlack/>
+              <TagBlack />
             </div>
           </button>
           <button className="boton-group-box">
             <div className="botom-group-body">
               <h4>Subasta</h4>
               <span>Cronometrada</span>
-              <ClockBlack/>
+              <ClockBlack />
             </div>
           </button>
         </div>
       </div>
 
-        <WTextFields
+      <WTextFields
         textLabel="Precio *"
         info={"Colloca el precio establecido"}
-        />
+      />
 
+      <div className="mt-[20px]">
+        <DateTimePikerNotModal />
+      </div>
     </form>
   );
 }
