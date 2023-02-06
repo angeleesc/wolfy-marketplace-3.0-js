@@ -162,6 +162,12 @@ export default function MintNftForm() {
           </button>
         </div>
       </div>
+
+        <WTextFields
+        textLabel="Precio *"
+        info={"Colloca el precio establecido"}
+        />
+
     </form>
   );
 }
