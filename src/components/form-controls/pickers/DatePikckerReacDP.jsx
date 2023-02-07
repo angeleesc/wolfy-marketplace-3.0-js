@@ -11,6 +11,9 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
       days: 1,
     })
   );
+
+  
+
   const onChange = (dates) => {
     const [start, end] = dates;
 
@@ -40,9 +43,13 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
             <input type="time" />
           </label>
           <label className="w-custom-time-piker">
-          <span>Hora De finalizacion</span>
-
-            <input type="time" />
+            <span>Hora De finalizacion</span>
+            <input
+              type="time"
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
+            />
           </label>
         </div>
       </div>
