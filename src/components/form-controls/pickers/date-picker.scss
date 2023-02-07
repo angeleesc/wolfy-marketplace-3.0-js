@@ -6,6 +6,11 @@
 
     // background-color: red;
 
+    .wolf-form-control-text-input{
+        // background-color: red;
+        font-size: 14px;
+        padding: 8px 8px;
+    }
 
 }
 
@@ -97,7 +102,7 @@
 
     /* 'X' button for resetting/clearing time */
     input[type=time]::-webkit-clear-button {
-        display: none;
+        // display: none;
     }
 
     /* Up/Down arrows for incrementing/decrementing the value */

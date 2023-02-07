@@ -3,6 +3,10 @@ import addTime from "date-fns/add";
 import DatePicker from "react-datepicker";
 import "./c-date-picker.scss";
 import "./date-picker.scss";
+import formatDate from "date-fns/format";
+
+// import { ClockPicker, LocalizationProvider } from "@mui/x-date-pickers";
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 export default function DatePikckerReacDP({ defaultTime = new Date() }) {
   const [startDate, setStartDate] = useState(defaultTime);
@@ -12,7 +16,12 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
     })
   );
 
-  
+  const [starViewClock, setStarViewClock] = useState("hours");
+
+  const formatStratDate = formatDate(startDate, "do MMMM yyyy h:mm a");
+  const formatEndDate = endDate
+    ? formatDate(endDate, "do MMMM yyyy h:mm a")
+    : "";
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -25,7 +34,31 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
   };
 
   return (
-    <div>
+    <div className="w-date-picker">
+      <div className="grid grid-cols-2">
+        <div className="wolf-form-control ">
+          <label className="wolft-form-control-label mb-[5px] mr-[5px] flex flex-col ">
+            <span>Inicio De subasta</span>
+            <input
+              type="text"
+              className="wolf-form-control-text-input"
+              value={formatStratDate}
+              readOnly
+            />
+          </label>
+        </div>
+        <div className="wolf-form-control ">
+          <label className="wolft-form-control-label mb-[5px] ml-[5px] flex flex-col ">
+            <span>Fin de la subasta</span>
+            <input
+              type="text"
+              className="wolf-form-control-text-input"
+              readOnly
+              value={formatEndDate}
+            />
+          </label>
+        </div>
+      </div>
       <div className="calendar-box">
         <DatePicker
           selected={startDate}
@@ -52,6 +85,22 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
             />
           </label>
         </div>
+
+        {/* <div className="relative">
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <ClockPicker 
+          date={startDate} 
+          onChange={(newDate) => setStartDate(newDate)}
+          onViewChange={(view) => {
+            setStarViewClock(view);
+          }}
+          view={starViewClock}
+          views={["hours", "minutes", "hours"]}
+          ampm
+          ampmInClock={true}
+          />
+        </LocalizationProvider>
+      </div> */}
       </div>
     </div>
   );
