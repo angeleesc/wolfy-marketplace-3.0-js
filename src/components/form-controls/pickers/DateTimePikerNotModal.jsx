@@ -9,25 +9,30 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { format } from "date-fns";
 import React, { useState } from "react";
 
-import "./date-picker.scss"
+import "./date-picker.scss";
 
-export default function DateTimePikerNotModal({textLabel="Titulo", defaultDate= new Date(), info="aqui se coloca la informacion"  }) {
-  const [value, setValue] = useState(defaultDate)                      ;
+export default function DateTimePikerNotModal({
+  textLabel = "Titulo",
+  defaultDate = new Date(),
+  info = "aqui se coloca la informacion",
+  id,
+}) {
+  const [value, setValue] = useState(defaultDate);
   const [viewClock, setViewClock] = useState("hours");
 
-  const formatedDate = format(value, 'MMMM')
+  const formatedDate = format(value, "MMMM");
 
-  const defaultData = new Date();
 
   return (
-    <div className="date-picker" >
-      <span>{textLabel}</span>
-      <h3>
-        {formatedDate}
-      </h3>
-      <span>
-        {info}
-      </span>
+    <div className="date-picker">
+      <label htmlFor={id}>
+        <span>{textLabel}</span>
+      </label>
+      <div className="input-group">
+        <input type="text" id={id}  value={formatedDate} />
+      </div>
+
+      <span>{info}</span>
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <div className="w-[100%]">

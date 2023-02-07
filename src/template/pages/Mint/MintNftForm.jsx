@@ -9,6 +9,7 @@ import CSearch from "../../../components/icons/CSearch";
 import TagBlack from "../../../components/icons/TagBlack";
 import ClockBlack from "../../../components/icons/ClockBlack";
 import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
+import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePikckerReacDP";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -170,7 +171,7 @@ export default function MintNftForm() {
       />
 
       <div className="mt-[20px]">
-        <DateTimePikerNotModal />
+        <DatePikckerReacDP />
       </div>
     </form>
   );
