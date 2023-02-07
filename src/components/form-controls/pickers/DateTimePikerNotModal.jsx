@@ -7,8 +7,9 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { format } from "date-fns";
-
 import React, { useState } from "react";
+
+import "./date-picker.scss"
 
 export default function DateTimePikerNotModal({textLabel="Titulo", defaultDate= new Date(), info="aqui se coloca la informacion"  }) {
   const [value, setValue] = useState(defaultDate)                      ;
@@ -19,7 +20,7 @@ export default function DateTimePikerNotModal({textLabel="Titulo", defaultDate= 
   const defaultData = new Date();
 
   return (
-    <div>
+    <div className="date-picker" >
       <span>{textLabel}</span>
       <h3>
         {formatedDate}
