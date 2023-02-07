@@ -13,6 +13,10 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
   );
   const onChange = (dates) => {
     const [start, end] = dates;
+
+    console.log("fecha de inicio", start);
+    console.log("fecha final", end)
+
     setStartDate(start);
     setEndDate(end);
   };
