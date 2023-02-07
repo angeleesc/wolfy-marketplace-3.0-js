@@ -91,10 +91,18 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
               onChange={(e) => {
                 console.log(e.target.value);
 
+                const hours = e.target.value.substring(0, 2);
+                console.log("hora extraida", hours);
+                const minutes = e.target.value.substring(3, 5);
+                console.log("munotos extraidos", minutes);
+
                 if (endDate) {
                   const dateCero = endDate.toDateString();
                   console.log(dateCero);
-                  const cuurentDate = new Date(dateCero);
+                  const cuurentDate = addTime(new Date(dateCero), {
+                    hours,
+                    minutes,
+                  });
                   console.log(cuurentDate);
                 }
               }}
