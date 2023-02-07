@@ -36,9 +36,12 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
         />
         <div className="grid  grid-cols-2">
           <label className="w-custom-time-piker">
+            <span>Hora De inicio</span>
             <input type="time" />
           </label>
           <label className="w-custom-time-piker">
+          <span>Hora De finalizacion</span>
+
             <input type="time" />
           </label>
         </div>

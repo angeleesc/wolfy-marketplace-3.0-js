@@ -16,12 +16,38 @@
 
 .calendar-box {
     background-color: theme("colors.wolf-gray-dark.500");
-    border: 1.5px solid theme("colors.wolf-gray-light.100");
+    border          : 1.5px solid theme("colors.wolf-gray-light.100");
     padding         : 15px;
     border-radius   : 8px;
 }
 
 
-.w-custom-time-piker{
-    background-color: red;
+.w-custom-time-piker {
+    // background-color: red;
+
+    display       : flex;
+    flex-direction: column;
+    margin        : 0 5px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    input[type=time] {
+        border          : none;
+        color           : theme("colors.wolf-gray-light.1500");
+        font-size       : 14px;
+        font-family     : "open-sans";
+        font-size       : 16px;
+        padding         : 8px;
+        background-color: transparent;
+        border-radius   : 8px;
+        border          : 1.5px solid theme("colors.wolf-gray-light.500");
+        // width: 100%;
+    }
+
 }
