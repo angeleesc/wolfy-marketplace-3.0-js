@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.w-date-picker{
+.w-date-picker {
 
     // background-color: red;
 
@@ -10,6 +10,13 @@
 }
 
 
-.react-datepicker{
-    background-color: red;
+.react-datepicker {
+    // background-color: red;
+}
+
+.calendar-box {
+    background-color: theme("colors.wolf-gray-dark.500");
+    border: 1.5px solid theme("colors.wolf-gray-light.100");
+    padding         : 15px;
+    border-radius   : 8px;
 }
