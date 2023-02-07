@@ -23,8 +23,8 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
     ? formatDate(endDate, "do MMMM yyyy h:mm a")
     : "";
 
-    const formatStraTime = formatDate( startDate, "HH:mm" );
-    const formatEndTime =  endDate ? formatDate(endDate, "HH:mm"): ""
+  const formatStraTime = formatDate(startDate, "HH:mm");
+  const formatEndTime = endDate ? formatDate(endDate, "HH:mm") : "";
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -76,7 +76,13 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
         <div className="grid  grid-cols-2">
           <label className="w-custom-time-piker">
             <span>Hora De inicio</span>
-            <input type="time" defaultValue={formatStraTime} />
+            <input
+              type="time"
+              defaultValue={formatStraTime}
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
+            />
           </label>
           <label className="w-custom-time-piker">
             <span>Hora De finalizacion</span>
@@ -84,6 +90,13 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
               type="time"
               onChange={(e) => {
                 console.log(e.target.value);
+
+                if (endDate) {
+                  const dateCero = endDate.toDateString();
+                  console.log(dateCero);
+                  const cuurentDate = new Date(dateCero);
+                  console.log(cuurentDate);
+                }
               }}
               defaultValue={formatEndTime}
             />
