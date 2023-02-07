@@ -15,7 +15,7 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
     const [start, end] = dates;
 
     console.log("fecha de inicio", start);
-    console.log("fecha final", end)
+    console.log("fecha final", end);
 
     setStartDate(start);
     setEndDate(end);
@@ -34,8 +34,13 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
           inline
           monthsShown={2}
         />
-        <div>
-          <input type="time" />
+        <div className="grid  grid-cols-2">
+          <label className="w-custom-time-piker">
+            <input type="time" />
+          </label>
+          <label className="w-custom-time-piker">
+            <input type="time" />
+          </label>
         </div>
       </div>
     </div>
