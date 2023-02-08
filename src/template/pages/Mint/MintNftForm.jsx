@@ -82,7 +82,7 @@ export default function MintNftForm() {
                     onChange(saleMethod.sales);
                   }}
                 >
-                  <div className="botom-group-body boton-box-active">
+                  <div className={`botom-group-body ${saleMethodWacth === saleMethod.sales && "boton-box-active" }`}>
                     <h4>Precio fijo</h4>
                     <TagBlack />
                   </div>
@@ -94,7 +94,7 @@ export default function MintNftForm() {
                     onChange(saleMethod.auction);
                   }}
                 >
-                  <div className="botom-group-body boton-box-active">
+                  <div className={`botom-group-body ${saleMethodWacth === saleMethod.auction && "boton-box-active" }  `}>
                     <h4>Subasta</h4>
                     <span>Cronometrada</span>
                     <ClockBlack />
