@@ -27,11 +27,12 @@ export default function MintNftForm() {
   } = useForm({
     defaultValues: {
       isPutOnMarketplace: true,
+      salesMethod: saleMethod.sales,
     },
   });
 
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
-  const saleMethodWacth = watch("salesMethod")
+  const saleMethodWacth = watch("salesMethod");
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -73,7 +74,7 @@ export default function MintNftForm() {
           <Controller
             control={control}
             name="salesMethod"
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange, value: lValue } }) => (
               <div className="grid grid-cols-2">
                 <button
                   className="boton-group-box "
@@ -82,7 +83,11 @@ export default function MintNftForm() {
                     onChange(saleMethod.sales);
                   }}
                 >
-                  <div className={`botom-group-body ${saleMethodWacth === saleMethod.sales && "boton-box-active" }`}>
+                  <div
+                    className={`botom-group-body ${
+                      lValue === saleMethod.sales && "boton-box-active"
+                    }`}
+                  >
                     <h4>Precio fijo</h4>
                     <TagBlack />
                   </div>
@@ -94,7 +99,11 @@ export default function MintNftForm() {
                     onChange(saleMethod.auction);
                   }}
                 >
-                  <div className={`botom-group-body ${saleMethodWacth === saleMethod.auction && "boton-box-active" }  `}>
+                  <div
+                    className={`botom-group-body ${
+                      lValue === saleMethod.auction && "boton-box-active"
+                    }  `}
+                  >
                     <h4>Subasta</h4>
                     <span>Cronometrada</span>
                     <ClockBlack />
@@ -105,7 +114,11 @@ export default function MintNftForm() {
           />
 
           <WTextFields
-            textLabel="Precio *"
+            textLabel={
+              saleMethodWacth === saleMethod.auction
+                ? "Puja Minima"
+                : "Precio *"
+            }
             info={"Colloca el precio establecido"}
             register={register("nftPrice")}
             type="number"
@@ -113,9 +126,11 @@ export default function MintNftForm() {
             onWheel={preventScroll}
           />
 
-          <div className="mt-[20px]">
-            <DatePikckerReacDP />
-          </div>
+          {saleMethodWacth === saleMethod.auction && (
+            <div className="mt-[20px]">
+              <DatePikckerReacDP />
+            </div>
+          )}
         </>
       )}
       <h3 className="my-4">Datos Basico de la nft</h3>
@@ -230,9 +245,6 @@ export default function MintNftForm() {
         placeholder="Ej: 5%"
         info="colola el marjen de regalias entre 1 y 50%"
       />
-
-
-
     </form>
   );
 }
