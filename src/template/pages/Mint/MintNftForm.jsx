@@ -203,16 +203,16 @@ export default function MintNftForm() {
         <div className="grid grid-cols-3">
           <button className="boton-group-box">
             <div className="botom-group-body">
-              <h4>Nueva</h4>
+              <h4>Wolfy G NFTS</h4>
               <span>ERC-721</span>
-              <CAdd />
+              <Logo />
             </div>
           </button>
           <button className="boton-group-box">
             <div className="botom-group-body">
-              <h4>Wolfy</h4>
+              <h4>Nueva</h4>
               <span>ERC-721</span>
-              <Logo />
+              <CAdd />
             </div>
           </button>
           <button className="boton-group-box">
