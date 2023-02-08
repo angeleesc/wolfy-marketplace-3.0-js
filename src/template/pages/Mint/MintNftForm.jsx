@@ -76,13 +76,13 @@ export default function MintNftForm() {
             render={({ field: { onChange, value } }) => (
               <div className="grid grid-cols-2">
                 <button
-                  className="boton-group-box"
+                  className="boton-group-box "
                   type="button"
                   onClick={() => {
                     onChange(saleMethod.sales);
                   }}
                 >
-                  <div className="botom-group-body">
+                  <div className="botom-group-body boton-box-active">
                     <h4>Precio fijo</h4>
                     <TagBlack />
                   </div>
@@ -94,7 +94,7 @@ export default function MintNftForm() {
                     onChange(saleMethod.auction);
                   }}
                 >
-                  <div className="botom-group-body">
+                  <div className="botom-group-body boton-box-active">
                     <h4>Subasta</h4>
                     <span>Cronometrada</span>
                     <ClockBlack />
