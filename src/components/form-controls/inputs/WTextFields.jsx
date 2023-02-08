@@ -6,7 +6,9 @@ export default function WTextFields({
   textLabel,
   info,
   errorMessage,
+  register,
   warningMessage,
+  type="text",
   ...props
 }) {
   return (
@@ -16,7 +18,7 @@ export default function WTextFields({
           <span>{textLabel}</span>
         </label>
       )}
-      <input id={id} type="text" className="wolf-form-control-text-input" {...props} />
+      <input id={id} type={type} className="wolf-form-control-text-input" {...props} {...register} />
       {info && <p className="wolf-form-control-info">{info}</p>}
       {errorMessage && (
         <p className="wolf-form-control-error">{errorMessage}</p>

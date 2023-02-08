@@ -11,13 +11,21 @@ import ClockBlack from "../../../components/icons/ClockBlack";
 import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
 import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePikckerReacDP";
 import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
+import { useForm } from "react-hook-form";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
   const [isMarketAtribute, setIsMarketAtribute] = useState(true);
 
+  const { register, handleSubmit, watch, formState: {errors} } = useForm();
+
+  const onSubmit = async (data)=> {
+    console.log(data)
+  }
+
+
   return (
-    <form className="wolf-form">
+    <form className="wolf-form" onSubmit={handleSubmit(onSubmit)} >
       <h3 className="mb-[15px]" >Cargar el archivo de la NFT*</h3>
 
       <FileDropZone />
@@ -60,6 +68,8 @@ export default function MintNftForm() {
       <WTextFields
         textLabel="Precio *"
         info={"Colloca el precio establecido"}
+        register = {register("nftPrice")}
+        
       />
 
       <div className="mt-[20px]">
@@ -75,6 +85,7 @@ export default function MintNftForm() {
         // errorMessage="este campo es requerido"
         // warningMessage="advertencia este nomber no es original"
         placeholder="Gato fans 151"
+
       />
 
       <div className="my-4">
