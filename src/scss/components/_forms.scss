@@ -13,12 +13,12 @@
         color      : theme("colors.wolf-gray-light.800");
     }
 
-}
-.wolft-form-control-label {
-    span {
-        color      : theme("colors.wolf-gray-light.1500");
-        font-weight: 500;
-        font-size  : 14px;
+    .wolft-form-control-label {
+        span {
+            color      : theme("colors.wolf-gray-light.1500");
+            font-weight: 500;
+            font-size  : 14px;
+        }
     }
 }
 
@@ -38,13 +38,13 @@
         border-radius   : 8px;
         border          : 1px solid theme("colors.wolf-gray-light.100");
         margin-bottom   : 4px;
-        transition: border .5s;
+        transition      : border .5s;
 
-        &.text-arear{
+        &.text-arear {
             resize: none;
             height: 60px;
 
-            &::-webkit-scrollbar{
+            &::-webkit-scrollbar {
                 width: 0px;
             }
         }
@@ -55,16 +55,16 @@
             font-weight: 400;
         }
 
-        
-        &:focus{
-            outline: none;
+
+        &:focus {
+            outline         : none;
             background-color: theme("colors.wolf-gray-dark.800");
-            border: 1px solid theme("colors.wolf-blue.600");
+            border          : 1px solid theme("colors.wolf-blue.600");
         }
 
         &[type=number]::-webkit-inner-spin-button {
             -webkit-appearance: none;
-          }
+        }
 
     }
 

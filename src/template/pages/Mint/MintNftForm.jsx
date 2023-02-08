@@ -16,7 +16,6 @@ import { preventScroll } from "../../../controllers/domController";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
-  const [isMarketAtribute, setIsMarketAtribute] = useState(true);
 
   const {
     register,
@@ -24,7 +23,15 @@ export default function MintNftForm() {
     watch,
     control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      isPutOnMarketplace: true,
+    },
+  });
+
+  const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
+
+
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -48,7 +55,6 @@ export default function MintNftForm() {
                 name="isAddPropieties"
                 checked={lvalue}
                 onChange={(e) => {
-                  setIsMarketAtribute(e.target.checked);
                   onChange(e.target.checked);
                 }}
               />
@@ -58,25 +64,23 @@ export default function MintNftForm() {
       />
 
       <h3 className="mb-[15px]">Datos para la venta*</h3>
-      <div>
-        <div className="wolft-form-control-label mb-[10px]">
-          <span>Metodo de operacion</span>
-        </div>
-        <div className="grid grid-cols-2">
-          <button className="boton-group-box">
-            <div className="botom-group-body">
-              <h4>Precio fijo</h4>
-              <TagBlack />
-            </div>
-          </button>
-          <button className="boton-group-box">
-            <div className="botom-group-body">
-              <h4>Subasta</h4>
-              <span>Cronometrada</span>
-              <ClockBlack />
-            </div>
-          </button>
-        </div>
+      <div className="wolft-form-control-label mb-[10px]">
+        <span>Metodo de operacion</span>
+      </div>
+      <div className="grid grid-cols-2">
+        <button className="boton-group-box">
+          <div className="botom-group-body">
+            <h4>Precio fijo</h4>
+            <TagBlack />
+          </div>
+        </button>
+        <button className="boton-group-box">
+          <div className="botom-group-body">
+            <h4>Subasta</h4>
+            <span>Cronometrada</span>
+            <ClockBlack />
+          </div>
+        </button>
       </div>
 
       <WTextFields
