@@ -38,6 +38,7 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
 
   return (
     <div className="w-date-picker">
+      <h3 className="my-[15px]" >Tiempo de la subasta *</h3>
       <div className="grid grid-cols-2">
         <div className="wolf-form-control ">
           <label className="wolft-form-control-label mb-[5px] mr-[5px] flex flex-col ">
@@ -62,6 +63,11 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
           </label>
         </div>
       </div>
+      <div className="my-[10px]">
+        <p className="wolf-form-control-info">
+          Para escoger la fecha inicial y final utilice el calendario de abajo
+        </p>
+      </div>
       <div className="calendar-box">
         <DatePicker
           selected={startDate}
@@ -80,7 +86,21 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
               type="time"
               defaultValue={formatStraTime}
               onChange={(e) => {
-                console.log(e.target.value);
+                const hours = e.target.value.substring(0, 2);
+                // console.log("hora extraida", hours);
+                const minutes = e.target.value.substring(3, 5);
+                // console.log("munotos extraidos", minutes);
+
+                if (startDate) {
+                  const dateCero = startDate.toDateString();
+                  console.log(dateCero);
+                  const cuurentDate = addTime(new Date(dateCero), {
+                    hours,
+                    minutes,
+                  });
+                  //   console.log(cuurentDate);
+                  setStartDate(cuurentDate);
+                }
               }}
             />
           </label>
@@ -89,24 +109,25 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
             <input
               type="time"
               onChange={(e) => {
-                console.log(e.target.value);
+                // console.log(e.target.value);
 
                 const hours = e.target.value.substring(0, 2);
-                console.log("hora extraida", hours);
+                // console.log("hora extraida", hours);
                 const minutes = e.target.value.substring(3, 5);
-                console.log("munotos extraidos", minutes);
+                // console.log("munotos extraidos", minutes);
 
                 if (endDate) {
                   const dateCero = endDate.toDateString();
-                  console.log(dateCero);
+                  //   console.log(dateCero);
                   const cuurentDate = addTime(new Date(dateCero), {
                     hours,
                     minutes,
                   });
-                  console.log(cuurentDate);
+                  //   console.log(cuurentDate);
+                  setEndDate(cuurentDate);
                 }
               }}
-              defaultValue={formatEndTime}
+              value={formatEndTime}
             />
           </label>
         </div>
