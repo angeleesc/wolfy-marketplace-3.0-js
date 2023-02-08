@@ -10,6 +10,7 @@ import TagBlack from "../../../components/icons/TagBlack";
 import ClockBlack from "../../../components/icons/ClockBlack";
 import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
 import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePikckerReacDP";
+import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -18,6 +19,8 @@ export default function MintNftForm() {
   return (
     <form className="wolf-form">
       <h3>Cargar el archivo de la NFT</h3>
+
+      <FileDropZone />
 
       <FormControlLabel
         label="Poner en venta la nft en la marketplace"
