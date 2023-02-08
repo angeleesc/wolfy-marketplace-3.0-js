@@ -52,7 +52,7 @@
         &:focus{
             &::before{
                 opacity: 1;
-                background-color: theme("colors.wolf-blue.400");
+                background-color: theme("colors.wolf-blue.200");
             }
         }
 
