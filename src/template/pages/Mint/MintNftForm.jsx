@@ -31,8 +31,6 @@ export default function MintNftForm() {
 
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
 
-
-
   const onSubmit = async (data) => {
     console.log(data);
   };
@@ -63,39 +61,42 @@ export default function MintNftForm() {
         )}
       />
 
-      <h3 className="mb-[15px]">Datos para la venta*</h3>
-      <div className="wolft-form-control-label mb-[10px]">
-        <span>Metodo de operacion</span>
-      </div>
-      <div className="grid grid-cols-2">
-        <button className="boton-group-box">
-          <div className="botom-group-body">
-            <h4>Precio fijo</h4>
-            <TagBlack />
+      {isPutOnMarketPlaceWacht && (
+        <>
+          <h3 className="mb-[15px]">Datos para la venta*</h3>
+          <div className="wolft-form-control-label mb-[10px]">
+            <span>Metodo de operacion</span>
           </div>
-        </button>
-        <button className="boton-group-box">
-          <div className="botom-group-body">
-            <h4>Subasta</h4>
-            <span>Cronometrada</span>
-            <ClockBlack />
+          <div className="grid grid-cols-2">
+            <button className="boton-group-box">
+              <div className="botom-group-body">
+                <h4>Precio fijo</h4>
+                <TagBlack />
+              </div>
+            </button>
+            <button className="boton-group-box">
+              <div className="botom-group-body">
+                <h4>Subasta</h4>
+                <span>Cronometrada</span>
+                <ClockBlack />
+              </div>
+            </button>
           </div>
-        </button>
-      </div>
 
-      <WTextFields
-        textLabel="Precio *"
-        info={"Colloca el precio establecido"}
-        register={register("nftPrice")}
-        type="number"
-        step="0.00000001"
-        onWheel={preventScroll}
-      />
+          <WTextFields
+            textLabel="Precio *"
+            info={"Colloca el precio establecido"}
+            register={register("nftPrice")}
+            type="number"
+            step="0.00000001"
+            onWheel={preventScroll}
+          />
 
-      <div className="mt-[20px]">
-        <DatePikckerReacDP />
-      </div>
-
+          <div className="mt-[20px]">
+            <DatePikckerReacDP />
+          </div>
+        </>
+      )}
       <h3 className="my-4">Datos Basico de la nft</h3>
 
       <WTextFields
