@@ -17,6 +17,52 @@ export default function MintNftForm() {
 
   return (
     <form className="wolf-form">
+      <h3>Cargar el archivo de la NFT</h3>
+
+      <FormControlLabel
+        label="Poner en venta la nft en la marketplace"
+        className="my-[15px]"
+        control={
+          <Switch
+            name="isAddPropieties"
+            checked={isMarketAtribute}
+            onChange={(e) => {
+              setIsMarketAtribute(e.target.checked);
+            }}
+          />
+        }
+      />
+
+      <div>
+        <div className="wolft-form-control-label mb-[10px]">
+          <span>Metodo de operacion</span>
+        </div>
+        <div className="grid grid-cols-2">
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Precio fijo</h4>
+              <TagBlack />
+            </div>
+          </button>
+          <button className="boton-group-box">
+            <div className="botom-group-body">
+              <h4>Subasta</h4>
+              <span>Cronometrada</span>
+              <ClockBlack />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <WTextFields
+        textLabel="Precio *"
+        info={"Colloca el precio establecido"}
+      />
+
+      <div className="mt-[20px]">
+        <DatePikckerReacDP />
+      </div>
+
       <h3 className="my-4">Datos Basico de la nft</h3>
 
       <WTextFields
@@ -129,50 +175,6 @@ export default function MintNftForm() {
         placeholder="Ej: 5%"
         info="colola el marjen de regalias entre 1 y 50%"
       />
-
-      <FormControlLabel
-        label="Poner en venta la nft en la marketplace"
-        className="my-[15px]"
-        control={
-          <Switch
-            name="isAddPropieties"
-            checked={isMarketAtribute}
-            onChange={(e) => {
-              setIsMarketAtribute(e.target.checked);
-            }}
-          />
-        }
-      />
-
-      <div>
-        <div className="wolft-form-control-label mb-[10px]">
-          <span>Metodo de operacion</span>
-        </div>
-        <div className="grid grid-cols-2">
-          <button className="boton-group-box">
-            <div className="botom-group-body">
-              <h4>Precio fijo</h4>
-              <TagBlack />
-            </div>
-          </button>
-          <button className="boton-group-box">
-            <div className="botom-group-body">
-              <h4>Subasta</h4>
-              <span>Cronometrada</span>
-              <ClockBlack />
-            </div>
-          </button>
-        </div>
-      </div>
-
-      <WTextFields
-        textLabel="Precio *"
-        info={"Colloca el precio establecido"}
-      />
-
-      <div className="mt-[20px]">
-        <DatePikckerReacDP />
-      </div>
     </form>
   );
 }
