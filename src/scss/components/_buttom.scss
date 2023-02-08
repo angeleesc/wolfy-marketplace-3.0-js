@@ -1,0 +1,35 @@
+.wolf-buttom {
+    font-size    : 14px;
+    color        : theme("colors.wolf-gray-light.1900");
+    padding      : 10px;
+    font-family  : "open-sans";
+    font-weight  : 500;
+    border-radius: 9px;
+
+    &.wolf-buttom-primary {
+        background-color: theme("colors.wolf-blue.300");
+        border          : 1.5px solid theme("colors.wolf-gray-light.400");
+        transition      : background-color .5s;
+
+        &:focus {
+            background-color: theme("colors.wolf-off-blue.300");
+        }
+
+        &:hover {
+            background-color: theme("colors.wolf-blue.200");
+        }
+    }
+
+    &.wolf-buttom-primary-gradient {
+
+        background: rgb(24, 81, 197);
+        background: linear-gradient(90deg, rgba(24, 81, 197, 1) 0%, rgba(116, 67, 190, 1) 100%);
+        // color: theme("colors.");
+        border    : 1px solid theme("colors.wolf-gray.500");
+        color: theme("colors.wolf-gray-light.1800");
+
+
+
+    }
+
+}
