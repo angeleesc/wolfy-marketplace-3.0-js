@@ -14,11 +14,10 @@ export default function FileDropZone() {
     isDragActive,
     isDragAccept,
     isDragReject,
-    open
+    open,
   } = useDropzone({
-    
     onDrop,
-    noClick: true
+    noClick: true,
   });
 
   const className = useMemo(() => {
@@ -34,14 +33,21 @@ export default function FileDropZone() {
       <div
         {...getRootProps({
           className,
-  
         })}
       >
         <input {...getInputProps()} />
         <div className="input-content">
-          <span className="text-[12px] info-header" >Arrastra y suelta el archivo aqui</span>
-          <span className="info-content" >Archivos soportado PNG, JPG, WEBP, MP4 o MP3 maximo 100mb.</span>
-          <button onClick={open} className="wolf-buttom wolf-buttom-primary-gradient max-w-[300px] mt-[12px]" >
+          <span className="text-[12px] info-header">
+            Arrastra y suelta el archivo aqui
+          </span>
+          <span className="info-content">
+            Archivos soportado PNG, JPG, WEBP, MP4 o MP3 maximo 100mb.
+          </span>
+          <button
+            type="button"
+            onClick={open}
+            className="wolf-buttom wolf-buttom-primary-gradient max-w-[300px] mt-[12px]"
+          >
             Elegir Archivo
           </button>
         </div>

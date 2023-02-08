@@ -7,7 +7,7 @@
     border-radius: 9px;
 
     &.wolf-buttom-primary {
-        background-color: theme("colors.wolf-blue.300");
+        background-color: theme("colors.wolf-blue.500");
         border          : 1.5px solid theme("colors.wolf-gray-light.400");
         transition      : background-color .7s;
 
@@ -25,7 +25,7 @@
         background: rgb(24, 81, 197);
         background: linear-gradient(90deg, rgba(24, 81, 197, 1) 0%, rgba(116, 67, 190, 1) 100%);
         border    : 1px solid theme("colors.wolf-gray.500");
-        color     : theme("colors.wolf-gray-light.1800");
+        color     : theme("colors.wolf-gray-light.2200");
         position  : relative;
         z-index   : 10;
         overflow  : hidden;
@@ -33,7 +33,7 @@
         &::before {
             content         : "";
             display         : block;
-            background-color: theme("colors.wolf-blue.500");
+            background-color: theme("colors.wolf-blue.600");
             left            : 0;
             top             : 0;
             position        : absolute;
