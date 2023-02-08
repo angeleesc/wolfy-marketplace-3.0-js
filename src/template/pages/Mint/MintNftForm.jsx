@@ -11,39 +11,53 @@ import ClockBlack from "../../../components/icons/ClockBlack";
 import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
 import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePikckerReacDP";
 import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import { preventScroll } from "../../../controllers/domController";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
   const [isMarketAtribute, setIsMarketAtribute] = useState(true);
 
-  const { register, handleSubmit, watch, formState: {errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    control,
+    formState: { errors },
+  } = useForm();
 
-  const onSubmit = async (data)=> {
-    console.log(data)
-  }
-
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
 
   return (
-    <form className="wolf-form" onSubmit={handleSubmit(onSubmit)} >
-      <h3 className="mb-[15px]" >Cargar el archivo de la NFT*</h3>
+    <form className="wolf-form" onSubmit={handleSubmit(onSubmit)}>
+      <h3 className="mb-[15px]">Cargar el archivo de la NFT*</h3>
 
       <FileDropZone />
 
-      <FormControlLabel
-        label="Poner en venta la nft en la marketplace"
-        className="my-[15px]"
-        control={
-          <Switch
-            name="isAddPropieties"
-            checked={isMarketAtribute}
-            onChange={(e) => {
-              setIsMarketAtribute(e.target.checked);
-            }}
+      <Controller
+        control={control}
+        name="isPutOnMarketplace"
+        render={({ field: { onChange, value: lvalue, name } }) => (
+          <FormControlLabel
+            label="Poner en venta la nft en la marketplace"
+            className="my-[15px]"
+            control={
+              <Switch
+                name="isAddPropieties"
+                checked={lvalue}
+                onChange={(e) => {
+                  setIsMarketAtribute(e.target.checked);
+                  onChange(e.target.checked);
+                }}
+              />
+            }
           />
-        }
+        )}
       />
-      <h3 className="mb-[15px]" >Datos para la venta*</h3>
+
+      <h3 className="mb-[15px]">Datos para la venta*</h3>
       <div>
         <div className="wolft-form-control-label mb-[10px]">
           <span>Metodo de operacion</span>
@@ -68,8 +82,10 @@ export default function MintNftForm() {
       <WTextFields
         textLabel="Precio *"
         info={"Colloca el precio establecido"}
-        register = {register("nftPrice")}
-        
+        register={register("nftPrice")}
+        type="number"
+        step="0.00000001"
+        onWheel={preventScroll}
       />
 
       <div className="mt-[20px]">
@@ -85,7 +101,6 @@ export default function MintNftForm() {
         // errorMessage="este campo es requerido"
         // warningMessage="advertencia este nomber no es original"
         placeholder="Gato fans 151"
-
       />
 
       <div className="my-4">
