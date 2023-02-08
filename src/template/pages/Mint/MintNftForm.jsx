@@ -18,7 +18,7 @@ export default function MintNftForm() {
 
   return (
     <form className="wolf-form">
-      <h3>Cargar el archivo de la NFT</h3>
+      <h3 className="mb-[15px]" >Cargar el archivo de la NFT*</h3>
 
       <FileDropZone />
 
@@ -35,7 +35,7 @@ export default function MintNftForm() {
           />
         }
       />
-
+      <h3 className="mb-[15px]" >Datos para la venta*</h3>
       <div>
         <div className="wolft-form-control-label mb-[10px]">
           <span>Metodo de operacion</span>

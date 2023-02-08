@@ -21,8 +21,23 @@
         }
 
         .input-content {
-            display       : flex;
-            flex-direction: column;
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+            align-items    : center;
+
+            .info-header {
+                // background-color: red;
+                font-size  : 12px;
+                font-weight: 700;
+                color      : theme("colors.wolf-gray-light.600");
+            }
+
+            .info-content{
+                font-size: 12px;
+                color: theme("colors.wolf-gray-light.400");
+            }
+
         }
 
 
