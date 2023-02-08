@@ -13,6 +13,7 @@ import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePik
 import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
 import { Controller, useForm } from "react-hook-form";
 import { preventScroll } from "../../../controllers/domController";
+import { saleMethod } from "../../../helpers/global-constants";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -30,6 +31,7 @@ export default function MintNftForm() {
   });
 
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
+  const saleMethodWacth = watch("salesMethod")
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -67,21 +69,40 @@ export default function MintNftForm() {
           <div className="wolft-form-control-label mb-[10px]">
             <span>Metodo de operacion</span>
           </div>
-          <div className="grid grid-cols-2">
-            <button className="boton-group-box">
-              <div className="botom-group-body">
-                <h4>Precio fijo</h4>
-                <TagBlack />
+
+          <Controller
+            control={control}
+            name="salesMethod"
+            render={({ field: { onChange, value } }) => (
+              <div className="grid grid-cols-2">
+                <button
+                  className="boton-group-box"
+                  type="button"
+                  onClick={() => {
+                    onChange(saleMethod.sales);
+                  }}
+                >
+                  <div className="botom-group-body">
+                    <h4>Precio fijo</h4>
+                    <TagBlack />
+                  </div>
+                </button>
+                <button
+                  className="boton-group-box"
+                  type="button"
+                  onClick={() => {
+                    onChange(saleMethod.auction);
+                  }}
+                >
+                  <div className="botom-group-body">
+                    <h4>Subasta</h4>
+                    <span>Cronometrada</span>
+                    <ClockBlack />
+                  </div>
+                </button>
               </div>
-            </button>
-            <button className="boton-group-box">
-              <div className="botom-group-body">
-                <h4>Subasta</h4>
-                <span>Cronometrada</span>
-                <ClockBlack />
-              </div>
-            </button>
-          </div>
+            )}
+          />
 
           <WTextFields
             textLabel="Precio *"
@@ -209,6 +230,9 @@ export default function MintNftForm() {
         placeholder="Ej: 5%"
         info="colola el marjen de regalias entre 1 y 50%"
       />
+
+
+
     </form>
   );
 }
