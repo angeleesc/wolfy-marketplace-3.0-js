@@ -25,11 +25,16 @@ export default function ArrayFieldsReactHookForm({ type = "text" }) {
         </div>
       </div>
       <div className="add-buttom">
-        <button>
-          <FiPlus />
-        </button>
+        <Tooltip title="Agregar Atributo">
+          <button disabled="true" >
+            <FiPlus />
+          </button>
+        </Tooltip>
       </div>
-      <p>Puedes agregar n cantidad de atributos de la nft que deseess, asegurate de que sean los suficiente para describir tu NFT </p>
+      <p>
+        Puedes agregar n cantidad de atributos de la nft que deseess, asegurate
+        de que sean los suficiente para describir tu NFT{" "}
+      </p>
     </div>
   );
 }

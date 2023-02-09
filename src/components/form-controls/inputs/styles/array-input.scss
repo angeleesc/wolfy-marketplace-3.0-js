@@ -23,6 +23,7 @@
         // width       : 120px;
 
 
+
     }
 
     .Number-i {
@@ -69,13 +70,34 @@
             justify-content: center;
             align-items    : center;
             border-radius  : 50%;
-            border         : 1px solid theme("colors.wolf-gray-light.200");
+            border         : 1px solid theme("colors.wolf-gray-light.1500");
+            font-size      : 14px;
+            transition     : background-color .5s, border-color .5s, color 0.5s;
+            color          : theme("colors.wolf-gray-light.1500");
+            background-color: theme("colors.wolf-blue.400");
 
-
+            svg {
+                margin : 0;
+                padding: 0;
+            }
 
             &:focus {
                 outline: none;
 
+            }
+
+            &:hover {
+                background-color: theme("colors.blue.600");
+                color           : theme("colors.wolf-gray.1000");
+                border-color    : theme("colors.wolf-gray.1000");
+            }
+
+            &:disabled {
+                // background-color: red;
+                color       : theme("colors.wolf-gray-light.100");
+                border-color: theme("colors.wolf-gray-light.100");
+
+                background-color: theme("colors.wolf-gray-dark.400")
             }
 
         }
