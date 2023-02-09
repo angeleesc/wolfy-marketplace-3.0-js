@@ -1,0 +1,83 @@
+.array-fields-container {
+    // background-color: red;
+
+    p {
+        color     : theme("colors.wolf-gray-light.500");
+        font-size : 12px;
+        text-align: justify;
+        display   : block;
+        margin-top: 15px;
+    }
+
+
+    .array-fiels-item {
+        display        : flex;
+        width          : 100%;
+        justify-content: center;
+        align-items    : center;
+        overflow       : hidden;
+    }
+
+    .wolf-form-control-text-input {
+        // background-color: red;
+        // width       : 120px;
+
+
+    }
+
+    .Number-i {
+        // background-color: red;
+        height         : 100%;
+        width          : 8%;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 16px;
+        color          : theme("colors.wolf-blue.500");
+
+        span {
+            font-size: 16px;
+        }
+
+        button {
+            // background-color: red;
+            width          : 24px;
+            height         : 24px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+    }
+
+    .wolf-form-control {
+        width  : 42%;
+        padding: 3px;
+
+
+
+    }
+
+    .add-buttom {
+        display        : flex;
+        justify-content: center;
+
+        button {
+            color          : theme("colors.wolf-gray.875");
+            width          : 30px;
+            height         : 30px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            border-radius  : 50%;
+            border         : 1px solid theme("colors.wolf-gray-light.200");
+
+
+
+            &:focus {
+                outline: none;
+
+            }
+
+        }
+    }
+}

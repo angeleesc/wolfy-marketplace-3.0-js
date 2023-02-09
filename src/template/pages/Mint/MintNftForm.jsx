@@ -53,10 +53,7 @@ export default function MintNftForm() {
     }
   });
 
-
-
-
-  console.log(allChekOk)
+  console.log(allChekOk);
 
   // console.log(nftsAtributesWacth)
 
@@ -212,7 +209,7 @@ export default function MintNftForm() {
           )}
         />
 
-        {isAddAtributeWacht && <ArrayFieldsReactHookForm/>  }
+        {isAddAtributeWacht && <ArrayFieldsReactHookForm />}
 
         <div className="my-[10px]">
           {/* <p>
@@ -220,7 +217,7 @@ export default function MintNftForm() {
             opcional )
           </p> */}
         </div>
-    
+
         <div className="my-[15px]">
           <div className="wolft-form-control-label mb-[10px]">
             <span>Colecion donde se guradara</span>
