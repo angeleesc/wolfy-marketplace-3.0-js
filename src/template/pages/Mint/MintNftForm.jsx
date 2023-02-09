@@ -14,6 +14,7 @@ import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZo
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { preventScroll } from "../../../controllers/domController";
 import { saleMethod } from "../../../helpers/global-constants";
+import ArrayFieldsReactHookForm from "../../../components/form-controls/inputs/ArrayFieldsReactHookForm";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -210,6 +211,8 @@ export default function MintNftForm() {
             />
           )}
         />
+
+        {isAddAtributeWacht && <ArrayFieldsReactHookForm/>  }
 
         <div className="my-[10px]">
           {/* <p>
