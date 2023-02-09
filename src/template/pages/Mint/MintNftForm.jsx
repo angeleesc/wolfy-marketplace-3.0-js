@@ -38,9 +38,7 @@ export default function MintNftForm() {
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
 
-
   let allChekOk = true;
-
 
   console.log(allChekOk);
 
@@ -198,7 +196,13 @@ export default function MintNftForm() {
           )}
         />
 
-        {isAddAtributeWacht && <ArrayFieldsReactHookForm control={control} name={"nftsAtributes"}  />}
+        {isAddAtributeWacht && (
+          <ArrayFieldsReactHookForm
+            control={control}
+            name={"nftsAtributes"}
+            register={register}
+          />
+        )}
 
         <div className="my-[10px]">
           {/* <p>
