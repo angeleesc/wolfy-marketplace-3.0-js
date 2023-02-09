@@ -198,7 +198,7 @@ export default function MintNftForm() {
           )}
         />
 
-        {isAddAtributeWacht && <ArrayFieldsReactHookForm />}
+        {isAddAtributeWacht && <ArrayFieldsReactHookForm control={control} name={"nftsAtributes"}  />}
 
         <div className="my-[10px]">
           {/* <p>

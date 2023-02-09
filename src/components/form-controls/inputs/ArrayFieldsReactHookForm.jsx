@@ -11,6 +11,15 @@ export default function ArrayFieldsReactHookForm({
 }) {
   return (
     <div className="array-fields-container">
+      <div className="flex justify-center">
+        <div className="w-[42%]">
+          <span>Atributo</span>
+        </div>
+        <div className="w-[42%]">
+          <span>Valor</span>
+        </div>
+      </div>
+
       <div className="array-fiels-item">
         <div className="Number-i">
           <span>1</span>
