@@ -29,7 +29,7 @@ export default function ArrayFieldsReactHookForm({
           </Tooltip>
         </div>
       </div>
-      <div className="add-buttom">
+      <div className="add-buttom mt-[10px]">
         <button className="wolf-btn-tootip" disabled="true">
           <FiPlus />
           <div className="wolf-toop-tips">

@@ -37,21 +37,10 @@ export default function MintNftForm() {
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
-  const nftsAtributesWacth = watch("nftsAtributes");
+
 
   let allChekOk = true;
 
-  nftsAtributesWacth.forEach((nffArt) => {
-    const ok = {};
-    if (nffArt.key && nffArt.key != "") ok.key = true;
-    if (nffArt.nftValue && nffArt.nftValue != "") ok.nftValue = true;
-
-    if (Object.keys(ok).length === 2) {
-      allChekOk = true;
-    } else {
-      allChekOk = false;
-    }
-  });
 
   console.log(allChekOk);
 
