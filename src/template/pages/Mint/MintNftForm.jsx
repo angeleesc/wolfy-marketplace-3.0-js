@@ -33,23 +33,29 @@ export default function MintNftForm() {
     },
   });
 
-  const {
-    fields: artributeFields,
-    append,
-    prepend,
-    remove,
-    swap,
-    move,
-    insert,
-  } = useFieldArray({
-    control,
-    name: "nftsAtributes",
-  });
-
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
   const nftsAtributesWacth = watch("nftsAtributes");
+
+  let allChekOk = true;
+
+  nftsAtributesWacth.forEach((nffArt) => {
+    const ok = {};
+    if (nffArt.key && nffArt.key != "") ok.key = true;
+    if (nffArt.nftValue && nffArt.nftValue != "") ok.nftValue = true;
+
+    if (Object.keys(ok).length === 2) {
+      allChekOk = true;
+    } else {
+      allChekOk = false;
+    }
+  });
+
+
+
+
+  console.log(allChekOk)
 
   // console.log(nftsAtributesWacth)
 
@@ -211,47 +217,7 @@ export default function MintNftForm() {
             opcional )
           </p> */}
         </div>
-        {isAddAtributeWacht && (
-          <>
-            {artributeFields.map((field, i) => (
-              <Fragment key={field.id}>
-                <div className="wolft-form-control-label mb-[5px]">
-                  <span>Atributo {i + 1}</span>
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="mr-[5px]">
-                    <WTextFields
-                      id={"atributo-1"}
-                      placeholder="Proiedad"
-                      register={register(`nftsAtributes.${i}.key`)}
-                    />
-                  </div>
-                  <div className="ml-[5px]">
-                    <WTextFields
-                      id={"atributo-1"}
-                      placeholder="Valor"
-                      register={register(`nftsAtributes.${i}.nftValue`)}
-                    />
-                  </div>
-                </div>
-              </Fragment>
-            ))}
-            <button onClick={()=>append({key:"", nftValue: ""})} >Agregar</button>
-          </>
-        )}
-        {/* 
-        <div className="wolft-form-control-label mb-[5px]">
-          <span>Atributo 1</span>
-        </div>
-        <div className="grid grid-cols-2">
-          <div className="mr-[5px]">
-            <WTextFields id={"atributo-1"} placeholder="Proiedad" />
-          </div>
-          <div className="ml-[5px]">
-            <WTextFields id={"atributo-1"} placeholder="Valor" />
-          </div>
-        </div> */}
-
+    
         <div className="my-[15px]">
           <div className="wolft-form-control-label mb-[10px]">
             <span>Colecion donde se guradara</span>
