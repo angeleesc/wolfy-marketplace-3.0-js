@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaInput";
 import { FormControlLabel, Switch, TextField } from "@mui/material";
@@ -50,6 +50,12 @@ export default function MintNftForm() {
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
   const nftsAtributesWacth = watch("nftsAtributes");
+
+  // console.log(nftsAtributesWacth)
+
+  //controllador del agregado autocreciente
+
+  //
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -205,29 +211,34 @@ export default function MintNftForm() {
             opcional )
           </p> */}
         </div>
-        {artributeFields.map((field, i) => (
-          <Fragment key={field.id}>
-            <div className="wolft-form-control-label mb-[5px]">
-              <span>Atributo {i + 1}</span>
-            </div>
-            <div className="grid grid-cols-2">
-              <div className="mr-[5px]">
-                <WTextFields
-                  id={"atributo-1"}
-                  placeholder="Proiedad"
-                  register={register(`nftsAtributes.${i}.key`)}
-                />
-              </div>
-              <div className="ml-[5px]">
-                <WTextFields
-                  id={"atributo-1"}
-                  placeholder="Valor"
-                  register={register(`nftsAtributes.${i}.nftValue`)}
-                />
-              </div>
-            </div>
-          </Fragment>
-        ))}
+        {isAddAtributeWacht && (
+          <>
+            {artributeFields.map((field, i) => (
+              <Fragment key={field.id}>
+                <div className="wolft-form-control-label mb-[5px]">
+                  <span>Atributo {i + 1}</span>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="mr-[5px]">
+                    <WTextFields
+                      id={"atributo-1"}
+                      placeholder="Proiedad"
+                      register={register(`nftsAtributes.${i}.key`)}
+                    />
+                  </div>
+                  <div className="ml-[5px]">
+                    <WTextFields
+                      id={"atributo-1"}
+                      placeholder="Valor"
+                      register={register(`nftsAtributes.${i}.nftValue`)}
+                    />
+                  </div>
+                </div>
+              </Fragment>
+            ))}
+            <button onClick={()=>append({key:"", nftValue: ""})} >Agregar</button>
+          </>
+        )}
         {/* 
         <div className="wolft-form-control-label mb-[5px]">
           <span>Atributo 1</span>
