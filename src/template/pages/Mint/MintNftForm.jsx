@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaInput";
 import { FormControlLabel, Switch, TextField } from "@mui/material";
@@ -11,7 +11,7 @@ import ClockBlack from "../../../components/icons/ClockBlack";
 import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
 import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePikckerReacDP";
 import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { preventScroll } from "../../../controllers/domController";
 import { saleMethod } from "../../../helpers/global-constants";
 
@@ -28,11 +28,28 @@ export default function MintNftForm() {
     defaultValues: {
       isPutOnMarketplace: true,
       salesMethod: saleMethod.sales,
+      isAddPropieties: false,
+      nftsAtributes: [{ key: "", nftValue: "" }],
     },
+  });
+
+  const {
+    fields: artributeFields,
+    append,
+    prepend,
+    remove,
+    swap,
+    move,
+    insert,
+  } = useFieldArray({
+    control,
+    name: "nftsAtributes",
   });
 
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
   const saleMethodWacth = watch("salesMethod");
+  const isAddAtributeWacht = watch("isAddPropieties");
+  const nftsAtributesWacth = watch("nftsAtributes");
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -125,6 +142,7 @@ export default function MintNftForm() {
               type="number"
               step="0.00000001"
               onWheel={preventScroll}
+              placeholder="Ej 0.05"
             />
 
             {saleMethodWacth === saleMethod.auction && (
@@ -161,41 +179,67 @@ export default function MintNftForm() {
           placeholder="Ej https://www.gatos-crypto.com"
         />
 
-        <FormControlLabel
-          label="Agregar los atribhutos a esta nft"
-          className="my-[15px]"
-          control={
-            <Switch
-              name="isAddPropieties"
-              checked={isAddAtribute}
-              onChange={(e) => {
-                setIsAddAtribute(e.target.checked);
-              }}
+        <Controller
+          name="isAddPropieties"
+          control={control}
+          render={({ field: { onChange, value: isArtValue } }) => (
+            <FormControlLabel
+              label="Agregar los atributos a esta nft"
+              className="my-[15px]"
+              control={
+                <Switch
+                  name="isAddPropieties"
+                  checked={isArtValue}
+                  onChange={(e) => {
+                    onChange(e.target.checked);
+                  }}
+                />
+              }
             />
-          }
+          )}
         />
 
         <div className="my-[10px]">
-          <p>
-            Puedes agregar propiedades a tu nft para indicar su valor (prude ser
+          {/* <p>
+            Puedes agregar propiedades a tu nft para indicar su valor ( puede ser
             opcional )
-          </p>
+          </p> */}
         </div>
-        {
-          <div>
+        {artributeFields.map((field, i) => (
+          <Fragment key={field.id}>
             <div className="wolft-form-control-label mb-[5px]">
-              <span>Atributo 1</span>
+              <span>Atributo {i + 1}</span>
             </div>
             <div className="grid grid-cols-2">
               <div className="mr-[5px]">
-                <WTextFields id={"atributo-1"} placeholder="Proiedad" />
+                <WTextFields
+                  id={"atributo-1"}
+                  placeholder="Proiedad"
+                  register={register(`nftsAtributes.${i}.key`)}
+                />
               </div>
               <div className="ml-[5px]">
-                <WTextFields id={"atributo-1"} placeholder="Valor" />
+                <WTextFields
+                  id={"atributo-1"}
+                  placeholder="Valor"
+                  register={register(`nftsAtributes.${i}.nftValue`)}
+                />
               </div>
             </div>
+          </Fragment>
+        ))}
+        {/* 
+        <div className="wolft-form-control-label mb-[5px]">
+          <span>Atributo 1</span>
+        </div>
+        <div className="grid grid-cols-2">
+          <div className="mr-[5px]">
+            <WTextFields id={"atributo-1"} placeholder="Proiedad" />
           </div>
-        }
+          <div className="ml-[5px]">
+            <WTextFields id={"atributo-1"} placeholder="Valor" />
+          </div>
+        </div> */}
 
         <div className="my-[15px]">
           <div className="wolft-form-control-label mb-[10px]">
@@ -204,7 +248,7 @@ export default function MintNftForm() {
           <div className="grid grid-cols-3">
             <button className="boton-group-box" type="button">
               <div className="botom-group-body">
-                <h4>Wolfy G NFTS</h4>
+                <h4>Wolfy NFTS</h4>
                 <span>ERC-721</span>
                 <Logo />
               </div>
@@ -238,19 +282,34 @@ export default function MintNftForm() {
           id="colection-symbol"
           textLabel="Simbolo *"
           placeholder="Ej: CGATO"
+          info="Coloque el simbolo que resa representativo de tu nft"
         />
 
-        <WTextFields
-          id="colection-fee"
-          textLabel="Retgalias"
-          placeholder="Ej: 5%"
-          info="colola el marjen de regalias entre 1 y 50%"
-        />
+        <div className="grid grid-cols-2 ">
+          <div className="mr-[5px]">
+            <WTextFields
+              id="colection-fee"
+              textLabel="Retgalias"
+              placeholder="Ej: 5%"
+              info="colola el marjen de regalias entre 1 y 50%"
+              type="number"
+            />
+          </div>
+          <div className="ml-[5px]">
+            <WTextFields
+              id="nft'quantity"
+              textLabel="Numeros de copias"
+              placeholder="Ej: 5%"
+              info="colola el marjen de regalias entre 1 y 50%"
+              type="number"
+            />
+          </div>
+        </div>
 
-        <div className="w-[100%] flex justify-center mt-[20px]">
+        <div className="w-[100%] flex justify-center mt-[20px] p-[15px]">
           <button
             type="submit"
-            className="wolf-buttom wolf-buttom-primary w-[250px]"
+            className="wolf-buttom wolf-buttom-primary w-[100%] max-w-[400px]"
           >
             Crear
           </button>
