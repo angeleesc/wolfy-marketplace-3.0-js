@@ -3,7 +3,12 @@ import "./styles/array-input.scss";
 import { FiTrash, FiPlus } from "react-icons/fi";
 import { Tooltip } from "@mui/material";
 
-export default function ArrayFieldsReactHookForm({ type = "text" }) {
+export default function ArrayFieldsReactHookForm({
+  type = "text",
+  name,
+  control,
+  watch,
+}) {
   return (
     <div className="array-fields-container">
       <div className="array-fiels-item">
@@ -25,11 +30,12 @@ export default function ArrayFieldsReactHookForm({ type = "text" }) {
         </div>
       </div>
       <div className="add-buttom">
-        <Tooltip title="Agregar Atributo">
-          <button disabled="true" >
-            <FiPlus />
-          </button>
-        </Tooltip>
+        <button className="wolf-btn-tootip" disabled="true">
+          <FiPlus />
+          <div className="wolf-toop-tips">
+            <span>Agregar Atributos</span>
+          </div>
+        </button>
       </div>
       <p>
         Puedes agregar n cantidad de atributos de la nft que deseess, asegurate
