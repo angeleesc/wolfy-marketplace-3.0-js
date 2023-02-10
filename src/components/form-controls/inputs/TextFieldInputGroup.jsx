@@ -22,6 +22,9 @@ export default function TextFieldInputGroup({
       )}
 
       <div className="wolf-input-group">
+        <div className="box-element-right">
+
+        </div>
         <input
           id={id}
           type={type}
@@ -29,6 +32,7 @@ export default function TextFieldInputGroup({
           {...props}
           {...register}
         />
+        <div className="box-element-leff" ></div>
       </div>
 
       {info && <p className="wolf-form-control-info">{info}</p>}

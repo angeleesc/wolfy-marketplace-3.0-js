@@ -23,14 +23,23 @@
 }
 
 .wolf-input-group {
-    width           : 100%;
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-    background-color: red;
+    width              : 100%;
+    display            : flex;
+    justify-content    : center;
+    align-items        : center;
+    // background-color: red;
+    border             : 1.5px solid theme("colors.wolf-gray-light.100");
+    background-color   : theme("colors.wolf-gray-dark.500");
+    border-radius      : 8px;
+
+    
+
+
 
     .wolf-form-control-text-input {
-        width: 100%;
+        width           : 100%;
+        border          : none !important;
+        background-color: transparent;
     }
 
 }
@@ -52,7 +61,7 @@
         border          : 1px solid theme("colors.wolf-gray-light.100");
         margin-bottom   : 4px;
         transition      : border .5s;
-        margin: 0;
+        margin          : 0;
 
         &.text-arear {
             resize: none;
