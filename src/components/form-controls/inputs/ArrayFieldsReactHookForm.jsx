@@ -35,11 +35,9 @@ export default function ArrayFieldsReactHookForm({
         </div>
       </div>
 
-      {fields.map(({ field, index }) => {
-
-
+      {fields.map((field, index) => {
         return (
-          <div className="array-fiels-item"  >
+          <div className="array-fiels-item" key={field.id}>
             <div className="Number-i">
               <span>1</span>
             </div>
@@ -47,14 +45,14 @@ export default function ArrayFieldsReactHookForm({
               <input
                 type={type}
                 className="wolf-form-control-text-input"
-                {...register(`gato`)}
+                {...register(`${name}.${index}.key`)}
               />
             </div>
             <div className="wolf-form-control">
               <input
                 type={type}
                 className="wolf-form-control-text-input"
-                {...register(`perro`)}
+                {...register(`${name}.${index}.nftValue`)}
               />
             </div>
             <div className="Number-i">
