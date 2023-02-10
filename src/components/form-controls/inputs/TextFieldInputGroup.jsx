@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export default function WTextFields({
+export default function TextFieldInputGroup({
   id,
   textLabel,
   info,
@@ -37,7 +36,3 @@ export default function WTextFields({
     </div>
   );
 }
-
-WTextFields.prototype = {
-  id: PropTypes.string.isRequired,
-};
