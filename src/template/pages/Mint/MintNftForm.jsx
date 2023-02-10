@@ -18,6 +18,7 @@ import {
   saleMethod,
 } from "../../../helpers/global-constants";
 import ArrayFieldsReactHookForm from "../../../components/form-controls/inputs/ArrayFieldsReactHookForm";
+import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFieldInputGroup";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -129,7 +130,7 @@ export default function MintNftForm() {
               )}
             />
 
-            <WTextFields
+            <TextFieldInputGroup
               textLabel={
                 saleMethodWacth === saleMethod.auction
                   ? "Puja Minima"
