@@ -41,6 +41,7 @@ export default function MintNftForm() {
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
+  const collectionOptionsWacht = watch("colectionOptions");
 
   // console.log(nftsAtributesWacth)
 
@@ -279,25 +280,41 @@ export default function MintNftForm() {
         />
 
         <h3 className="my-[15px]">Datos de la colecion *</h3>
-        <WTextFields
-          id="colection-name"
-          textLabel="Nombre de la colecion"
-          placeholder="Ej: Gatos Cryptos"
-          info="Coloca el nombre de la colecion"
-        />
 
-        <WTextFields
-          id="colection-symbol"
-          textLabel="Simbolo *"
-          placeholder="Ej: CGATO"
-          info="Coloque el simbolo que resa representativo de tu nft"
-        />
+        {collectionOptionsWacht === collectionsOptions.new && (
+          <>
+            <div className="my-3">
+              <WTextFields
+                id="colection-name"
+                textLabel="Nombre de la colecion"
+                placeholder="Ej: Gatos Cryptos"
+                info="Coloca el nombre de la colecion"
+              />
+            </div>
+            <div className="my-3">
+              <WTextFields
+                id="colection-ur"
+                textLabel="url identificativo (opcional)"
+                placeholder="gatos"
+                info="Esta es una url corta se usara en nuestra pagina si la collecion tendra una pagina propia tendras que editarlo manualmente"
+              />
+            </div>
+            <div className="my-3">
+              <WTextFields
+                id="colection-symbol"
+                textLabel="Simbolo *"
+                placeholder="Ej: CGATO"
+                info="Coloque el simbolo que resa representativo de tu nft"
+              />
+            </div>
+          </>
+        )}
 
         <div className="grid grid-cols-2 ">
           <div className="mr-[5px]">
             <WTextFields
               id="colection-fee"
-              textLabel="Retgalias"
+              textLabel="Retgalias *"
               placeholder="Ej: 5%"
               info="colola el marjen de regalias entre 1 y 50%"
               type="number"
@@ -305,10 +322,10 @@ export default function MintNftForm() {
           </div>
           <div className="ml-[5px]">
             <WTextFields
-              id="nft'quantity"
-              textLabel="Numeros de copias"
-              placeholder="Ej: 5%"
-              info="colola el marjen de regalias entre 1 y 50%"
+              id="nft-quantity"
+              textLabel="Numeros de copias NFTS *"
+              placeholder="Ej: 1"
+              info="Numero de copioas maximo por nft 1000"
               type="number"
             />
           </div>
