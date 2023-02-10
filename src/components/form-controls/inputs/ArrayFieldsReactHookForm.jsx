@@ -21,8 +21,26 @@ export default function ArrayFieldsReactHookForm({
     control,
   });
 
+  let isOk = true;
+
   console.log("obscervando");
   console.log(atributesWacth);
+
+  atributesWacth.map((atribute) => {
+    if (atribute.key && atribute.key != "") {
+      isOk = true;
+    } else {
+      isOk = false;
+    }
+
+    if (atribute.nftValue && atribute.nftValue != "") {
+      isOk = true;
+    } else {
+      isOk = false;
+    }
+  });
+
+  console.log(isOk);
 
   return (
     <div className="array-fields-container">
@@ -66,10 +84,14 @@ export default function ArrayFieldsReactHookForm({
         );
       })}
       <div className="add-buttom mt-[10px]">
-        <button className="wolf-btn-tootip" disabled="true">
+        <button className="wolf-btn-tootip" disabled={!isOk} onClick={append}>
           <FiPlus />
           <div className="wolf-toop-tips">
-            <span>Agregar Atributos</span>
+            {isOk ? (
+              <span>Agregar Atributos</span>
+            ) : (
+              <span>Completa los campos para agregar</span>
+            )}
           </div>
         </button>
       </div>
