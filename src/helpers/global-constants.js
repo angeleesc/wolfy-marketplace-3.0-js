@@ -4,7 +4,7 @@ export const saleMethod = {
     openBid: "open-bid"
 }
 
-export const collectionToSend ={
+export const collectionsOptions ={
     wolfy: "wolfy-g-collection",
     new:"new-colecion",
     existing: "existing-collections"

@@ -211,34 +211,42 @@ export default function MintNftForm() {
           </p> */}
         </div>
 
-        <div className="my-[15px]">
-          <div className="wolft-form-control-label mb-[10px]">
-            <span>Colecion donde se guradara</span>
-          </div>
-          <div className="grid grid-cols-3">
-            <button className="boton-group-box" type="button">
-              <div className="botom-group-body">
-                <h4>Wolfy NFTS</h4>
-                <span>ERC-721</span>
-                <Logo />
-              </div>
-            </button>
-            <button className="boton-group-box" type="button">
-              <div className="botom-group-body">
-                <h4>Nueva</h4>
-                <span>ERC-721</span>
-                <CAdd />
-              </div>
-            </button>
-            <button className="boton-group-box" type="button">
-              <div className="botom-group-body">
-                <h4>Existente</h4>
-                <span>Ver Coleciones</span>
-                <CSearch />
-              </div>
-            </button>
-          </div>
+        <div className="wolft-form-control-label mb-[10px]">
+          <span>Colecion donde se guradara</span>
         </div>
+
+        <Controller
+          name="colectionOption"
+          control={control}
+          render={() => (
+            <div className="my-[15px]">
+              <div className="grid grid-cols-3">
+                <button className="boton-group-box " type="button">
+                  <div className="botom-group-body boton-box-active">
+                    <h4>Wolfy NFTS</h4>
+                    <span>ERC-721</span>
+                    <Logo />
+                  </div>
+                </button>
+                <button className="boton-group-box" type="button">
+                  <div className="botom-group-body boton-box-active">
+                    <h4>Nueva</h4>
+                    <span>ERC-721</span>
+                    <CAdd />
+                  </div>
+                </button>
+                <button className="boton-group-box" type="button">
+                  <div className="botom-group-body boton-box-active">
+                    <h4>Existente</h4>
+                    <span>Ver Coleciones</span>
+                    <CSearch />
+                  </div>
+                </button>
+              </div>
+            </div>
+          )}
+        />
+
 
         <h3 className="my-[15px]">Datos de la colecion *</h3>
         <WTextFields

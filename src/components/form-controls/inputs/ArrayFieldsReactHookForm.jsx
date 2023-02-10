@@ -75,7 +75,11 @@ export default function ArrayFieldsReactHookForm({
             </div>
             <div className="Number-i">
               <Tooltip title="Eliminar">
-                <button>
+                <button
+                  onClick={() => {
+                    remove(index);
+                  }}
+                >
                   <FiTrash />
                 </button>
               </Tooltip>
@@ -84,7 +88,16 @@ export default function ArrayFieldsReactHookForm({
         );
       })}
       <div className="add-buttom mt-[10px]">
-        <button className="wolf-btn-tootip" disabled={!isOk} onClick={append}>
+        <button
+          className="wolf-btn-tootip"
+          disabled={!isOk}
+          onClick={() => {
+            append({
+              key: "",
+              nftValue: "",
+            });
+          }}
+        >
           <FiPlus />
           <div className="wolf-toop-tips">
             {isOk ? (
