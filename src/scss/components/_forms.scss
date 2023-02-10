@@ -22,6 +22,19 @@
     }
 }
 
+.wolf-input-group {
+    width           : 100%;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: red;
+
+    .wolf-form-control-text-input {
+        width: 100%;
+    }
+
+}
+
 .wolf-form-control {
     width         : 100%;
     display       : flex;
@@ -39,6 +52,7 @@
         border          : 1px solid theme("colors.wolf-gray-light.100");
         margin-bottom   : 4px;
         transition      : border .5s;
+        margin: 0;
 
         &.text-arear {
             resize: none;

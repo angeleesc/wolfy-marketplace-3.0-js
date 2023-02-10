@@ -8,6 +8,9 @@ export default function TextFieldInputGroup({
   register,
   warningMessage,
   type = "text",
+
+  leftChild,
+  rightChild,
   ...props
 }) {
   return (
@@ -18,13 +21,15 @@ export default function TextFieldInputGroup({
         </label>
       )}
 
-      <input
-        id={id}
-        type={type}
-        className="wolf-form-control-text-input"
-        {...props}
-        {...register}
-      />
+      <div className="wolf-input-group">
+        <input
+          id={id}
+          type={type}
+          className="wolf-form-control-text-input"
+          {...props}
+          {...register}
+        />
+      </div>
 
       {info && <p className="wolf-form-control-info">{info}</p>}
       {errorMessage && (
