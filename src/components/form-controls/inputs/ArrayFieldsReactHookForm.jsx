@@ -23,8 +23,8 @@ export default function ArrayFieldsReactHookForm({
 
   let isOk = true;
 
-  console.log("obscervando");
-  console.log(atributesWacth);
+  // console.log("obscervando");
+  // console.log(atributesWacth);
 
   atributesWacth.map((atribute) => {
     if (atribute.key && atribute.key != "") {
@@ -40,7 +40,7 @@ export default function ArrayFieldsReactHookForm({
     }
   });
 
-  console.log(isOk);
+  // console.log(isOk);
 
   return (
     <div className="array-fields-container">

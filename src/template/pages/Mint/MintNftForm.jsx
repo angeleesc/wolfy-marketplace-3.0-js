@@ -13,7 +13,10 @@ import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePik
 import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { preventScroll } from "../../../controllers/domController";
-import { saleMethod } from "../../../helpers/global-constants";
+import {
+  collectionsOptions,
+  saleMethod,
+} from "../../../helpers/global-constants";
 import ArrayFieldsReactHookForm from "../../../components/form-controls/inputs/ArrayFieldsReactHookForm";
 
 export default function MintNftForm() {
@@ -31,16 +34,13 @@ export default function MintNftForm() {
       salesMethod: saleMethod.sales,
       isAddPropieties: false,
       nftsAtributes: [{ key: "", nftValue: "" }],
+      colectionOptions: collectionsOptions.wolfy,
     },
   });
 
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
-
-  let allChekOk = true;
-
-  console.log(allChekOk);
 
   // console.log(nftsAtributesWacth)
 
@@ -216,27 +216,58 @@ export default function MintNftForm() {
         </div>
 
         <Controller
-          name="colectionOption"
+          name="colectionOptions"
           control={control}
-          render={() => (
+          render={({ field: { name, onChange, value: opValue } }) => (
             <div className="my-[15px]">
               <div className="grid grid-cols-3">
-                <button className="boton-group-box " type="button">
-                  <div className="botom-group-body boton-box-active">
+                <button
+                  className="boton-group-box"
+                  onClick={() => {
+                    onChange(collectionsOptions.wolfy);
+                  }}
+                  type="button"
+                >
+                  <div
+                    className={`botom-group-body ${
+                      opValue === collectionsOptions.wolfy && "boton-box-active"
+                    }`}
+                  >
                     <h4>Wolfy NFTS</h4>
                     <span>ERC-721</span>
                     <Logo />
                   </div>
                 </button>
-                <button className="boton-group-box" type="button">
-                  <div className="botom-group-body boton-box-active">
+                <button
+                  className="boton-group-box"
+                  type="button"
+                  onClick={() => {
+                    onChange(collectionsOptions.new);
+                  }}
+                >
+                  <div
+                    className={`botom-group-body ${
+                      opValue === collectionsOptions.new && "boton-box-active"
+                    }`}
+                  >
                     <h4>Nueva</h4>
                     <span>ERC-721</span>
                     <CAdd />
                   </div>
                 </button>
-                <button className="boton-group-box" type="button">
-                  <div className="botom-group-body boton-box-active">
+                <button
+                  className="boton-group-box"
+                  type="button"
+                  onClick={() => {
+                    onChange(collectionsOptions.existing);
+                  }}
+                >
+                  <div
+                    className={`botom-group-body ${
+                      opValue === collectionsOptions.existing &&
+                      "boton-box-active"
+                    }`}
+                  >
                     <h4>Existente</h4>
                     <span>Ver Coleciones</span>
                     <CSearch />
@@ -246,7 +277,6 @@ export default function MintNftForm() {
             </div>
           )}
         />
-
 
         <h3 className="my-[15px]">Datos de la colecion *</h3>
         <WTextFields
