@@ -37,6 +37,32 @@ const tempJson = [
     items: 1500,
     colectionAuthor: "ZenAcademyDeployer",
   },
+
+  {
+    faceImg: "https://i.seadn.io/gcs/files/06a07158febfe5dded5c2e13e4cac214.gif?auto=format&w=1920",
+    coverImg: "https://i.seadn.io/gcs/files/3d34cef09b4043aa12bce1bed65ebdff.png?auto=format&w=1920",
+    colectionName: "Pirate Nation - Items",
+    colectionAuthor: "ProofofPlay",
+    isAuthorVerified: true,
+    isCollectionVerified: true,
+    items: 64,
+    floorPrice: "0.004"
+
+
+  },
+  {
+    coverImg: "https://i.seadn.io/gcs/files/0727d6a53b2b266e9b4bb471ba9c3ae1.jpg?auto=format&w=1920",
+    faceImg: "https://i.seadn.io/gcs/files/9515d56f17653c4a275e319be04fa7cd.jpg?auto=format&w=1920",
+    colectionName: "Rumble Kong League",
+    colectionAuthor: "RKL-Kongs-Deployer",
+    isAuthorVerified: true,
+    isAuthorVerified: true,
+    items: 10000,
+    floorPrice: "0.001"
+
+
+  }
+
 ];
 
 export default () => {
@@ -57,7 +83,6 @@ export default () => {
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
-        ...
       </Swiper>
     </div>
   );
