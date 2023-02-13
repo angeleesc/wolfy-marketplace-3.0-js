@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.w-date-picker {
+
+    // background-color: red;
+
+    .wolf-form-control-text-input{
+        // background-color: red;
+        font-size: 14px;
+        padding: 8px 8px;
+    }
+
+}
+
+
+.react-datepicker {
+    // background-color: red;
+}
+
+.calendar-box {
+    background-color: theme("colors.wolf-gray-dark.500");
+    border          : 1.5px solid theme("colors.wolf-gray-light.100");
+    padding         : 15px;
+    border-radius   : 8px;
+}
+
+
+.w-custom-time-piker {
+    // background-color: red;
+
+    display       : flex;
+    flex-direction: column;
+    margin        : 0 5px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    input[type=time] {
+        border             : none;
+        color              : theme("colors.wolf-gray-light.1500");
+        font-size          : 14px;
+        font-family        : "open-sans";
+        font-size          : 16px;
+        padding            : 8px;
+        background-color   : transparent;
+        border-radius      : 8px;
+        // border          : 1.5px solid theme("colors.wolf-gray-light.500");
+        // width: 100%;
+
+        &:focus {
+            outline: 1px solid theme("colors.wolf-blue.600");
+        }
+
+    }
+
+    input[type=time]::-webkit-datetime-edit-fields-wrapper {
+        display            : flex;
+        // background-color: red;
+        align-items        : center;
+
+
+
+    }
+
+    /* The space between the fields - between hour and minute, the minute and 
+      second, second and am/pm */
+    input[type=time]::-webkit-datetime-edit-text {
+        padding: 4px;
+    }
+
+    /* The naming convention for the hour, minute, second, and am/pm field is
+      `-webkit-datetime-edit-{field}-field` */
+
+    /* Hour */
+    input[type=time]::-webkit-datetime-edit-hour-field {
+        background-color: theme("colors.wolf-gray-dark.700");
+        border-radius   : 15%;
+        padding         : 10px 10px;
+    }
+
+    /* Minute */
+    input[type=time]::-webkit-datetime-edit-minute-field {
+        background-color: theme("colors.wolf-gray-dark.700");
+        border-radius   : 15%;
+        padding         : 10px 10px;
+    }
+
+    /* AM/PM */
+    input[type=time]::-webkit-datetime-edit-ampm-field {
+        background-color: #7155d3;
+        border-radius   : 15%;
+        color           : #fff;
+        padding         : 19px 13px;
+    }
+
+    /* 'X' button for resetting/clearing time */
+    input[type=time]::-webkit-clear-button {
+        // display: none;
+    }
+
+    /* Up/Down arrows for incrementing/decrementing the value */
+    input[type=time]::-webkit-inner-spin-button {
+        display: none;
+    }
+
+}

@@ -1,0 +1,47 @@
+.wolf-file-drop-zone {
+
+    .wolf-dropzone {
+        background-color: theme("colors.wolf-gray-dark.500");
+        min-height      : 200px;
+        padding         : 15px;
+        border-radius   : 16px;
+        border          : 2px dashed theme("colors.wolf-gray-light.100");
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+
+        &.on-focus {
+            background-color: theme("colors.wolf-gray-dark.600");
+        }
+
+        &.on-active {
+            background-color: theme("colors.wolf-gray-dark.700");
+            border-color    : theme("colors.wolf-gray-light.1000");
+
+        }
+
+        .input-content {
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+            align-items    : center;
+
+            .info-header {
+                // background-color: red;
+                font-size  : 12px;
+                font-weight: 700;
+                color      : theme("colors.wolf-gray-light.600");
+            }
+
+            .info-content{
+                font-size: 12px;
+                color: theme("colors.wolf-gray-light.400");
+            }
+
+        }
+
+
+
+    }
+
+}

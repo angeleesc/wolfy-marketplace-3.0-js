@@ -1,0 +1,23 @@
+.wolf-btn-tootip {
+    position: relative;
+    display : flex;
+
+    .wolf-toop-tips {
+        background-color: theme("colors.wolf-gray-dark.800");
+        position        : absolute;
+        top             : calc(100% + 5px);
+        padding         : 5px;
+        border          : 1px solid theme("colors.wolf-gray-light.100");
+        border-radius   : 8px;
+        white-space     : nowrap;
+        display         : none;
+    }
+
+    &:hover {
+        .wolf-toop-tips {
+            display: block;
+        }
+    }
+
+
+}

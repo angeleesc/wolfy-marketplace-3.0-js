@@ -1,0 +1,99 @@
+.array-fields-container {
+    // background-color: red;
+
+    p {
+        color     : theme("colors.wolf-gray-light.500");
+        font-size : 12px;
+        text-align: justify;
+        display   : block;
+        margin-top: 15px;
+    }
+
+
+    .array-fiels-item {
+        display        : flex;
+        width          : 100%;
+        justify-content: center;
+        align-items    : center;
+        overflow       : hidden;
+    }
+
+
+
+    .Number-i {
+        // background-color: red;
+        height         : 100%;
+        width          : 8%;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 16px;
+        color          : theme("colors.wolf-blue.500");
+
+        span {
+            font-size: 16px;
+        }
+
+        button {
+            // background-color: red;
+            width          : 24px;
+            height         : 24px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+    }
+
+    .wolf-form-control {
+        width  : 42%;
+        padding: 3px;
+
+
+
+    }
+
+    .add-buttom {
+        display        : flex;
+        justify-content: center;
+
+        button {
+            color          : theme("colors.wolf-gray.875");
+            width          : 30px;
+            height         : 30px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            border-radius  : 50%;
+            border         : 1px solid theme("colors.wolf-gray-light.1500");
+            font-size      : 14px;
+            transition     : background-color .5s, border-color .5s, color 0.5s;
+            color          : theme("colors.wolf-gray-light.1500");
+            background-color: theme("colors.wolf-blue.400");
+
+            svg {
+                margin : 0;
+                padding: 0;
+            }
+
+            &:focus {
+                outline: none;
+
+            }
+
+            &:hover {
+                background-color: theme("colors.blue.600");
+                color           : theme("colors.wolf-gray.1000");
+                border-color    : theme("colors.wolf-gray.1000");
+            }
+
+            &:disabled {
+                // background-color: red;
+                color       : theme("colors.wolf-gray-light.100");
+                border-color: theme("colors.wolf-gray-light.100");
+
+                background-color: theme("colors.wolf-gray-dark.400")
+            }
+
+        }
+    }
+}

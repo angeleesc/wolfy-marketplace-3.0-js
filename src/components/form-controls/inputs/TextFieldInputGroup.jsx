@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export default function WTextFields({
+export default function TextFieldInputGroup({
   id,
   textLabel,
   info,
@@ -9,6 +8,9 @@ export default function WTextFields({
   register,
   warningMessage,
   type = "text",
+
+  leftChild,
+  rightChild,
   ...props
 }) {
   return (
@@ -19,13 +21,19 @@ export default function WTextFields({
         </label>
       )}
 
-      <input
-        id={id}
-        type={type}
-        className="wolf-form-control-text-input"
-        {...props}
-        {...register}
-      />
+      <div className="wolf-input-group">
+        <div className="box-element-right">
+
+        </div>
+        <input
+          id={id}
+          type={type}
+          className="wolf-form-control-text-input"
+          {...props}
+          {...register}
+        />
+        <div className="box-element-leff" ></div>
+      </div>
 
       {info && <p className="wolf-form-control-info">{info}</p>}
       {errorMessage && (
@@ -37,7 +45,3 @@ export default function WTextFields({
     </div>
   );
 }
-
-WTextFields.prototype = {
-  id: PropTypes.string.isRequired,
-};

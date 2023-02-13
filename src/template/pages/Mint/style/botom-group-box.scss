@@ -2,6 +2,7 @@
     // background-color: red;
     padding         : 5px;
 
+
     .botom-group-body {
         display        : flex;
         flex-direction : column;
@@ -21,7 +22,20 @@
 
         svg{
             margin-top: 8px;
+            fill: theme("colors.wolf-gray.1000");
+            transition: fill .5s;
         }
 
+        
+            &.boton-box-active{
+                // background-color: red;
+                background-color: theme("colors.wolf-gray-dark.800");
+                border: 1.5px solid theme("colors.wolf-blue.600");
+
+                svg{
+                    fill: theme("colors.wolf-blue.500");
+                }
+
+            }
     }
 }
