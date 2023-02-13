@@ -76,12 +76,21 @@ export default () => {
 
   const slideRef = useRef(null)
 
-  const handlePref = useCallback(()=>{
+  const handlePref = useCallback(() => {
 
-    if(!slideRef.current) return;
+    if (!slideRef.current) return;
     slideRef.current.swiper.slidePrev()
 
-  },[])
+  }, [])
+
+  const handleNext = useCallback(() => {
+
+
+    if (!slideRef.current) return;
+    slideRef.current.swiper.slideNext()
+
+
+  })
 
 
   return (
@@ -92,16 +101,16 @@ export default () => {
         // modules={[Navigation , ButoonNavigation]}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
+        ref={slideRef}
         onSwiper={(swiper) => {
           console.log(swiper)
         }}
-
-        ref={slideRef}
-
         onSlideChange={() => console.log("slide change")
         }
-       
-    
+        loop
+
+
+
       >
         {
           tempJson.map((collitem, i) => {
@@ -119,8 +128,8 @@ export default () => {
           })
         }
 
-        {/* <div className="z-10" ref={prevButtonRef} >anterio </div> */}
-        {/* <div ref={nextButtonRef} >siguiente </div> */}
+        <button className="z-10" onClick={handlePref} >anterior </button>
+        <button onClick={handleNext} >siguiente </button>
 
       </Swiper>
     </div>
