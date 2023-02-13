@@ -1,6 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./wolfy-hero.scss";
+// import "swiper/css/navigation";
+import { Navigation } from "swiper";
+import ButoonNavigation from "./ButoonNavigation";
+import { useCallback, useRef } from "react";
 
 const tempJson = [
   {
@@ -66,21 +70,47 @@ const tempJson = [
 ];
 
 export default () => {
+
+  // const prevButtonRef = useRef(null)
+  // const nextButtonRef = useRef(null)
+
+  const slideRef = useRef(null)
+
+  const handlePref = useCallback(()=>{
+
+    if(!slideRef.current) return;
+    slideRef.current.swiper.slidePrev()
+
+  },[])
+
+
   return (
     <div className="wolfy-hero">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        navigation
+        // modules={[Navigation , ButoonNavigation]}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => {
+          console.log(swiper)
+        }}
+
+        ref={slideRef}
+
+        onSlideChange={() => console.log("slide change")
+        }
+       
+    
       >
         {
           tempJson.map((collitem, i) => {
             return (
-              <SwiperSlide className="collection-container">
+              <SwiperSlide
+                className="collection-container"
+                key={"hero-wolfy-" + i}
+
+              >
                 <div className="collection-item" >
                   <img className="cover-img" src={collitem.coverImg} alt={"hero-img-" + i} />
                 </div>
@@ -88,6 +118,9 @@ export default () => {
             )
           })
         }
+
+        {/* <div className="z-10" ref={prevButtonRef} >anterio </div> */}
+        {/* <div ref={nextButtonRef} >siguiente </div> */}
 
       </Swiper>
     </div>
