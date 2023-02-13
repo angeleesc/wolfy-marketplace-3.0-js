@@ -3,7 +3,8 @@ import "swiper/css";
 import "./wolfy-hero.scss";
 // import "swiper/css/navigation";
 import { useCallback, useRef } from "react";
-import {HiChevronLeft, } from "react-icons/hi";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { Navigation } from "swiper";
 
 const tempJson = [
   {
@@ -95,43 +96,43 @@ export default () => {
 
   return (
     <div className="wolfy-hero">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        // modules={[Navigation , ButoonNavigation]}
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        ref={slideRef}
-        onSwiper={(swiper) => {
-          console.log(swiper)
-        }}
-        onSlideChange={() => console.log("slide change")
-        }
-        loop
+      <div className="w-swiper-box">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          modules={[Navigation]}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          ref={slideRef}
+          onSwiper={(swiper) => {
+            console.log(swiper)
+          }}
+          onSlideChange={() => console.log("slide change")
+          }
+          loop
 
 
 
-      >
-        {
-          tempJson.map((collitem, i) => {
-            return (
-              <SwiperSlide
-                className="collection-container"
-                key={"hero-wolfy-" + i}
+        >
+          {
+            tempJson.map((collitem, i) => {
+              return (
+                <SwiperSlide
+                  className="collection-container"
+                  key={"hero-wolfy-" + i}
 
-              >
-                <div className="collection-item" >
-                  <img className="cover-img" src={collitem.coverImg} alt={"hero-img-" + i} />
-                </div>
-              </SwiperSlide>
-            )
-          })
-        }
-
-        <button onClick={handlePref} >anterior </button>
-        <button onClick={handleNext} >siguiente </button>
-
-      </Swiper>
+                >
+                  <div className="collection-item" >
+                    <img className="cover-img" src={collitem.coverImg} alt={"hero-img-" + i} />
+                  </div>
+                </SwiperSlide>
+              )
+            })
+          }
+        </Swiper>
+        <button className="wolf-chevron wolf-chevron-left" onClick={handlePref} > <HiChevronLeft /> </button>
+        <button className="wolf-chevron wolf-chevron-right" onClick={handleNext} ><HiChevronRight /> </button>
+      </div>
     </div>
   );
 };

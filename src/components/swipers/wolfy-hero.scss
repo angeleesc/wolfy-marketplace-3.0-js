@@ -1,21 +1,47 @@
 .wolfy-hero {
     // width              : 100vw;
-    height             : 100vh;
-    // background-color: red;
-    position           : relative;
-    padding-top        : 80px;
-    padding-left       : 30px;
-    padding-right      : 30px;
+    height       : 100vh;
+    position     : relative;
+    padding-top  : 80px;
+    padding-left : 30px;
+    padding-right: 30px;
 
 
-    // .wolfy-hero-swiper {
-    //     // margin-top: 80px;
-    //     margin-top: 80px;
-    // }
+    .w-swiper-box {
+        position: relative;
+    }
+
 
     .swiper {
-        border-radius   : 16px;
+        border-radius      : 16px;
+        background-color   : blue;
         // background-color: red;
+    }
+
+    .wolf-chevron {
+        position        : absolute;
+        z-index         : 100;
+        background-color: red;
+        // top: 0;
+
+    }
+
+
+
+    .wolf-chevron-left {
+        top   : 0;
+        left  : 0px;
+        bottom: 0;
+        margin: auto;
+
+    }
+
+    .wolf-chevron-right {
+        top   : 0;
+        right : 0;
+        bottom: 0;
+        margin: auto;
+
     }
 
     .collection-container {
@@ -34,6 +60,7 @@
             overflow     : hidden;
             border-radius: 16px;
             border-radius: 2px solid theme("colors.wolf-gray-light.100");
+            // opacity      : 0.2;
 
             .cover-img {
                 width     : 100%;
