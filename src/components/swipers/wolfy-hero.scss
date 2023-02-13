@@ -13,9 +13,15 @@
     //     margin-top: 80px;
     // }
 
+    .swiper {
+        border-radius: 16px;
+    }
+
     .collection-container {
 
-        width: 300px;
+        width        : 300px;
+        border-radius: 16px;
+        border-radius: 2px solid theme("colors.wolf-gray-light.100");
 
         // background-color: blue;
         .collection-item {
@@ -23,8 +29,10 @@
             // max-width: 1000px;
             // height: 200px;
             // height  : calc(100vh-200px);
-            height: 450px;
-            overflow: hidden;
+            height       : 450px;
+            overflow     : hidden;
+            border-radius: 16px;
+            border-radius: 2px solid theme("colors.wolf-gray-light.100");
 
             .cover-img {
                 width     : 100%;

@@ -69,7 +69,6 @@ export default () => {
   return (
     <div className="wolfy-hero">
       <Swiper
-        // install Swiper modules
         spaceBetween={50}
         slidesPerView={1}
         navigation
