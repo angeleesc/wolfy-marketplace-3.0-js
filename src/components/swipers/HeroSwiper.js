@@ -2,9 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./wolfy-hero.scss";
 // import "swiper/css/navigation";
-import { Navigation } from "swiper";
-import ButoonNavigation from "./ButoonNavigation";
 import { useCallback, useRef } from "react";
+import {HiChevronLeft, } from "react-icons/hi";
 
 const tempJson = [
   {
@@ -72,6 +71,7 @@ const tempJson = [
 export default () => {
 
   // const prevButtonRef = useRef(null)
+
   // const nextButtonRef = useRef(null)
 
   const slideRef = useRef(null)
@@ -128,7 +128,7 @@ export default () => {
           })
         }
 
-        <button className="z-10" onClick={handlePref} >anterior </button>
+        <button onClick={handlePref} >anterior </button>
         <button onClick={handleNext} >siguiente </button>
 
       </Swiper>
