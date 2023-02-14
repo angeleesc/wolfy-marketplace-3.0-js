@@ -98,7 +98,7 @@ export default () => {
 
   return (
     <div className="wolfy-hero">
-      <img src="" alt="" />
+      <img className="wolfy-hero-cover-bg-image" src={tempJson[curretbgIndex].coverImg} alt="" />
       <div className="w-swiper-box">
         <Swiper
           spaceBetween={50}
@@ -114,12 +114,10 @@ export default () => {
           onSlideChange={(swiper) => {
             console.log("slide change")
             console.log(swiper.realIndex)
+            setCurretbgIndex(swiper.realIndex)
           }
           }
           loop
-
-
-
         >
           {
             tempJson.map((collitem, i) => {

@@ -2,12 +2,21 @@ $bluWhite : theme("colors.gray.50");
 
 .wolfy-hero {
     // width              : 100vw;
-    height       : 100vh;
-    position     : relative;
-    padding-top  : 80px;
-    padding-left : 30px;
-    padding-right: 30px;
+    height          : 100vh;
+    position        : relative;
+    padding-top     : 80px;
+    padding-left    : 30px;
+    padding-right   : 30px;
+    background-color: red;
 
+
+    .wolfy-hero-cover-bg-image {
+        width   : 100%;
+        height  : 100%;
+        position: absolute;
+        top     : 0;
+        left    : 0;
+    }
 
     .w-swiper-box {
         position: relative;
@@ -125,7 +134,7 @@ $bluWhite : theme("colors.gray.50");
 
             .cover-filter {
                 background-color: theme("colors.wolf-gray-dark.500");
-                opacity         : 0.3;
+                opacity         : 0.0;
                 width           : 100%;
                 height          : 100%;
                 position        : absolute;
