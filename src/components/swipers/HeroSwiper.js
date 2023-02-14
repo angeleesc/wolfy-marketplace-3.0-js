@@ -65,6 +65,18 @@ const tempJson = [
     floorPrice: "0.001"
 
 
+  },
+  {
+    coverImg: "https://i.seadn.io/gcs/files/0f490fe5ff953443a16823343dacce31.jpg?auto=format&w=1920",
+    faceImg: "https://i.seadn.io/gcs/files/bde660047ec7e69ee6b74174d63cf1ff.gif?auto=format&w=256",
+    colectionName: "Meka Drivers",
+    colectionAuthor: "MekaVerse",
+    items: 8888,
+    floorPrice:"0.5",
+    isCollectionVerified: true,
+    isAuthorVerified: true
+
+
   }
 
 ];
