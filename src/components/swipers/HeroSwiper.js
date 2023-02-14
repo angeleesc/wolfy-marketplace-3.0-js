@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./wolfy-hero.scss";
 // import "swiper/css/navigation";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { Navigation } from "swiper";
 
@@ -74,8 +74,10 @@ export default () => {
   // const prevButtonRef = useRef(null)
 
   // const nextButtonRef = useRef(null)
+  const [curretbgIndex, setCurretbgIndex] = useState(0)
 
   const slideRef = useRef(null)
+
 
   const handlePref = useCallback(() => {
 
@@ -96,6 +98,7 @@ export default () => {
 
   return (
     <div className="wolfy-hero">
+      <img src="" alt="" />
       <div className="w-swiper-box">
         <Swiper
           spaceBetween={50}
@@ -105,11 +108,12 @@ export default () => {
           scrollbar={{ draggable: true }}
           ref={slideRef}
           onSwiper={(swiper) => {
-            console.log(swiper)
+            // console.log(swiper)
 
           }}
           onSlideChange={(swiper) => {
             console.log("slide change")
+            console.log(swiper.realIndex)
           }
           }
           loop

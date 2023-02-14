@@ -13,19 +13,23 @@ $bluWhite : theme("colors.gray.50");
         position: relative;
 
         &:hover {
+
+            cursor: pointer;
+
             .wolf-chevron {
                 opacity: 1;
             }
 
             .w-glass-butom {
+
                 // background-color: red !important;
-                &::before{
+                &::before {
                     opacity: 1 !important;
                 }
             }
 
-            .cover-img{
-                transform: scale(1.1);
+            .cover-img {
+                transform: scale(1.05);
             }
         }
     }
@@ -65,7 +69,7 @@ $bluWhite : theme("colors.gray.50");
         bottom: 0;
         margin: auto;
 
-        
+
         &:hover {
             background-color: theme("colors.wolf-blue.500");
             border-color    : theme("colors.wolf-gray-light.2200");
@@ -82,7 +86,7 @@ $bluWhite : theme("colors.gray.50");
         bottom: 0;
         margin: auto;
 
-        
+
         &:hover {
             background-color: theme("colors.wolf-pulple.500");
             border-color    : theme("colors.wolf-gray-light.2200");
