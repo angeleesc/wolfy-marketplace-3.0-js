@@ -18,10 +18,10 @@ const tempJson = [
     items: 16,
   },
   {
-    coverImg: "https://cards.collecttrumpcards.com/cards/b5d38d302.jpg",
+    coverImg: "https://i.seadn.io/gae/M6n1g9yMPXieDpFP0Y_Q2b9oOkpHSBX2xh4L6OpRwSkqrQ0rAws7GM6nnCN333synVOlJXQiojzGrzCEXH0TWTgrDw_ipZS7VHMAK9w?auto=format&w=1920",
     faceImg:
-      "https://i.seadn.io/gcs/files/4bbf53de963f24f668b785607a,3726b6.png?auto=format&w=256",
-    colectionName: "DigiMonkz Genesis",
+      "https://i.seadn.io/gae/oyEO1RajjrJuCYtbXX9Oa3FhoRvX5BO_TkFc8PTUkN5egJwFG2mlM0lRl7zuOvBj_HciCY35D4exJm0b3DZya6qxpyhk0aBN7oCH?auto=format&w=256",
+    colectionName: "Impostors Genesis Aliens",
     isCollectionVerified: true,
     isAuthorVerified: true,
     colectionAuthor: "DigiMonkz_MINT",
@@ -29,7 +29,7 @@ const tempJson = [
     item: 1000,
   },
   {
-    colectionName: "ZenAcademy",
+
     coverImg:
       "https://i.seadn.io/gae/IaUEHOT78TUQ3SiinUGv829DeFVj7kht_kFMz2U6x6S6yxQlI_2V6KvSq9C25F5bxSi4gF8X0_Vbbigr17O-iDQiLhG9bXSyycnUJbQ?auto=format&w=1920",
     faceImg:
@@ -106,8 +106,11 @@ export default () => {
           ref={slideRef}
           onSwiper={(swiper) => {
             console.log(swiper)
+
           }}
-          onSlideChange={() => console.log("slide change")
+          onSlideChange={(swiper) => {
+            console.log("slide change")
+          }
           }
           loop
 
@@ -120,10 +123,20 @@ export default () => {
                 <SwiperSlide
                   className="collection-container"
                   key={"hero-wolfy-" + i}
-
                 >
                   <div className="collection-item" >
+                    <div className="cover-filter" ></div>
                     <img className="cover-img" src={collitem.coverImg} alt={"hero-img-" + i} />
+                    <div className="collection-item-info-area" >
+                      <div>
+                        <div className="w-face-ing-zone" >
+                          <img src={collitem.faceImg} alt={"hero-face-img" + i} />
+                        </div>
+                        <h2>{collitem.colectionName}</h2>
+                        <h3>Creado por : {collitem.colectionAuthor}</h3>
+                      </div>
+                    </div>
+
                   </div>
                 </SwiperSlide>
               )
