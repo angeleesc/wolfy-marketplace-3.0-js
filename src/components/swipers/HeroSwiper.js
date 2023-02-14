@@ -75,7 +75,6 @@ export default () => {
 
   // const nextButtonRef = useRef(null)
   const [curretbgIndex, setCurretbgIndex] = useState(0)
-
   const slideRef = useRef(null)
 
 
@@ -99,6 +98,7 @@ export default () => {
   return (
     <div className="wolfy-hero">
       <img className="wolfy-hero-cover-bg-image" src={tempJson[curretbgIndex].coverImg} alt="" />
+      <div className="wolfy-blur-fillter" ></div>
       <div className="w-swiper-box">
         <Swiper
           spaceBetween={50}
