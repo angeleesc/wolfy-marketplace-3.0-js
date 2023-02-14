@@ -128,14 +128,20 @@ export default () => {
                     <div className="cover-filter" ></div>
                     <img className="cover-img" src={collitem.coverImg} alt={"hero-img-" + i} />
                     <div className="collection-item-info-area" >
-                      <div>
-                        <div className="w-face-ing-zone" >
-                          <img src={collitem.faceImg} alt={"hero-face-img" + i} />
-                        </div>
-                        <h2>{collitem.colectionName}</h2>
-                        <h3>Creado por : {collitem.colectionAuthor}</h3>
+
+                      <div className="w-face-ing-zone" >
+                        <img src={collitem.faceImg} alt={"hero-face-img" + i} />
                       </div>
+                      <h2>{collitem.colectionName}</h2>
+                      <h3>Creado por : {collitem.colectionAuthor}</h3>
+                      <div className="flex" >
+                        <h6>{collitem.items} articulos desde {collitem.floorPrice} eth</h6>
+                      </div>
+                      <button className="w-glass-butom mt-3" >
+                        <span>Ver Colecion</span>
+                      </button>
                     </div>
+
 
                   </div>
                 </SwiperSlide>

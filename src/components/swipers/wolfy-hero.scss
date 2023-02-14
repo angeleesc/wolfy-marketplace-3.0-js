@@ -16,6 +16,17 @@ $bluWhite : theme("colors.gray.50");
             .wolf-chevron {
                 opacity: 1;
             }
+
+            .w-glass-butom {
+                // background-color: red !important;
+                &::before{
+                    opacity: 1 !important;
+                }
+            }
+
+            .cover-img{
+                transform: scale(1.1);
+            }
         }
     }
 
@@ -42,11 +53,6 @@ $bluWhite : theme("colors.gray.50");
         transition         : border .5s, background-color .5s, color .5s, opacity .5s;
         opacity            : 0;
 
-        &:hover {
-            background-color: theme("colors.wolf-blue.500");
-            border-color    : theme("colors.wolf-gray-light.2200");
-            color           : theme("colors.wolf-gray-light.2200");
-        }
 
 
     }
@@ -59,6 +65,15 @@ $bluWhite : theme("colors.gray.50");
         bottom: 0;
         margin: auto;
 
+        
+        &:hover {
+            background-color: theme("colors.wolf-blue.500");
+            border-color    : theme("colors.wolf-gray-light.2200");
+            color           : theme("colors.wolf-gray-light.2200");
+
+
+        }
+
     }
 
     .wolf-chevron-right {
@@ -66,6 +81,15 @@ $bluWhite : theme("colors.gray.50");
         right : -20px;
         bottom: 0;
         margin: auto;
+
+        
+        &:hover {
+            background-color: theme("colors.wolf-pulple.500");
+            border-color    : theme("colors.wolf-gray-light.2200");
+            color           : theme("colors.wolf-gray-light.2200");
+
+
+        }
 
     }
 
@@ -92,6 +116,7 @@ $bluWhite : theme("colors.gray.50");
                 width     : 100%;
                 height    : 100%;
                 object-fit: cover;
+                transition: transform .5s;
             }
 
             .cover-filter {
@@ -111,7 +136,7 @@ $bluWhite : theme("colors.gray.50");
                 background-color: rgba(#fff, 0.1);
                 backdrop-filter : blur(2px);
                 width           : 100%;
-                background      : linear-gradient(180deg, rgba(#fff, 0.0) 0%, rgba(#fff, 0.25) 100%);
+                background      : linear-gradient(180deg, rgba(#fff, 0.0) 0%, rgba(#2a2f39, 0.5) 100%);
 
 
                 .w-face-ing-zone {
@@ -135,18 +160,6 @@ $bluWhite : theme("colors.gray.50");
                     }
                 }
 
-                &::before {
-                    content            : '';
-                    display            : block;
-                    width              : 100%;
-                    height             : 2px;
-                    // background-color: theme("colors.wolf-dull-purple.500");
-                    position           : absolute;
-                    left               : 0;
-                    top                : 0;
-                }
-
-
 
                 h2 {
                     font-size: 32px;
@@ -154,8 +167,47 @@ $bluWhite : theme("colors.gray.50");
                 }
 
                 h3 {
-                    font-style: 24px;
+                    font-style: 30px;
                     color     : #fff;
+                }
+
+                h6 {
+                    font-size  : 16px;
+                    font-weight: 500;
+                    color      : #fff;
+                }
+
+                .w-glass-butom {
+                    font-weight     : 400;
+                    color           : #fff;
+                    width           : 100%;
+                    max-width       : 300px;
+                    background-color: rgba($color: #ffffff, $alpha: 0.3);
+                    padding         : 15px;
+                    border-radius   : 8px;
+                    position        : relative;
+                    z-index         : 10;
+
+
+                    &::before {
+                        content      : "";
+                        display      : block;
+                        background   : rgb(162, 4, 191);
+                        background   : linear-gradient(90deg, rgba(5, 99, 222, 1) 0%, rgba(162, 4, 191, 1) 100%);
+                        width        : 100%;
+                        height       : 100%;
+                        position     : absolute;
+                        z-index      : -1;
+                        left         : 0;
+                        top          : 0;
+                        border-radius: 8px;
+                        border       : 1px solid theme("colors.wolf-gray.575");
+                        opacity      : 0;
+                        transition   : opacity .5s;
+
+
+                    }
+
                 }
 
             }
