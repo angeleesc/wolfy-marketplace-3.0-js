@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wolf-nfts-card {
+    // width    : 100%;
+    max-width          : 220px;
+    min-width          : 220px;
+    height             : 295px;
+    // background-color: red;
+    background-color   : theme("colors.wolf-gray-dark.400");
+    border-radius      : 16px;
+    border: 1px solid theme("colors.wolf-gray-dark.1000");
+
+
+}
