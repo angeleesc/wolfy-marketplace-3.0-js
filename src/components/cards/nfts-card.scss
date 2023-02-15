@@ -4,13 +4,16 @@
 
 .wolf-nfts-card {
     // width    : 100%;
-    max-width          : 220px;
+    // max-width          : 300px;
     min-width          : 220px;
+    max-width          : 240px;
+    flex-grow          : 1;
     height             : 295px;
     // background-color: red;
     background-color   : theme("colors.wolf-gray-dark.400");
     border-radius      : 16px;
-    border: 1px solid theme("colors.wolf-gray-dark.1000");
+    border             : 1px solid theme("colors.wolf-gray-dark.1000");
+
 
 
 }
