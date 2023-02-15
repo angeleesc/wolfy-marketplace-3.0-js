@@ -85,8 +85,8 @@ const tempJson = [
 
 export default function ExplorerNfts() {
   return (
-    <div className="mt-[80px]">
-      <NftsCardList />
+    <div className="mt-[80px] px-[30px]">
+      <NftsCardList cards={tempJson}  />
     </div>
   );
 }
