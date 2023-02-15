@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function NftsCardList() {
-  return (
-    <div>NftsCardList</div>
-  )
+  return <div className="cards-nft-explorer-container">NftsCardList</div>;
 }

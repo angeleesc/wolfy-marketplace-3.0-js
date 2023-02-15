@@ -1,5 +1,6 @@
 import React from "react";
 import { saleMethod } from "../../../helpers/global-constants";
+import NftsCardList from "../../../components/list/NftsCardList";
 
 const tempJson = [
   {
@@ -83,7 +84,9 @@ const tempJson = [
 ];
 
 export default function ExplorerNfts() {
-  return <div className="mt-[80px]">
-    
-  </div>;
+  return (
+    <div className="mt-[80px]">
+      <NftsCardList />
+    </div>
+  );
 }
