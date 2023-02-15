@@ -2,12 +2,13 @@ $bluWhite : theme("colors.gray.50");
 
 .wolfy-hero {
     // width              : 100vw;
-    height          : 100vh;
-    position        : relative;
-    padding-top     : 80px;
-    padding-left    : 30px;
-    padding-right   : 30px;
-    background-color: red;
+    height             : 100vh;
+    position           : relative;
+    padding-top        : 80px;
+    padding-left       : 30px;
+    padding-right      : 30px;
+    // background-color: red;
+    background-color   : theme("colors.wolf-gray-dark.500");
 
 
     .wolfy-hero-cover-bg-image {
