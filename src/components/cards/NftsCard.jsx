@@ -24,8 +24,15 @@ export default function NftsCard({ cardData }) {
       <div className="nft-card-body">
         <div className="multimedia-zone">
           <img src={nftCover} alt={"nft-cover-carf"} />
+
+          <div className="face-avatar-zone">
+            
+          </div>
+
           <div className="collection-titel-zone">
-            <Link to={staticRoutes.colectionInfoData(colection)} >{colectionName ? colectionName : colection}</Link>
+            <Link to={staticRoutes.colectionInfoData(colection)}>
+              {colectionName ? colectionName : colection}
+            </Link>
           </div>
         </div>
       </div>
