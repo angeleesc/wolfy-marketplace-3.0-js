@@ -1,16 +1,12 @@
-import React from 'react'
-import "./nfts-card.scss"
+import React from "react";
+import "./nfts-card.scss";
 
 export default function NftsCard() {
   return (
-    <div className='wolf-nfts-card m-[8px]' >
-      <div className="multimedia-zone">
-
+    <div className="wolf-nfts-card ">
+      <div className="nft-card-body">
+        
       </div>
-      <div className="info-zone">
-
-      </div>
-      
     </div>
-  )
+  );
 }
