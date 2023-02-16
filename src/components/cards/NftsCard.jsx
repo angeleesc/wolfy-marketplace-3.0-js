@@ -1,5 +1,7 @@
 import React from "react";
 import "./nfts-card.scss";
+import { Link } from "react-router-dom";
+import { staticRoutes } from "../../helpers/static-routes";
 
 export default function NftsCard({ cardData }) {
   const {
@@ -23,7 +25,7 @@ export default function NftsCard({ cardData }) {
         <div className="multimedia-zone">
           <img src={nftCover} alt={"nft-cover-carf"} />
           <div className="collection-titel-zone">
-            <span>{colectionName ? colectionName : colection}</span>
+            <Link to={staticRoutes.colectionInfoData(colection)} >{colectionName ? colectionName : colection}</Link>
           </div>
         </div>
       </div>
