@@ -2,7 +2,7 @@ import React from "react";
 import "./nfts-card.scss";
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
-import { saleMethod as saleMethodOp } from "../../helpers/global-constants"
+import { saleMethod as saleMethodOp } from "../../helpers/global-constants";
 
 export default function NftsCard({ cardData }) {
   const {
@@ -18,19 +18,25 @@ export default function NftsCard({ cardData }) {
     price,
     saleMethod,
     tokenId,
+    copies,
+    sale,
   } = cardData;
 
+  let saleMehodUi;
 
-let saleMehodUi 
+  switch (saleMethod) {
+    case saleMethodOp.sales:
+      saleMehodUi = "Venta";
+      break;
 
-switch (saleMethod) {
-  case saleMethodOp.sales: saleMehodUi = "Venta"
-    break;
+    case saleMethodOp.auction:
+      saleMehodUi = "Subasta";
+      break;
 
-
-  default:
-    break;
-}
+    default:
+      saleMehodUi = "No a la venta";
+      break;
+  }
 
   return (
     <div className="wolf-nfts-card ">
@@ -67,9 +73,13 @@ switch (saleMethod) {
         </div>
         <div className="info-area">
           <h3 className="nft-title">{nftName}</h3>
-        </div>
-        <div className="price-area">
-          <span>{ }</span>
+          <div className="price-area">
+            <span className="tag-label">{saleMehodUi}</span>
+            <h3 className="price">
+              {price} ETH <span className="cuantity"> {`${sale}/${copies}`} </span>{" "}
+            </h3>
+          </div>
+          
         </div>
       </div>
     </div>

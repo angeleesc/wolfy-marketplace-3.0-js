@@ -20,7 +20,9 @@ const tempJson = [
     price: 0.054,
     saleMethod: saleMethod.sales,
     tokenId: 431,
-  },
+    copies: 1,
+    sale: 1,
+    },
   {
     nftName: "Meka-Driver #408",
     colectionName: "Meka Drivers",
@@ -106,7 +108,7 @@ const tempJson = [
 export default function ExplorerNfts() {
   return (
     <div className="mt-[80px] px-[30px]">
-      <NftsCardList cards={tempJson}  />
+      <NftsCardList cards={tempJson} />
     </div>
   );
 }
