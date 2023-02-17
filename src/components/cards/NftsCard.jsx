@@ -55,7 +55,8 @@ export default function NftsCard({ cardData }) {
           />
 
           <div className="face-avatar-zone">
-            <div className="avatar-img mb-2">
+            <div className="avatar-img glass mb-2">
+              <div className="bg-gradient"></div>
               {sellerFace ? (
                 <img src={sellerFace} alt={"seller-" + seller} />
               ) : (
@@ -63,6 +64,7 @@ export default function NftsCard({ cardData }) {
               )}
             </div>
             <div className="avatar-img ">
+              <div className="bg-gradient"></div>
               {collectionFace ? (
                 <img src={collectionFace} alt={"colection-" + colection} />
               ) : (
@@ -90,7 +92,7 @@ export default function NftsCard({ cardData }) {
             <button className="go-checkout">
               <span>{chekoutButtonBuy}</span>
             </button>
-            <div className="w-[1px] h-[100%] bg-white" ></div>
+            <div className="w-[1px] h-[100%] bg-white"></div>
             <button className="add-cart">
               <span>
                 <FiShoppingCart />
