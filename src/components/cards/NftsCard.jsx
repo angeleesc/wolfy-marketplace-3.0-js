@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import { saleMethod as saleMethodOp } from "../../helpers/global-constants";
 import { FiShoppingCart } from "react-icons/fi";
+import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
+import WolfTooltip from "../tooltip/WolfTooltip";
 
 export default function NftsCard({ cardData }) {
   const {
@@ -55,14 +57,19 @@ export default function NftsCard({ cardData }) {
           />
 
           <div className="face-avatar-zone">
-            <div className="avatar-img glass mb-2">
-              <div className="bg-gradient"></div>
-              {sellerFace ? (
-                <img src={sellerFace} alt={"seller-" + seller} />
-              ) : (
-                <div className="hash-zone"></div>
-              )}
-            </div>
+            <WolfTooltip title="nombre xd">
+              <WolfTooltipNotButton>
+                <div className="avatar-img glass mb-2">
+                  <div className="bg-gradient"></div>
+                  {sellerFace ? (
+                    <img src={sellerFace} alt={"seller-" + seller} />
+                  ) : (
+                    <div className="hash-zone"></div>
+                  )}
+                </div>
+              </WolfTooltipNotButton>
+            </WolfTooltip>
+
             <div className="avatar-img ">
               <div className="bg-gradient"></div>
               {collectionFace ? (
