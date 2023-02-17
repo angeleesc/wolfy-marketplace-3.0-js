@@ -6,6 +6,7 @@ import { saleMethod as saleMethodOp } from "../../helpers/global-constants";
 import { FiShoppingCart } from "react-icons/fi";
 import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
 import WolfTooltip from "../tooltip/WolfTooltip";
+import OptimismLogon from "../icons/OptimismLogon";
 
 export default function NftsCard({ cardData }) {
   const {
@@ -25,23 +26,23 @@ export default function NftsCard({ cardData }) {
     sale,
   } = cardData;
 
-  let saleMehodUi;
+  // let saleMehodUi;
   let chekoutButtonBuy;
 
   switch (saleMethod) {
     case saleMethodOp.sales:
-      saleMehodUi = "Venta";
+      // saleMehodUi = "Venta";
       chekoutButtonBuy = "Comprar Ahora";
       break;
 
     case saleMethodOp.auction:
-      saleMehodUi = "Subasta";
+      // saleMehodUi = "Subasta";
       chekoutButtonBuy = "Hacer una puja";
       break;
 
     default:
-      saleMehodUi = "No a la venta";
-      saleMehodUi = "Nada";
+      // saleMehodUi = "No a la venta";
+      chekoutButtonBuy = "Nada";
 
       break;
   }
@@ -50,6 +51,9 @@ export default function NftsCard({ cardData }) {
     <div className="wolf-nfts-card ">
       <div className="nft-card-body">
         <div className="multimedia-zone">
+          <div className="blockchain-logo">
+            <OptimismLogon />
+          </div>
           <img
             className="wolf-main-multimedia-data"
             src={nftCover}
@@ -89,7 +93,7 @@ export default function NftsCard({ cardData }) {
         <div className="info-area">
           <h3 className="nft-title">{nftName}</h3>
           <div className="price-area">
-            <span className="tag-label">{saleMehodUi}</span>
+            {/* <span className="tag-label">{saleMehodUi}</span> */}
             <h3 className="price">
               {price} ETH{" "}
               <span className="cuantity"> {`${sale}/${copies}`} </span>{" "}

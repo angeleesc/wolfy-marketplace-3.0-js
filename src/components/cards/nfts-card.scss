@@ -16,8 +16,14 @@
         cursor : pointer;
 
 
+        .blockchain-logo {
+            opacity: 1 !important;
+        }
+
         .nft-card-body {
             background-color: theme("colors.wolf-gray-dark.600");
+
+
 
             .avatar-img {
                 .bg-gradient {
@@ -91,6 +97,15 @@
             height          : 220px;
             background-color: theme("colors.wolf-gray-dark.400");
             position        : relative;
+
+            .blockchain-logo {
+                position  : absolute;
+                top       : 12px;
+                left      : 12px;
+                opacity   : 0;
+                transition: opacity .5s;
+
+            }
 
             .wolf-main-multimedia-data {
                 border-radius: 16px 16px 0 0;
