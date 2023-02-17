@@ -62,14 +62,14 @@
         }
 
         &::before {
-            background-color   : theme("colors.wolf-blue-purple.500");
+            background-color   : theme("colors.wolf-gray-accent.400");
             z-index            : -5;
             border-radius      : 16px;
             // transform       : rotate(-5deg);
         }
 
         &::after {
-            background-color   : theme("colors.wolf-blue.600");
+            background-color   : theme("colors.wolf-gray-accent.500");
             border-radius      : 16px;
             z-index            : -6;
             // transform       : rotate(-10deg);
