@@ -1,11 +1,34 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { closeModal } from "../../features/modals/modalsSlice";
 
 export default function WolfyModalLayoutReduxController({ modalController }) {
   const modalState = useSelector((state) => state.modals[modalController]);
+  const dispatch = useDispatch();
+
   console.log(modalState);
 
-  if (modalState.open === true) return <div>modal XD</div>;
+  const {} = modalState;
+
+  if (modalState.open === true)
+    return (
+      <div
+        className="wolf-modal wolf-modal-glass wolf-modal-center"
+        onClick={() => {
+          dispatch(
+            closeModal({
+              modal: modalController,
+            })
+          );
+        }}
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        ></div>
+      </div>
+    );
 
   return null;
 }

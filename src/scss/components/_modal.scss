@@ -1,0 +1,21 @@
+.wolf-modal {
+    width   : 100vw;
+    height  : 100vh;
+    position: fixed;
+    z-index : 1000;
+    top     : 0;
+    left    : 0;
+
+}
+
+.wolf-modal-glass {
+
+    background-color: rgba($color: #2f343e, $alpha: 0.3);
+    backdrop-filter : blur(10px);
+}
+
+.wolf-modal-center {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}

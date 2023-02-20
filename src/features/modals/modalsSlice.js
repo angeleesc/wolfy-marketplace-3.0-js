@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const keyModalSate = {
-    checkoutModal: "checkoutModal",
+  checkoutModal: "checkoutModal",
 };
 
 const modalSlide = createSlice({
@@ -16,14 +16,18 @@ const modalSlide = createSlice({
     openModal: (state, action) => {
       //    console.log(action)
       state[action.payload.modal] = {
-        dataToProccess: { ...action.payload.data },
+        ...(action.payload.data && {
+          dataToProccess: { ...action.payload.data },
+        }),
         open: true,
       };
     },
 
     closeModal: (state, actions) => {
       state[actions.payload.modal] = {
-        dataToProccess: { ...actions.payload.data },
+        ...(actions.payload.data && {
+          dataToProccess: { ...actions.payload.data },
+        }),
         open: false,
       };
     },
@@ -32,4 +36,4 @@ const modalSlide = createSlice({
 
 export default modalSlide.reducer;
 
-export const { openModal } = modalSlide.actions;
+export const { openModal, closeModal } = modalSlide.actions;
