@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
 import languageReducerice from "../features/languages/languageSlice"
+import modalSlide from "../features/modals/modalsSlice"
 
 const store = configureStore({
  reducer: {
-    language: languageReducerice
+    language: languageReducerice,
+    modals: modalSlide
  }
 })
 
