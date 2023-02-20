@@ -7,6 +7,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
 import WolfTooltip from "../tooltip/WolfTooltip";
 import OptimismLogon from "../icons/OptimismLogon";
+import { MdContentCopy } from "react-icons/md";
 
 export default function NftsCard({ cardData }) {
   const {
@@ -94,9 +95,11 @@ export default function NftsCard({ cardData }) {
           <h3 className="nft-title">{nftName}</h3>
           <div className="price-area">
             {/* <span className="tag-label">{saleMehodUi}</span> */}
-            <h3 className="price">
-              {price} ETH{" "}
-              <span className="cuantity"> {`${sale}/${copies}`} </span>{" "}
+            <h3 className="price w-[100%]">
+              <span> {price} ETH </span>
+              <div className="cuantity flex ">
+                {<MdContentCopy />}  <span>{`${sale}`}</span>
+              </div>
             </h3>
           </div>
           <div className="wolf-btn-area">

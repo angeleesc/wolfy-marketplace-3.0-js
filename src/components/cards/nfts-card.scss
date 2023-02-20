@@ -222,10 +222,13 @@
             }
 
             .price-area {
-                position        : absolute;
-                bottom          : 0;
-                margin-bottom   : 12px;
-                // width        : 100%;
+                position     : absolute;
+                bottom       : 0;
+                margin-bottom: 12px;
+                width        : 100%;
+                left         : 0;
+                padding      :  0 15px;
+
 
                 .tag-label {
                     font-size  : 11px;
@@ -240,7 +243,10 @@
                     font-size  : 14px;
                     font-weight: 600;
                     line-height: 14px;
+                    width      : 100%;
+                    display    : flex;
 
+                    justify-content: space-between;
                 }
 
                 .cuantity {

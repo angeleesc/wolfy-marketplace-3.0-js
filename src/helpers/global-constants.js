@@ -9,3 +9,11 @@ export const collectionsOptions ={
     new:"new-colecion",
     existing: "existing-collections"
 }
+
+export const blockchainNetwork ={
+    optimism: "optimism",
+    arbitrum: "arbitrum",
+    binance: "binance",
+    ethereum: "ethereum",
+    polygon: "polygon",
+} 
