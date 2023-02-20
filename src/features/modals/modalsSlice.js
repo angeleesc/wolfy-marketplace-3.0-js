@@ -4,6 +4,7 @@ export const keyModalSate = {
   checkoutModal: "checkoutModal",
 };
 
+
 const modalSlide = createSlice({
   name: "modals",
   initialState: {

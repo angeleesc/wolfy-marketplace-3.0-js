@@ -115,6 +115,8 @@ export default function NftsCard({ cardData }) {
                     modal: keyModalSate.checkoutModal,
                     data: {
                       order,
+                      nftCover,
+                      
                     },
                   })
                 );

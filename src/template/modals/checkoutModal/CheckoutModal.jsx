@@ -6,6 +6,10 @@ export default function CheckoutModal() {
   return (
     <WolfyModalLayoutReduxController
       modalController={keyModalSate.checkoutModal}
-    ></WolfyModalLayoutReduxController>
+    >
+      <div className="wolf-modal-body w-[300px] min-h-[40px]">
+
+      </div>
+    </WolfyModalLayoutReduxController>
   );
 }

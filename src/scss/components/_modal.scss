@@ -12,6 +12,13 @@
 
     background-color: rgba($color: #2f343e, $alpha: 0.3);
     backdrop-filter : blur(10px);
+
+    .wolf-modal-body {
+        background-color: theme("colors.wolf-gray-dark.500");
+        border-radius   : 16px;
+        border          : 1px solid theme("colors.wolf-gray-light.100");
+    }
+
 }
 
 .wolf-modal-center {
