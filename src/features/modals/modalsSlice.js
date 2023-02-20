@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const keyModalSate = {
+    chakoutModal: "chakoutModal",
+}
+
 const modalSlide = createSlice({
   name: "modals",
   initialState: {
@@ -8,7 +12,13 @@ const modalSlide = createSlice({
       dataToProccess: {},
     },
   },
-  reducers: {},
+  reducers: {
+    openModal: (state, action)=>{
+       console.log(action)
+    }
+  },
 });
 
 export default modalSlide.reducer;
+
+export const { openModal } = modalSlide.actions 

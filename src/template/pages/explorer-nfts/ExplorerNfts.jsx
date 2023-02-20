@@ -22,7 +22,8 @@ const tempJson = [
     tokenId: 431,
     copies: 1,
     sale: 1,
-    },
+    order: 1,
+  },
   {
     nftName: "Meka-Driver #408",
     colectionName: "Meka Drivers",
@@ -42,6 +43,7 @@ const tempJson = [
     tokenId: 408,
     copies: 1,
     sale: 1,
+    order: 2,
   },
   {
     nftName: "Meka-Driver #2670",
@@ -62,6 +64,7 @@ const tempJson = [
     tokenId: 2670,
     copies: 1,
     sale: 1,
+    order: 3,
   },
   {
     nftName: "Anisopteraaninae chrysaicus",
@@ -82,6 +85,7 @@ const tempJson = [
     tokenId: 2670,
     copies: 1,
     sale: 1,
+    order: 4,
   },
   {
     nftName: "Anisopteraaninae chrysaicus",
@@ -102,6 +106,7 @@ const tempJson = [
     tokenId: 2670,
     copies: 1,
     sale: 1,
+    order: 5,
   },
 ];
 

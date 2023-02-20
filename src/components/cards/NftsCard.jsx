@@ -8,6 +8,10 @@ import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
 import WolfTooltip from "../tooltip/WolfTooltip";
 import OptimismLogon from "../icons/OptimismLogon";
 import { MdContentCopy } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import {keyModalSate, openModal } from "../../features/modals/modalsSlice"
+
+
 
 export default function NftsCard({ cardData }) {
   const {
@@ -25,10 +29,12 @@ export default function NftsCard({ cardData }) {
     tokenId,
     copies,
     sale,
+    order,
   } = cardData;
 
   // let saleMehodUi;
   let chekoutButtonBuy;
+  const dispatch = useDispatch();
 
   switch (saleMethod) {
     case saleMethodOp.sales:
@@ -103,7 +109,16 @@ export default function NftsCard({ cardData }) {
             </h3>
           </div>
           <div className="wolf-btn-area">
-            <button className="go-checkout">
+            <button className="go-checkout" onClick={()=>{
+              dispatch(openModal({
+                modal: keyModalSate.chakoutModal,
+                data:{
+                  order,
+                  mesage: "orden nuemro uno"
+
+                }
+              }))
+            }} >
               <span>{chekoutButtonBuy}</span>
             </button>
             <div className="w-[1px] h-[100%] bg-white"></div>
