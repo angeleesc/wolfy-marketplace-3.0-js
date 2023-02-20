@@ -1,24 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const keyModalSate = {
-    chakoutModal: "chakoutModal",
-}
+    checkoutModal: "checkoutModal",
+};
 
 const modalSlide = createSlice({
   name: "modals",
   initialState: {
-    chakoutModal: {
-      open: true,
+    checkoutModal: {
+      open: false,
       dataToProccess: {},
     },
   },
   reducers: {
-    openModal: (state, action)=>{
-       console.log(action)
-    }
+    openModal: (state, action) => {
+      //    console.log(action)
+      state[action.payload.modal] = {
+        dataToProccess: { ...action.payload.data },
+        open: true,
+      };
+    },
+
+    closeModal: (state, actions) => {
+      state[actions.payload.modal] = {
+        dataToProccess: { ...actions.payload.data },
+        open: false,
+      };
+    },
   },
 });
 
 export default modalSlide.reducer;
 
-export const { openModal } = modalSlide.actions 
+export const { openModal } = modalSlide.actions;

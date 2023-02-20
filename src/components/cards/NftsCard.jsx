@@ -9,9 +9,7 @@ import WolfTooltip from "../tooltip/WolfTooltip";
 import OptimismLogon from "../icons/OptimismLogon";
 import { MdContentCopy } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import {keyModalSate, openModal } from "../../features/modals/modalsSlice"
-
-
+import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
 
 export default function NftsCard({ cardData }) {
   const {
@@ -104,21 +102,24 @@ export default function NftsCard({ cardData }) {
             <h3 className="price w-[100%]">
               <span> {price} ETH </span>
               <div className="cuantity flex ">
-                {<MdContentCopy />}  <span>{`${sale}`}</span>
+                {<MdContentCopy />} <span>{`${sale}`}</span>
               </div>
             </h3>
           </div>
           <div className="wolf-btn-area">
-            <button className="go-checkout" onClick={()=>{
-              dispatch(openModal({
-                modal: keyModalSate.chakoutModal,
-                data:{
-                  order,
-                  mesage: "orden nuemro uno"
-
-                }
-              }))
-            }} >
+            <button
+              className="go-checkout"
+              onClick={() => {
+                dispatch(
+                  openModal({
+                    modal: keyModalSate.checkoutModal,
+                    data: {
+                      order,
+                    },
+                  })
+                );
+              }}
+            >
               <span>{chekoutButtonBuy}</span>
             </button>
             <div className="w-[1px] h-[100%] bg-white"></div>
