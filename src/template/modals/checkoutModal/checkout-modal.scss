@@ -78,3 +78,19 @@
 
     .wallet-accoutn {}
 }
+
+.wolf-blockchain-logo {
+    position: relative;
+
+}
+
+.counter-quantity {
+
+    // background-color: red;
+    .wolf-form-control-text-input {
+        background-color: theme("colors.wolf-gray-dark.400");
+        border          : 1px solid theme("colors.wolf-gray-dark.800");
+
+
+    }
+}

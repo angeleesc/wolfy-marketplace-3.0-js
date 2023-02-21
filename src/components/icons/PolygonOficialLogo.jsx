@@ -6,8 +6,8 @@ export default function PolygonOficialLogo(props) {
       id="katman_1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="45"
-      height="45"
+      width="50"
+      height="50"
       x={0}
       y={0}
       viewBox="0 0 800 600"

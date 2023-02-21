@@ -13,6 +13,7 @@
 
         &:focus {
             background-color: theme("colors.wolf-off-blue.300");
+            outline: none;
         }
 
         &:hover {

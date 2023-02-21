@@ -8,7 +8,6 @@ export default function TextFieldInputGroup({
   register,
   warningMessage,
   type = "text",
-
   leftChild,
   rightChild,
   ...props
@@ -31,6 +30,7 @@ export default function TextFieldInputGroup({
           className="wolf-form-control-text-input"
           {...props}
           {...register}
+          
         />
         <div className="box-element-leff" ></div>
       </div>
