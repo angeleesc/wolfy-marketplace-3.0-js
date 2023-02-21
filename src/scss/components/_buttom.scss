@@ -5,11 +5,11 @@
     font-family  : "open-sans" sans-serif ;
     font-weight  : 500;
     border-radius: 9px;
+    transition      : background-color .7s;
 
     &.wolf-buttom-primary {
         background-color: theme("colors.wolf-blue.500");
         border          : 1.5px solid theme("colors.wolf-gray-light.400");
-        transition      : background-color .7s;
 
         &:focus {
             background-color: theme("colors.wolf-off-blue.300");
@@ -20,6 +20,8 @@
             background-color: theme("colors.wolf-blue.200");
         }
     }
+
+    
 
     &.wolf-buttom-primary-gradient {
 

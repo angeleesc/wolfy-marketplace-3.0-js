@@ -182,7 +182,16 @@ export default function CheckoutModal() {
               <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
 
               <div className="mt-[10px]">
-
+                <div>
+                  <button className="wolf-buttom wolf-buttom-primary w-[100%]">
+                    {true ? "hacer una puja" : "Comprar Ahora"}
+                  </button>
+                  <div className="mt-[10px]">
+                    <button className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200">
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           )}
