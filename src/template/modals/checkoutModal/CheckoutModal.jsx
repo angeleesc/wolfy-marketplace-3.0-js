@@ -158,7 +158,7 @@ export default function CheckoutModal() {
                   <WTextFields
                     register={register("bid")}
                     textLabel={"Puja Minima *"}
-                    placeHolder="Ej: ETH"
+                    placeholder="Ej: ETH"
                     id="checkout-bid"
                     type="number"
                     onWheel={preventScroll}
@@ -180,6 +180,10 @@ export default function CheckoutModal() {
                 <span className="bill-value">0</span>
               </div>
               <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
+
+              <div className="mt-[10px]">
+
+              </div>
             </form>
           )}
         </div>
