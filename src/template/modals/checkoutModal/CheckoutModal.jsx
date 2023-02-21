@@ -16,13 +16,15 @@ export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(0);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
-
   const dispatch = useDispatch();
+
+  // CONFIGURACION DE REACT HOOK FORM
 
   const {
     register,
     control,
     formState: { errors },
+    handleSubmit,
   } = useForm({
     defaultValues: {
       cuantity: 0,
@@ -30,10 +32,13 @@ export default function CheckoutModal() {
     },
   });
 
+  // CONFIGURACION DE ESTADO GLOBAL DE REDUX
+
   const modalData = useSelector(
     (state) => state.modals.checkoutModal.dataToProccess
   );
-  //   console.log(modalData);
+
+  // configuracion de icono por defento de la blochain de origien de la nft
 
   const BlockChainIcon = useMemo(() => {
     const blockChainIncon = {
@@ -42,6 +47,12 @@ export default function CheckoutModal() {
 
     return blockChainIncon[blockchainNetwork.polygon];
   }, []);
+
+  // funcion del checkout
+
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
 
   return (
     <WolfyModalLayoutReduxController
@@ -82,7 +93,10 @@ export default function CheckoutModal() {
             <div className="w-100% h-[1px] bg-wolf-gray-dark-1000 my-[10px]"></div>
           </div>
           {stepProcces === 0 && (
-            <form className="bill-checkout-zone px-[15px]">
+            <form
+              className="bill-checkout-zone px-[15px]"
+              onSubmit={handleSubmit(onSubmit)}
+            >
               {false && (
                 <div className="counter-quantity mb-[15px] ">
                   <span className="text-wolf-gray-light-1000 text-[14px]">
