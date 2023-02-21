@@ -116,6 +116,7 @@ export default function NftsCard({ cardData }) {
                     data: {
                       order,
                       nftCover,
+                      nftName,
                       
                     },
                   })

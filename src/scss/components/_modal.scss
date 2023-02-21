@@ -16,7 +16,16 @@
     .wolf-modal-body {
         background-color: theme("colors.wolf-gray-dark.500");
         border-radius   : 16px;
-        border          : 1px solid theme("colors.wolf-gray-light.100");
+        border          : 1px solid theme("colors.wolf-gray-dark.1300");
+        padding         : 15px;
+
+        .title {
+            font-weight: 600;
+            font-size  : 20px;
+        }
+
+      
+
     }
 
 }

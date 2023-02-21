@@ -9,7 +9,7 @@ export default function WolfyModalLayoutReduxController({
   const modalState = useSelector((state) => state.modals[modalController]);
   const dispatch = useDispatch();
 
-  console.log(modalState);
+  // console.log(modalState);
 
   const { blockClose, open } = modalState;
 
@@ -29,6 +29,7 @@ export default function WolfyModalLayoutReduxController({
           onClick={(e) => {
             e.stopPropagation();
           }}
+          className="w-[100%] max-w-[360px]"
         >
           {children}
         </div>
