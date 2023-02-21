@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import PolygonOficialLogo from "../../../components/icons/PolygonOficialLogo";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
 import "./checkout-modal.scss";
@@ -31,6 +32,12 @@ export default function CheckoutModal() {
                 <span className="key">Disponible :</span>
                 <span className="value">1</span>
               </div>
+            </div>
+          </div>
+
+          <div className="wallet-section">
+            <div className="wolf-blockchain-logo">
+              <PolygonOficialLogo />
             </div>
           </div>
         </div>
