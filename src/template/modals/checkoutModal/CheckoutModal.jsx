@@ -1,8 +1,10 @@
 import React from "react";
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import PolygonOficialLogo from "../../../components/icons/PolygonOficialLogo";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
+import { blockchainNetwork } from "../../../helpers/global-constants";
 import "./checkout-modal.scss";
 
 export default function CheckoutModal() {
@@ -10,6 +12,14 @@ export default function CheckoutModal() {
     (state) => state.modals.checkoutModal.dataToProccess
   );
   //   console.log(modalData);
+
+  const BlockChainIcon = useMemo(() => {
+    const blockChainIncon = {
+      [blockchainNetwork.polygon]: PolygonOficialLogo,
+    };
+
+    return blockChainIncon[blockchainNetwork.polygon];
+  }, []);
 
   return (
     <WolfyModalLayoutReduxController
@@ -36,8 +46,15 @@ export default function CheckoutModal() {
           </div>
 
           <div className="wallet-section">
-            <div className="wolf-blockchain-logo">
-              <PolygonOficialLogo />
+            <div></div>
+            <div className="flex items-center ">
+              <div className="wolf-blockchain-logo">
+                <BlockChainIcon />
+              </div>
+              <div className="ml-[15px] wallet-accoutn flex flex-col">
+                <span className="wallet-public-key">0x23b05735...4d64f</span>
+                <span className="blochain-name">Polygon</span>
+              </div>
             </div>
           </div>
         </div>

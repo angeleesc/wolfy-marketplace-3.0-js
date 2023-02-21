@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PolygonOficialLogo({props}) {
+export default function PolygonOficialLogo(props) {
   return (
     <svg
       id="katman_1"

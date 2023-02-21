@@ -56,6 +56,25 @@
     }
 }
 
-.wallet-section{
-    
+.wallet-section {
+    padding: 16px;
+
+    span {
+        font-size: 14px;
+        display  : block;
+        width    : 100%;
+        overflow : hidden;
+        max-width: 180px;
+    }
+
+    .wallet-public-key {
+        color: theme("colors.wolf-gray-light.1100");
+    }
+
+    .blochain-name {
+        color      : theme("colors.wolf-gray-light.2100");
+        font-weight: 700;
+    }
+
+    .wallet-accoutn {}
 }
