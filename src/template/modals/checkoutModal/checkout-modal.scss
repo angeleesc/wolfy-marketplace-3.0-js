@@ -97,16 +97,45 @@
         display            : flex;
         justify-content    : center;
         align-items        : center;
-        color: theme("colors.wolf-gray-light.1100");
+        color              : theme("colors.wolf-gray-light.1100");
 
     }
 
 
     // background-color: red;
+
+}
+
+.bill-checkout-zone {
+
+    .wolft-form-control-label {
+        // background-color: red;
+        color: theme("colors.wolf-gray-light.1400");
+    }
+
     .wolf-form-control-text-input {
         background-color: theme("colors.wolf-gray-dark.400");
         border          : 1px solid theme("colors.wolf-gray-dark.800");
 
+
+    }
+
+    .bill-checkout-item {
+        // background-color: red;
+        display        : flex;
+        justify-content: space-between;
+
+        .bill-key {
+            font-size  : 14px;
+            color      : theme("colors.wolf-gray-light.1000");
+            font-weight: 600;
+        }
+
+        .bill-value {
+            font-size: 14px;
+            color    : theme("colors.wolf-gray-light.1500");
+
+        }
 
     }
 }

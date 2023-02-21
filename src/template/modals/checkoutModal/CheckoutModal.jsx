@@ -80,61 +80,94 @@ export default function CheckoutModal() {
           </div>
           {stepProcces === 0 && (
             <form className="bill-checkout-zone px-[15px]">
-              <span className="text-wolf-gray-light-1000 text-[14px]">
-                Cantidad a comprar *
-              </span>
-              <div className="counter-quantity mb-[15px] ">
-                <Controller
-                  control={control}
-                  name="cuantity"
-                  render={({ field: { onChange, value } }) => (
-                    <button
-                      type="button"
-                      className="counter-btn mr-2"
-                      onClick={() => {
-                        console.log("aumentado");
-                        console.log(value);
-                        onChange(Number(value) + 1);
-                      }}
-                    >
-                      <MdOutlineAddCircle />
-                    </button>
-                  )}
-                />
+              {false && (
+                <div className="counter-quantity mb-[15px] ">
+                  <span className="text-wolf-gray-light-1000 text-[14px]">
+                    Cantidad a comprar *
+                  </span>
+                  <Controller
+                    control={control}
+                    name="cuantity"
+                    render={({ field: { onChange, value } }) => (
+                      <button
+                        type="button"
+                        className="counter-btn mr-2"
+                        onClick={() => {
+                          console.log("aumentado");
+                          console.log(value);
+                          onChange(Number(value) + 1);
+                        }}
+                      >
+                        <MdOutlineAddCircle />
+                      </button>
+                    )}
+                  />
 
-                <Controller
-                  control={control}
-                  name="cuantity"
-                  render={({ field: { onChange, value } }) => (
-                    <WTextFields
-                      id="checkout-quantity"
-                      type="number"
-                      onWheel={preventScroll}
-                      readOnly={isReadMode}
-                      value={value}
-                      onClick={() => {
-                        setIsReadMode(false);
-                        console.log(isReadMode);
-                      }}
-                      onChange={(e) => {
-                        if (!isReadMode) {
-                          console.log("se puede editar");
-                          onChange(e.target.value);
-                          return;
-                        }
-                        console.log("no se puede editar");
-                      }}
-                    />
-                  )}
-                />
+                  <Controller
+                    control={control}
+                    name="cuantity"
+                    render={({ field: { onChange, value } }) => (
+                      <WTextFields
+                        id="checkout-quantity"
+                        type="number"
+                        onWheel={preventScroll}
+                        readOnly={isReadMode}
+                        value={value}
+                        onClick={() => {
+                          setIsReadMode(false);
+                          console.log(isReadMode);
+                        }}
+                        onChange={(e) => {
+                          if (!isReadMode) {
+                            console.log("se puede editar");
+                            onChange(e.target.value);
+                            return;
+                          }
+                          console.log("no se puede editar");
+                        }}
+                        onBlur={() => {
+                          setIsReadMode(true);
+                        }}
+                      />
+                    )}
+                  />
 
-                <button type="button" className="counter-btn ml-2">
-                  <MdOutlineRemoveCircle />
-                </button>
-              </div>
+                  <Controller
+                    control={control}
+                    name="cuantity"
+                    render={({ field: { onChange, value } }) => (
+                      <button
+                        type="button"
+                        className="counter-btn mr-2"
+                        onClick={() => {
+                          console.log("aumentado");
+                          console.log(value);
+                          if (Number(value) - 1 <= 0) return;
+                          onChange(Number(value) - 1);
+                        }}
+                      >
+                        <MdOutlineRemoveCircle />
+                      </button>
+                    )}
+                  />
+                </div>
+              )}
+
+              {true && (
+                <div className="mb-[10px]">
+                  <WTextFields
+                    register={register("bid")}
+                    textLabel={"Puja Minima *"}
+                    placeHolder="Ej: ETH"
+                    id="checkout-bid"
+                    type="number"
+                    onWheel={preventScroll}
+                  />
+                </div>
+              )}
 
               <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
-              <div className="bill-checkout-item">
+              <div className="bill-checkout-item mt-[5px]">
                 <span className="bill-key">Precio</span>{" "}
                 <span className="bill-value">0.005 ETH</span>
               </div>
@@ -142,7 +175,7 @@ export default function CheckoutModal() {
                 <span className="bill-key">Cantidad</span>{" "}
                 <span className="bill-value">1</span>
               </div>
-              <div className="bill-checkout-item">
+              <div className="bill-checkout-item mb-[5px] ">
                 <span className="bill-key">Comision del la platafomar</span>{" "}
                 <span className="bill-value">0</span>
               </div>
