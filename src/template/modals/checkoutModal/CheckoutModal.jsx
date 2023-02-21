@@ -7,10 +7,25 @@ import WolfyModalLayoutReduxController from "../../../components/layout/WolfyMod
 import { preventScroll } from "../../../controllers/domController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
 import { blockchainNetwork } from "../../../helpers/global-constants";
+import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
+import { useForm, Controller } from "react-hook-form";
 import "./checkout-modal.scss";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(0);
+  // const [cuantityCounter, setCuantityCounter] = useState(0)
+  const [isReadMode, setIsReadMode] = useState(true);
+
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      cuantity: 0,
+      bid: 0,
+    },
+  });
 
   const modalData = useSelector(
     (state) => state.modals.checkoutModal.dataToProccess
@@ -64,15 +79,58 @@ export default function CheckoutModal() {
             <div className="w-100% h-[1px] bg-wolf-gray-dark-1000 my-[10px]"></div>
           </div>
           {stepProcces === 0 && (
-            <form className="bill-checkout-zone">
+            <form className="bill-checkout-zone px-[15px]">
+              <span className="text-wolf-gray-light-1000 text-[14px]">
+                Cantidad a comprar *
+              </span>
               <div className="counter-quantity mb-[15px] ">
-                <button className="counter-btn" ></button>
-                <WTextFields
-                  id="checkout-quantity"
-                  type="number"
-                  onWheel={preventScroll}
-                  
+                <Controller
+                  control={control}
+                  name="cuantity"
+                  render={({ field: { onChange, value } }) => (
+                    <button
+                      type="button"
+                      className="counter-btn mr-2"
+                      onClick={() => {
+                        console.log("aumentado");
+                        console.log(value);
+                        onChange(Number(value) + 1);
+                      }}
+                    >
+                      <MdOutlineAddCircle />
+                    </button>
+                  )}
                 />
+
+                <Controller
+                  control={control}
+                  name="cuantity"
+                  render={({ field: { onChange, value } }) => (
+                    <WTextFields
+                      id="checkout-quantity"
+                      type="number"
+                      onWheel={preventScroll}
+                      readOnly={isReadMode}
+                      value={value}
+                      onClick={() => {
+                        setIsReadMode(false);
+                        console.log(isReadMode);
+                      }}
+                      onChange={(e) => {
+                        if (!isReadMode) {
+                          console.log("se puede editar");
+                          onChange(e.target.value);
+                          return;
+                        }
+                        console.log("no se puede editar");
+                      }}
+                    />
+                  )}
+                />
+
+                <button type="button" className="counter-btn ml-2">
+                  <MdOutlineRemoveCircle />
+                </button>
               </div>
 
               <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>

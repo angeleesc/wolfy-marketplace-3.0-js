@@ -85,6 +85,22 @@
 }
 
 .counter-quantity {
+    display    : flex;
+    align-items: center;
+
+
+    .counter-btn {
+        width              : 30px;
+        height             : 30px;
+        // background-color: red;
+        font-size          : 25px;
+        display            : flex;
+        justify-content    : center;
+        align-items        : center;
+        color: theme("colors.wolf-gray-light.1100");
+
+    }
+
 
     // background-color: red;
     .wolf-form-control-text-input {
