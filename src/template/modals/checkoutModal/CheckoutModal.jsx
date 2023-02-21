@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import PolygonOficialLogo from "../../../components/icons/PolygonOficialLogo";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
@@ -9,12 +9,15 @@ import { keyModalSate } from "../../../features/modals/modalsSlice";
 import { blockchainNetwork } from "../../../helpers/global-constants";
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
+import { closeModal } from "../../../features/modals/modalsSlice";
 import "./checkout-modal.scss";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(0);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
+
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -183,11 +186,24 @@ export default function CheckoutModal() {
 
               <div className="mt-[10px]">
                 <div>
-                  <button className="wolf-buttom wolf-buttom-primary w-[100%]">
+                  <button
+                    type="submit"
+                    className="wolf-buttom wolf-buttom-primary w-[100%]"
+                  >
                     {true ? "hacer una puja" : "Comprar Ahora"}
                   </button>
                   <div className="mt-[10px]">
-                    <button className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200">
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.checkoutModal,
+                          })
+                        );
+                      }}
+                    >
                       Cancelar
                     </button>
                   </div>
