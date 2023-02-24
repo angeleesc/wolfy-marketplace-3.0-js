@@ -13,7 +13,7 @@ import { closeModal } from "../../../features/modals/modalsSlice";
 import "./checkout-modal.scss";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(-1);
+  const [stepProcces, setStepProcces] = useState(-2);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ export default function CheckoutModal() {
               <div></div>
               <div className="flex items-center">
                 <div className="wolf-blockchain-logo">
-                  <div className="uncenected-signer" ></div>
+                  <div className="uncenected-signer"></div>
                   <BlockChainIcon />
                   <span className=""></span>
                 </div>
@@ -237,6 +237,38 @@ export default function CheckoutModal() {
                     Lo siento pero usted tiene saldo insuficiente
                   </span>
                   <div className="mt-[10px]">
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.checkoutModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              )
+            }
+            {
+              // caso cuando no tiene saldo suficiente
+              stepProcces === -2 && (
+                <div className="insufficient-balance">
+                  <span className="text-wollf-red-200 text-[14px]">
+                    Lo siento no esta conectado a la blockchain inorrecta
+                  </span>
+                  <div className="mt-[10px]">
+                    <button
+                      type="button"
+                      className="wolf-buttom wolf-buttom-primary w-[100%] mb-2"
+                    >
+                     Cambiar de blockchain
+                    </button>
+
                     <button
                       type="button"
                       className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
