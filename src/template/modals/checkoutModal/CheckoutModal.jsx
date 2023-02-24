@@ -84,6 +84,7 @@ export default function CheckoutModal() {
               <div></div>
               <div className="flex items-center">
                 <div className="wolf-blockchain-logo">
+                  <div className="uncenected-signer" ></div>
                   <BlockChainIcon />
                   <span className=""></span>
                 </div>

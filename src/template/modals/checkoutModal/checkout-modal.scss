@@ -82,6 +82,26 @@
 .wolf-blockchain-logo {
     position: relative;
 
+    .conected-siggner,
+    .uncenected-signer {
+        position     : absolute;
+        width        : 16px;
+        height       : 16px;
+        border-radius: 50%;
+        right        : 0;
+        top          : 0;
+    }
+
+
+    .conected-siggner {
+        background-color: theme("colors.wolf-green.500");
+
+    }
+
+    .uncenected-signer {
+        background-color: theme("colors.wollf-red.500");
+    }
+
 }
 
 .counter-quantity {
@@ -142,5 +162,5 @@
 
 .insufficient-balance {
     // background-color: blue;
-    text-align      : center;
+    text-align: center;
 }
