@@ -14,7 +14,7 @@ import "./checkout-modal.scss";
 import { Skeleton } from "@mui/material";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(1);
+  const [stepProcces, setStepProcces] = useState(2);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
   const dispatch = useDispatch();
@@ -292,7 +292,15 @@ export default function CheckoutModal() {
               <div className="procesing-step px-[15px] w-[100%] flex flex-col justify-center items-center">
                 <h3>Procesando</h3>
                 <Skeleton animation="wave" width={"100%"} height={40} />
-                <span className="text-[14px] text-wolf-gray-light-800" >Esto puede tardar unos minutos</span>
+                <span className="text-[14px] text-wolf-gray-light-800">
+                  Esto puede tardar unos minutos
+                </span>
+              </div>
+            )}
+
+            {stepProcces === 2 && (
+              <div className="p-2 fail-process">
+                <h3>Ocurrio un Error</h3>
               </div>
             )}
           </div>
