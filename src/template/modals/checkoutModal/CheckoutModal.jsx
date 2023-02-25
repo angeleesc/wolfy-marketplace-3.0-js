@@ -11,9 +11,10 @@ import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
 import { closeModal } from "../../../features/modals/modalsSlice";
 import "./checkout-modal.scss";
+import { Skeleton } from "@mui/material";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(-2);
+  const [stepProcces, setStepProcces] = useState(1);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
   const dispatch = useDispatch();
@@ -258,7 +259,7 @@ export default function CheckoutModal() {
               // caso cuando no tiene saldo suficiente
               stepProcces === -2 && (
                 <div className="insufficient-balance">
-                  <span className="text-wollf-red-200 text-[14px]">
+                  <span className="text-wollf-red-200 text-[14px] font-semibold ">
                     Lo siento no esta conectado a la blockchain inorrecta
                   </span>
                   <div className="mt-[10px]">
@@ -266,7 +267,7 @@ export default function CheckoutModal() {
                       type="button"
                       className="wolf-buttom wolf-buttom-primary w-[100%] mb-2"
                     >
-                     Cambiar de blockchain
+                      Cambiar de blockchain
                     </button>
 
                     <button
@@ -286,6 +287,14 @@ export default function CheckoutModal() {
                 </div>
               )
             }
+
+            {stepProcces === 1 && (
+              <div className="procesing-step px-[15px] w-[100%] flex flex-col justify-center items-center">
+                <h3>Procesando</h3>
+                <Skeleton animation="wave" width={"100%"} height={40} />
+                <span className="text-[14px] text-wolf-gray-light-800" >Esto puede tardar unos minutos</span>
+              </div>
+            )}
           </div>
         )
       }

@@ -164,3 +164,20 @@
     // background-color: blue;
     text-align: center;
 }
+
+.procesing-step {
+
+    // background-color: red;
+    .MuiSkeleton-root {
+        // background-color: red;
+        background-color: theme('colors.wolf-blue-purple.600');
+
+        &::after {
+            background: rgb(79,86,224);
+            background: linear-gradient(90deg, rgba(79,86,224,1) 0%, rgba(59,67,221,1) 50%, rgba(79,86,224,1) 100%);
+            width             : 100%;
+            animation-duration: 3s;
+        }
+
+    }
+}
