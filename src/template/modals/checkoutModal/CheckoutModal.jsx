@@ -13,9 +13,10 @@ import { closeModal } from "../../../features/modals/modalsSlice";
 import "./checkout-modal.scss";
 import { Skeleton } from "@mui/material";
 import WolfSad from "../../../components/icons/WolfSad";
+import WolfHappy from "../../../components/icons/WolfHappy";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(2);
+  const [stepProcces, setStepProcces] = useState(3);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
   const dispatch = useDispatch();
@@ -319,7 +320,7 @@ export default function CheckoutModal() {
                   >
                     Intentar nuevamente
                   </button>
-                  <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1200 my-[15px]"  ></div>
+                  <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1200 my-[15px]"></div>
                   <div className="mt-[10px]">
                     <button
                       type="button"
@@ -336,6 +337,25 @@ export default function CheckoutModal() {
                     </button>
                   </div>
                 </div>
+              </div>
+            )}
+
+            {stepProcces === 3 && (
+              <div className="succes-proccess">
+                <h3>Operacion finalizada correctamente</h3>
+                <WolfHappy />
+                <span className="text-[14px] text-wolf-gray-light-800">
+                  Usted es ahoara el due;o de su nueva nft
+                </span>
+                <span className="text-[14px] text-wolf-gray-light-800">
+                  Para saber mas puede hacer click de la operacion
+                </span>
+                
+                <div className="mt-[10px] flex flex-col" >
+                  <span className="text-[14px] text-wolf-gray-light-2200 font-semibold">Id de la Trasancion</span>
+                  <span className="" >0xea4e613b...0365b31912</span>
+                </div>
+
               </div>
             )}
           </div>
