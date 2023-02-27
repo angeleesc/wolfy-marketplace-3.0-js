@@ -3,7 +3,7 @@
 
     width    : 100%;
     min-width: 320px;
-    max-width: 400px;
+    max-width: 320px;
 
     .collection-card-body {
         background-color: theme("colors.wolf-gray-dark.400");
@@ -115,6 +115,12 @@
                 font-size: 14px;
                 font-weight: 700;
                 margin-top: 2px;
+            }
+
+            .colection-basic-spech{
+                display: flex;
+                width: 100%;
+                
             }
         }
     }

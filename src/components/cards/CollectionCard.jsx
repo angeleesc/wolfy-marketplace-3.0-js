@@ -16,6 +16,25 @@ export default function CollectionCard({ collectionData }) {
     sampleImgs,
   } = collectionData;
 
+  let itemUi;
+
+  switch (true) {
+    case item < 10000:
+      itemUi = item;
+      break;
+
+      case item >= 10000 && item <= 999999:
+        itemUi = `${Number(Number(item/1000).toFixed(2))}k`;
+        break;
+
+    case item >= 1000000: 
+    itemUi = `${Number(Number(item/1000000).toFixed(2))}M`
+
+
+    default:
+      break;
+  }
+
   return (
     <div className="collection-card">
       <div className="collection-card-body">
@@ -52,6 +71,12 @@ export default function CollectionCard({ collectionData }) {
         </div>
         <div className="info-data">
           <h4 className="colection-tite">{collectionName}</h4>
+        </div>
+        <div className="colection-basic-spech">
+          <div className="collection-atribute">
+            <span className="key">Nfts</span>
+            <span className="value">{itemUi}</span>
+          </div>
         </div>
       </div>
     </div>

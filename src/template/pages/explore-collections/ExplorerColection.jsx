@@ -110,7 +110,7 @@ const tempJson = [
   {
     collectionName: "CODE:0 - Genesis",
     collectionAuthor: "angelxd",
-    item: 500,
+    item: 5000000,
     floorPrice: 0.78,
     onSale: 20,
     owners: 260,
