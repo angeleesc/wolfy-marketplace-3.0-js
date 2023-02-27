@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
+import CollectionCard from "../cards/CollectionCard";
 
-export default function CollectionsCardsList({collectionList}) {
+export default function CollectionsCardsList({ collectionList }) {
   return (
-    <div className='explorer-collections-container' >
-        {
-            collectionList.map((collection,i)=>{
-                return <div className=''  key={"colection-nft-wolf-"+i}>
-
-                    
-                </div>
-            })
-        }
+    <div className="explorer-collections-container">
+      {collectionList.map((collectionData, i) => {
+        return (
+          <div className="collection-list-item" key={"colection-nft-wolf-" + i}>
+            <CollectionCard collectionData={collectionData} />
+          </div>
+        );
+      })}
     </div>
-  )
+  );
 }
