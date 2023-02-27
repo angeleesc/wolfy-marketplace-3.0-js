@@ -1,0 +1,88 @@
+.collection-card {
+    // background-color: red;
+
+    width    : 100%;
+    min-width: 320px;
+    max-width: 320px;
+
+    .collection-card-body {
+        background-color: theme("colors.wolf-gray-dark.400");
+        padding         : 15px;
+        border-radius   : 20px;
+        border          : 1px solid theme("colors.wolf-gray-dark.1200");
+        height          : 310px;
+
+        .multimedia-data {
+            width              : 100%;
+            height             : 220px;
+            background-color   : theme("colors.wolf-gray-dark.300");
+            border-radius      : 8px;
+            display            : flex;
+            // overflow        : hidden;
+
+            .img-zone-1 {
+                width           : 45%;
+                height          : 100%;
+                background-color: theme("colors.wolf-blue.100");
+                flex-grow       : 1.4;
+                border-radius   : 5px;
+
+                img {
+                    width        : 100%;
+                    height       : 100%;
+                    object-fit   : cover;
+                    border-radius: 5px;
+                }
+            }
+
+            .img-zone-2 {
+                // width           : 100%;
+                width         : 55%;
+                height        : 100%;
+                border-radius : 5px;
+                flex-grow     : 2;
+                display       : flex;
+                flex-direction: column;
+
+                .img-zone-21 {
+                    // background-color: theme("colors.wolf-blue.200");
+                    width           : 100%;
+                    height          : 80px;
+                    border-radius   : 5px;
+                    display         : flex;
+
+                    .img-zone-211,
+                    .img-zone-212 {
+                        flex-grow: 1;
+
+                        img {
+                            width        : 100%;
+                            height       : 100%;
+                            object-fit   : cover;
+                            border-radius: 5px;
+                        }
+                    }
+
+                }
+
+                .img-zone-22 {
+                    background-color: theme("colors.wolf-blue.300");
+                    width           : 100%;
+                    border-radius   : 5px;
+                    height          : 132px;
+
+                    img {
+                        width        : 100%;
+                        height       : 100%;
+                        object-fit   : cover;
+                        border-radius: 5px;
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+}
