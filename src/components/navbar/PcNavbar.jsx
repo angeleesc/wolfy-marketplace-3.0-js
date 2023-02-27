@@ -49,7 +49,7 @@ export default function PcNavbar() {
                 <div className="explorer-option">
                   <ul>
                     <li>
-                      <Link to="/">
+                      <Link to={staticRoutes.exporersNfts}>
                         {
                           dropMenuSection.exporeOptionTextUi.dorpMenuOptions
                             .NftsTextUi
@@ -57,7 +57,7 @@ export default function PcNavbar() {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/">
+                      <Link to={staticRoutes.exporersColections}>
                         {
                           dropMenuSection.exporeOptionTextUi.dorpMenuOptions
                             .CollectionTextUi
@@ -81,9 +81,9 @@ export default function PcNavbar() {
           <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
               {/* <WolfTooltip title="Buscar"> */}
-                {/* <button> */}
-                <FiSearch />
-                {/* </button> */}
+              {/* <button> */}
+              <FiSearch />
+              {/* </button> */}
               {/* </WolfTooltip> */}
             </Link>
           </li>
@@ -100,9 +100,11 @@ export default function PcNavbar() {
             >
               <FiPlus />
             </Link>
-           { createNftDrop &&  <div className="wolf-link-toooltip-body">
-              <span>Crear Nueva Nft</span>
-            </div>}
+            {createNftDrop && (
+              <div className="wolf-link-toooltip-body">
+                <span>Crear Nueva Nft</span>
+              </div>
+            )}
           </li>
           <li className="li-item">
             <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
