@@ -1,4 +1,15 @@
 .explorer-collections-container {
     display  : flex;
     flex-wrap: wrap;
+
+    .collection-list-item {
+        background-color: red;
+        flex-grow      : 1;
+        max-width      : 500px;
+        min-width      : 200px;
+        display        : flex;
+        justify-content: center;
+        margin         : 8px;
+    }
+
 }

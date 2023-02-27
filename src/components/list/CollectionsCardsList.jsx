@@ -1,5 +1,6 @@
 import React from "react";
 import CollectionCard from "../cards/CollectionCard";
+import "./collections-list.scss"
 
 export default function CollectionsCardsList({ collectionList }) {
   return (
