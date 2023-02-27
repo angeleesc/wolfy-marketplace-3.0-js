@@ -16,20 +16,50 @@ export default function CollectionCard({ collectionData }) {
     sampleImgs,
   } = collectionData;
 
-  let itemUi;
+  let itemUi, onSaleUi, ownersUi;
 
   switch (true) {
     case item < 10000:
       itemUi = item;
       break;
 
-      case item >= 10000 && item <= 999999:
-        itemUi = `${Number(Number(item/1000).toFixed(2))}k`;
-        break;
+    case item >= 10000 && item <= 999999:
+      itemUi = `${Number(Number(item / 1000).toFixed(2))}k`;
+      break;
 
-    case item >= 1000000: 
-    itemUi = `${Number(Number(item/1000000).toFixed(2))}M`
+    case item >= 1000000:
+      itemUi = `${Number(Number(item / 1000000).toFixed(2))}M`;
 
+    default:
+      break;
+  }
+
+  switch (true) {
+    case owners < 10000:
+      ownersUi = owners;
+      break;
+
+    case owners >= 10000 && owners <= 999999:
+      ownersUi = `${Number(Number(owners / 1000).toFixed(2))}k`;
+      break;
+
+    case owners >= 1000000:
+      ownersUi = `${Number(Number(owners / 1000000).toFixed(2))}M`;
+
+    default:
+      break;
+  }
+  switch (true) {
+    case onSale < 10000:
+      onSaleUi = onSale;
+      break;
+
+    case onSale >= 10000 && onSale <= 999999:
+      onSaleUi = `${Number(Number(onSale / 1000).toFixed(2))}k`;
+      break;
+
+    case onSale >= 1000000:
+      onSaleUi = `${Number(Number(onSale / 1000000).toFixed(2))}M`;
 
     default:
       break;
@@ -71,11 +101,23 @@ export default function CollectionCard({ collectionData }) {
         </div>
         <div className="info-data">
           <h4 className="colection-tite">{collectionName}</h4>
-        </div>
-        <div className="colection-basic-spech">
-          <div className="collection-atribute">
-            <span className="key">Nfts</span>
-            <span className="value">{itemUi}</span>
+          <div className="colection-basic-spech">
+            <div className="collection-atribute">
+              <span className="key">Nfts</span>
+              <span className="value">{itemUi}</span>
+            </div>
+            <div className="collection-atribute">
+              <span className="key">Dueños</span>
+              <span className="value">{ownersUi}</span>
+            </div>
+            <div className="collection-atribute">
+              <span className="key">En venta</span>
+              <span className="value">{itemUi}</span>
+            </div>
+            <div className="collection-atribute">
+              <span className="key">Desde</span>
+              <span className="value">{floorPrice}ETH</span>
+            </div>
           </div>
         </div>
       </div>

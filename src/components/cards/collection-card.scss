@@ -3,14 +3,14 @@
 
     width    : 100%;
     min-width: 320px;
-    max-width: 320px;
+    max-width: 400px;
 
     .collection-card-body {
         background-color: theme("colors.wolf-gray-dark.400");
         padding         : 15px;
         border-radius   : 20px;
         border          : 1px solid theme("colors.wolf-gray-dark.1200");
-        height          : 310px;
+        height          : 320px;
 
 
         .avatar-zone {
@@ -111,16 +111,42 @@
 
             .colection-tite {
                 // background-color: red;
-                padding-left    : 64px;
-                font-size: 14px;
-                font-weight: 700;
-                margin-top: 2px;
+                padding-left: 64px;
+                font-size   : 14px;
+                font-weight : 700;
+                margin-top  : 2px;
             }
 
-            .colection-basic-spech{
-                display: flex;
-                width: 100%;
-                
+            .collection-atribute {
+                display            : flex;
+                flex-direction     : column;
+                // background-color: red;
+                justify-content    : center;
+                align-items        : center;
+
+                .key {
+                    // background-color: red;
+                    font-size  : 14px;
+                    line-height: 14px;
+                    color      : theme("colors.wolf-gray-light.1000");
+                    font-weight: 600;
+                }
+
+                .value {
+                    font-size  : 14px;
+                    line-height: 16px;
+                    margin-top : 3px;
+                    color      : theme("colors.wolf-gray-light.1800");
+                }
+
+            }
+
+            .colection-basic-spech {
+                margin-top     : 10px;
+                display        : flex;
+                width          : 100%;
+                justify-content: space-between;
+
             }
         }
     }
