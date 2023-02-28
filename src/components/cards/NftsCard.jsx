@@ -92,7 +92,7 @@ export default function NftsCard({ cardData }) {
             </Link>
           </div>
 
-          <Link to={staticRoutes.tokenInfoData(order)}>
+          <Link to={staticRoutes.tokenInfoData(order)} >
             <div className="collection-titel-zone">
               <Link to={staticRoutes.colectionInfoData(colection)}>
                 {colectionName ? colectionName : colection}
