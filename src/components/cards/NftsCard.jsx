@@ -59,12 +59,13 @@ export default function NftsCard({ cardData }) {
           <div className="blockchain-logo">
             <OptimismLogon />
           </div>
-          <img
-            className="wolf-main-multimedia-data"
-            src={nftCover}
-            alt={"nft-cover-carf"}
-          />
-
+          <Link to={staticRoutes.tokenInfoData(order)}>
+            <img
+              className="wolf-main-multimedia-data"
+              src={nftCover}
+              alt={"nft-cover-carf"}
+            />
+          </Link>
           <div className="face-avatar-zone">
             <WolfTooltip title="nombre xd">
               <WolfTooltipNotButton>
@@ -79,37 +80,45 @@ export default function NftsCard({ cardData }) {
               </WolfTooltipNotButton>
             </WolfTooltip>
 
-            <div className="avatar-img ">
-              <div className="bg-gradient"></div>
-              {collectionFace ? (
-                <img src={collectionFace} alt={"colection-" + colection} />
-              ) : (
-                <div className="hash-zone"></div>
-              )}
-            </div>
-          </div>
-
-          <div className="collection-titel-zone">
             <Link to={staticRoutes.colectionInfoData(colection)}>
-              {colectionName ? colectionName : colection}
+              <div className="avatar-img ">
+                <div className="bg-gradient"></div>
+                {collectionFace ? (
+                  <img src={collectionFace} alt={"colection-" + colection} />
+                ) : (
+                  <div className="hash-zone"></div>
+                )}
+              </div>
             </Link>
           </div>
+
+          <Link to={staticRoutes.tokenInfoData(order)}>
+            <div className="collection-titel-zone">
+              <Link to={staticRoutes.colectionInfoData(colection)}>
+                {colectionName ? colectionName : colection}
+              </Link>
+            </div>
+          </Link>
         </div>
         <div className="info-area">
-          <h3 className="nft-title">{nftName}</h3>
-          <div className="price-area">
-            {/* <span className="tag-label">{saleMehodUi}</span> */}
-            <h3 className="price w-[100%]">
-              <span> {price} ETH </span>
-              <div className="cuantity flex ">
-                {<MdContentCopy />} <span>{`${sale}`}</span>
-              </div>
-            </h3>
-          </div>
+          <Link to={staticRoutes.tokenInfoData(order)}>
+            <h3 className="nft-title">{nftName}</h3>
+            <div className="price-area">
+              {/* <span className="tag-label">{saleMehodUi}</span> */}
+              <h3 className="price w-[100%]">
+                <span> {price} ETH </span>
+                <div className="cuantity flex ">
+                  {<MdContentCopy />} <span>{`${sale}`}</span>
+                </div>
+              </h3>
+            </div>
+          </Link>
+
           <div className="wolf-btn-area">
             <button
               className="go-checkout"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 dispatch(
                   openModal({
                     modal: keyModalSate.checkoutModal,
@@ -117,7 +126,6 @@ export default function NftsCard({ cardData }) {
                       order,
                       nftCover,
                       nftName,
-                      
                     },
                   })
                 );
