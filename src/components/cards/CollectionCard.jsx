@@ -74,6 +74,10 @@ export default function CollectionCard({ collectionData }) {
             <div className="avatar-zone">
               <div className="avatar-item mb-2">
                 <img src={authorAvartar} alt="authro-avatar" />
+                <div className="avatar-tooltips">
+                  <span className="key">Autor</span>
+                  <span className="value">{collectionAuthor}</span>
+                </div>
               </div>
               <div className="avatar-item">
                 <img src={coverImg} alt="cover-collection" />
