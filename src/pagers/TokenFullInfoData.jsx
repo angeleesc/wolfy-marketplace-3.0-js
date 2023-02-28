@@ -1,90 +1,128 @@
 import React from "react";
 import TokentFullSpechData from "../template/pages/item-details/TokentFullSpechData";
 
-const tempJson = {
-  name: "CloneX #4137",
-  description:
-    "🧬 CLONE X 🧬\n\n20,000 next-gen Avatars, by RTFKT and Takashi Murakami 🌸\n\nIf you own a clone with even one Murakami trait please read the terms regarding third-party content here: https://rtfkt.com/legal-2B.\n\nYou are not entitled to a commercial license if you own an avatar with any traits created by Murakami.",
-  attributes: [
-    {
-      trait_type: "DNA",
-      value: "Robot",
-    },
-    {
-      trait_type: "Eye Color",
-      value: "WIDE-OPEN",
-    },
-    {
-      trait_type: "Hair",
-      value: "PNK MoHWK",
-    },
-    {
-      trait_type: "Jewelry",
-      value: "GLD CBLE",
-    },
-    {
-      trait_type: "Clothing",
-      value: "IRI BLW UP JCKT",
-    },
-    {
-      trait_type: "Eyewear",
-      value: "OTT Future Vision",
-    },
-    {
-      trait_type: "Type",
-      value: "MURAKAMI DRIP",
-    },
-  ],
-  image: "https://clonex-assets.rtfkt.com/images/18342.png",
-};
+// caso de una nf normal
 
-const tempJson2 = {
-  "animation_url": "https://champions.io/pets/nfts/art/20191/nft.mp4",
-  "attributes": [
-  {
-  "trait_type": "Edition",
-  "value": "Holders Bonus"
+const temjson1 = {
+  orderId: "1",
+  price: 0.006,
+  ehterPrice: "6000000000000000",
+  nftAddres: "0x32973908FaeE0Bf825A343000fE412ebE56F802A",
+  quantity: 1,
+  tokenID: [1],
+
+  collectionData: {
+    collectionName: "Pixelmon - Generation 1",
+    collectionAuthor: "Pixelmon-Vault",
+    item: 10000,
+    floorPrice: 0.0045,
+    onSale: 25,
+    owners: 2864,
+    isColectionVerified: true,
+    isAuthorVerified: true,
+
+    authorAvartar:
+      "https://i.seadn.io/gcs/files/281a2fe422ac5614e9d32fad1f93b09d.png?auto=format&w=256",
+    coverImg:
+      "https://i.seadn.io/gcs/files/281a2fe422ac5614e9d32fad1f93b09d.png?auto=format&w=256",
+    sampleImgs: [
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Purralysis.jpg",
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Moler.jpg",
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Hazerd.jpg",
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Spout.jpg",
+    ],
   },
-  {
-  "trait_type": "House Banner",
-  "value": "🌊   Water"
+
+  metadata: {
+    name: "Pixelmon #1680",
+    image_url:
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Spout.jpg",
+    external_url: "https://pixelmon.club/",
+    reward_bitmask: 6,
+    attributes: [
+      {
+        trait_type: "Species",
+        value: "Spout",
+      },
+      {
+        trait_type: "Origin",
+        value: "Water",
+      },
+      {
+        trait_type: "Rarity",
+        value: "Common",
+      },
+      {
+        trait_type: "HP",
+        value: 23,
+      },
+      {
+        trait_type: "Attack",
+        value: 35,
+      },
+      {
+        trait_type: "Defense",
+        value: 29,
+      },
+      {
+        trait_type: "Special Attack",
+        value: 43,
+      },
+      {
+        trait_type: "Special Defense",
+        value: 32,
+      },
+      {
+        trait_type: "Affinity",
+        value: 100,
+      },
+      {
+        display_type: "boost_number",
+        trait_type: "Luck",
+        value: 1,
+      },
+      {
+        display_type: "boost_percentage",
+        trait_type: "Reward Multiplier",
+        value: 0,
+      },
+      {
+        trait_type: "Level",
+        value: 5,
+      },
+      {
+        trait_type: "Unknown",
+        value: 14,
+      },
+      {
+        trait_type: "Trainer Claimed",
+        value: "Yes",
+      },
+      {
+        trait_type: "Generation",
+        display_type: "number",
+        value: 1,
+      },
+      {
+        trait_type: "Evolution",
+        display_type: "number",
+        value: 1,
+      },
+      {
+        trait_type: "Hatched On",
+        display_type: "date",
+        value: 1645990096,
+      },
+    ],
+    animation_url:
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/6/Spout.mp4",
   },
-  {
-  "trait_type": "Family",
-  "value": "Xiva"
-  },
-  {
-  "trait_type": "Personality",
-  "value": "Active"
-  },
-  {
-  "trait_type": "Favorite Toy",
-  "value": "Whisperer Ear"
-  },
-  {
-  "trait_type": "Favorite Family",
-  "value": "Fenrir"
-  },
-  {
-  "trait_type": "Favorite Food",
-  "value": "🐟  Fish"
-  }
-  ],
-  "background_color": "ffffff",
-  "description": "On the first day of summer, all of Massina gathers to celebrate the Xiva Festival, in honor of these mischievous fire spirits that can be found deep within the underground pits of Mt. Volcanus. Only the boldest in Massina have access to this pet.",
-  "external_url": "https://champions.io/pet-details/20191",
-  "image": "https://champions.io/pets/nfts/art/20191/pfp.png",
-  "media": {
-  "nft": "https://champions.io/pets/nfts/art/20191/nft.mp4",
-  "pfp": "https://champions.io/pets/nfts/art/20191/pfp.png"
-  },
-  "name": "Pet #20191"
-  }
+};
 
 export default function TokenFullInfoData() {
   return (
     <>
-      <TokentFullSpechData />
+      <TokentFullSpechData tokenData={temjson1} />
     </>
   );
 }
