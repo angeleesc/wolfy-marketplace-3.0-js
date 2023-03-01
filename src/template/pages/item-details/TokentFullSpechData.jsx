@@ -1,4 +1,5 @@
 import React from "react";
+import "./token-data.scss";
 
 const temjson1 = {
   orderId: "1",
@@ -113,17 +114,31 @@ const temjson1 = {
     ],
     animation_url:
       "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/6/Spout.mp4",
+
+    description:
+      "es un caballo digital con poderes de caballo de agua de edicion limitada tienes suerte de ver uno XD",
   },
 };
 
 export default function TokentFullSpechData() {
+  const nftFullData = temjson1;
+
   return (
-    <div className="pt-[80px] px-[30px] flex">
-      <div className="w-[100%] md:w-[50%] " >
-        <h3>Multimedia</h3>
+    <div className="pt-[80px] px-[30px] flex flex-col md:flex-row wolf-item-data justify-center  ">
+      <div className="w-[100%] md:w-[50%] flex justify-center">
+        <h3 className="max-w-[500px] w-[100%]">Multimedia</h3>
       </div>
-      <div className="w-[100%] md:w-[50%]" >
-        <h3>secion de collecion</h3>
+      <div className="w-[100%] md:w-[50%] flex justify-center">
+        <div className="info-data-zone">
+          <h2 className="nft-title">{nftFullData.metadata.name}</h2>
+          {nftFullData.metadata.description && (
+            <article className="mt-[12px]">
+              <p className="text-nft-description">
+                {nftFullData.metadata.description}
+              </p>
+            </article>
+          )}
+        </div>
       </div>
     </div>
   );
