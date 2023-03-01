@@ -1,22 +1,15 @@
-.wolf-item-data {
+.wolf-item-data-contianer {
+
+    margin-top: 80px;
+    padding   : 0 30px;
+    display   : flex;
+    flex-wrap : wrap;
 
     // background-color: rebeccapurple;
-    .info-data-zone {
-        // background-color: purple;
-        max-width: 500px;
+    .wolf-item-data-item {
+        // background-color   : red;
+        // width           : 50%;
+        height: 100%;
     }
-
-
-    .nft-title{
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-    .text-nft-description {
-        color      : theme("colors.wolf-gray-light.1500");
-        font-size  : 14px;
-        font-weight: 500;
-    }
-
 
 }
