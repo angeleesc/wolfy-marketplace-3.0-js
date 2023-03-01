@@ -1,6 +1,8 @@
 import React from "react";
 import "./token-data.scss";
 import AtributesDisplay from "../../../components/attributes-display/AtributesDisplay";
+import { Link } from "react-router-dom";
+import { staticRoutes } from "../../../helpers/static-routes";
 
 const temjson1 = {
   orderId: "1",
@@ -126,11 +128,43 @@ export default function TokentFullSpechData() {
 
   return (
     <div className="wolf-item-data-contianer">
-      <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%]">
+      <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
         <h3>Imagenes</h3>
       </div>
-      <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
-        <h3>Zona data</h3>
+      <div className="wolf-item-data-item h-[200px]  w-[100%] min-[700px]:w-[50%]">
+        <div className="wolf-info-section-data">
+          <div className="colection-father-zone">
+            <Link
+              to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
+              className="title-zone"
+            >
+              <div className="avatar-zone">
+                <img
+                  src={nftFullData.collectionData.coverImg}
+                  alt="colection-cover"
+                />
+              </div>
+              <div className="text-zone">
+                <h3>{nftFullData.collectionData.collectionName}</h3>
+              </div>
+            </Link>
+          </div>
+          <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
+          {nftFullData.metadata.description && (
+            <div className="info-data mt-[15px] ">
+              <p>{nftFullData.metadata.description}</p>
+            </div>
+          )}
+
+          {nftFullData.metadata.attributes && (
+            <>
+              <h3 className="mt-2 font-semibold text-wolf-gray-light-1600">
+                Atributos
+              </h3>
+              <AtributesDisplay attributes={nftFullData.metadata.attributes} />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
