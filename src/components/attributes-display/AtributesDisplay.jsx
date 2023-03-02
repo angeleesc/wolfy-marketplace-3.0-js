@@ -1,5 +1,11 @@
 import React from "react";
 import WLinearProgressBar from "../progres/WLinearProgressBar";
+import {
+  Box,
+  CircularProgress,
+  Typography,
+  circularProgressClasses,
+} from "@mui/material";
 
 export default function AtributesDisplay({ attributes, trayCollectionDef }) {
   // definimos el tipo de pantalllas
@@ -128,13 +134,31 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
       <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
         Estadisticas
       </h3>
+      <div className="number-atributes-container mb-[20px]">
+        {numberAtributes.map((atribute, i) => {
+          return (
+            <div className="number-atribute-item">
+              <span className="atribute-n-key">
+                {atribute["trait_type"] ? atribute["trait_type"] : "Propiedad"}
+              </span>
+              <span className="atribute-n-value">
+                {atribute["value"] ? atribute["value"] : "Valor ?"}
+                {atribute["range"] && (
+                  <span> {` de ${atribute["range"]}`} </span>
+                )}
+              </span>
+            </div>
+          );
+        })}
+      </div>
       <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
         Niveles
       </h3>
+
       <div className="range-atributes-container my-[15px]">
         {rangeAtribute.map((atribute, i) => {
           return (
-            <>
+            <React.Fragment key={"range-atribute-" + i}>
               <div className="range-atributes-item">
                 <span className="range-a-key">
                   {atribute["trait_type"]
@@ -158,7 +182,73 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
               {i < rangeAtribute.length - 1 && (
                 <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 mb-[5px]" />
               )}
-            </>
+            </React.Fragment>
+          );
+        })}
+      </div>
+
+      <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
+        Impulsos
+      </h3>
+
+      <div className="atribute-boots-continer">
+        {boostPercentageAtributes.map((atribute, i) => {
+          console.log("atributito", atribute);
+
+          return (
+            <div
+              className="boost-percentage-item"
+              key={"boostPercentageAtributes-" + i}
+            >
+              <span className="boots-key mb-[10px]">
+                {atribute["trait_type"] ? atribute["trait_type"] : "Propiedad"}
+              </span>
+              {atribute["value"] >= 0 ? (
+                <Box sx={{ position: "relative", display: "inline-flex" }}>
+                  <CircularProgress
+                    sx={{
+                      position: "absolute",
+                      color: "#23272f",
+                      backgroundColor: "#0c0d10",
+                      borderRadius: "50%",
+                    }}
+                    size={80}
+                    variant="determinate"
+                    value={100}
+                  />
+                  <CircularProgress
+                    size={80}
+                    variant="determinate"
+                    value={parseInt(atribute["value"])}
+                    sx={{
+                      // position: "absolute",
+                      color: "#3B43DD",
+                      borderRadius: "50%",
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span className="text-wolf-gray-light-2000 text-[15px] font-semibold">
+                      {`${atribute["value"]}%`}
+                    </span>
+                  </Box>
+                </Box>
+              ) : (
+                <div>
+                  <span>???</span>
+                </div>
+              )}
+            </div>
           );
         })}
       </div>

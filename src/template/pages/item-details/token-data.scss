@@ -105,7 +105,7 @@
             padding         : 5px;
             display         : flex;
             flex-direction  : column;
-            min-width       : 150px;
+            min-width       : 140px;
             justify-content : center;
             align-items     : center;
             border-radius   : 8px;
@@ -146,18 +146,81 @@
             padding        : 10px 0px;
             justify-content: space-between;
 
-            .range-a-key{
+            .range-a-key {
                 // background-color: red;
-                font-size: 16px;
+                font-size  : 16px;
                 font-weight: 500;
-                color: theme("colors.wolf-gray-light.1100");
+                color      : theme("colors.wolf-gray-light.1100");
             }
 
-            .range-a-value{
+            .range-a-value {
                 font-size: 16px;
-                color: theme("colors.wolf-gray-light.2000");
+                color    : theme("colors.wolf-gray-light.2000");
             }
 
+        }
+    }
+
+    .number-atributes-container {
+        padding         : 30px;
+        border          : 1px solid theme("colors.wolf-gray-dark.800");
+        background-color: theme("colors.wolf-gray-dark.300");
+        border-radius   : 16px;
+
+
+        .number-atribute-item {
+            display        : flex;
+            justify-content: space-between;
+            padding        : 15px 0;
+        }
+
+        .atribute-n-key {
+            // background-color: red;
+            font-size  : 14px;
+            font-weight: 500;
+            color      : theme("colors.wolf-gray-light.1100");
+        }
+
+        .atribute-n-value {
+            font-size: 16px;
+            color    : theme("colors.wolf-gray-light.1800");
+        }
+
+    }
+
+    .atribute-boots-continer {
+        padding         : 30px;
+        border          : 1px solid theme("colors.wolf-gray-dark.800");
+        background-color: theme("colors.wolf-gray-dark.300");
+        border-radius   : 16px;
+
+        .boost-percentage-item {
+            // background-color: red;
+            display            : flex;
+            // max-width       : 200px;
+            flex-direction     : column;
+            align-items        : center;
+            position           : relative;
+        }
+
+        .boots-key {
+            font-size  : 14px;
+            font-weight: 500;
+            color      : theme("colors.wolf-gray-light.1100");
+        }
+
+        .loop-bg {
+            width           : 80px;
+            height          : 80px;
+            background-color: theme("colors.wolf-gray-dark.500");
+            position        : absolute;
+            left            : 0;
+            top             : 0;
+        }
+
+        .boot-value {
+            position: absolute;
+            z-index : 5;
         }
     }
 
