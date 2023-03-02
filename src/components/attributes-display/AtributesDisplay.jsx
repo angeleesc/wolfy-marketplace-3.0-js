@@ -13,12 +13,15 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
   const numberAtributes = [];
 
   attributes.map((atribute, i) => {
+
+    const getLimitRange = trayCollectionDef.filter((def) => {
+      return def["trait_type"] === atribute["trait_type"];
+    });
+
     if (atribute["trait_type"]) {
       if (atribute["display_type"]) {
         // console.log(atribute["display_type"])
-        const getLimitRange = trayCollectionDef.filter((def) => {
-          return def["trait_type"] === atribute["trait_type"];
-        });
+     
 
         switch (atribute["display_type"]) {
           case "number":
@@ -45,6 +48,13 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
             });
 
             break;
+
+
+            case "date": 
+            dateAtribute.push({
+              ...getLimitRange[0],
+              ...atribute
+            })
 
           default:
             break;
