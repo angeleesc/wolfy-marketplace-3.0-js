@@ -21,6 +21,82 @@ const temjson1 = {
     owners: 2864,
     isColectionVerified: true,
     isAuthorVerified: true,
+    defAtributes: [
+      {
+        trait_type: "Species",
+        rarity: 2,
+        // value: "Spout",
+      },
+      {
+        trait_type: "Origin",
+        rarity: 20,
+      },
+      {
+        trait_type: "Rarity",
+        rarity: 37,
+      },
+      {
+        trait_type: "HP",
+        range: 109,
+      },
+      {
+        trait_type: "Attack",
+        range: 104,
+      },
+      {
+        trait_type: "Defense",
+        range: 103,
+      },
+      {
+        trait_type: "Special Attack",
+        range: 104,
+      },
+      {
+        trait_type: "Special Defense",
+        range: 101,
+      },
+      {
+        trait_type: "Affinity",
+        range: 100,
+      },
+      {
+        display_type: "boost_number",
+        trait_type: "Luck",
+        boost: true,
+      },
+      {
+        display_type: "boost_percentage",
+        trait_type: "Reward Multiplier",
+        value: 0,
+      },
+      {
+        trait_type: "Level",
+        range: 20,
+      },
+      {
+        trait_type: "Unknown",
+        value: 20,
+      },
+      {
+        trait_type: "Trainer Claimed",
+        value: "Yes",
+      },
+      {
+        trait_type: "Generation",
+        display_type: "number",
+        range: 1,
+      },
+      {
+        trait_type: "Evolution",
+        display_type: "number",
+        range: 1,
+      },
+      {
+        trait_type: "Hatched On",
+        display_type: "date",
+        value: 1645990096,
+      },
+    ],
 
     authorAvartar:
       "https://i.seadn.io/gcs/files/281a2fe422ac5614e9d32fad1f93b09d.png?auto=format&w=256",
@@ -126,6 +202,8 @@ const temjson1 = {
 export default function TokentFullSpechData() {
   const nftFullData = temjson1;
 
+
+
   return (
     <div className="wolf-item-data-contianer">
       <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
@@ -161,7 +239,7 @@ export default function TokentFullSpechData() {
               <h3 className="mt-2 font-semibold text-wolf-gray-light-1600">
                 Atributos
               </h3>
-              <AtributesDisplay attributes={nftFullData.metadata.attributes} />
+              <AtributesDisplay attributes={nftFullData.metadata.attributes}  trayCollectionDef={nftFullData.collectionData.defAtributes} />
             </>
           )}
         </div>
