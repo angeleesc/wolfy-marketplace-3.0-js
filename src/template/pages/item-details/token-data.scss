@@ -100,7 +100,7 @@
 
 
         .atribute-item {
-            background-color: theme("colors.wolf-gray-dark.400");
+            background-color: theme("colors.wolf-gray-dark.500");
             margin          : 5px;
             padding         : 5px;
             display         : flex;
@@ -109,7 +109,7 @@
             justify-content : center;
             align-items     : center;
             border-radius   : 8px;
-            border          : 1px solid theme("colors.wolf-gray-dark.1800");
+            border          : 2px solid theme("colors.wolf-gray-dark.1000");
 
             .trait-type-text {
                 color      : theme("colors.wolf-gray-light.700");
@@ -122,11 +122,43 @@
                 font-size: 14px;
             }
 
+            .rarity {
+                font-size  : 12px;
+                color      : theme("colors.wolf-blue-purple.600");
+                font-weight: 500;
+            }
+
 
 
         }
 
     }
 
+    .range-atributes-container {
+        padding         : 30px;
+        border          : 1px solid theme("colors.wolf-gray-dark.800");
+        background-color: theme("colors.wolf-gray-dark.300");
+        border-radius   : 16px;
+
+        .range-atributes-item {
+            display        : flex;
+            width          : 100%;
+            padding        : 10px 0px;
+            justify-content: space-between;
+
+            .range-a-key{
+                // background-color: red;
+                font-size: 16px;
+                font-weight: 500;
+                color: theme("colors.wolf-gray-light.1100");
+            }
+
+            .range-a-value{
+                font-size: 16px;
+                color: theme("colors.wolf-gray-light.2000");
+            }
+
+        }
+    }
 
 }

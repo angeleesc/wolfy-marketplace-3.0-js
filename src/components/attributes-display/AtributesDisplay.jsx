@@ -1,4 +1,5 @@
 import React from "react";
+import WLinearProgressBar from "../progres/WLinearProgressBar";
 
 export default function AtributesDisplay({ attributes, trayCollectionDef }) {
   // definimos el tipo de pantalllas
@@ -108,9 +109,49 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
         {basicAtributes.map((atribute, i) => {
           return (
             <div className="atribute-item" key={"atribute-" + i}>
-              {<span className="trait-type-text">{atribute["trait_type"]?atribute["trait_type"]: "Propiedad"}</span>}
+              {
+                <span className="trait-type-text">
+                  {atribute["trait_type"]
+                    ? atribute["trait_type"]
+                    : "Propiedad"}
+                </span>
+              }
+              {/* <div className="w-[80%] h-[1px] bg-wolf-blue-purple-400 mb-1 "></div> */}
               <span className="value">{atribute["value"]}</span>
+              {atribute["rarity"] && (
+                <span className="rarity">Rareza {atribute["rarity"]}% </span>
+              )}
             </div>
+          );
+        })}
+      </div>
+      <h3 className="mt-2 font-semibold text-wolf-gray-light-1600">
+        Estadisticas
+      </h3>
+      <div className="range-atributes-container my-[15px]">
+        {rangeAtribute.map((atribute, i) => {
+          return (
+            <>
+              <div className="range-atributes-item">
+                <span className="range-a-key">
+                  {atribute["trait_type"]
+                    ? atribute["trait_type"]
+                    : "Propiedad"}
+                </span>
+                <span className="range-a-value">
+                  {atribute["value"]}
+                  {atribute["range"] && ` de ${atribute["range"]}`}
+                </span>
+              </div>
+              <WLinearProgressBar
+                className="mb-[12px]"
+                variant="determinate"
+                value={30}
+              />
+              {i < rangeAtribute.length - 1 && (
+                <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 mb-[5px]" />
+              )}
+            </>
           );
         })}
       </div>
