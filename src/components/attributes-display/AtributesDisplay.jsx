@@ -126,6 +126,9 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
         })}
       </div>
       <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
+        Estadisticas
+      </h3>
+      <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
         Niveles
       </h3>
       <div className="range-atributes-container my-[15px]">
