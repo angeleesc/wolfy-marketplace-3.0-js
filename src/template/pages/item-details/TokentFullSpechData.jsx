@@ -67,7 +67,6 @@ const temjson1 = {
       {
         display_type: "boost_percentage",
         trait_type: "Reward Multiplier",
-        value: 0,
       },
       {
         trait_type: "Level",
@@ -75,11 +74,11 @@ const temjson1 = {
       },
       {
         trait_type: "Unknown",
-        value: 20,
+        range: 20,
       },
       {
         trait_type: "Trainer Claimed",
-        value: "Yes",
+        rarity: 54,
       },
       {
         trait_type: "Generation",
@@ -202,8 +201,6 @@ const temjson1 = {
 export default function TokentFullSpechData() {
   const nftFullData = temjson1;
 
-
-
   return (
     <div className="wolf-item-data-contianer">
       <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
@@ -236,10 +233,10 @@ export default function TokentFullSpechData() {
 
           {nftFullData.metadata.attributes && (
             <>
-              <h3 className="mt-2 font-semibold text-wolf-gray-light-1600">
-                Atributos
-              </h3>
-              <AtributesDisplay attributes={nftFullData.metadata.attributes}  trayCollectionDef={nftFullData.collectionData.defAtributes} />
+              <AtributesDisplay
+                attributes={nftFullData.metadata.attributes}
+                trayCollectionDef={nftFullData.collectionData.defAtributes}
+              />
             </>
           )}
         </div>
