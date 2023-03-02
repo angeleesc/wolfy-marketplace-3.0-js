@@ -143,11 +143,15 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
                   {atribute["range"] && ` de ${atribute["range"]}`}
                 </span>
               </div>
-              <WLinearProgressBar
-                className="mb-[12px]"
-                variant="determinate"
-                value={30}
-              />
+              {atribute["range"] && (
+                <WLinearProgressBar
+                  className="mb-[12px]"
+                  variant="determinate"
+                  value={parseInt(
+                    (atribute["value"] * 100) / atribute["range"]
+                  )}
+                />
+              )}
               {i < rangeAtribute.length - 1 && (
                 <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 mb-[5px]" />
               )}
