@@ -102,7 +102,7 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
 
   return (
     <>
-      <h3 className="mt-2 font-semibold text-wolf-gray-light-1600">
+      <h3 className="mt-[30px]  font-semibold text-wolf-gray-light-1600">
         Atributos
       </h3>
       <div className="atributes-container mt-[15px]">
@@ -125,8 +125,8 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
           );
         })}
       </div>
-      <h3 className="mt-2 font-semibold text-wolf-gray-light-1600">
-        Estadisticas
+      <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
+        Niveles
       </h3>
       <div className="range-atributes-container my-[15px]">
         {rangeAtribute.map((atribute, i) => {
