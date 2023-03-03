@@ -8,14 +8,42 @@ import { useSearchParams } from "react-router-dom";
 import { itemDetaisTabOption } from "../../../helpers/global-constants";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfDoubtful from "../../../components/icons/WolfDoubtful";
+import NftHistoriDisplay from "../../../components/nft-history/NftHistoriDisplay";
 
 const temJson2 = {
   history: [
     {
       type: "listing",
       seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      tokenId: 2,
       time: 1677857708000,
       quantity: "0.05",
+    },
+    {
+      type: "mint",
+      author: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+      time: 1677857708000,
+      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      tokenId: 2,
+
+    },
+    {
+      type: "sell",
+      seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+      buyer: "0xA5ba155b5f92E4d59B74a3565918075487e4A397",
+      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      tokenId: 2,
+      price: 0.07,
+      time: 1677857708000,
+    },
+    {
+      type: "transfer",
+      seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+      buyer: "0xA5ba155b5f92E4d59B74a3565918075487e4A397",
+      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      tokenId: 2,
+      time: 1677857708000, 
     },
   ],
 };
@@ -284,20 +312,28 @@ export default function TokentFullSpechData() {
             </button>
           </div>
 
-          {nftFullData.metadata.attributes ? (
+          {!tapOption && (
             <>
-              <AtributesDisplay
-                attributes={nftFullData.metadata.attributes}
-                trayCollectionDef={nftFullData.collectionData.defAtributes}
-              />
+              {nftFullData.metadata.attributes ? (
+                <>
+                  <AtributesDisplay
+                    attributes={nftFullData.metadata.attributes}
+                    trayCollectionDef={nftFullData.collectionData.defAtributes}
+                  />
+                </>
+              ) : (
+                <div className="flex flex-col items-center mt-[15px] p-[10px] bg-wolf-gray-dark-400 border border-wolf-gray-dark-800 rounded-[16px]">
+                  <h3>Sin atributos</h3>
+                  <WolfDoubtful />
+                  <p className="text-[14px] font-semibold text-wolf-gray-light-1200">
+                    esta nft no tiene algun atributo que compartir
+                  </p>
+                </div>
+              )}
             </>
-          ) : (
-            <div className="flex flex-col items-center mt-[15px] p-[10px] bg-wolf-gray-dark-400 border border-wolf-gray-dark-800 rounded-[16px]">
-              <h3>Sin atributos</h3>
-              <WolfDoubtful />
-              <p className="text-[14px] font-semibold text-wolf-gray-light-1200" >esta nft no tiene algun atributo que compartir</p>
-            </div>
           )}
+
+          {tapOption === itemDetaisTabOption.history && <NftHistoriDisplay  nftHistory={temJson2} />}
         </div>
       </div>
     </div>
