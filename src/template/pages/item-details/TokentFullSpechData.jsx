@@ -3,8 +3,8 @@ import "./token-data.scss";
 import AtributesDisplay from "../../../components/attributes-display/AtributesDisplay";
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../../helpers/static-routes";
-import { MdLoyalty } from "react-icons/md";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import { MdLoyalty, MdAnalytics, MdHistory } from "react-icons/md";
+import { useSearchParams } from "react-router-dom"
 
 const temJson2 = {
   history: [
@@ -214,56 +214,65 @@ const temjson1 = {
 export default function TokentFullSpechData() {
   const nftFullData = temjson1;
 
+  const [ queryParams, setQueryParams ] = useSearchParams()
+
+  const tapOption = queryParams.get("tab")
+
+  console.log(tapOption)
+
   return (
-
-      <div className="wolf-item-data-contianer">
-        <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
-          <h3>Imagenes</h3>
-        </div>
-        <div className="wolf-item-data-item flex flex-col xd w-[100%] min-[700px]:w-[50%]">
-          <div className="wolf-info-section-data">
-            <div className="colection-father-zone">
-              <Link
-                to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
-                className="title-zone"
-              >
-                <div className="avatar-zone">
-                  <img
-                    src={nftFullData.collectionData.coverImg}
-                    alt="colection-cover"
-                  />
-                </div>
-                <div className="text-zone">
-                  <h3>{nftFullData.collectionData.collectionName}</h3>
-                </div>
-              </Link>
-            </div>
-            <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
-            {nftFullData.metadata.description && (
-              <div className="info-data mt-[15px] ">
-                <p>{nftFullData.metadata.description}</p>
-              </div>
-            )}
-
-            <div className="soy-stiky">
-              <button className="wolf-buttom wolf-button-active">
-                Propiedad
-              </button>
-              <button className="wolf-buttom">Historial</button>
-              <button className="wolf-buttom"> Oferta</button>
-            </div>
-
-            {nftFullData.metadata.attributes && (
-              <>
-                <AtributesDisplay
-                  attributes={nftFullData.metadata.attributes}
-                  trayCollectionDef={nftFullData.collectionData.defAtributes}
+    <div className="wolf-item-data-contianer">
+      <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
+        <h3>Imagenes</h3>
+      </div>
+      <div className="wolf-item-data-item flex flex-col xd w-[100%] min-[700px]:w-[50%]">
+        <div className="wolf-info-section-data">
+          <div className="colection-father-zone">
+            <Link
+              to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
+              className="title-zone"
+            >
+              <div className="avatar-zone">
+                <img
+                  src={nftFullData.collectionData.coverImg}
+                  alt="colection-cover"
                 />
-              </>
-            )}
+              </div>
+              <div className="text-zone">
+                <h3>{nftFullData.collectionData.collectionName}</h3>
+              </div>
+            </Link>
           </div>
+          <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
+          {nftFullData.metadata.description && (
+            <div className="info-data mt-[15px] ">
+              <p>{nftFullData.metadata.description}</p>
+            </div>
+          )}
+
+          <div className="soy-stiky">
+            <button className="wolf-buttom flex justify-center items-center wolf-button-active">
+              <span>Propiedad</span> <MdAnalytics className="ml-2" />
+            </button>
+            <button className="wolf-buttom flex justify-center items-center wolf-button-active">
+              <span>Historial</span> <MdHistory className="ml-2" />
+            </button>
+            <button className="wolf-buttom flex justify-center items-center wolf-button-active">
+              <span>Ofertas</span> <MdAnalytics className="ml-2" />
+            </button>
+          
+          </div>
+
+          {nftFullData.metadata.attributes && (
+            <>
+              <AtributesDisplay
+                attributes={nftFullData.metadata.attributes}
+                trayCollectionDef={nftFullData.collectionData.defAtributes}
+              />
+            </>
+          )}
         </div>
       </div>
-
+    </div>
   );
 }

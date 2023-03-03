@@ -90,23 +90,25 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
       });
     }
   });
-  console.log("number atributes");
-  console.log(numberAtributes);
+  // console.log("number atributes");
+  // console.log(numberAtributes);
 
-  console.log("boost number atributes");
-  console.log(boostNumberAtributes);
+  // console.log("boost number atributes");
+  // console.log(boostNumberAtributes);
 
-  console.log("precentage atributes");
-  console.log(boostPercentageAtributes);
+  // console.log("precentage atributes");
+  // console.log(boostPercentageAtributes);
 
-  console.log("date atributes ");
-  console.log(dateAtribute);
+  // console.log("date atributes ");
+  // console.log(dateAtribute);
 
-  console.log("range atributes");
-  console.log(rangeAtribute);
+  // console.log("range atributes");
+  // console.log(rangeAtribute);
 
-  console.log("basic atributes");
-  console.log(basicAtributes);
+  // console.log("basic atributes");
+  // console.log(basicAtributes);
+
+
 
   return (
     <>
@@ -140,7 +142,7 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
       <div className="number-atributes-container mb-[20px]">
         {numberAtributes.map((atribute, i) => {
           return (
-            <div className="number-atribute-item">
+            <div className="number-atribute-item" key={"number-atributes-"+i} >
               <span className="atribute-n-key">
                 {atribute["trait_type"] ? atribute["trait_type"] : "Propiedad"}
               </span>
@@ -197,7 +199,7 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
 
       <div className="atribute-boots-continer">
         {boostPercentageAtributes.map((atribute, i) => {
-          console.log("atributito", atribute);
+          // console.log("atributito", atribute);
 
           return (
             <div
