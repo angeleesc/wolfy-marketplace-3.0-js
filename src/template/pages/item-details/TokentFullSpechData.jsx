@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../../helpers/static-routes";
 import { MdLoyalty, MdAnalytics, MdHistory } from "react-icons/md";
 import { useSearchParams } from "react-router-dom"
+import { itemDetaisTabOption } from "../../../helpers/global-constants";
 
 const temJson2 = {
   history: [
@@ -251,13 +252,33 @@ export default function TokentFullSpechData() {
           )}
 
           <div className="soy-stiky">
-            <button className="wolf-buttom flex justify-center items-center wolf-button-active">
+            <button 
+            className="wolf-buttom flex justify-center items-center wolf-button-active"
+            onClick={()=>{
+              setQueryParams({})
+            }}
+            >
               <span>Propiedad</span> <MdAnalytics className="ml-2" />
             </button>
-            <button className="wolf-buttom flex justify-center items-center wolf-button-active">
+            <button 
+            className="wolf-buttom flex justify-center items-center wolf-button-active"
+            onClick={()=>{
+              setQueryParams({
+                tab: itemDetaisTabOption.history
+              })
+            }}
+            >
               <span>Historial</span> <MdHistory className="ml-2" />
             </button>
-            <button className="wolf-buttom flex justify-center items-center wolf-button-active">
+            <button 
+            className="wolf-buttom flex justify-center items-center wolf-button-active"
+            onClick={()=>{
+              setQueryParams({
+                tab: itemDetaisTabOption.bid
+              })
+            }}
+            
+            >
               <span>Ofertas</span> <MdAnalytics className="ml-2" />
             </button>
           
