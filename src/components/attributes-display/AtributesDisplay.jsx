@@ -197,7 +197,7 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
 
           return (
             <div
-              className="boost-percentage-item"
+              className="boost-percentage-item mt-[10px]"
               key={"boostPercentageAtributes-" + i}
             >
               <span className="boots-key mb-[10px]">
@@ -248,6 +248,71 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
                   <span>???</span>
                 </div>
               )}
+              {
+                <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 my-[12px]"></div>
+              }
+            </div>
+          );
+        })}
+
+        {boostNumberAtributes.map((atribute, i) => {
+          return (
+            <div
+              className="boost-percentage-item mt-[10px]"
+              key={"boostPercentageAtributes-" + i}
+            >
+              <span className="boots-key mb-[10px]">
+                {atribute["trait_type"] ? atribute["trait_type"] : "Propiedad"}
+              </span>
+              {atribute["value"] >= 0 ? (
+                <Box sx={{ position: "relative", display: "inline-flex" }}>
+                  <CircularProgress
+                    sx={{
+                      position: "absolute",
+                      color: "#23272f",
+                      backgroundColor: "#0c0d10",
+                      borderRadius: "50%",
+                    }}
+                    size={80}
+                    variant="determinate"
+                    value={100}
+                  />
+                  <CircularProgress
+                    size={80}
+                    variant="determinate"
+                    value={100}
+                    sx={{
+                      // position: "absolute",
+                      color: "#3B43DD",
+                      borderRadius: "50%",
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <span className="text-wolf-gray-light-2000 text-[15px] font-semibold">
+                      {`${atribute["value"]}`}
+                    </span>
+                  </Box>
+                </Box>
+              ) : (
+                <div>
+                  <span>???</span>
+                </div>
+              )}
+
+              {
+                <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 my-[12px]"></div>
+              }
             </div>
           );
         })}
