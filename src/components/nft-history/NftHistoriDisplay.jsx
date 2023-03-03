@@ -38,7 +38,8 @@ const NfTranferssHistorytCard = ({ cardData }) => {
    
     <div className="history-card" >
     <h3 className="flex items-center" >
-     <Avatar/>
+  {avatar("okcd")}
+
         <BiTransfer className="mr-2" />
         <span>    
         Tranferencia
