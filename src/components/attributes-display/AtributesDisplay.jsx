@@ -1,5 +1,6 @@
 import React from "react";
 import WLinearProgressBar from "../progres/WLinearProgressBar";
+import {  MdSell} from "react-icons/md"
 import {
   Box,
   CircularProgress,
@@ -108,8 +109,8 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
 
   return (
     <>
-      <h3 className="mt-[30px]  font-semibold text-wolf-gray-light-1600">
-        Atributos
+      <h3 className="mt-[30px] flex font-semibold text-wolf-gray-light-1600  items-center">
+        <span>Atributos</span> <MdSell className="ml-2" />
       </h3>
       <div className="atributes-container mt-[15px]">
         {basicAtributes.map((atribute, i) => {
