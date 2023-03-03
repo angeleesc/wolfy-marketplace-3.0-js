@@ -206,40 +206,50 @@ export default function TokentFullSpechData() {
       <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
         <h3>Imagenes</h3>
       </div>
-      <div className="wolf-item-data-item h-[200px]  w-[100%] min-[700px]:w-[50%]">
-        <div className="wolf-info-section-data">
-          <div className="colection-father-zone">
-            <Link
-              to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
-              className="title-zone"
-            >
-              <div className="avatar-zone">
-                <img
-                  src={nftFullData.collectionData.coverImg}
-                  alt="colection-cover"
-                />
-              </div>
-              <div className="text-zone">
-                <h3>{nftFullData.collectionData.collectionName}</h3>
-              </div>
-            </Link>
-          </div>
-          <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
-          {nftFullData.metadata.description && (
-            <div className="info-data mt-[15px] ">
-              <p>{nftFullData.metadata.description}</p>
-            </div>
-          )}
-
-          {nftFullData.metadata.attributes && (
-            <>
-              <AtributesDisplay
-                attributes={nftFullData.metadata.attributes}
-                trayCollectionDef={nftFullData.collectionData.defAtributes}
-              />
-            </>
-          )}
+      <div className="wolf-item-data-item flex flex-col h-[200px]  w-[100%] min-[700px]:w-[50%]">
+        <div className="h-[1000px] bg-red-500">
+<div className="sticky top-[80px]" >
+  <h3>ok xd</h3>
+</div>
         </div>
+          {/* <div className="wolf-info-section-data">
+
+            <div className="colection-father-zone">
+              <Link
+                to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
+                className="title-zone"
+              >
+                <div className="avatar-zone">
+                  <img
+                    src={nftFullData.collectionData.coverImg}
+                    alt="colection-cover"
+                  />
+                </div>
+                <div className="text-zone">
+                  <h3>{nftFullData.collectionData.collectionName}</h3>
+                </div>
+              </Link>
+            </div>
+            <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
+            {nftFullData.metadata.description && (
+              <div className="info-data mt-[15px] ">
+                <p>{nftFullData.metadata.description}</p>
+              </div>
+            )}
+
+            <div>
+              <h3>menu dinamico no</h3>
+            </div>
+
+            {nftFullData.metadata.attributes && (
+              <>
+                <AtributesDisplay
+                  attributes={nftFullData.metadata.attributes}
+                  trayCollectionDef={nftFullData.collectionData.defAtributes}
+                />
+              </>
+            )}
+          </div> */}
       </div>
     </div>
   );

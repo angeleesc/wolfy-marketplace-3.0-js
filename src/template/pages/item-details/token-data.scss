@@ -8,6 +8,8 @@
     // background-color: blue;
     position           : relative;
 
+   
+
     // background-color: rebeccapurple;
     .wolf-item-data-item {
         overflow       : hidden;
@@ -222,6 +224,12 @@
             position: absolute;
             z-index : 5;
         }
+    }
+
+    .mode-stiky-xd {
+        background-color: red;
+        position        : sticky;
+        top             : 20px
     }
 
 }
