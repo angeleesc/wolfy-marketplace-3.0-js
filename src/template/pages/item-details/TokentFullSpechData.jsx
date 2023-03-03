@@ -15,8 +15,8 @@ const temJson2 = {
     {
       type: "listing",
       seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
-      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
-      tokenId: 2,
+      // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      // tokenId: 2,
       time: 1677857708000,
       quantity: "0.05",
     },
@@ -24,16 +24,16 @@ const temJson2 = {
       type: "mint",
       author: "0x23b057357893Fb958571f81197823D6B1e84d64f",
       time: 1677857708000,
-      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
-      tokenId: 2,
+      // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      // tokenId: 2,
 
     },
     {
       type: "sell",
       seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
       buyer: "0xA5ba155b5f92E4d59B74a3565918075487e4A397",
-      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
-      tokenId: 2,
+      // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      // tokenId: 2,
       price: 0.07,
       time: 1677857708000,
     },
@@ -41,8 +41,8 @@ const temJson2 = {
       type: "transfer",
       seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
       buyer: "0xA5ba155b5f92E4d59B74a3565918075487e4A397",
-      nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
-      tokenId: 2,
+      // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
+      // tokenId: 2,
       time: 1677857708000, 
     },
   ],
@@ -333,7 +333,7 @@ export default function TokentFullSpechData() {
             </>
           )}
 
-          {tapOption === itemDetaisTabOption.history && <NftHistoriDisplay  nftHistory={temJson2} />}
+          {tapOption === itemDetaisTabOption.history && <NftHistoriDisplay  nftHistory={temJson2.history} />}
         </div>
       </div>
     </div>

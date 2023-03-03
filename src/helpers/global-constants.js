@@ -22,3 +22,11 @@ export const itemDetaisTabOption = {
     history: "history",
     bid: "bid"
 }
+
+export const historyType = {
+    listing: "listing",
+    mint: "mint",
+    sell: "sell",
+    transfer: "transfer"
+
+}
