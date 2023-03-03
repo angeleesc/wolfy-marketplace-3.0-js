@@ -1,6 +1,7 @@
 import React from "react";
 import WLinearProgressBar from "../progres/WLinearProgressBar";
-import {  MdSell} from "react-icons/md"
+import { MdSell, MdBarChart, MdStars } from "react-icons/md";
+import { BsFillLightningChargeFill } from "react-icons/bs";
 import {
   Box,
   CircularProgress,
@@ -132,8 +133,9 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
           );
         })}
       </div>
-      <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
-        Estadisticas
+      <h3 className="mt-[30px] flex items-center mb-[30px] font-semibold text-wolf-gray-light-1600">
+        <span>Estadisticas</span>
+        <MdBarChart className="ml-2" />
       </h3>
       <div className="number-atributes-container mb-[20px]">
         {numberAtributes.map((atribute, i) => {
@@ -152,8 +154,8 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
           );
         })}
       </div>
-      <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
-        Niveles
+      <h3 className="mt-[30px] flex items-center mb-[30px] font-semibold text-wolf-gray-light-1600">
+        <span>Niveles</span> <MdStars className="ml-2" />
       </h3>
 
       <div className="range-atributes-container my-[15px]">
@@ -188,8 +190,9 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
         })}
       </div>
 
-      <h3 className="mt-[30px] mb-[30px] font-semibold text-wolf-gray-light-1600">
-        Impulsos
+      <h3 className="mt-[30px] mb-[30px] flex items-center font-semibold text-wolf-gray-light-1600">
+        <span>Impulsos</span>
+        <BsFillLightningChargeFill className="ml-2" />
       </h3>
 
       <div className="atribute-boots-continer">
