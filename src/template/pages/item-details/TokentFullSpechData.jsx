@@ -131,81 +131,81 @@ const temjson1 = {
       "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Spout.jpg",
     external_url: "https://pixelmon.club/",
     reward_bitmask: 6,
-    // attributes: [
-    //   {
-    //     trait_type: "Species",
-    //     value: "Spout",
-    //   },
-    //   {
-    //     trait_type: "Origin",
-    //     value: "Water",
-    //   },
-    //   {
-    //     trait_type: "Rarity",
-    //     value: "Common",
-    //   },
-    //   {
-    //     trait_type: "HP",
-    //     value: 23,
-    //   },
-    //   {
-    //     trait_type: "Attack",
-    //     value: 35,
-    //   },
-    //   {
-    //     trait_type: "Defense",
-    //     value: 29,
-    //   },
-    //   {
-    //     trait_type: "Special Attack",
-    //     value: 43,
-    //   },
-    //   {
-    //     trait_type: "Special Defense",
-    //     value: 32,
-    //   },
-    //   {
-    //     trait_type: "Affinity",
-    //     value: 100,
-    //   },
-    //   {
-    //     display_type: "boost_number",
-    //     trait_type: "Luck",
-    //     value: 1,
-    //   },
-    //   {
-    //     display_type: "boost_percentage",
-    //     trait_type: "Reward Multiplier",
-    //     value: 0,
-    //   },
-    //   {
-    //     trait_type: "Level",
-    //     value: 5,
-    //   },
-    //   {
-    //     trait_type: "Unknown",
-    //     value: 14,
-    //   },
-    //   {
-    //     trait_type: "Trainer Claimed",
-    //     value: "Yes",
-    //   },
-    //   {
-    //     trait_type: "Generation",
-    //     display_type: "number",
-    //     value: 1,
-    //   },
-    //   {
-    //     trait_type: "Evolution",
-    //     display_type: "number",
-    //     value: 1,
-    //   },
-    //   {
-    //     trait_type: "Hatched On",
-    //     display_type: "date",
-    //     value: 1645990096,
-    //   },
-    // ],
+    attributes: [
+      {
+        trait_type: "Species",
+        value: "Spout",
+      },
+      {
+        trait_type: "Origin",
+        value: "Water",
+      },
+      {
+        trait_type: "Rarity",
+        value: "Common",
+      },
+      {
+        trait_type: "HP",
+        value: 23,
+      },
+      {
+        trait_type: "Attack",
+        value: 35,
+      },
+      {
+        trait_type: "Defense",
+        value: 29,
+      },
+      {
+        trait_type: "Special Attack",
+        value: 43,
+      },
+      {
+        trait_type: "Special Defense",
+        value: 32,
+      },
+      {
+        trait_type: "Affinity",
+        value: 100,
+      },
+      {
+        display_type: "boost_number",
+        trait_type: "Luck",
+        value: 1,
+      },
+      {
+        display_type: "boost_percentage",
+        trait_type: "Reward Multiplier",
+        value: 0,
+      },
+      {
+        trait_type: "Level",
+        value: 5,
+      },
+      {
+        trait_type: "Unknown",
+        value: 14,
+      },
+      {
+        trait_type: "Trainer Claimed",
+        value: "Yes",
+      },
+      {
+        trait_type: "Generation",
+        display_type: "number",
+        value: 1,
+      },
+      {
+        trait_type: "Evolution",
+        display_type: "number",
+        value: 1,
+      },
+      {
+        trait_type: "Hatched On",
+        display_type: "date",
+        value: 1645990096,
+      },
+    ],
     animation_url:
       "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/6/Spout.mp4",
 
