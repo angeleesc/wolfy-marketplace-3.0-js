@@ -4,8 +4,10 @@ import AtributesDisplay from "../../../components/attributes-display/AtributesDi
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../../helpers/static-routes";
 import { MdLoyalty, MdAnalytics, MdHistory } from "react-icons/md";
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom";
 import { itemDetaisTabOption } from "../../../helpers/global-constants";
+import WolfSad from "../../../components/icons/WolfSad";
+import WolfDoubtful from "../../../components/icons/WolfDoubtful";
 
 const temJson2 = {
   history: [
@@ -129,81 +131,81 @@ const temjson1 = {
       "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Spout.jpg",
     external_url: "https://pixelmon.club/",
     reward_bitmask: 6,
-    attributes: [
-      {
-        trait_type: "Species",
-        value: "Spout",
-      },
-      {
-        trait_type: "Origin",
-        value: "Water",
-      },
-      {
-        trait_type: "Rarity",
-        value: "Common",
-      },
-      {
-        trait_type: "HP",
-        value: 23,
-      },
-      {
-        trait_type: "Attack",
-        value: 35,
-      },
-      {
-        trait_type: "Defense",
-        value: 29,
-      },
-      {
-        trait_type: "Special Attack",
-        value: 43,
-      },
-      {
-        trait_type: "Special Defense",
-        value: 32,
-      },
-      {
-        trait_type: "Affinity",
-        value: 100,
-      },
-      {
-        display_type: "boost_number",
-        trait_type: "Luck",
-        value: 1,
-      },
-      {
-        display_type: "boost_percentage",
-        trait_type: "Reward Multiplier",
-        value: 0,
-      },
-      {
-        trait_type: "Level",
-        value: 5,
-      },
-      {
-        trait_type: "Unknown",
-        value: 14,
-      },
-      {
-        trait_type: "Trainer Claimed",
-        value: "Yes",
-      },
-      {
-        trait_type: "Generation",
-        display_type: "number",
-        value: 1,
-      },
-      {
-        trait_type: "Evolution",
-        display_type: "number",
-        value: 1,
-      },
-      {
-        trait_type: "Hatched On",
-        display_type: "date",
-        value: 1645990096,
-      },
-    ],
+    // attributes: [
+    //   {
+    //     trait_type: "Species",
+    //     value: "Spout",
+    //   },
+    //   {
+    //     trait_type: "Origin",
+    //     value: "Water",
+    //   },
+    //   {
+    //     trait_type: "Rarity",
+    //     value: "Common",
+    //   },
+    //   {
+    //     trait_type: "HP",
+    //     value: 23,
+    //   },
+    //   {
+    //     trait_type: "Attack",
+    //     value: 35,
+    //   },
+    //   {
+    //     trait_type: "Defense",
+    //     value: 29,
+    //   },
+    //   {
+    //     trait_type: "Special Attack",
+    //     value: 43,
+    //   },
+    //   {
+    //     trait_type: "Special Defense",
+    //     value: 32,
+    //   },
+    //   {
+    //     trait_type: "Affinity",
+    //     value: 100,
+    //   },
+    //   {
+    //     display_type: "boost_number",
+    //     trait_type: "Luck",
+    //     value: 1,
+    //   },
+    //   {
+    //     display_type: "boost_percentage",
+    //     trait_type: "Reward Multiplier",
+    //     value: 0,
+    //   },
+    //   {
+    //     trait_type: "Level",
+    //     value: 5,
+    //   },
+    //   {
+    //     trait_type: "Unknown",
+    //     value: 14,
+    //   },
+    //   {
+    //     trait_type: "Trainer Claimed",
+    //     value: "Yes",
+    //   },
+    //   {
+    //     trait_type: "Generation",
+    //     display_type: "number",
+    //     value: 1,
+    //   },
+    //   {
+    //     trait_type: "Evolution",
+    //     display_type: "number",
+    //     value: 1,
+    //   },
+    //   {
+    //     trait_type: "Hatched On",
+    //     display_type: "date",
+    //     value: 1645990096,
+    //   },
+    // ],
     animation_url:
       "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/6/Spout.mp4",
 
@@ -215,11 +217,11 @@ const temjson1 = {
 export default function TokentFullSpechData() {
   const nftFullData = temjson1;
 
-  const [ queryParams, setQueryParams ] = useSearchParams()
+  const [queryParams, setQueryParams] = useSearchParams();
 
-  const tapOption = queryParams.get("tab")
+  const tapOption = queryParams.get("tab");
 
-  console.log(tapOption)
+  console.log(tapOption);
 
   return (
     <div className="wolf-item-data-contianer">
@@ -252,45 +254,49 @@ export default function TokentFullSpechData() {
           )}
 
           <div className="soy-stiky">
-            <button 
-            className="wolf-buttom flex justify-center items-center wolf-button-active"
-            onClick={()=>{
-              setQueryParams({})
-            }}
+            <button
+              className="wolf-buttom flex justify-center items-center wolf-button-active"
+              onClick={() => {
+                setQueryParams({});
+              }}
             >
               <span>Propiedad</span> <MdAnalytics className="ml-2" />
             </button>
-            <button 
-            className="wolf-buttom flex justify-center items-center wolf-button-active"
-            onClick={()=>{
-              setQueryParams({
-                tab: itemDetaisTabOption.history
-              })
-            }}
+            <button
+              className="wolf-buttom flex justify-center items-center wolf-button-active"
+              onClick={() => {
+                setQueryParams({
+                  tab: itemDetaisTabOption.history,
+                });
+              }}
             >
               <span>Historial</span> <MdHistory className="ml-2" />
             </button>
-            <button 
-            className="wolf-buttom flex justify-center items-center wolf-button-active"
-            onClick={()=>{
-              setQueryParams({
-                tab: itemDetaisTabOption.bid
-              })
-            }}
-            
+            <button
+              className="wolf-buttom flex justify-center items-center wolf-button-active"
+              onClick={() => {
+                setQueryParams({
+                  tab: itemDetaisTabOption.bid,
+                });
+              }}
             >
               <span>Ofertas</span> <MdAnalytics className="ml-2" />
             </button>
-          
           </div>
 
-          {nftFullData.metadata.attributes && (
+          {nftFullData.metadata.attributes ? (
             <>
               <AtributesDisplay
                 attributes={nftFullData.metadata.attributes}
                 trayCollectionDef={nftFullData.collectionData.defAtributes}
               />
             </>
+          ) : (
+            <div className="flex flex-col items-center mt-[15px] p-[10px] bg-wolf-gray-dark-400 border border-wolf-gray-dark-800 rounded-[16px]">
+              <h3>Sin atributos</h3>
+              <WolfDoubtful />
+              <p className="text-[14px] font-semibold text-wolf-gray-light-1200" >esta nft no tiene algun atributo que compartir</p>
+            </div>
           )}
         </div>
       </div>
