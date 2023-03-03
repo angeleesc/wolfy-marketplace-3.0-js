@@ -1,13 +1,12 @@
 .wolf-item-data-contianer {
 
-    margin-top            : 80px;
-    padding               : 0 30px;
-    display               : flex;
-    flex-wrap             : wrap;
-    align-items           : stretch;
-    // background-color: blue;
-    // position           : relative;
+    margin-top : 80px;
+    padding    : 0 30px;
+    display    : flex;
+    flex-wrap  : wrap;
+    align-items: stretch;
 
+ 
     .xd {
         height             : 300px;
         // background-color: red;
@@ -20,16 +19,31 @@
         // position: relative;
 
         .soy-stiky {
-            background-color: blueviolet;
+            background-color: theme("colors.wolf-gray-dark.500");
+            padding         : 10px;
+            border          : 1px solid theme("colors.wolf-gray-dark.800");
+            border-radius   : 16px;
             width           : 100%;
             position        : sticky;
-            // top: 0px;
-            // bottom: 30px;
             top             : 80px;
             z-index         : 10;
             margin-top      : 15px;
             margin-bottom   : 15px;
+            display         : flex;
+            justify-content : space-between;
             // padding: 15px;
+
+            .wolf-buttom {
+                // background-color: red;
+                flex-grow: 1;
+                margin   : 0 5px;
+                padding  : 5px;
+            }
+
+            .wolf-button-active {
+                background-color: theme("colors.wolf-gray-dark.200");
+                outline         : 1px solid theme("colors.wolf-gray-dark.800");
+            }
 
 
         }

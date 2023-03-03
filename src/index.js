@@ -7,13 +7,15 @@ import router from './routes/Routes';
 import { Provider } from 'react-redux';
 import store from './redux-app/stores';
 import CheckoutModal from './template/modals/checkoutModal/CheckoutModal';
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react"
+import 'overlayscrollbars/overlayscrollbars.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store} >
     <React.StrictMode>
-      <RouterProvider router={router} />
-      <CheckoutModal/>
+        <RouterProvider router={router} />
+        <CheckoutModal />
     </React.StrictMode>
   </Provider>
 );

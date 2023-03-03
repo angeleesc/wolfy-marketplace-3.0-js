@@ -3,6 +3,19 @@ import "./token-data.scss";
 import AtributesDisplay from "../../../components/attributes-display/AtributesDisplay";
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../../helpers/static-routes";
+import { MdLoyalty } from "react-icons/md";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+
+const temJson2 = {
+  history: [
+    {
+      type: "listing",
+      seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+      time: 1677857708000,
+      quantity: "0.05",
+    },
+  ],
+};
 
 const temjson1 = {
   orderId: "1",
@@ -202,49 +215,55 @@ export default function TokentFullSpechData() {
   const nftFullData = temjson1;
 
   return (
-    <div className="wolf-item-data-contianer">
-      <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
-        <h3>Imagenes</h3>
-      </div>
-      <div className="wolf-item-data-item flex flex-col xd w-[100%] min-[700px]:w-[50%]">
-        <div className="wolf-info-section-data">
-          <div className="colection-father-zone">
-            <Link
-              to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
-              className="title-zone"
-            >
-              <div className="avatar-zone">
-                <img
-                  src={nftFullData.collectionData.coverImg}
-                  alt="colection-cover"
-                />
-              </div>
-              <div className="text-zone">
-                <h3>{nftFullData.collectionData.collectionName}</h3>
-              </div>
-            </Link>
-          </div>
-          <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
-          {nftFullData.metadata.description && (
-            <div className="info-data mt-[15px] ">
-              <p>{nftFullData.metadata.description}</p>
+
+      <div className="wolf-item-data-contianer">
+        <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
+          <h3>Imagenes</h3>
+        </div>
+        <div className="wolf-item-data-item flex flex-col xd w-[100%] min-[700px]:w-[50%]">
+          <div className="wolf-info-section-data">
+            <div className="colection-father-zone">
+              <Link
+                to={staticRoutes.colectionInfoData(nftFullData.nftAddres)}
+                className="title-zone"
+              >
+                <div className="avatar-zone">
+                  <img
+                    src={nftFullData.collectionData.coverImg}
+                    alt="colection-cover"
+                  />
+                </div>
+                <div className="text-zone">
+                  <h3>{nftFullData.collectionData.collectionName}</h3>
+                </div>
+              </Link>
             </div>
-          )}
+            <h2 className="nft-title mt-[12px]">{nftFullData.metadata.name}</h2>
+            {nftFullData.metadata.description && (
+              <div className="info-data mt-[15px] ">
+                <p>{nftFullData.metadata.description}</p>
+              </div>
+            )}
 
-          <div className="soy-stiky">
-            <h3>soy un stiky</h3>
+            <div className="soy-stiky">
+              <button className="wolf-buttom wolf-button-active">
+                Propiedad
+              </button>
+              <button className="wolf-buttom">Historial</button>
+              <button className="wolf-buttom"> Oferta</button>
+            </div>
+
+            {nftFullData.metadata.attributes && (
+              <>
+                <AtributesDisplay
+                  attributes={nftFullData.metadata.attributes}
+                  trayCollectionDef={nftFullData.collectionData.defAtributes}
+                />
+              </>
+            )}
           </div>
-
-          {nftFullData.metadata.attributes && (
-            <>
-              <AtributesDisplay
-                attributes={nftFullData.metadata.attributes}
-                trayCollectionDef={nftFullData.collectionData.defAtributes}
-              />
-            </>
-          )}
         </div>
       </div>
-    </div>
+
   );
 }
