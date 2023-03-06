@@ -8,11 +8,17 @@
 
     .multimedia-zone {
 
+        max-width : 500px;
+        max-height: 500px;
+        padding: 0 15px;
+
+
+
         video,
         img {
-            max-width    : 500px;
+            width        : 100%;
             border-radius: 16px;
-            max-height   : 500px;
+            height       : 100%;
             object-fit   : cover;
         }
     }
@@ -36,7 +42,7 @@
             border-radius   : 16px;
             width           : 100%;
             position        : sticky;
-            top             : 80px;
+            top             : 60px;
             z-index         : 10;
             margin-top      : 15px;
             margin-bottom   : 15px;
@@ -81,10 +87,18 @@
             height: 100%;
 
             // position: absolute;
+
+            @media (max-width: 699px){
+                margin-bottom: 30px;
+            }
+
             @media (min-width: 700px) {
                 position: sticky;
                 top     : 80px;
+                
             }
+
+
 
         }
 

@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../../helpers/static-routes";
 import { MdLoyalty, MdAnalytics, MdHistory } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
-import { itemDetaisTabOption, saleMethod } from "../../../helpers/global-constants";
+import {
+  itemDetaisTabOption,
+  saleMethod,
+} from "../../../helpers/global-constants";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfDoubtful from "../../../components/icons/WolfDoubtful";
 import NftHistoriDisplay from "../../../components/nft-history/NftHistoriDisplay";
+import PriceZoen from "../../../components/price-zone/PriceZoen";
 
 const temJson2 = {
   history: [
@@ -58,8 +62,6 @@ const temjson1 = {
   seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
   // sellerName: "angelxd",
   // sellerAvatar: "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/e/e6/latest/20160801134625/Ninetales_de_Alola.png/1200px-Ninetales_de_Alola.png",
-  
-  
 
   collectionData: {
     collectionName: "Pixelmon - Generation 1",
@@ -259,7 +261,7 @@ export default function TokentFullSpechData() {
 
   return (
     <div className="wolf-item-data-contianer">
-      <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
+      <div className="wolf-item-data-item  w-[100%] min-[700px]:w-[50%] ">
         {
           // verificamos si el archivo tiene un video
           nftFullData.metadata["animation_url"] ? (
@@ -384,8 +386,16 @@ export default function TokentFullSpechData() {
             <NftHistoriDisplay nftHistory={temJson2.history} />
           )}
         </div>
-        <div className="price-zone" >
-          <h3>Zona de precio</h3>
+        <div className="price-zone">
+          <PriceZoen
+            expirationTime={nftFullData.expirationTime}
+            price={nftFullData.price}
+            quantity={nftFullData.quantity}
+            saleMethod={nftFullData.saleMethod}
+            seller={nftFullData.seller}
+            sellerAvatar={nftFullData.sellerAvatar}
+            sellerName={nftFullData.sellerName}
+          />
         </div>
       </div>
     </div>
