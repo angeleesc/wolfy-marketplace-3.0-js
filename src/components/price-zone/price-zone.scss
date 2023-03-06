@@ -1,0 +1,10 @@
+.sale-info-price {
+    background     : rgb(73, 82, 99);
+    background     : linear-gradient(180deg, rgba(73, 82, 99, .2) 0%, rgba(19, 22, 26, 1) 100%);
+    backdrop-filter: blur(5px);
+    padding        : 15px;
+    border-radius: 16px 16px 0 0 ;
+    // border: 1px solid theme("colors.wolf-gray-dark.600");
+    overflow: hidden;
+    margin-top: 30px;
+}
