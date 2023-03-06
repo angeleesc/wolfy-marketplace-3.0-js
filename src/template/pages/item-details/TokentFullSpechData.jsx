@@ -154,6 +154,8 @@ const temjson1 = {
 
   metadata: {
     name: "Pixelmon #1680",
+    image:
+      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Spout.jpg",
     image_url:
       "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/0/Spout.jpg",
     external_url: "https://pixelmon.club/",
@@ -233,8 +235,8 @@ const temjson1 = {
         value: 1645990096,
       },
     ],
-    animation_url:
-      "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/6/Spout.mp4",
+    // animation_url:
+    //   "https://pixelmon-training-rewards.s3-accelerate.amazonaws.com/6/Spout.mp4",
 
     description:
       "es un caballo digital con poderes de caballo de agua de edicion limitada tienes suerte de ver uno XD",
@@ -245,7 +247,6 @@ export default function TokentFullSpechData() {
   const nftFullData = temjson1;
 
   const [queryParams, setQueryParams] = useSearchParams();
-
   const tapOption = queryParams.get("tab");
 
   console.log(tapOption);
@@ -253,7 +254,38 @@ export default function TokentFullSpechData() {
   return (
     <div className="wolf-item-data-contianer">
       <div className="wolf-item-data-item w-[100%] min-[700px]:w-[50%] ">
-        <h3>Imagenes</h3>
+        {
+          // verificamos si el archivo tiene un video
+          nftFullData.metadata["animation_url"] ? (
+            <div className="multimedia-zone">
+              <video controls loop>
+                <source src={nftFullData.metadata["animation_url"]} />
+              </video>
+            </div>
+          ) : (
+            <div>
+              {nftFullData.metadata["image_url"] ? (
+                <div className="multimedia-zone">
+                  <img
+                    src={nftFullData.metadata["image_url"]}
+                    alt="image-metadata"
+                  />
+                </div>
+              ) : nftFullData.metadata["image"] ? (
+                <div className="multimedia-zone">
+                  <img
+                    src={nftFullData.metadata["image"]}
+                    alt="image-metadata"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <h3>Formano de metadata no reconocible </h3>
+                </div>
+              )}
+            </div>
+          )
+        }
       </div>
       <div className="wolf-item-data-item flex flex-col xd w-[100%] min-[700px]:w-[50%]">
         <div className="wolf-info-section-data">
