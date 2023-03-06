@@ -378,6 +378,9 @@ export default function TokentFullSpechData() {
             <NftHistoriDisplay nftHistory={temJson2.history} />
           )}
         </div>
+        <div className="price-zone" >
+          <h3>Zona de precio</h3>
+        </div>
       </div>
     </div>
   );
