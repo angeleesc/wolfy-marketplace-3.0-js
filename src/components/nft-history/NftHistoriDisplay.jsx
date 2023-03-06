@@ -4,17 +4,15 @@ import { historyType } from "../../helpers/global-constants";
 import { IoPricetag } from "react-icons/io5";
 import { MdOutlineGavel, MdPayments } from "react-icons/md";
 import { BiTransfer } from "react-icons/bi";
-import avatar from "gradient-avatar";
+
 
 import "./nft-history.scss";
-import gradientAvatar from "gradient-avatar";
 import Avatar from "boring-avatars";
 
 const NftListingHistoryCard = ({ cardData }) => {
   return (
     <div className="history-card">
       <h3 className="flex items-center">
-        {" "}
         <IoPricetag className="mr-2" /> <span>Listado</span>
       </h3>
     </div>
