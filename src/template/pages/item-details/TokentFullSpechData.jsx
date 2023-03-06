@@ -27,7 +27,7 @@ const temJson2 = {
       // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
       // tokenId: 2,
 
-    },
+    }, 
     {
       type: "sell",
       seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
