@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../../helpers/static-routes";
 import { MdLoyalty, MdAnalytics, MdHistory } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
-import { itemDetaisTabOption } from "../../../helpers/global-constants";
+import { itemDetaisTabOption, saleMethod } from "../../../helpers/global-constants";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfDoubtful from "../../../components/icons/WolfDoubtful";
 import NftHistoriDisplay from "../../../components/nft-history/NftHistoriDisplay";
@@ -54,6 +54,12 @@ const temjson1 = {
   nftAddres: "0x32973908FaeE0Bf825A343000fE412ebE56F802A",
   quantity: 1,
   tokenID: [1],
+  saleMethod: saleMethod.sales,
+  seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+  // sellerName: "angelxd",
+  // sellerAvatar: "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/e/e6/latest/20160801134625/Ninetales_de_Alola.png/1200px-Ninetales_de_Alola.png",
+  
+  
 
   collectionData: {
     collectionName: "Pixelmon - Generation 1",

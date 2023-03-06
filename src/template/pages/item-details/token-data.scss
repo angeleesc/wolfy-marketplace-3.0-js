@@ -288,9 +288,11 @@
 
 
     .price-zone {
-        background-color: red;
-        position        : sticky;
-        bottom          : 0;
+        // background-color: red;
+        position : sticky;
+        bottom   : 0;
+        width    : 100%;
+        max-width: 500px;
     }
 
 }
