@@ -26,8 +26,7 @@ const temJson2 = {
       time: 1677857708000,
       // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
       // tokenId: 2,
-
-    }, 
+    },
     {
       type: "sell",
       seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
@@ -43,7 +42,7 @@ const temJson2 = {
       buyer: "0xA5ba155b5f92E4d59B74a3565918075487e4A397",
       // nftAdders: "0xaA7200ee500dE2dcde75E996De83CBD73BCa9705",
       // tokenId: 2,
-      time: 1677857708000, 
+      time: 1677857708000,
     },
   ],
 };
@@ -283,7 +282,9 @@ export default function TokentFullSpechData() {
 
           <div className="soy-stiky">
             <button
-              className="wolf-buttom flex justify-center items-center wolf-button-active"
+              className={`wolf-buttom flex justify-center items-center ${
+                !tapOption ? "wolf-button-active" : ""
+              }`}
               onClick={() => {
                 setQueryParams({});
               }}
@@ -291,7 +292,11 @@ export default function TokentFullSpechData() {
               <span>Propiedad</span> <MdAnalytics className="ml-2" />
             </button>
             <button
-              className="wolf-buttom flex justify-center items-center wolf-button-active"
+              className={`wolf-buttom flex justify-center items-center ${
+                tapOption === itemDetaisTabOption.history
+                  ? "wolf-button-active"
+                  : ""
+              }`}
               onClick={() => {
                 setQueryParams({
                   tab: itemDetaisTabOption.history,
@@ -301,7 +306,11 @@ export default function TokentFullSpechData() {
               <span>Historial</span> <MdHistory className="ml-2" />
             </button>
             <button
-              className="wolf-buttom flex justify-center items-center wolf-button-active"
+              className={`wolf-buttom flex justify-center items-center ${
+                tapOption === itemDetaisTabOption.bid
+                  ? "wolf-button-active"
+                  : ""
+              }`}
               onClick={() => {
                 setQueryParams({
                   tab: itemDetaisTabOption.bid,
@@ -333,7 +342,9 @@ export default function TokentFullSpechData() {
             </>
           )}
 
-          {tapOption === itemDetaisTabOption.history && <NftHistoriDisplay  nftHistory={temJson2.history} />}
+          {tapOption === itemDetaisTabOption.history && (
+            <NftHistoriDisplay nftHistory={temJson2.history} />
+          )}
         </div>
       </div>
     </div>

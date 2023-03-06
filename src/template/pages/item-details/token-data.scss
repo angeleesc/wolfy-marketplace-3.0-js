@@ -38,6 +38,13 @@
                 flex-grow: 1;
                 margin   : 0 5px;
                 padding  : 5px;
+
+                @media (max-width: 500px) {
+                    // background-color: red;
+                    font-size: 12px;
+                    line-height: 12px;
+                }
+
             }
 
             .wolf-button-active {
