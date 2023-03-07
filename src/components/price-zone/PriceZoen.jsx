@@ -2,6 +2,7 @@ import React from "react";
 import "./price-zone.scss";
 import { saleMethod as saleMethosOption } from "../../helpers/global-constants";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 export default function PriceZoen({
   price,
@@ -34,12 +35,24 @@ export default function PriceZoen({
               <span className="text-[12px] text-wolf-gray-light-1000">
                 En venta
               </span>
-              <h3 className="text-[26px] leading-[28px] text-wolf-gray-light-1900 font-semibold" >
+              <h3 className="text-[26px] leading-[28px] text-wolf-gray-light-1900 font-semibold">
                 {price} ETH
               </h3>
             </div>
           </div>
         )}
+      </div>
+      <div className="flex justify-center items-stretch button-zone-container">
+        <div className="button-zone-item">
+          <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+            Comprar Ahora
+          </button>
+        </div>
+        <div className="button-zone-item">
+          <button className="wolf-buttom wolf-btn-primary-2 w-[100%]">
+            <MdOutlineAddShoppingCart />
+          </button>
+        </div>
       </div>
     </div>
   );
