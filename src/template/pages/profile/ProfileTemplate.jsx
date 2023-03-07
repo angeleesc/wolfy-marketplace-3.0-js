@@ -4,7 +4,7 @@ import ProfileExplorer from "../../../components/profile/ProfileExplorer";
 
 export default function ProfileTemplate() {
   return (
-    <div className="mt-[60px] px-[30px]">
+    <div className="">
       <ProfileHeader />
       <ProfileExplorer />
     </div>

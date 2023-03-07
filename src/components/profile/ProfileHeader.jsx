@@ -1,5 +1,5 @@
 import React from "react";
-import "./profile-header.scss"
+import "./profile-header.scss";
 
 const tempJson = {
   userNane: "angel xd",
@@ -20,9 +20,16 @@ export default function ProfileHeader() {
 
   return (
     <div className="profile-header-conainer">
+      <div className="profile-bg">
+        <img src={userData.coverImage} alt="cover-bg-image" />
+        <div className="cover-blur-gradien" ></div>
+      </div>
       <div className="profile-header-body">
         <div className="cover-section">
-          <img src={userData.coverImage} alt="urese-profile-cover-image" />
+          <img src={userData.coverImage} alt="user-profile-cover-image" />
+          <div className="avatar-section">
+            <img src={userData.avatarPhoto} alt="user-profile-avata0image" />
+          </div>
         </div>
       </div>
     </div>
