@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import ProfileTemplate from "../../template/pages/profile/ProfileTemplate";
 
 export default function UserProfile() {
-  return (
-    <div>UserProfile</div>
-  )
+  return <ProfileTemplate />;
 }
