@@ -94,8 +94,8 @@ const tempJson = [
     colection: "0xA41f28031d1165cD45c69E6AB9ba2A8BE0201008",
     collectionFace:
       "https://i.seadn.io/gae/xN0Abpk1755I8dMsCh0A2-3CBgpURNerqHOX96k8odPWZhy_RpQAGMqMKPxyP1OUl-fg4P9A596AnuuoAZ4H_d9_2XMxmU29adaV?auto=format&w=256",
-    sellerFace:
-      "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
+    // sellerFace:
+    //   "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
     isCollectionCheck: true,
     isSellerCheck: true,
     nftCover:

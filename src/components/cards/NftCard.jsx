@@ -1,5 +1,6 @@
 import React from "react";
 import "./nft-card.scss";
+import WolfIdentidcon from "../identicon/WolfIdentidcon";
 
 export default function NftCard({ cardData }) {
   const {
@@ -18,16 +19,41 @@ export default function NftCard({ cardData }) {
     copies,
     sale,
     order,
+    sellerName,
   } = cardData;
 
   return (
     <div className="nft-card-container">
       <div className="card-body">
         <div className="multimedia-secction">
-            <img src={nftCover} alt="cover-img" />
-            <div className="avatar-section" >
-                <img src={collectionFace} alt="collection-face-photo" />
+          <img src={nftCover} alt="cover-img" />
+
+          <div className="seller-info">
+            <div className="seller-info-body">
+              <div className="avatar-section">
+                {sellerFace ? (
+                  <img src={sellerFace} alt="seller-face" />
+                ) : (
+                  <WolfIdentidcon name={seller} size={36} />
+                )}
+              </div>
+              <div className="seller-info-card">
+                <span className="mb-[2px]"  >Vendedor</span>
+                <div className="w-[100%] h-[1px] my-[2px] bg-wolf-blue-purple-600" ></div>
+                <h3>
+                  {sellerName
+                    ? sellerName
+                    : `${seller.substring(0, 5)}...${seller.substr(-5)}`}
+                </h3>
+              </div>
             </div>
+          </div>
+
+          <div className="avatar-section-container">
+            <div className="avatar-section-item">
+              <img src={collectionFace} alt="collection-face-photo" />
+            </div>
+          </div>
         </div>
         <div className="sale-info-section"></div>
       </div>
