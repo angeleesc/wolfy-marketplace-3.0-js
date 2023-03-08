@@ -9,13 +9,13 @@ const tempJson = [
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xDae97EAFB92F988F268626e4b5120C3E6959bfc7",
     collectionFace:
-      "https://i.seadn.io/gcs/files/bde660047ec7e69ee6b74174d63cf1ff.gif?auto=format&w=256",
+      "https://i.seadn.io/gcs/files/a34f572a205a891602a747c638d2949e.png?auto=format&w=384",
     sellerFace:
       "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
     isCollectionCheck: true,
     isSellerCheck: true,
     nftCover:
-      "https://i.seadn.io/gcs/files/b09e5f0d6e130dcd223afa2c50decfaf.jpg?auto=format&w=384",
+      "https://i.seadn.io/gcs/files/106e256cfc12976409cd86624417633c.png?auto=format&w=384",
     // nftVideo: "",
     price: 0.054,
     saleMethod: saleMethod.sales,
@@ -30,7 +30,7 @@ const tempJson = [
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xDae97EAFB92F988F268626e4b5120C3E6959bfc7",
     collectionFace:
-      "https://i.seadn.io/gcs/files/bde660047ec7e69ee6b74174d63cf1ff.gif?auto=format&w=256",
+      "https://i.seadn.io/gae/QpbiWwQP_nQSQJ6qXagezo-GleNo-X3VuoDlyDg1tZujFMugpmNnJFLnfGUXlsLjMcHyz8ZDh5HoIHVA8tPyzbFobg-vBnJMjgOm_A?auto=format&w=256",
     sellerFace:
       "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
     isCollectionCheck: true,
@@ -47,17 +47,17 @@ const tempJson = [
   },
   {
     nftName: "Meka-Driver #2670",
-    colectionName: "Meka Drivers",
+    colectionName: "Meka Verse",
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xDae97EAFB92F988F268626e4b5120C3E6959bfc7",
     collectionFace:
-      "https://i.seadn.io/gcs/files/bde660047ec7e69ee6b74174d63cf1ff.gif?auto=format&w=256",
+      "https://i.seadn.io/gae/SFCYIPlcznnwFnI8Jd0dYIh5Atr6cp7HL4tWVWUl7_Onikq7uzQxKfTjdK2ptilWALg1ZBttSvzhXBCUbB9qoSlW9kS8qk1S3Z3xkU0?auto=format&w=256",
     sellerFace:
       "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
     isCollectionCheck: true,
     isSellerCheck: true,
     nftCover:
-      "https://i.seadn.io/gcs/files/48687ec4e52323a4369d313c7b057322.jpg?auto=format&w=384",
+      "https://i.seadn.io/gcs/files/f7e59b32bc5cf572048041e9fa9a3f04.png?auto=format&w=384",
     // nftVideo: "",
     price: 0.058,
     saleMethod: saleMethod.sales,
@@ -88,18 +88,18 @@ const tempJson = [
     order: 4,
   },
   {
-    nftName: "Anisopteraaninae chrysaicus",
-    colectionName: "CHRYSALISM: LARVA",
+    nftName: "Eric Way ",
+    colectionName: "Eric Pause Editions",
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xA41f28031d1165cD45c69E6AB9ba2A8BE0201008",
     collectionFace:
-      "https://i.seadn.io/gcs/files/895ba798318372d4be4538d10b6c9fb9.jpg?auto=format&w=256",
+      "https://i.seadn.io/gae/xN0Abpk1755I8dMsCh0A2-3CBgpURNerqHOX96k8odPWZhy_RpQAGMqMKPxyP1OUl-fg4P9A596AnuuoAZ4H_d9_2XMxmU29adaV?auto=format&w=256",
     sellerFace:
       "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
     isCollectionCheck: true,
     isSellerCheck: true,
     nftCover:
-      "https://i.seadn.io/gcs/files/d791d38af9a6bb63be34343aa24a630a.jpg?auto=format&w=384",
+      "https://i.seadn.io/gcs/files/58bc794a5ab636c82a25bc681ba6b32e.png?auto=format&w=384",
     // nftVideo: "",
     price: 0.055,
     saleMethod: saleMethod.sales,

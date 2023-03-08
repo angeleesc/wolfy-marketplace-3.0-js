@@ -15,7 +15,7 @@ const tempJson = [
     isCollectionCheck: true,
     isSellerCheck: true,
     nftCover:
-      "https://i.seadn.io/gcs/files/b09e5f0d6e130dcd223afa2c50decfaf.jpg?auto=format&w=384",
+      "https://i.seadn.io/gcs/files/106e256cfc12976409cd86624417633c.png?auto=format&w=384",
     // nftVideo: "",
     price: 0.054,
     saleMethod: saleMethod.sales,
@@ -46,8 +46,8 @@ const tempJson = [
     order: 2,
   },
   {
-    nftName: "Meka-Driver #2670",
-    colectionName: "Meka Drivers",
+    nftName: "Meka-verse #2670",
+    colectionName: "Meka Verse",
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xDae97EAFB92F988F268626e4b5120C3E6959bfc7",
     collectionFace:
