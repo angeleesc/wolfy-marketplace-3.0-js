@@ -239,6 +239,16 @@ module.exports = {
           800: "#5deb6a",
           900: "#74ee7f",
           1000: "#8bf194"
+        },
+
+        "wolf-social": {
+          facebook: "#3b5998",
+          instagram: "#962fbf",
+          twitch: "#6441a5",
+          behance: "#053eff",
+          twitter: "#00acee",
+          discord: "#5865F2",
+          youtube: "#FF0000"
         }
 
 

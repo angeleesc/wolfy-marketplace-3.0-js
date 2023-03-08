@@ -80,24 +80,25 @@ const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
   };
 
   const DefColorClass = {
-    [socialNetworks.behance]: "social-n-item",
-    [socialNetworks.youtube]: "social-n-item",
-    [socialNetworks.discord]: "social-n-item",
-    [socialNetworks.facebook]: "social-n-item",
-    [socialNetworks.twitch]: "social-n-item",
-    [socialNetworks.behance]: "social-n-item",
-    [socialNetworks.twitter]: "social-n-item",
-    [socialNetworks.instagram]: "social-n-item",
+    [socialNetworks.behance]: `social-n-item bg-wolf-social-behance`,
+    [socialNetworks.youtube]: `social-n-item bg-wolf-social-youtube`,
+    [socialNetworks.facebook]: `social-n-item  bg-wolf-social-facebook`,
+    [socialNetworks.twitch]: `social-n-item bg-wolf-social-twitch`,
+    [socialNetworks.behance]: `social-n-item bg-wolf-social-behance`,
+    [socialNetworks.twitter]: `social-n-item bg-wolf-social-twitter`,
+    [socialNetworks.instagram]: `social-n-item bg-wolf-social-instagram`,
+    [socialNetworks.discord]: `social-n-item bg-wolf-social-discord`,
+
   };
 
   const RenderIconDef = DefIcon[icons];
 
   return (
-    <div className="social-n-item">
-      <span>
+    <button className={"social-n-item"}>
+      <span className="icon-section" >
         <RenderIconDef />
       </span>
-    </div>
+    </button>
   );
 };
 
