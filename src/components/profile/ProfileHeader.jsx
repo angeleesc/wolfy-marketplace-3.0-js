@@ -76,12 +76,29 @@ const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
     [socialNetworks.twitch]: FaTwitch,
     [socialNetworks.behance]: FaBehance,
     [socialNetworks.twitter]: FaTwitter,
-    [socialNetworks.instagram]: FaInstagram
+    [socialNetworks.instagram]: FaInstagram,
+  };
+
+  const DefColorClass = {
+    [socialNetworks.behance]: "social-n-item",
+    [socialNetworks.youtube]: "social-n-item",
+    [socialNetworks.discord]: "social-n-item",
+    [socialNetworks.facebook]: "social-n-item",
+    [socialNetworks.twitch]: "social-n-item",
+    [socialNetworks.behance]: "social-n-item",
+    [socialNetworks.twitter]: "social-n-item",
+    [socialNetworks.instagram]: "social-n-item",
   };
 
   const RenderIconDef = DefIcon[icons];
 
-  return <RenderIconDef />;
+  return (
+    <div className="social-n-item">
+      <span>
+        <RenderIconDef />
+      </span>
+    </div>
+  );
 };
 
 export default function ProfileHeader() {
@@ -132,11 +149,10 @@ export default function ProfileHeader() {
                 console.log(socialN.socialName);
 
                 return (
-                  <div className="social-n-item" key={"social-n-" + i}>
-                    <span>
-                      <SocialIconRender icons={socialN.socialName} />
-                    </span>
-                  </div>
+                  <SocialIconRender
+                    icons={socialN.socialName}
+                    key={"social-icon-" + i}
+                  />
                 );
               })}
             </div>
