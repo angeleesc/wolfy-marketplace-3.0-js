@@ -30,3 +30,15 @@ export const historyType = {
     transfer: "transfer"
 
 }
+
+export const socialNetworks = {
+    facebook: "facebook",
+    instagram: "instagram",
+    twitch: "twitch",
+    behance: "behance",
+    twitter: "twitter",
+    discord: "discord",
+    youtube: "youtube",
+    
+
+}

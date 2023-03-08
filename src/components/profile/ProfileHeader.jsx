@@ -1,7 +1,15 @@
 import React from "react";
 import "./profile-header.scss";
-import {FaInstagram, FaFacebook, } from "react-icons/fa"
-
+import {
+  FaInstagram,
+  FaFacebook,
+  FaBehance,
+  FaTwitch,
+  FaTwitter,
+  FaDiscord,
+  FaYoutube,
+} from "react-icons/fa";
+import { socialNetworks } from "../../helpers/global-constants";
 
 const tempJson = {
   userName: "Angel xd",
@@ -12,42 +20,69 @@ const tempJson = {
 
   socialContact: [
     {
-      socialName: "instagram",
+      socialName: socialNetworks.instagram,
       userName: "angelsplayxd",
       verified: true,
+      url: "https://www.google.com/",
     },
     {
-      socialName: "facebook",
+      socialName: socialNetworks.facebook,
       userName: "Angel Sanchez",
       verified: "true",
+      url: "https://www.google.com/",
     },
     {
-      socialName: "twitter",
+      socialName: socialNetworks.twitter,
       userName: "angeleesc",
       verified: true,
+      url: "https://www.google.com/",
     },
     {
-      socialName: "discord",
+      socialName: socialNetworks.discord,
       verified: true,
       userName: "angelxdplus",
+      url: "https://www.google.com/",
     },
     {
-        socialName: "behance",
-        verified: true,
-        userName: "angel creative"
-    }
+      socialName: socialNetworks.behance,
+      verified: true,
+      userName: "angel creative",
+      url: "https://www.google.com/",
+    },
+    {
+      socialName: socialNetworks.twitch,
+      verified: true,
+      userName: "angelonlinexd",
+      url: "https://www.google.com/",
+    },
+    {
+      socialName: socialNetworks.youtube,
+      verified: true,
+      userName: "angelSplay",
+      url: "https://www.google.com/",
+    },
   ],
   avatarPhoto:
     "https://storage.googleapis.com/histories/325227351_157039013782665_5232836476363926556_n.jpg",
   coverImage: "https://storage.googleapis.com/histories/785.jpg",
 };
 
+const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
+  const DefIcon = {
+    [socialNetworks.behance]: FaBehance,
+    [socialNetworks.youtube]: FaYoutube,
+    [socialNetworks.discord]: FaDiscord,
+    [socialNetworks.facebook]: FaFacebook,
+    [socialNetworks.twitch]: FaTwitch,
+    [socialNetworks.behance]: FaBehance,
+    [socialNetworks.twitter]: FaTwitter,
+    [socialNetworks.instagram]: FaInstagram
+  };
 
-const SocialIconRender =({icons})=>{
+  const RenderIconDef = DefIcon[icons];
 
-
-
-}
+  return <RenderIconDef />;
+};
 
 export default function ProfileHeader() {
   const userData = tempJson;
@@ -94,9 +129,15 @@ export default function ProfileHeader() {
           {userData.socialContact && Array.isArray(userData.socialContact) && (
             <div className="social-contact-section-box">
               {userData.socialContact.map((socialN, i) => {
-                return <div className="social-n-item">
+                console.log(socialN.socialName);
 
-                </div>;
+                return (
+                  <div className="social-n-item" key={"social-n-" + i}>
+                    <span>
+                      <SocialIconRender icons={socialN.socialName} />
+                    </span>
+                  </div>
+                );
               })}
             </div>
           )}
