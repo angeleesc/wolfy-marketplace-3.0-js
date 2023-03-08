@@ -1,0 +1,52 @@
+.nft-card-container {
+    // background-color: theme("colors.wolf-gray-dark.400");
+    width        : 100%;
+    max-width    : 240px;
+    min-width    : 210px;
+    height       : 300px;
+    border-radius: 16px;
+    position     : relative;
+
+    &::before,
+    &::after {
+        content            : '';
+        width              : 100%;
+        height             : 100%;
+        display            : block;
+        position           : absolute;
+        background-color   : theme("colors.wolf-gray-dark.400");
+        border-radius      : 16px;
+        // z-index         : -1;
+        top                : 0;
+        left               : 0;
+    }
+
+    &::before {
+        z-index: -1;
+    }
+
+    &::after {
+        z-index: -2;
+    }
+
+
+
+    &:hover {
+
+        z-index: 10;
+
+        &::before {
+            background-color: theme("colors.wolf-blue-purple.400");
+            z-index         : -1;
+            transform       : rotate(8deg);
+        }
+
+        &::after {
+            background-color: theme("colors.wolf-blue-purple.300");
+            z-index         : -2;
+            transform       : rotate(16deg);
+        }
+    }
+
+
+}
