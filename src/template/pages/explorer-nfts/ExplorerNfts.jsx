@@ -1,6 +1,7 @@
 import React from "react";
 import { saleMethod } from "../../../helpers/global-constants";
 import NftsCardList from "../../../components/list/NftsCardList";
+import ExplorerMenuFillter from "../../../components/menus/ExplorerMenuFillter";
 
 const tempJson = [
   {
@@ -23,7 +24,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 1,
-    sellerName:"angelxd"
+    sellerName: "angelxd",
   },
   {
     nftName: "Meka-Driver #408",
@@ -45,7 +46,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 2,
-    sellerName: "angelxd"
+    sellerName: "angelxd",
   },
   {
     nftName: "Meka-Driver #2670",
@@ -67,7 +68,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 3,
-    sellerName: "angelxd"
+    sellerName: "angelxd",
   },
   {
     nftName: "Anisopteraaninae chrysaicus tralala",
@@ -89,7 +90,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 4,
-    sellerName: "angelxd"
+    sellerName: "angelxd",
   },
   {
     nftName: "Eric Way ",
@@ -111,13 +112,14 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 5,
-    sellerName: "angelxd sanche de la con"
+    sellerName: "angelxd sanche de la con",
   },
 ];
 
 export default function ExplorerNfts() {
   return (
     <div className="mt-[80px] px-[30px]">
+      <ExplorerMenuFillter  />
       <NftsCardList cards={tempJson} />
     </div>
   );
