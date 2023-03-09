@@ -1,6 +1,7 @@
 import React from "react";
 import "./nft-card.scss";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
+import { MdAddShoppingCart } from "react-icons/md";
 
 export default function NftCard({ cardData }) {
   const {
@@ -58,7 +59,12 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
           <div className="checkout-secction">
-            <button className="wolf-buttom wolf-btn-primary-2 mr-2 "   >Comprar</button> <button className="wolf-buttom wolf-btn-primary-2 " >Carrito</button>
+            <button className="wolf-buttom wolf-btn-primary-2 mr-2 ">
+              Comprar
+            </button>
+            <button className="wolf-buttom wolf-btn-primary-2 ">
+              <MdAddShoppingCart />
+            </button>
           </div>
         </div>
       </div>
