@@ -48,14 +48,17 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
         </div>
-        <div className="sale-info-section">
-          <div className="nft-title-section-xd">
-
-            <h3>{nftName}</h3>
-
+        <div className="footer-section">
+          <div className="sale-info-section">
+            <div className="nft-title-section-xd">
+              <h3>{nftName}</h3>
+            </div>
+            <div className="price-zone px-[5px]">
+              <h2>{price} ETH</h2>
+            </div>
           </div>
-          <div className="price-zone px-[5px]">
-            <h2>{price} ETH</h2>
+          <div className="checkout-secction">
+            <button className="wolf-buttom wolf-btn-primary-2 mr-2 "   >Comprar</button> <button className="wolf-buttom wolf-btn-primary-2 " >Carrito</button>
           </div>
         </div>
       </div>
