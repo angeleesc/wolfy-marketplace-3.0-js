@@ -5,7 +5,7 @@ import NftsCardList from "../../../components/list/NftsCardList";
 const tempJson = [
   {
     nftName: "Meka-Driver #431",
-    colectionName: "Meka Drivers",
+    colectionName: "Meka Drivers de la profundidad desde el espacio",
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xDae97EAFB92F988F268626e4b5120C3E6959bfc7",
     collectionFace:

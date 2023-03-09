@@ -1,7 +1,7 @@
 .nft-card-container {
     // background-color: theme("colors.wolf-gray-dark.400");
     width        : 100%;
-    max-width    : 240px;
+    max-width    : 210px;
     min-width    : 210px;
     height       : 300px;
     border-radius: 16px;
@@ -50,6 +50,42 @@
             // align-items        : center;
             // padding         : 6px;
 
+            .collection-info {
+
+                position               : absolute;
+                white-space            : nowrap;
+                max-width              : 100%;
+                overflow               : hidden;
+                text-overflow          : ellipsis;
+                padding-right          : 70px;
+                bottom                 : 0;
+                background             : #13161a40;
+                backdrop-filter        : blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius          : 10px;
+                opacity                : 0;
+                transition             : opacity .5s;
+
+                span {
+                    // background-color   : blue;
+                    // display         : block;
+                    padding               : 5px;
+                    padding-right         : 50px;
+                    // height: 50px
+                    // display            : inline-block;
+                    text-overflow         : ellipsis;
+                    padding-right         : 70px;
+                    font-size             : 12px;
+                    font-weight           : 600;
+                    color                 : theme("colors.wolf-gray-light.2200");
+
+
+
+                }
+
+
+            }
+
             img {
                 width        : 100%;
                 height       : 100%;
@@ -58,12 +94,12 @@
             }
 
             .seller-info {
-                width              : 100%;
-                min-height         : 50px;
-                // background-color: red;
-                padding            : 0 10px;
-                position           : absolute;
-                top                : 10px;
+                width     : 100%;
+                min-height: 50px;
+                padding   : 0 10px;
+                position  : absolute;
+                top       : 10px;
+                opacity   : 0;
 
 
 
@@ -107,10 +143,10 @@
                         }
 
                         h3 {
-                            color      : theme("colors.wolf-gray-light.1800");
-                            font-size  : 14px;
-                            line-height: 14px;
-                            font-weight: 600;
+                            color        : theme("colors.wolf-gray-light.1500");
+                            font-size    : 14px;
+                            line-height  : 14px;
+                            font-weight  : 600;
                             // margin-top: 2px;
                         }
 
@@ -120,14 +156,16 @@
             }
 
             .avatar-section-container {
-                position: absolute;
-                bottom  : -21px;
-                left    : 15px;
+                position   : absolute;
+                bottom     : -25px;
+                right      : 15px;
+                display    : flex;
+                align-items: center;
 
                 .avatar-section-item {
                     padding: 4px;
-                    width  : 42px;
-                    height : 42px;
+                    width  : 50px;
+                    height : 50px;
 
                     background-color: theme("colors.wolf-gray-dark.400");
                     border-radius   : 50%;
@@ -136,12 +174,72 @@
                         border-radius: 50%;
                     }
 
+
                 }
 
+                .collection-nft-title {
+                    flex-grow          : 1;
+                    // background-color: red;
+                    overflow           : hidden;
+
+                    span,
+                    h3 {
+                        white-space  : nowrap;
+                        width        : 100%;
+                        max-width    : 130px;
+                        overflow     : hidden;
+                        text-overflow: ellipsis;
+
+                    }
+
+                    span {
+                        font-size: 12px;
+                    }
+
+                    h3 {
+                        font-size: 14px;
+                    }
+                }
 
             }
 
 
+        }
+
+        .sale-info-section {
+            // background-color: red;
+            // height          : 100%;
+
+            .nft-title-section-xd {
+
+                span,
+                h3 {
+                    white-space  : nowrap;
+                    max-width    : 100%;
+                    overflow     : hidden;
+                    text-overflow: ellipsis;
+                }
+
+                // span {
+                //     font-size             : 11px;
+                //     font-weight           : 600;
+                //     color                 : theme("colors.wolf-gray-light.1100");
+                //     line-height           : 14px;
+                //     display               : block;
+                //     padding-right         : 70px;
+                //     margin-top            : 5px;
+
+                // }
+
+                h3 {
+                    font-size    : 14px;
+                    line-height  : 16px;
+                    margin-top   : 10px;
+                    padding-right: 50px;
+                    font-weight  : 700;
+                    color        : theme("colors.wolf-gray-light.1600");
+                }
+            }
         }
     }
 
