@@ -38,7 +38,7 @@ export default function NftCard({ cardData }) {
               </div>
               <div className="seller-info-card">
                 <span className="mb-[2px]">Vendedor</span>
-                <div className="w-[100%] h-[1px] my-[2px] bg-wolf-blue-purple-600"></div>
+                {/* <div className="w-[100%] h-[1px] my-[2px] bg-wolf-blue-purple-600"></div> */}
                 <h3>
                   {sellerName
                     ? sellerName
@@ -48,7 +48,7 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
 
-          <div className="collection-info" >
+          <div className="collection-info">
             <span>{colectionName}</span>
           </div>
 
@@ -63,10 +63,13 @@ export default function NftCard({ cardData }) {
           </div>
         </div>
         <div className="sale-info-section">
-            <div className="nft-title-section-xd" >
-                {/* <span>{ colectionName }</span> */}
-                <h3  >{nftName}</h3>
-            </div>
+          <div className="nft-title-section-xd">
+            {/* <span>{ colectionName }</span> */}
+            <h3>{nftName}</h3>
+          </div>
+          <div className="price-zone px-[5px]">
+            <h2>{price} ETH</h2>
+          </div>
         </div>
       </div>
     </div>
