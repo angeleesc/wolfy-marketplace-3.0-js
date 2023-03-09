@@ -1,7 +1,7 @@
 .nft-card-container {
     // background-color: theme("colors.wolf-gray-dark.400");
     width        : 100%;
-    max-width    : 250px;
+    max-width    : 300px;
     min-width    : 210px;
     height       : 300px;
     border-radius: 16px;
@@ -50,46 +50,6 @@
             // align-items        : center;
             // padding         : 6px;
 
-            .collection-info {
-
-                position               : absolute;
-                white-space            : nowrap;
-                max-width              : 100%;
-                overflow               : hidden;
-                text-overflow          : ellipsis;
-                padding-right          : 70px;
-                bottom                 : 0;
-                background             : #13161a40;
-                backdrop-filter        : blur(4px);
-                -webkit-backdrop-filter: blur(4px);
-                border-radius          : 10px;
-                opacity                : 0;
-                transition             : opacity .5s , background-color .5s;
-
-
-                span {
-                    // background-color   : blue;
-                    // display         : block;
-                    padding               : 5px;
-                    padding-right         : 50px;
-                    // height: 50px
-                    // display            : inline-block;
-                    text-overflow         : ellipsis;
-                    padding-right         : 70px;
-                    font-size             : 12px;
-                    font-weight           : 600;
-                    color                 : theme("colors.wolf-gray-light.2200");
-
-
-
-                }
-
-                &:hover{
-                    background-color: #13161a;
-                }
-
-
-            }
 
             img {
                 width        : 100%;
@@ -98,66 +58,6 @@
                 object-fit   : cover;
             }
 
-            .seller-info {
-                width     : 100%;
-                min-height: 50px;
-                padding   : 0 10px;
-                position  : absolute;
-                top       : 10px;
-                opacity   : 0;
-                transition: opacity .5s;
-
-
-
-
-                .seller-info-body {
-                    width           : 100%;
-                    background-color: theme("colors.wolf-gray-dark.800");
-                    padding         : 5px;
-                    border-radius   : 6px;
-                    display         : flex;
-                    align-items     : center;
-
-
-                    .avatar-section {
-                        width : 36px;
-                        height: 36px;
-
-                        img {
-                            border-radius: 50%;
-                        }
-
-                    }
-
-                    .seller-info-card {
-                        // background-color: red;
-                        // background-color: red;
-                        flex-grow      : 1;
-                        margin-left    : 10px;
-                        display        : flex;
-                        flex-direction : column;
-                        justify-content: center;
-                        padding-right  : 10px;
-
-                        span {
-                            color      : theme("colors.wolf-gray-light.1000");
-                            font-size  : 12px;
-                            line-height: 12px;
-                        }
-
-                        h3 {
-                            color      : theme("colors.wolf-gray-light.1500");
-                            font-size  : 14px;
-                            line-height: 14px;
-                            font-weight: 600;
-
-                            // margin-top: 2px;
-                        }
-
-                    }
-
-                }
-            }
 
             .avatar-section-container {
                 position   : absolute;
@@ -182,10 +82,10 @@
                 }
 
                 .collection-nft-title {
-                    flex-grow          : 1;
-                    overflow           : hidden;
+                    flex-grow: 1;
+                    overflow : hidden;
 
-                 
+
                     h3 {
                         white-space  : nowrap;
                         width        : 100%;
@@ -195,12 +95,65 @@
 
                     }
 
-    
+
                     h3 {
                         font-size: 14px;
                     }
                 }
 
+            }
+
+            .seller-info-section {
+                // background-color: red;
+                position: absolute;
+                top     : 15px;
+                width   : 100%;
+                padding : 0 15px;
+
+                .seller-info-body {
+                    display        : flex;
+                    justify-content: space-between;
+                    width          : 100%;
+                }
+
+                .seller-name {
+                    background-color   : theme("colors.wolf-gray-dark.400");
+                    flex-grow          : 1;
+                    margin-right       : 5px;
+                    padding            : 0 10px;
+                    display            : flex;
+                    flex-direction     : column;
+                    align-items        : flex-start;
+                    justify-content    : center;
+                    border-radius      : 8px;
+                    // max-width       : red;
+                    max-width          : calc(100% - 50px);
+
+
+                    span {
+                        color      : theme("colors.wolf-gray-light.1200");
+                        font-size  : 13px;
+                        line-height: 13px;
+                        display    : block;
+
+                    }
+
+
+
+                }
+
+                .seller-avatar {
+                    width           : 42px;
+                    height          : 42px;
+                    padding         : 3px;
+                    background-color: theme("colors.wolf-gray-dark.400");
+                    border-radius   : 50%;
+
+                    img {
+                        border-radius: 50%;
+                    }
+
+                }
             }
 
 
@@ -215,22 +168,14 @@
 
             .nft-title-section-xd {
 
-                span,
                 h3 {
-                    white-space  : nowrap;
-                    max-width    : 100%;
-                    overflow     : hidden;
-                    text-overflow: ellipsis;
-                }
-
-                h3 {
-                    font-size    : 14px;
-                    line-height  : 16px;
-                    margin-top   : 10px;
-                    padding-right: 50px;
-                    font-weight  : 700;
-                    color        : theme("colors.wolf-gray-light.1600");
-                    padding-left : 5px;
+                    font-size       : 14px;
+                    font-weight     : 600;
+                    color           : theme("colors.wolf-gray.875");
+                    white-space     : nowrap;
+                    width           : calc(100% - 60px);
+                    overflow        : hidden;
+                    text-overflow   : ellipsis;
                 }
             }
 
@@ -259,7 +204,8 @@
                 background-color: theme("colors.wolf-gray-dark.600");
             }
 
-            .seller-info, .collection-info {
+            .seller-info,
+            .collection-info {
                 opacity: 1;
             }
 

@@ -23,6 +23,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 1,
+    sellerName:"angelxd"
   },
   {
     nftName: "Meka-Driver #408",
@@ -44,6 +45,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 2,
+    sellerName: "angelxd"
   },
   {
     nftName: "Meka-Driver #2670",
@@ -65,9 +67,10 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 3,
+    sellerName: "angelxd"
   },
   {
-    nftName: "Anisopteraaninae chrysaicus",
+    nftName: "Anisopteraaninae chrysaicus tralala",
     colectionName: "CHRYSALISM: LARVA",
     seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
     colection: "0xA41f28031d1165cD45c69E6AB9ba2A8BE0201008",
@@ -86,6 +89,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 4,
+    sellerName: "angelxd"
   },
   {
     nftName: "Eric Way ",
@@ -107,6 +111,7 @@ const tempJson = [
     copies: 1,
     sale: 1,
     order: 5,
+    sellerName: "angelxd sanche de la con"
   },
 ];
 
