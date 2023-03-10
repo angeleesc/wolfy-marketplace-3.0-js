@@ -5,7 +5,7 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 
 const WolfTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
+  <Tooltip   {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
   [`& .${tooltipClasses.arrow}`]: {
       color: theme.palette.common.black,

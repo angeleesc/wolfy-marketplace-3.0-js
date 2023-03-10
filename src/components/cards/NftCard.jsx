@@ -2,6 +2,8 @@ import React from "react";
 import "./nft-card.scss";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { MdAddShoppingCart } from "react-icons/md";
+import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
+import WolfTooltip from "../tooltip/WolfTooltip";
 
 export default function NftCard({ cardData }) {
   const {
@@ -44,9 +46,16 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
           <div className="avatar-section-container">
-            <div className="avatar-section-item">
-              <img src={collectionFace} alt="collection-face-photo" />
-            </div>
+            <WolfTooltip  title={ <div className="flex flex-col" >
+              <span>Collecion</span>
+              <h3>{colectionName}</h3>
+            </div> } placement='left' >
+              <WolfTooltipNotButton>
+                <div className="avatar-section-item">
+                  <img src={collectionFace} alt="collection-face-photo" />
+                </div>
+              </WolfTooltipNotButton>
+            </WolfTooltip>
           </div>
         </div>
         <div className="footer-section">

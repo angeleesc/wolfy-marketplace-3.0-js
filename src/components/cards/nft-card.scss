@@ -208,7 +208,7 @@
                         text-overflow: ellipsis;
                         font-size    : 14px;
                         font-weight  : 700;
-                        color: theme("colors.wolf-gray-light.1700");
+                        color        : theme("colors.wolf-gray-light.1700");
                     }
 
                 }
@@ -239,6 +239,7 @@
                 .wolf-buttom {
                     padding: 5px 10px;
                     color  : theme("colors.wolf-gray-light.2200");
+                    height : 30px;
 
 
                     &:first-child {
