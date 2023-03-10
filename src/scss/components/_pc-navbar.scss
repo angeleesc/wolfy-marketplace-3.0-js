@@ -11,12 +11,22 @@
     .wolf-pc-navbar-body {
         // background-color: red;
 
-        height         : 60px;
-        width          : 100%;
-        display        : flex;
-        justify-content: space-between;
-        position       : relative;
-        align-items    : center;
+        height             : 60px;
+        width              : 100%;
+        display            : flex;
+        justify-content    : space-between;
+        position           : relative;
+        align-items        : center;
+        // background-color: red;
+
+        h3 {
+            // color      : theme('colors.wolf-gray-light.2000');
+            color: theme("colors.wolf-gray-light.2200");
+            font-weight: 600;
+            font-size  : 16px;
+        }
+
+
 
         &.mode-explorer {
             background-color: theme("colors.wolf-gray-dark.300");

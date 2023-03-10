@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import Logo from "../icons/Logo";
 import { Link, matchRoutes, useLocation } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
+import { MdSearch } from "react-icons/md";
+// import
 
 export default function PcNavbar() {
   const location = useLocation();
@@ -28,7 +30,6 @@ export default function PcNavbar() {
       return "wolf-pc-navbar-body mode-explorer";
     }
 
-
     return "wolf-pc-navbar-body";
   }, [pathname]);
 
@@ -44,11 +45,24 @@ export default function PcNavbar() {
           </div>
           <h1 className="ml-[85px]">Wolf Inu</h1>
         </Link>
-      </div>
-      <div className="explorer-sercciotn" >
-          <Link to={staticRoutes.exporersNfts} >
-            explorar
-          </Link>
+
+        <div className="flex">
+          <div className="drop-menu mr-2">
+            <Link to={staticRoutes.exporersNfts}>
+              <h3>Explorar</h3>
+            </Link>
+          </div>
+          <div className="drop-menu ml-2">
+            <Link to={staticRoutes.exporersNfts}>
+              <h3>Recursos</h3>
+            </Link>
+          </div>
+        </div>
+        <div className="flex">
+          <div className="icon-zone" >
+            <h3><MdSearch /></h3>
+          </div>
+        </div>
       </div>
     </div>
   );
