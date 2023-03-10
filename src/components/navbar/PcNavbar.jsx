@@ -5,18 +5,36 @@ import { Link, matchRoutes, useLocation } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 
 export default function PcNavbar() {
-  const routes = useLocation();
+  const location = useLocation();
   const bodyRef = useRef();
 
-  useEffect(() => {
-    if (bodyRef.current) {
-      console.log(bodyRef.current.classList);
+  const { pathname } = location;
+
+  const modeExplorerPath = [
+    {
+      path: staticRoutes.exporersNfts,
+    },
+    {
+      path: staticRoutes.exporersColections,
+    },
+  ];
+
+  let defBodyClass = useMemo(() => {
+    const explorermodePath = matchRoutes(modeExplorerPath, location);
+    console.log(explorermodePath);
+
+    if (explorermodePath) {
+      console.log("estas en una rua del explorer");
+      return "wolf-pc-navbar-body mode-explorer";
     }
-  }, []);
+
+
+    return "wolf-pc-navbar-body";
+  }, [pathname]);
 
   return (
     <div className="wolf-pc-navbar">
-      <div className="wolf-pc-navbar-body mode-explorer" ref={bodyRef}>
+      <div className={defBodyClass} ref={bodyRef}>
         <Link
           className="logo-section flex items-center  relative h-[60px]"
           to="/"
@@ -26,6 +44,11 @@ export default function PcNavbar() {
           </div>
           <h1 className="ml-[85px]">Wolf Inu</h1>
         </Link>
+      </div>
+      <div className="explorer-sercciotn" >
+          <Link to={staticRoutes.exporersNfts} >
+            explorar
+          </Link>
       </div>
     </div>
   );
