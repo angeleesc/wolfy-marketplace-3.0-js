@@ -1,150 +1,22 @@
 .wolf-pc-navbar {
-    // // background-color: red;
-    width              : 100%;
-    display            : flex;
-    justify-content    : space-between;
-    align-items        : stretch;
-    height             : 60px;
-    position           : fixed;
-    z-index            : 500;
-    top                : 0;
-    // background-color: red;
+    width   : 100%;
+    padding : 0 30px;
+    position: fixed;
+    top     : 0;
 
-    .logo {
-        // background-color: blue;
-        display    : flex;
-        align-items: center;
-        padding    : 0 30px;
+    .logo-img{
+        background-color: red;
     }
 
-    .main-option {
-        padding: 0 30px;
-    }
-
-    .wolf-drop-menu-container {
+    .wolf-pc-navbar-body {
         // background-color: red;
-        display    : flex;
-        height     : 100%;
-        align-items: center;
 
-        li {
-            // background-color: blue;
-            height         : 100%;
-            display        : flex;
-            justify-content: center;
-            align-items    : center;
-        }
-
-        .li-item{
-            // background-color: blue;
-            margin: 0 6px;
-        }
-
-        .wolf-drop-down-menu {
-            // background-color: red;
-            position: relative;
-
-            .wolf-drop-menu-box {
-                background-color: theme("colors.wolf-gray.125");
-                position        : absolute;
-                top             : 100%;
-                left            : 0;
-                padding         : 10px;
-                border-radius   : 16px;
-                border          : 1px solid theme("colors.wolf-gray.275");
-
-                a {
-                    // background-color: red;
-                    color              : theme("colors.wolf-gray.800");
-                    font-size          : 13px;
-                    font-family        : "open-sans";
-                    display            : block;
-                    // background-color: theme("colors.wolf-gray.75");
-                    width              : 100%;
-                    padding            : 5px;
-                    border-radius      : 8px;
-                    transition         : background-color .5s;
-
-                    &:hover {
-                        background-color: theme("colors.wolf-gray.75");
-
-                    }
-                }
-            }
-
-
-            // display: block;
-        }
-
-        .wolf-nav-link {
-            color      : theme("colors.wolf-gray.850");
-            font-family: "open-sans";
-            font-weight: 300;
-            font-size  : 14px;
-            margin     : 0 15px;
-
-            svg {
-                // background-color: red;
-                width: 16px;
-            }
-
-
-        }
-
-        .wolf-nav-link-icon {
-            // background-color: red !important;
-            // margin: 40px;
-            display        : block;
-            font-size      : 16px;
-            margin         : 0px;
-            width          : 36px;
-            height         : 36px;
-            border         : 1px solid theme("colors.wolf-gray.500");
-            border-radius  : 50%;
-            display        : flex;
-            justify-content: center;
-            align-items    : center;
-            position       : relative;
-            z-index        : 100;
-
-            &::before {}
-
-        }
-
+        height         : 60px;
+        width          : 100%;
+        display        : flex;
+        justify-content: space-between;
 
 
     }
 
-}
-
-.wolf-link-tooptip-container {
-    // background-color: red;
-    position       : relative;
-    display        : flex;
-    justify-content: center;
-
-
-    .wolf-link-toooltip-body {
-        position        : absolute;
-        padding         : 10px;
-        background-color: theme("colors.wolf-gray.125");
-        display         : flex;
-        top             : calc(100%);
-        box-sizing      : content-box;
-        border-radius   : 8px;
-        border: 1px solid theme("colors.wolf-gray.450");
-
-
-
-        span {
-            display      : block;
-            color        : theme("colors.wolf-gray.800");
-            font-size    : 12px;
-            overflow-wrap: normal;
-            white-space  : nowrap;
-            // width: 300px;
-
-            // word-Break: 
-        }
-    }
 }

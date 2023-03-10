@@ -1,7 +1,8 @@
 .explorer-menu-fillter {
 
-    height          : 60px;
-    border-radius   : 8px;
+    height       : 60px;
+    border-radius: 0 0 8px 8px;
+
     display         : flex;
     justify-content : space-between;
     align-items     : center;
@@ -10,6 +11,8 @@
     position        : sticky;
     top             : 60px;
     z-index         : 500;
+    border-top      : 1.5px solid theme("colors.wolf-gray-dark.800");
+
 
 
 }

@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import Logo from "../icons/Logo";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { staticRoutes } from "../../helpers/static-routes";
-import { FiCreditCard, FiPlus, FiSearch } from "react-icons/fi";
-import Menu from "../icons/Menu";
-import WolfTooltip from "../tooltip/WolfTooltip";
+import Logo from "../icons/Logo";
 
 export default function PcNavbar() {
   const [openEplorerDpopOption, setopenEplorerDpopOption] = useState(false);
@@ -24,99 +19,13 @@ export default function PcNavbar() {
 
   return (
     <div className="wolf-pc-navbar">
-      <div className="logo">
-        <Link to={staticRoutes.root} className="h-[100%] flex items-center">
-          <Logo />
-          <h3 className="ml-2 text-wolf-gray-950 text-[16px]">Wolf Inu</h3>
-        </Link>
-      </div>
-      <div className="main-option">
-        <ul className="wolf-drop-menu-container">
-          <li
-            className="wolf-drop-down-menu"
-            onMouseOver={() => {
-              setopenEplorerDpopOption(true);
-            }}
-            onMouseOut={() => {
-              setopenEplorerDpopOption(false);
-            }}
-          >
-            <Link to={staticRoutes.exporersNfts} className="wolf-nav-link">
-              {dropMenuSection.exporeOptionTextUi.name}
-            </Link>
-            {openEplorerDpopOption && (
-              <div className="wolf-drop-menu-box">
-                <div className="explorer-option">
-                  <ul>
-                    <li>
-                      <Link to={staticRoutes.exporersNfts}>
-                        {
-                          dropMenuSection.exporeOptionTextUi.dorpMenuOptions
-                            .NftsTextUi
-                        }
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to={staticRoutes.exporersColections}>
-                        {
-                          dropMenuSection.exporeOptionTextUi.dorpMenuOptions
-                            .CollectionTextUi
-                        }
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </li>
-          <li className="wolf-drop-down-menu">
-            <Link to={staticRoutes.resources} className="wolf-nav-link">
-              Recursos
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="main-option">
-        <ul className="wolf-drop-menu-container">
-          <li className="li-item">
-            <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
-              {/* <WolfTooltip title="Buscar"> */}
-              {/* <button> */}
-              <FiSearch />
-              {/* </button> */}
-              {/* </WolfTooltip> */}
-            </Link>
-          </li>
-          <li className="li-item wolf-link-tooptip-container">
-            <Link
-              to={staticRoutes.createNft}
-              className="wolf-nav-link wolf-nav-link-icon"
-              onMouseOver={() => {
-                setCreateNftDrop(true);
-              }}
-              onMouseOut={() => {
-                setCreateNftDrop(false);
-              }}
-            >
-              <FiPlus />
-            </Link>
-            {createNftDrop && (
-              <div className="wolf-link-toooltip-body">
-                <span>Crear Nueva Nft</span>
-              </div>
-            )}
-          </li>
-          <li className="li-item">
-            <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
-              <FiCreditCard />
-            </Link>
-          </li>
-          <li className="li-item">
-            <Link to="/" className="wolf-nav-link wolf-nav-link-icon ">
-              <Menu />
-            </Link>
-          </li>
-        </ul>
+      <div className="wolf-pc-navbar-body">
+        <div className="flex items-center bg-slate-500 relative h-[100%]">
+          <div className="logo-img">
+            <Logo size="60" />
+          </div>
+          <h1 className="ml-[70px]">Wolf Inu</h1>
+        </div>
       </div>
     </div>
   );
