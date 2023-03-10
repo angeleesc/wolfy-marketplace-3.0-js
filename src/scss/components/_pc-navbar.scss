@@ -3,10 +3,10 @@
     padding : 0 30px;
     position: fixed;
     top     : 0;
+    z-index : 900;
 
-    .logo-img{
-        background-color: red;
-    }
+
+
 
     .wolf-pc-navbar-body {
         // background-color: red;
@@ -15,6 +15,39 @@
         width          : 100%;
         display        : flex;
         justify-content: space-between;
+        position       : relative;
+        align-items    : center;
+
+        &.mode-explorer {
+            background-color: theme("colors.wolf-gray-dark.300");
+
+            // border-bottom   : 1px solid theme("colors.wolf-gray-dark.800");
+            .logo-img {
+                background-color: theme("colors.wolf-gray-dark.300");
+            }
+        }
+
+        .logo-section {
+            h1 {
+                // align-self: self-end;
+                // margin-bottom: 5px;
+                font-size  : 24px;
+                font-weight: 800;
+                color      : theme("colors.wolf-gray-accent.1000");
+            }
+
+            .logo-img {
+
+                position     : absolute;
+                bottom       : -15px;
+                left         : 15px;
+                padding      : 2px;
+                border-radius: 50%;
+
+
+            }
+        }
+
 
 
     }
