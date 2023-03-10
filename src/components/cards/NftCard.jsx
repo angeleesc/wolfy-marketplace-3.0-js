@@ -4,6 +4,11 @@ import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { MdAddShoppingCart } from "react-icons/md";
 import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
 import WolfTooltip from "../tooltip/WolfTooltip";
+import { Link } from "react-router-dom";
+import { staticRoutes } from "../../helpers/static-routes";
+import { useDispatch } from "react-redux";
+import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
+
 
 export default function NftCard({ cardData }) {
   const {
@@ -25,12 +30,23 @@ export default function NftCard({ cardData }) {
     sellerName,
   } = cardData;
 
+  const dispatch = useDispatch()
+
   return (
     <div className="nft-card-container">
       <div className="card-body">
         <div className="multimedia-secction">
-          <img src={nftCover} alt="cover-img" />
-          <div className="seller-info-section">
+          <Link
+            className="w-[100%] h-[100%]"
+            to={staticRoutes.tokenInfoData(order)}
+          >
+            <img src={nftCover} alt="cover-img" />
+          </Link>
+
+          <Link
+            className="seller-info-section"
+            to={staticRoutes.userData(seller)}
+          >
             <div className="seller-info-body">
               <div className="seller-name">
                 <span>vendedor</span>
@@ -44,15 +60,25 @@ export default function NftCard({ cardData }) {
                 )}
               </div>
             </div>
-          </div>
+          </Link>
           <div className="avatar-section-container">
-            <WolfTooltip  title={ <div className="flex flex-col" >
-              <span>Collecion</span>
-              <h3>{colectionName}</h3>
-            </div> } placement='left' >
+            <WolfTooltip
+              title={
+                <div className="flex flex-col">
+                  <span>Collecion</span>
+                  <h3>{colectionName}</h3>
+                </div>
+              }
+              placement="left"
+            >
               <WolfTooltipNotButton>
                 <div className="avatar-section-item">
-                  <img src={collectionFace} alt="collection-face-photo" />
+                  <Link
+                    className="w-[100%] h-[100%] block"
+                    to={staticRoutes.colectionInfoData(colection)}
+                  >
+                    <img src={collectionFace} alt="collection-face-photo" />
+                  </Link>
                 </div>
               </WolfTooltipNotButton>
             </WolfTooltip>
@@ -68,7 +94,22 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
           <div className="checkout-secction">
-            <button className="wolf-buttom wolf-btn-primary-2 mr-2 ">
+            <button
+              className="wolf-buttom wolf-btn-primary-2 mr-2 "
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatch(
+                  openModal({
+                    modal: keyModalSate.checkoutModal,
+                    data: {
+                      order,
+                      nftCover,
+                      nftName,
+                    },
+                  })
+                );
+              }}
+            >
               Comprar
             </button>
             <button className="wolf-buttom wolf-btn-primary-2 ">
