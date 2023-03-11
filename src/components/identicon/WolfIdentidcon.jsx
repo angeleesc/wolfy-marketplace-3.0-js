@@ -6,7 +6,7 @@ export default function WolfIdentidcon({
   name = "example",
   variant = "bean",
 }) {
-  return (
+return (
     <Avatar
       size={size}
       name={name}

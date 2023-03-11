@@ -21,7 +21,7 @@
 
         h3 {
             // color      : theme('colors.wolf-gray-light.2000');
-            color: theme("colors.wolf-gray-light.2200");
+            color      : theme("colors.wolf-gray-light.2200");
             font-weight: 600;
             font-size  : 16px;
         }
@@ -35,6 +35,12 @@
             .logo-img {
                 background-color: theme("colors.wolf-gray-dark.300");
             }
+
+            .avatar-zone {
+                background-color: theme("colors.wolf-gray-dark.600");
+
+            }
+
         }
 
         .logo-section {
@@ -54,6 +60,49 @@
 
 
             }
+        }
+
+        .user-zone {
+            display    : flex;
+            align-items: center;
+
+            .icon-zone {
+                color          : theme("colors.wolf-gray-light.2200");
+                font-size      : 20px;
+                width          : 40px;
+                height         : 40px;
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                border-radius  : 50%;
+
+
+
+                transition: background-color .5s;
+
+                &:hover{
+                    background-color: theme("colors.wolf-gray-dark.1000");
+                }
+
+
+            }
+
+            .avatar-zone {
+                width           : 45px;
+                height          : 45px;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                border-radius   : 50%;
+                font-size       : 20px;
+                color           : theme("colors.wolf-gray-light.2200");
+                background-color: rgba($color: #4D5668, $alpha: .4);
+
+
+
+            }
+
+
         }
 
 

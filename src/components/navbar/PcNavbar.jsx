@@ -4,6 +4,10 @@ import Logo from "../icons/Logo";
 import { Link, matchRoutes, useLocation } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import { MdSearch } from "react-icons/md";
+import { FaSearch, FaPlus, FaUserAlt } from "react-icons/fa";
+import WolfIdentidcon from "../identicon/WolfIdentidcon";
+import WolfTooltip from "../tooltip/WolfTooltip";
+
 // import
 
 export default function PcNavbar() {
@@ -58,10 +62,22 @@ export default function PcNavbar() {
             </Link>
           </div>
         </div>
-        <div className="flex">
-          <div className="icon-zone" >
-            <h3><MdSearch /></h3>
-          </div>
+        <div className="user-zone">
+          <WolfTooltip title="Buscar" arrow >
+            <button className="icon-zone mr-2">
+              <FaSearch />
+            </button>
+          </WolfTooltip>
+          <WolfTooltip title="crear nueva Nft" arrow >
+            <button className="icon-zone mx-1">
+              <FaPlus />
+            </button>
+          </WolfTooltip>
+
+          <button className="avatar-zone ml-1 mr-[15px]">
+            {/* <WolfIdentidcon size={50} /> */}
+            <FaUserAlt />
+          </button>
         </div>
       </div>
     </div>
