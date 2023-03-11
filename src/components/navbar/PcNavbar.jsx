@@ -8,6 +8,7 @@ import { FaSearch, FaPlus, FaUserAlt } from "react-icons/fa";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import WolfTooltip from "../tooltip/WolfTooltip";
 import ExplorerDropMenu from "./ExplorerDropMenu";
+import ResourceDropMenu from "./ResourceDropMenu";
 
 // import
 
@@ -53,9 +54,10 @@ export default function PcNavbar() {
 
         <div className="flex">
           <ExplorerDropMenu />
-          <div className="drop-menu-box  ml-2">
+          <ResourceDropMenu />
+          <div className="drop-menu-box ml-2">
             <Link to={staticRoutes.exporersNfts}>
-              <h3>Recursos</h3>
+              <h3>Actividad</h3>
             </Link>
           </div>
         </div>
