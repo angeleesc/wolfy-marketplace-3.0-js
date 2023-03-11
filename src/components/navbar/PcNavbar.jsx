@@ -7,6 +7,7 @@ import { MdSearch } from "react-icons/md";
 import { FaSearch, FaPlus, FaUserAlt } from "react-icons/fa";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import WolfTooltip from "../tooltip/WolfTooltip";
+import ExplorerDropMenu from "./ExplorerDropMenu";
 
 // import
 
@@ -51,24 +52,20 @@ export default function PcNavbar() {
         </Link>
 
         <div className="flex">
-          <div className="drop-menu mr-2">
-            <Link to={staticRoutes.exporersNfts}>
-              <h3>Explorar</h3>
-            </Link>
-          </div>
-          <div className="drop-menu ml-2">
+          <ExplorerDropMenu />
+          <div className="drop-menu-box  ml-2">
             <Link to={staticRoutes.exporersNfts}>
               <h3>Recursos</h3>
             </Link>
           </div>
         </div>
         <div className="user-zone">
-          <WolfTooltip title="Buscar" arrow >
+          <WolfTooltip title="Buscar" arrow>
             <button className="icon-zone mr-2">
               <FaSearch />
             </button>
           </WolfTooltip>
-          <WolfTooltip title="crear nueva Nft" arrow >
+          <WolfTooltip title="crear nueva Nft" arrow>
             <button className="icon-zone mx-1">
               <FaPlus />
             </button>
