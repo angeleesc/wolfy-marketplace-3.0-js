@@ -1,6 +1,8 @@
 body {
     background-color: theme("colors.wolf-gray-dark.100");
+    // overflow: hidden;
     
+
     &::-webkit-scrollbar {
         width: 12px;
         padding: 5px;

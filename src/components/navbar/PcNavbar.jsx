@@ -73,10 +73,17 @@ export default function PcNavbar() {
             </button>
           </WolfTooltip>
 
-          <button className="avatar-zone ml-1 mr-[15px]">
-            {/* <WolfIdentidcon size={50} /> */}
-            <FaUserAlt />
-          </button>
+          {true ? (
+            <button className="avatar-zone ml-1 mr-[15px]">
+              <WolfIdentidcon size={50} />
+            </button>
+          ) : (
+            <WolfTooltip title="iniciar seccion">
+              <button className="avatar-zone ml-1 mr-[15px]">
+                <FaUserAlt />
+              </button>
+            </WolfTooltip>
+          )}
         </div>
       </div>
     </div>
