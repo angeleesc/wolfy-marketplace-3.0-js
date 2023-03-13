@@ -4,18 +4,19 @@
     border-radius   : 0 0 8px 8px;
     background-color: theme("colors.wolf-gray-dark.500");
     border-top      : 1.5px solid theme("colors.wolf-gray-dark.800");
-    padding         : 0 15px;
-    padding-top     : 15px;
+    padding         : 15px;
+    position        : sticky;
+    top             : 60px;
+    z-index         : 500;
+
 
     .explorer-menu-body {
-        display         : flex;
-        justify-content : space-between;
-        align-items     : center;
-        position        : sticky; 
-        top             : 60px;
-        z-index         : 500;
-        height          : 100%;
-        width           : 100%;
+        margin-top     : 15px;
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+        height         : 100%;
+        width          : 100%;
     }
 
 

@@ -1,3 +1,44 @@
-.drop-menu-container{
-    background-color: blue;
+.drop-menu-container {
+    // background-color: blue;
+    position: relative;
+
+    .drop-menu-item-xd {
+        position        : absolute;
+        left            : 0;
+        top             : 100%;
+        min-width       : 100%;
+        padding         : 15px;
+        background-color: theme("colors.wolf-gray-dark.600");
+        border-radius   : 8px;
+        transform       : translateY(15px);
+        border          : 1px solid theme("colors.wolf-gray-dark.1000");
+
+        ul {
+            li {
+                padding            : 10px;
+                transition         : background-color .5s;
+                // background-color: red;
+                border-radius      : 8px;
+
+                &:hover {
+                    cursor          : pointer;
+                    background-color: theme("colors.wolf-gray-dark.300");
+                }
+            }
+        }
+
+    }
+
+    .drop-menu-button {
+        // padding         : 20px 10px;
+        min-width          : 150px;
+        // background-color: theme("colors.wolf-gray-dark.300");
+        border             : 1px solid theme("colors.wolf-gray-dark.1200");
+        border-radius      : 8px;
+
+
+
+    }
+
+
 }
