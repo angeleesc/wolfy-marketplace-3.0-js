@@ -4,6 +4,7 @@ import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import WTextFields from "../form-controls/inputs/WTextFields";
 import { preventScroll } from "../../controllers/domController";
 import { FaSlidersH } from "react-icons/fa";
+import { FaSort } from "react-icons/fa";
 
 export default function RangePriceFillter() {
   const [openDrop, setOpenDrop] = useState(false);
@@ -17,6 +18,10 @@ export default function RangePriceFillter() {
 
   useClickOutSideElement(activatorLisRef, closeDropMenu, dropDownlistRef);
   const { register, handleSubmit, reset, icon: Icon } = useForm({});
+
+  const handreSubmit = (data) => {
+    console.log("data");
+  };
 
   return (
     <div className="drop-menu-container flex justify-center">
@@ -34,6 +39,8 @@ export default function RangePriceFillter() {
         ref={activatorLisRef}
       >
         <h3>Rango de precio</h3>
+
+        <FaSort className="absolute right-1" />
       </button>
       {openDrop && (
         <div
@@ -50,6 +57,7 @@ export default function RangePriceFillter() {
                     step="0.00000001"
                     onWheel={preventScroll}
                     placeholder="Ej 0.05"
+                    register={register("min")}
                   />
                 </div>
                 <span className="text-wolf-gray-light-900 text-[12px]">
@@ -62,6 +70,7 @@ export default function RangePriceFillter() {
                     step="0.00000001"
                     onWheel={preventScroll}
                     placeholder="Ej 2 ETH"
+                    register={register("max")}
                   />
                 </div>
               </div>

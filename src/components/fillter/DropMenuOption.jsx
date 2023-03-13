@@ -3,6 +3,7 @@ import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import { BiReset } from "react-icons/bi";
 import "./drop-menu.scss";
 import WolfTooltip from "../tooltip/WolfTooltip";
+import { FaSort } from "react-icons/fa";
 
 export default function DropMenuOptionFillter({
   nameDafault,
@@ -66,6 +67,7 @@ export default function DropMenuOptionFillter({
             )}
             {valueUi ? valueUi : nameDafault || "none"}
           </h3>
+          <FaSort className="absolute right-1" />
         </button>
       </div>
       {openDrop && (
