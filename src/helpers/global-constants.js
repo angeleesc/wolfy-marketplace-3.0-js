@@ -1,4 +1,9 @@
 import { BiSortDown, BiSortUp } from "react-icons/bi"
+import PoligonOficialLogo from "../components/icons/PoligonOficialLogo"
+import EthereumOficialLogo from "../components/icons/EthereumOficialLogo"
+import ArbitrumOficialLogo from "../components/icons/ArbitrumOficialLogo"
+import OptimismOficialLogo from "../components/icons/Optimism OficialLogo"
+import BinanceOficialLogo from "../components/icons/BinanceOficialLogo"
 
 export const saleMethod = {
     sales: "sales",
@@ -55,23 +60,28 @@ export const socialNetworks = {
 export const blockChainLisoption = [
     {
         name: "Ethereum",
-        value: blockchainNetwork.ethereum
+        value: blockchainNetwork.ethereum,
+        icon: EthereumOficialLogo
     },
     {
         name: "Polygon",
         value: blockchainNetwork.polygon,
+        icon: PoligonOficialLogo
     },
     {
         name: "Optimism",
-        value: blockchainNetwork.optimism
+        value: blockchainNetwork.optimism,
+        icon: OptimismOficialLogo
     },
     {
         name: "Arbitrum",
-        value: blockchainNetwork.arbitrum
+        value: blockchainNetwork.arbitrum,
+        icon: ArbitrumOficialLogo
     },
     {
         name: "Binance",
-        value: blockchainNetwork.binance
+        value: blockchainNetwork.binance,
+        icon: BinanceOficialLogo
     }
 ];
 
