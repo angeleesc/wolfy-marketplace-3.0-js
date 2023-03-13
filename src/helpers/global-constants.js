@@ -39,6 +39,36 @@ export const socialNetworks = {
     twitter: "twitter",
     discord: "discord",
     youtube: "youtube",
-    
+
 
 }
+
+export const blockChainLisoption = [
+    {
+        name: "Ethereum",
+        value: blockchainNetwork.ethereum
+    },
+    {
+        name: "Polygon",
+        value: blockchainNetwork.polygon,
+    },
+    {
+        name: "Optimism",
+        value: blockchainNetwork.optimism
+    },
+    {
+        name: "Arbitrum",
+        value: blockchainNetwork.arbitrum
+    },
+    {
+        name: "Binance",
+        value: blockchainNetwork.binance
+    }
+];
+
+export const saleMethodOptions = [
+    {
+        name: "venta",
+        value: saleMethod.sales,
+    }
+]

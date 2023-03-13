@@ -1,6 +1,8 @@
 .drop-menu-container {
     // background-color: blue;
-    position: relative;
+    position      : relative;
+    display       : flex;
+    flex-direction: column;
 
     .drop-menu-item-xd {
         position        : absolute;

@@ -19,6 +19,9 @@ export default function RangePriceFillter() {
 
   return (
     <div className="drop-menu-container flex justify-center">
+      <span className="text-[16px] text-wolf-gray-light-1200 mb-2">
+        Rango de percio
+      </span>
       <button
         className="wolf-buttom drop-menu-button"
         onClick={() => {
