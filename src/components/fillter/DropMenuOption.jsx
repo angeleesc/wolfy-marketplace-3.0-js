@@ -34,6 +34,9 @@ export default function DropMenuOptionFillter({
         )}
         {label || "Label?"}
       </span>
+    <button className="reset-button" >
+
+    </button>
       <button
         className="wolf-buttom drop-menu-button"
         onClick={() => {

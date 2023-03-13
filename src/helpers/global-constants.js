@@ -2,7 +2,7 @@ import { BiSortDown, BiSortUp } from "react-icons/bi"
 import PoligonOficialLogo from "../components/icons/PoligonOficialLogo"
 import EthereumOficialLogo from "../components/icons/EthereumOficialLogo"
 import ArbitrumOficialLogo from "../components/icons/ArbitrumOficialLogo"
-import OptimismOficialLogo from "../components/icons/Optimism OficialLogo"
+import OptimismOficialLogo from "../components/icons/OptimismOficialLogo"
 import BinanceOficialLogo from "../components/icons/BinanceOficialLogo"
 
 export const saleMethod = {
