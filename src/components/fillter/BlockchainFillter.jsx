@@ -12,7 +12,7 @@ const blockChainLisoption = [
 ];
 
 export default function BlockchainFillter() {
-  const [openDrop, setOpenDrop] = useState(true);
+  const [openDrop, setOpenDrop] = useState(false);
   const [currentValue, setCurrentValue] = useState("");
   const activatorLisRef = useRef();
   const dropDownlistRef = useRef();
