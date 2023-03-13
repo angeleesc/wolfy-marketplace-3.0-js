@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
+import { BiReset } from "react-icons/bi";
 import "./drop-menu.scss";
 
 export default function DropMenuOptionFillter({
@@ -16,7 +17,7 @@ export default function DropMenuOptionFillter({
   const activatorLisRef = useRef();
   const dropDownlistRef = useRef();
 
-  let RenderCurrenIcon = currentIcon ? optioms[currentIcon-1].icon : null;
+  let RenderCurrenIcon = currentIcon ? optioms[currentIcon - 1].icon : null;
 
   const closeDropMenu = (e) => {
     setOpenDrop(false);
@@ -34,25 +35,27 @@ export default function DropMenuOptionFillter({
         )}
         {label || "Label?"}
       </span>
-    <button className="reset-button" >
-
-    </button>
-      <button
-        className="wolf-buttom drop-menu-button"
-        onClick={() => {
-          setOpenDrop(!openDrop);
-        }}
-        ref={activatorLisRef}
-      >
-        <h3 className="flex items-center">
-          {RenderCurrenIcon && (
-            <span className="mr-[10px]">
-              <RenderCurrenIcon />
-            </span>
-          )}
-          {valueUi ? valueUi : nameDafault || "none"}
-        </h3>
-      </button>
+      <div className="w-[100%] relative">
+        <button className="reset-button">
+          <BiReset />
+        </button>
+        <button
+          className="wolf-buttom drop-menu-button"
+          onClick={() => {
+            setOpenDrop(!openDrop);
+          }}
+          ref={activatorLisRef}
+        >
+          <h3 className="flex items-center">
+            {RenderCurrenIcon && (
+              <span className="mr-[10px]">
+                <RenderCurrenIcon />
+              </span>
+            )}
+            {valueUi ? valueUi : nameDafault || "none"}
+          </h3>
+        </button>
+      </div>
       {openDrop && (
         <div className="drop-menu-item-xd" ref={dropDownlistRef}>
           <ul>
@@ -69,7 +72,7 @@ export default function DropMenuOptionFillter({
                     setOpenDrop(false);
 
                     if (IconRenderOp) {
-                      setCurrentIcon(i+1);
+                      setCurrentIcon(i + 1);
                     } else {
                       setCurrentIcon(null);
                     }

@@ -4,6 +4,23 @@
     display       : flex;
     flex-direction: column;
 
+
+    .reset-button {
+        // background-color: red;
+        background-color: theme("colors.wolf-gray-dark.800");
+        width           : 24px;
+        height          : 24px;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        border-radius   : 50%;
+        position        : absolute;
+        color           : theme("colors.wolf-gray-light.2200");
+        right           : -10px;
+        top             : -10px;
+
+    }
+
     .drop-menu-item-xd {
         position        : absolute;
         left            : 0;

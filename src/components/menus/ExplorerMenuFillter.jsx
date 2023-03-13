@@ -16,7 +16,7 @@ export default function ExplorerMenuFillter() {
       <h3>Filtro de busqueda</h3>
       <div className="explorer-menu-body">
         <div className="flex">
-          <div className="mr-[5px]">
+          <div className="mr-[8px]">
             <DropMenuOptionFillter
               label={"Blochain"}
               nameDafault={"Todos"}
@@ -24,7 +24,7 @@ export default function ExplorerMenuFillter() {
               icon={FaCubes}
             />
           </div>
-          <div className="mx-[5px]">
+          <div className="mx-[8px]">
             <DropMenuOptionFillter
               label={"Tipo de Operacion"}
               nameDafault={"Todos"}
@@ -33,7 +33,7 @@ export default function ExplorerMenuFillter() {
             />
           </div>
 
-          <div className="ml-[5px]">
+          <div className="ml-[8px]">
             <RangePriceFillter />
           </div>
         </div>
