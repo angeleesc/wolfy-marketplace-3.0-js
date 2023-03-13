@@ -11,8 +11,12 @@ export default function DropMenuOptionFillter({
   const [openDrop, setOpenDrop] = useState(false);
   const [currentValue, setCurrentValue] = useState("");
   const [valueUi, setValueUi] = useState("");
+  const [currentIcon, setCurrentIcon] = useState(null);
+
   const activatorLisRef = useRef();
   const dropDownlistRef = useRef();
+
+  let RenderCurrenIcon = currentIcon ? optioms[currentIcon-1].icon : null;
 
   const closeDropMenu = (e) => {
     setOpenDrop(false);
@@ -37,7 +41,14 @@ export default function DropMenuOptionFillter({
         }}
         ref={activatorLisRef}
       >
-        <h3>{currentValue ? currentValue : nameDafault || "none"}</h3>
+        <h3 className="flex items-center">
+          {RenderCurrenIcon && (
+            <span className="mr-[10px]">
+              <RenderCurrenIcon />
+            </span>
+          )}
+          {valueUi ? valueUi : nameDafault || "none"}
+        </h3>
       </button>
       {openDrop && (
         <div className="drop-menu-item-xd" ref={dropDownlistRef}>
@@ -53,6 +64,12 @@ export default function DropMenuOptionFillter({
                     setCurrentValue(options.value);
                     setValueUi(options.name);
                     setOpenDrop(false);
+
+                    if (IconRenderOp) {
+                      setCurrentIcon(i+1);
+                    } else {
+                      setCurrentIcon(null);
+                    }
                   }}
                 >
                   <h4 className="flex items-center whitespace-nowrap	">
