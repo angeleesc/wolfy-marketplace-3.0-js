@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import "./drop-menu.scss";
 
 const blockChainLisoption = [
@@ -15,7 +16,13 @@ export default function BlockchainFillter() {
   const [currentValue, setCurrentValue] = useState("");
   const activatorLisRef = useRef();
   const dropDownlistRef = useRef();
-  
+
+  const closeDropMenu = (e) => {
+    console.log("esta fuera de element");
+  };
+
+  useClickOutSideElement(activatorLisRef, closeDropMenu);
+  useClickOutSideElement(dropDownlistRef, closeDropMenu);
 
   return (
     <div className="drop-menu-container">
