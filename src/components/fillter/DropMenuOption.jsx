@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import { BiReset } from "react-icons/bi";
 import "./drop-menu.scss";
+import WolfTooltip from "../tooltip/WolfTooltip";
 
 export default function DropMenuOptionFillter({
   nameDafault,
@@ -25,6 +26,12 @@ export default function DropMenuOptionFillter({
 
   useClickOutSideElement(activatorLisRef, closeDropMenu, dropDownlistRef);
 
+  const resetValue = () => {
+    setCurrentValue("");
+    setValueUi("");
+    setCurrentIcon(null);
+  };
+
   return (
     <div className="drop-menu-container">
       <span className="text-[14px] text-wolf-gray-light-1200 mb-2 flex">
@@ -36,9 +43,14 @@ export default function DropMenuOptionFillter({
         {label || "Label?"}
       </span>
       <div className="w-[100%] relative">
-        <button className="reset-button">
-          <BiReset />
-        </button>
+        {currentValue && (
+          <WolfTooltip title="resetear" arrow>
+            <button className="reset-button" onClick={resetValue}>
+              <BiReset />
+            </button>
+          </WolfTooltip>
+        )}
+
         <button
           className="wolf-buttom drop-menu-button"
           onClick={() => {
