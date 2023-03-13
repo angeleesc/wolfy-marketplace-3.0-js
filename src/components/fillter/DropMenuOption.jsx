@@ -2,7 +2,12 @@ import React, { useRef, useState } from "react";
 import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import "./drop-menu.scss";
 
-export default function DropMenuOptionFillter({ nameDafault, label, optioms }) {
+export default function DropMenuOptionFillter({
+  nameDafault,
+  label,
+  optioms,
+  icon: Icon,
+}) {
   const [openDrop, setOpenDrop] = useState(false);
   const [currentValue, setCurrentValue] = useState("");
   const activatorLisRef = useRef();
@@ -16,7 +21,12 @@ export default function DropMenuOptionFillter({ nameDafault, label, optioms }) {
 
   return (
     <div className="drop-menu-container">
-      <span className="text-[16px] text-wolf-gray-light-1200 mb-2">
+      <span className="text-[14px] text-wolf-gray-light-1200 mb-2 flex">
+        {Icon && (
+          <span className="text-[16px] mr-[10px]">
+            <Icon />
+          </span>
+        )}
         {label || "Label?"}
       </span>
       <button

@@ -1,3 +1,5 @@
+import { BiSortDown, BiSortUp } from "react-icons/bi"
+
 export const saleMethod = {
     sales: "sales",
     auction: "auction",
@@ -29,6 +31,13 @@ export const historyType = {
     sell: "sell",
     transfer: "transfer"
 
+}
+
+export const sortByType = {
+    priceAsc: "price-asc",
+    priceDesc: "price-desc",
+    dateAsc: "date-asc",
+    dateDesc: "date-desc"
 }
 
 export const socialNetworks = {
@@ -70,5 +79,39 @@ export const saleMethodOptions = [
     {
         name: "venta",
         value: saleMethod.sales,
+    },
+    {
+        name: "Subasta",
+        value: saleMethod.auction,
+    },
+
+]
+
+
+export const sortByOption = [
+    {
+        name: "precio",
+        value: sortByType.priceAsc,
+        icon: BiSortUp,
+
+
+    },
+    {
+        name: "precio",
+        value: sortByType.priceDesc,
+        icon: BiSortDown
+
+    },
+    {
+        name: "Mas atiguo",
+        value: sortByType.dateAsc,
+        icon: BiSortUp
+
+    },
+    {
+        name: "Mas nuevo",
+        value: sortByType.dateDesc,
+        icon: BiSortDown
     }
+
 ]

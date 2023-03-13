@@ -5,7 +5,13 @@ import SaleMethodFillter from "../fillter/SaleMethodFillter";
 import RangePriceFillter from "../fillter/RangePriceFillter";
 import SortByFillter from "../fillter/SortByFillter";
 import DropMenuOptionFillter from "../fillter/DropMenuOption";
-import { blockChainLisoption } from "../../helpers/global-constants";
+import {
+  blockChainLisoption,
+  saleMethodOptions,
+  sortByOption,
+} from "../../helpers/global-constants";
+import { FaCubes, FaEthereum } from "react-icons/fa";
+import { BiSort } from "react-icons/bi";
 
 export default function ExplorerMenuFillter() {
   return (
@@ -16,15 +22,17 @@ export default function ExplorerMenuFillter() {
           <div className="mr-[5px]">
             <DropMenuOptionFillter
               label={"Blochain"}
-              nameDafault={"blockChain"}
+              nameDafault={"Todos"}
               optioms={blockChainLisoption}
+              icon={FaCubes}
             />
           </div>
           <div className="mx-[5px]">
             <DropMenuOptionFillter
-              label={"Metodo de operacion"}
-              nameDafault={"blockChain"}
-              optioms={blockChainLisoption}
+              label={"Tipo de Operacion"}
+              nameDafault={"Todos"}
+              optioms={saleMethodOptions}
+              icon={FaEthereum}
             />
           </div>
 
@@ -34,8 +42,9 @@ export default function ExplorerMenuFillter() {
         </div>
         <DropMenuOptionFillter
           label={"Orodernar por"}
-          nameDafault={"blockChain"}
-          optioms={blockChainLisoption}
+          nameDafault={"Mas nuevo"}
+          optioms={sortByOption}
+          icon={BiSort}
         />
       </div>
     </div>

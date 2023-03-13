@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import WTextFields from "../form-controls/inputs/WTextFields";
 import { preventScroll } from "../../controllers/domController";
+import { FaSlidersH } from "react-icons/fa";
 
 export default function RangePriceFillter() {
   const [openDrop, setOpenDrop] = useState(false);
@@ -15,11 +16,14 @@ export default function RangePriceFillter() {
   };
 
   useClickOutSideElement(activatorLisRef, closeDropMenu, dropDownlistRef);
-  const { register, handleSubmit, reset } = useForm({});
+  const { register, handleSubmit, reset, icon: Icon } = useForm({});
 
   return (
     <div className="drop-menu-container flex justify-center">
-      <span className="text-[16px] text-wolf-gray-light-1200 mb-2">
+      <span className="text-[14px] text-wolf-gray-light-1200 mb-2 flex">
+        <span className="mr-[10px] text-[16px]">
+          <FaSlidersH />
+        </span>
         Rango de percio
       </span>
       <button
