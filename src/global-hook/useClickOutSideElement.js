@@ -3,18 +3,16 @@ import React, { useEffect } from "react";
 export default function useClickOutSideElement(ref, handler, noRef) {
   const listener = (event) => {
     const el = ref?.current;
-    if (el) {
-      //   console.log("hay un elemento");
-
-      if (el.contains(event.target)) {
-        console.log("estas en el elemento");
+    const el2 = noRef?.current;
+    if (el && el2) {
+      if (el.contains(event.target) || el2.contains(event.target)) {
         return;
       }
-      console.log("no estas en el elemnto");
+
+      handler(event);
 
       return;
     }
-    // console.log("no hay elemento");
   };
 
   useEffect(() => {

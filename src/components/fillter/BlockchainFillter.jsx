@@ -18,11 +18,11 @@ export default function BlockchainFillter() {
   const dropDownlistRef = useRef();
 
   const closeDropMenu = (e) => {
-    console.log("esta fuera de element");
+    setOpenDrop(false);
   };
 
-  useClickOutSideElement(activatorLisRef, closeDropMenu);
-  useClickOutSideElement(dropDownlistRef, closeDropMenu);
+  useClickOutSideElement(activatorLisRef, closeDropMenu, dropDownlistRef);
+ 
 
   return (
     <div className="drop-menu-container">
