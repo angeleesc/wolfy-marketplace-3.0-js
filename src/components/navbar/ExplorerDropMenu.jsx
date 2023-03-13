@@ -23,12 +23,12 @@ export default function ExplorerDropMenu() {
         <div className="drop-menu-iten">
           <ul>
             <li>
-              <Link>
+              <Link to={staticRoutes.exporersNfts}>
                 <h3>Nfts</h3>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to={staticRoutes.exporersColections}>
                 <h3>Coleciones</h3>
               </Link>
             </li>
@@ -39,22 +39,22 @@ export default function ExplorerDropMenu() {
           </span>
           <ul className="mt-[15px]">
             <li>
-              <Link>
+              <Link to={staticRoutes.exporersNfts}>
                 <h3>Polygon</h3>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to={staticRoutes.exporersNfts}>
                 <h3>Ethereum</h3>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to={staticRoutes.exporersNfts}>
                 <h3>Ethereum</h3>
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to={staticRoutes.exporersNfts}>
                 <h3>Arbitrum</h3>
               </Link>
             </li>

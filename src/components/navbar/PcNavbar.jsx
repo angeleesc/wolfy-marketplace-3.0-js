@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
 import Logo from "../icons/Logo";
-import { Link, matchRoutes, useLocation } from "react-router-dom";
+import { Link, matchRoutes, useLocation, useNavigate } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import { MdSearch } from "react-icons/md";
 import { FaSearch, FaPlus, FaUserAlt } from "react-icons/fa";
@@ -17,6 +17,7 @@ export default function PcNavbar() {
   const bodyRef = useRef();
 
   const { pathname } = location;
+  const navigate = useNavigate();
 
   const modeExplorerPath = [
     {
@@ -68,7 +69,13 @@ export default function PcNavbar() {
             </button>
           </WolfTooltip>
           <WolfTooltip title="crear nueva Nft" arrow>
-            <button className="icon-zone mx-1">
+            <button
+              className="icon-zone mx-1"
+              onClick={() => {
+                navigate(staticRoutes.createNft);
+                console.log("navegando");
+              }}
+            >
               <FaPlus />
             </button>
           </WolfTooltip>
