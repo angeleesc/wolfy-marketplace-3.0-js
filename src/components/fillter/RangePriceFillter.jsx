@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import useClickOutSideElement from "../../global-hook/useClickOutSideElement";
 import WTextFields from "../form-controls/inputs/WTextFields";
+import { preventScroll } from "../../controllers/domController";
 
 export default function RangePriceFillter() {
   const [openDrop, setOpenDrop] = useState(false);
@@ -29,20 +30,37 @@ export default function RangePriceFillter() {
       </button>
       {openDrop && (
         <div
-          className="drop-menu-item-xd 
-         flex"
+          className="drop-menu-item-xd  range-option flex"
           ref={dropDownlistRef}
         >
           <div className="flex w-[100%]">
             <form>
-              <div className="flex">
+              <div className="flex items-center">
                 <div className="w-[100px] mr-[10px]">
-                  <WTextFields />
+                  <WTextFields
+                    textLabel="Minimo"
+                    type="number"
+                    step="0.00000001"
+                    onWheel={preventScroll}
+                    placeholder="Ej 0.05"
+                  />
                 </div>
+                <span className="text-wolf-gray-light-900 text-[12px]">
+                  Hasta
+                </span>
                 <div className="w-[100px] ml-[10px]">
-                  <WTextFields />
+                  <WTextFields
+                    textLabel="Maximo"
+                    type="number"
+                    step="0.00000001"
+                    onWheel={preventScroll}
+                    placeholder="Ej 2 ETH"
+                  />
                 </div>
               </div>
+              <button className="wolf-buttom wolf-btn-secondary w-[100%] mt-[12px]">
+                Aplicar
+              </button>
             </form>
           </div>
         </div>

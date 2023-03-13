@@ -27,6 +27,12 @@
             }
         }
 
+        .wolft-form-control-label {
+            // background-color: red;
+            color: theme("colors.wolf-gray-light.1200");
+        }
+
+
     }
 
     .drop-menu-button {
@@ -37,9 +43,10 @@
         border-radius      : 8px;
     }
 
-    .range-option{
+    .range-option {
         // background-color: red;
-        left: auto;
+        left: -50%;
+
 
 
     }

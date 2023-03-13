@@ -8,4 +8,4 @@ export default function SaleMethodFillter() {
         </h3>
     </div>
   )
-}
+}   
