@@ -30,6 +30,8 @@ export default function MintNftForm() {
     nftDescription: yup.string().required("La descripcion es requerida"),
     nftUrlPage: yup.string(),
     isPutOnMarketplace: yup.bool(),
+    isAddPropieties: yup.bool(),
+    salesMethod: yup.string(),
     metadataFile: yup
       .mixed()
       .test("isFile", "Epa el archivo es requerido", (file) => {
@@ -44,6 +46,19 @@ export default function MintNftForm() {
         .string()
         .required("el precio es nesesario para colocarlalo en la marketplace"),
       otherwise: yup.string().notRequired(),
+    }),
+    nftsAtributes: yup.array().when("isAddPropieties", {
+      is: true,
+      then: yup
+        .array()
+        .of(
+          yup.object().shape({
+            key: yup.string().required(),
+            nftValue: yup.string().required(),
+          })
+        )
+        .required(),
+      otherwise: yup.array().notRequired(),
     }),
   });
 
