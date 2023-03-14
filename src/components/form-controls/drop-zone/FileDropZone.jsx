@@ -68,7 +68,9 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
           )}
         </div>
       </div>
-      <span className="error-message">este archivo es requerido</span>
+      {error && (
+        <span className="error-message">este archivo es requerido</span>
+      )}
     </>
   );
 }
