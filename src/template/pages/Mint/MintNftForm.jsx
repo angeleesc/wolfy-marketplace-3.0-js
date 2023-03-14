@@ -28,6 +28,7 @@ export default function MintNftForm() {
     handleSubmit,
     watch,
     control,
+    resetField,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -63,7 +64,7 @@ export default function MintNftForm() {
           name="metadataFile"
           render={({ field: { onChange, value, name } }) => {
             return (
-              <FileDropZone onChange={onChange} value={value} name={name} />
+              <FileDropZone onChange={onChange} value={value} name={name} reset={resetField}/>
             );
           }}
         />
