@@ -19,6 +19,9 @@ import {
 } from "../../../helpers/global-constants";
 import ArrayFieldsReactHookForm from "../../../components/form-controls/inputs/ArrayFieldsReactHookForm";
 import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFieldInputGroup";
+import * as yup from "yup";
+
+const mintValidationSchema = {};
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -64,7 +67,12 @@ export default function MintNftForm() {
           name="metadataFile"
           render={({ field: { onChange, value, name } }) => {
             return (
-              <FileDropZone onChange={onChange} value={value} name={name} reset={resetField}/>
+              <FileDropZone
+                onChange={onChange}
+                value={value}
+                name={name}
+                reset={resetField}
+              />
             );
           }}
         />
@@ -165,17 +173,26 @@ export default function MintNftForm() {
           id="nft-name"
           textLabel="Nombre de la nft *"
           info="Coloque un nombre para la nft unico"
-          // errorMessage="este campo es requerido"
-          // warningMessage="advertencia este nomber no es original"
           placeholder="Gato fans 151"
+          register={register("nftName")}
         />
 
         <div className="my-4">
-          <WTextAreaInput
-            id="nft-description"
-            textLabel="Descripcion *"
-            placeholder="ejemplo es un gato de la edicion x"
-            info="Describe claramente y detalladamente la nft"
+          <Controller
+            name="nftDescription"
+            control={control}
+            render={({ field: { onChange, value, name } }) => {
+              return (
+                <WTextAreaInput
+                  id="nft-description"
+                  textLabel="Descripcion *"
+                  placeholder="ejemplo es un gato de la edicion x"
+                  info="Describe claramente y detalladamente la nft"
+                  onChange={onChange}
+                  value={value}
+                />
+              );
+            }}
           />
         </div>
 
@@ -184,6 +201,7 @@ export default function MintNftForm() {
           textLabel="Enlace de la url"
           info="Puedes colocar el link de la pagina url donde esta alojado principalmente la nft este campo es opcional. nota te recomendamos que utilises una url ipfs para que tu pagina sea para siempre"
           placeholder="Ej https://www.gatos-crypto.com"
+          register={register("nftUrlPage")}
         />
 
         <Controller

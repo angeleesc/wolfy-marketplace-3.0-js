@@ -7,9 +7,11 @@ export default function WTextAreaInput({
   info,
   errorMessage,
   warningMessage,
+  value,
+  onChange,
   ...props
 }) {
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
 
   const textAreaRef = useRef();
 
@@ -33,10 +35,10 @@ export default function WTextAreaInput({
         type="text"
         className="wolf-form-control-text-input text-arear"
         {...props}
-        ref={textAreaRef}
         onChange={(e) => {
-          setValue(e.target.value);
+          onChange(e.target.value);
         }}
+        ref={textAreaRef}
       ></textarea>
 
       {info && <p className="wolf-form-control-info">{info}</p>}
