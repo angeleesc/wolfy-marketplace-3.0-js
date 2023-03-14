@@ -14,7 +14,7 @@ const modalSlide = createSlice({
       dataToProccess: {},
     },
     mintModal: {
-      open: true,
+      open: false,
       dataToProccess: {},
     }
   },
