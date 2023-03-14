@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useCallback } from "react";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaInput";
 import { FormControlLabel, Switch, TextField } from "@mui/material";
@@ -20,12 +20,19 @@ import {
 import ArrayFieldsReactHookForm from "../../../components/form-controls/inputs/ArrayFieldsReactHookForm";
 import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFieldInputGroup";
 import * as yup from "yup";
-
-const mintValidationSchema = {};
+import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
 
+  const mintValidationSchema = yup.object({
+    nftName: yup.string().required("Epa el nombre de la nft es requerida"),
+    nftDescription: yup.string().required("La descripcion es requerida"),
+    nftUrlPage: yup.string(),
+    isPutOnMarketplace: yup.bool(),
+  });
+
+  const resolver = useYupValidationResolver(mintValidationSchema);
   const {
     register,
     handleSubmit,
@@ -41,6 +48,7 @@ export default function MintNftForm() {
       nftsAtributes: [{ key: "", nftValue: "" }],
       colectionOptions: collectionsOptions.wolfy,
     },
+    resolver,
   });
 
   const isPutOnMarketPlaceWacht = watch("isPutOnMarketplace");
@@ -48,11 +56,9 @@ export default function MintNftForm() {
   const isAddAtributeWacht = watch("isAddPropieties");
   const collectionOptionsWacht = watch("colectionOptions");
 
-  // console.log(nftsAtributesWacth)
-
-  //controllador del agregado autocreciente
-
-  //
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -175,6 +181,7 @@ export default function MintNftForm() {
           info="Coloque un nombre para la nft unico"
           placeholder="Gato fans 151"
           register={register("nftName")}
+          errorMessage={errors.nftName ? errors.nftName.message : ""}
         />
 
         <div className="my-4">
@@ -190,6 +197,9 @@ export default function MintNftForm() {
                   info="Describe claramente y detalladamente la nft"
                   onChange={onChange}
                   value={value}
+                  errorMessage={
+                    errors.nftDescription ? errors.nftDescription.message : ""
+                  }
                 />
               );
             }}

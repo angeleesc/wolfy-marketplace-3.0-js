@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const useYupValidationResolver = validationSchema =>
+export const useYupValidationResolver = validationSchema =>
   useCallback(
     async data => {
       try {
