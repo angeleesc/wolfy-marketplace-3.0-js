@@ -9,10 +9,14 @@ import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import WolfTooltip from "../tooltip/WolfTooltip";
 import ExplorerDropMenu from "./ExplorerDropMenu";
 import ResourceDropMenu from "./ResourceDropMenu";
+import { connetWalletMetamask } from "../../controllers/Web3Controllers";
 
 // import
 
 export default function PcNavbar() {
+  const [valletAccount, setValletAccount] = useState("");
+  const [balance, setBalance] = useState("");
+
   const location = useLocation();
   const bodyRef = useRef();
 
@@ -39,6 +43,15 @@ export default function PcNavbar() {
 
     return "wolf-pc-navbar-body";
   }, [pathname]);
+
+  const getWalletAccout = async () => {
+    try {
+      const userData = await connetWalletMetamask();
+      console.log(userData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="wolf-pc-navbar">
@@ -80,13 +93,13 @@ export default function PcNavbar() {
             </button>
           </WolfTooltip>
 
-          {true ? (
+          {valletAccount ? (
             <button className="avatar-zone ml-1 mr-[15px]">
-              <WolfIdentidcon size={50} />
+              <WolfIdentidcon size={50} name={valletAccount} />
             </button>
           ) : (
             <WolfTooltip title="iniciar seccion">
-              <button className="avatar-zone ml-1 mr-[15px]">
+              <button className="avatar-zone ml-1 mr-[15px]" onClick={getWalletAccout} >
                 <FaUserAlt />
               </button>
             </WolfTooltip>
