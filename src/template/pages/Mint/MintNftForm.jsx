@@ -30,6 +30,14 @@ export default function MintNftForm() {
     nftDescription: yup.string().required("La descripcion es requerida"),
     nftUrlPage: yup.string(),
     isPutOnMarketplace: yup.bool(),
+    metadataFile: yup
+      .mixed()
+      .test("isFile", "Epa el archivo es requerido", (file) => {
+        console.log("archivo a validar");
+        console.log(file);
+        if (file && file.length) return true;
+        return false;
+      }),
   });
 
   const resolver = useYupValidationResolver(mintValidationSchema);
@@ -78,6 +86,7 @@ export default function MintNftForm() {
                 value={value}
                 name={name}
                 reset={resetField}
+                error={errors.metadataFile ? true : false}
               />
             );
           }}
