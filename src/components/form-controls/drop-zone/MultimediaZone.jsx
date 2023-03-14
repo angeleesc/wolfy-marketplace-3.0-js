@@ -9,7 +9,18 @@ export default function MultimediaZone({ value }) {
 
   // if (type==="video/mp4") return <div>es un video</div>;
   // if(ind)
-  if (type.indexOf("image") >= 0) return <h3>es una imagen</h3>;
-  if (type.indexOf("video") >= 0) return <h3>es un video</h3>;
+  if (type.indexOf("image") >= 0) {
+    const url = URL.createObjectURL(value[0]);
+    // console.log(value);
+
+    return (
+      <div className="multimedia-box-container">
+        <img src={url} alt="prewie-image" />
+      </div>
+    );
+  }
+  if (type.indexOf("video") >= 0) {
+    return <h3>es un video</h3>;
+  }
   return <h3>desconocido</h3>;
 }
