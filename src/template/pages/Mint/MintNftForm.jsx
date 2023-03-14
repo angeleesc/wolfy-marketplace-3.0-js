@@ -70,10 +70,15 @@ export default function MintNftForm() {
   const saleMethodWacth = watch("salesMethod");
   const isAddAtributeWacht = watch("isAddPropieties");
   const collectionOptionsWacht = watch("colectionOptions");
+  const rangeAuctionWach = watch("rangeAuction");
 
   useEffect(() => {
     console.log(errors);
   }, [errors]);
+
+  if (saleMethodWacth === saleMethod.sales) {
+    if (rangeAuctionWach) resetField("rangeAuction");
+  }
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -129,43 +134,45 @@ export default function MintNftForm() {
             <Controller
               control={control}
               name="salesMethod"
-              render={({ field: { onChange, value: lValue } }) => (
-                <div className="grid grid-cols-2">
-                  <button
-                    className="boton-group-box "
-                    type="button"
-                    onClick={() => {
-                      onChange(saleMethod.sales);
-                    }}
-                  >
-                    <div
-                      className={`botom-group-body ${
-                        lValue === saleMethod.sales && "boton-box-active"
-                      }`}
+              render={({ field: { onChange, value: lValue } }) => {
+                return (
+                  <div className="grid grid-cols-2">
+                    <button
+                      className="boton-group-box "
+                      type="button"
+                      onClick={() => {
+                        onChange(saleMethod.sales);
+                      }}
                     >
-                      <h4>Precio fijo</h4>
-                      <TagBlack />
-                    </div>
-                  </button>
-                  <button
-                    className="boton-group-box"
-                    type="button"
-                    onClick={() => {
-                      onChange(saleMethod.auction);
-                    }}
-                  >
-                    <div
-                      className={`botom-group-body ${
-                        lValue === saleMethod.auction && "boton-box-active"
-                      }  `}
+                      <div
+                        className={`botom-group-body ${
+                          lValue === saleMethod.sales && "boton-box-active"
+                        }`}
+                      >
+                        <h4>Precio fijo</h4>
+                        <TagBlack />
+                      </div>
+                    </button>
+                    <button
+                      className="boton-group-box"
+                      type="button"
+                      onClick={() => {
+                        onChange(saleMethod.auction);
+                      }}
                     >
-                      <h4>Subasta</h4>
-                      <span>Cronometrada</span>
-                      <ClockBlack />
-                    </div>
-                  </button>
-                </div>
-              )}
+                      <div
+                        className={`botom-group-body ${
+                          lValue === saleMethod.auction && "boton-box-active"
+                        }  `}
+                      >
+                        <h4>Subasta</h4>
+                        <span>Cronometrada</span>
+                        <ClockBlack />
+                      </div>
+                    </button>
+                  </div>
+                );
+              }}
             />
 
             <TextFieldInputGroup
@@ -188,7 +195,7 @@ export default function MintNftForm() {
                 <Controller
                   name="rangeAuction"
                   control={control}
-                  render={({field: {name, value, onChange}}) => {
+                  render={({ field: { name, value, onChange } }) => {
                     return <DatePikckerReacDP onChange={onChange} />;
                   }}
                 />
