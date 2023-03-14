@@ -20,7 +20,13 @@ export default function MultimediaZone({ value }) {
     );
   }
   if (type.indexOf("video") >= 0) {
-    return <h3>es un video</h3>;
+    return (
+      <div className="multimedia-box-container">
+        <video loop autoPlay muted>
+          <source src={URL.createObjectURL(value[0])} type={type}></source>
+        </video>
+      </div>
+    );
   }
   return <h3>desconocido</h3>;
 }
