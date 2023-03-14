@@ -10,6 +10,7 @@ export default function ArrayFieldsReactHookForm({
   control,
   register,
   watch,
+  errors,
 }) {
   const { fields, append, remove } = useFieldArray({
     control,
@@ -65,6 +66,9 @@ export default function ArrayFieldsReactHookForm({
                 className="wolf-form-control-text-input"
                 {...register(`${name}.${index}.key`)}
               />
+              {errors[`nftsAtributes[${index}].key`] && (
+                <span className="wolf-form-control-error">Reuerido</span>
+              )}
             </div>
             <div className="wolf-form-control">
               <input
@@ -72,6 +76,9 @@ export default function ArrayFieldsReactHookForm({
                 className="wolf-form-control-text-input"
                 {...register(`${name}.${index}.nftValue`)}
               />
+              {errors[`nftsAtributes[${index}].nftValue`] && (
+                <span className="wolf-form-control-error">Requerido</span>
+              )}
             </div>
             <div className="Number-i">
               <Tooltip title="Eliminar">

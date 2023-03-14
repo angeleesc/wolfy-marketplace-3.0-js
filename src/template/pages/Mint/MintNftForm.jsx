@@ -284,6 +284,7 @@ export default function MintNftForm() {
             control={control}
             name={"nftsAtributes"}
             register={register}
+            errors={errors}
           />
         )}
 
