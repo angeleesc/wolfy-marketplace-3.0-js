@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import addTime from "date-fns/add";
 import DatePicker from "react-datepicker";
 import "./c-date-picker.scss";
@@ -8,15 +8,16 @@ import formatDate from "date-fns/format";
 // import { ClockPicker, LocalizationProvider } from "@mui/x-date-pickers";
 // import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
-export default function DatePikckerReacDP({ defaultTime = new Date() }) {
+export default function DatePikckerReacDP({
+  defaultTime = new Date(),
+  onChange: onChangeProps,
+}) {
   const [startDate, setStartDate] = useState(defaultTime);
   const [endDate, setEndDate] = useState(
     addTime(defaultTime, {
       days: 1,
     })
   );
-
-  const [starViewClock, setStarViewClock] = useState("hours");
 
   const formatStratDate = formatDate(startDate, "do MMMM yyyy h:mm a");
   const formatEndDate = endDate
@@ -29,16 +30,23 @@ export default function DatePikckerReacDP({ defaultTime = new Date() }) {
   const onChange = (dates) => {
     const [start, end] = dates;
 
-    console.log("fecha de inicio", start);
-    console.log("fecha final", end);
+    // console.log("fecha de inicio", start);
+    // console.log("fecha final", end);
 
     setStartDate(start);
     setEndDate(end);
   };
 
+  useEffect(() => {
+    onChangeProps({
+      startDate,
+      endDate
+    });
+  }, [startDate, endDate]);
+
   return (
     <div className="w-date-picker">
-      <h3 className="my-[15px]" >Tiempo de la subasta *</h3>
+      <h3 className="my-[15px]">Tiempo de la subasta *</h3>
       <div className="grid grid-cols-2">
         <div className="wolf-form-control ">
           <label className="wolft-form-control-label mb-[5px] mr-[5px] flex flex-col ">

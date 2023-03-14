@@ -185,7 +185,13 @@ export default function MintNftForm() {
 
             {saleMethodWacth === saleMethod.auction && (
               <div className="mt-[20px]">
-                <DatePikckerReacDP />
+                <Controller
+                  name="rangeAuction"
+                  control={control}
+                  render={({field: {name, value, onChange}}) => {
+                    return <DatePikckerReacDP onChange={onChange} />;
+                  }}
+                />
               </div>
             )}
           </>
