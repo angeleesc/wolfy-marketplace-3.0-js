@@ -1,6 +1,6 @@
 import React from "react";
 import WolfTooltip from "../../tooltip/WolfTooltip";
-import { GrPowerReset } from "react-icons/gr";
+import { BiReset } from "react-icons/bi";
 
 export default function MultimediaZone({ value, reset, name }) {
   const { type } = value[0];
@@ -14,14 +14,14 @@ export default function MultimediaZone({ value, reset, name }) {
 
     return (
       <div className="multimedia-box-container">
-        <WolfTooltip ttile="resetear">
+        <WolfTooltip title="resetear" arrow>
           <button
             className="reset-button"
             onClick={() => {
               reset(name);
             }}
           >
-            <GrPowerReset />
+            <BiReset />
           </button>
         </WolfTooltip>
         <img src={url} alt="prewie-image" />
