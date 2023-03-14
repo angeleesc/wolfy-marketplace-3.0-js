@@ -47,7 +47,7 @@ export default function FileDropZone({ name, onChange, value, reset }) {
       >
         <input {...getInputProps()} />
         {value ? (
-          <MultimediaZone value={value} />
+          <MultimediaZone value={value} reset={reset} name={name} />
         ) : (
           <div className="input-content">
             <span className="text-[12px] info-header">

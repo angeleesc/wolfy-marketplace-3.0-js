@@ -1,11 +1,10 @@
 import React from "react";
-import { isVideoFileRegEx } from "../../../helpers/regEx";
+import WolfTooltip from "../../tooltip/WolfTooltip";
+import { GrPowerReset } from "react-icons/gr";
 
-export default function MultimediaZone({ value }) {
+export default function MultimediaZone({ value, reset, name }) {
   const { type } = value[0];
   console.log("el tipo recibido es", type);
-  const typeV = /video/;
-  const typeI = /image/;
 
   // if (type==="video/mp4") return <div>es un video</div>;
   // if(ind)
@@ -15,6 +14,16 @@ export default function MultimediaZone({ value }) {
 
     return (
       <div className="multimedia-box-container">
+        <WolfTooltip ttile="resetear">
+          <button
+            className="reset-button"
+            onClick={() => {
+              reset(name);
+            }}
+          >
+            <GrPowerReset />
+          </button>
+        </WolfTooltip>
         <img src={url} alt="prewie-image" />
       </div>
     );
