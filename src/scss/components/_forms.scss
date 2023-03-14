@@ -32,7 +32,7 @@
     background-color   : theme("colors.wolf-gray-dark.500");
     border-radius      : 8px;
 
-    
+
 
 
 
@@ -42,6 +42,12 @@
         background-color: transparent;
     }
 
+
+}
+
+.error-message {
+    // background-color: red;
+    color: theme("colors.wollf-red.500") !important;
 }
 
 .wolf-form-control {
