@@ -60,6 +60,8 @@ export default function MintNftForm() {
         .required(),
       otherwise: yup.array().notRequired(),
     }),
+    royalties: yup.string().required("regalias es requerida"),
+    amount: yup.string().required("cantidad es requerida"),
   });
 
   const resolver = useYupValidationResolver(mintValidationSchema);
@@ -401,6 +403,7 @@ export default function MintNftForm() {
               placeholder="Ej: 5%"
               info="colola el marjen de regalias entre 1 y 50%"
               type="number"
+              register={register("royalties")}
             />
           </div>
           <div className="ml-[5px]">
@@ -410,6 +413,7 @@ export default function MintNftForm() {
               placeholder="Ej: 1"
               info="Numero de copioas maximo por nft 1000"
               type="number"
+              register={register("amount")}
             />
           </div>
         </div>
@@ -417,7 +421,7 @@ export default function MintNftForm() {
         <div className="w-[100%] flex justify-center mt-[20px] p-[15px]">
           <button
             type="submit"
-            className="wolf-buttom wolf-buttom-primary w-[100%] max-w-[400px]"
+            className="wolf-buttom wolf-btn-primary-2 w-[100%] max-w-[400px]"
           >
             Crear
           </button>
