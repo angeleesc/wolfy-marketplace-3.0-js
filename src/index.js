@@ -9,13 +9,15 @@ import store from './redux-app/stores';
 import CheckoutModal from './template/modals/checkoutModal/CheckoutModal';
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react"
 import 'overlayscrollbars/overlayscrollbars.css';
+import MintModal from './template/modals/mint-modal/MintModal';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store} >
     <React.StrictMode>
-        <RouterProvider router={router} />
-        <CheckoutModal />
+      <RouterProvider router={router} />
+      <CheckoutModal />
+      <MintModal />
     </React.StrictMode>
   </Provider>
 );

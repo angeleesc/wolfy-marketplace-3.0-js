@@ -58,8 +58,15 @@ export default function MintNftForm() {
     <>
       <form className="wolf-form" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="mb-[15px]">Cargar el archivo de la NFT*</h3>
-
-        <FileDropZone />
+        <Controller
+          control={control}
+          name="metadataFile"
+          render={({ field: { onChange, value, name } }) => {
+            return (
+              <FileDropZone onChange={onChange} value={value} name={name} />
+            );
+          }}
+        />
 
         <Controller
           control={control}

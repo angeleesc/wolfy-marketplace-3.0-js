@@ -1,7 +1,8 @@
-import { createSlice,  } from "@reduxjs/toolkit";
+import { createSlice, } from "@reduxjs/toolkit";
 
 export const keyModalSate = {
   checkoutModal: "checkoutModal",
+  mintModal: "mintModal"
 };
 
 
@@ -12,6 +13,10 @@ const modalSlide = createSlice({
       open: false,
       dataToProccess: {},
     },
+    mintModal: {
+      open: true,
+      dataToProccess: {},
+    }
   },
   reducers: {
     openModal: (state, action) => {
