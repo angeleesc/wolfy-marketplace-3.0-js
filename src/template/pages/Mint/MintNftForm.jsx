@@ -38,6 +38,13 @@ export default function MintNftForm() {
         if (file && file.length) return true;
         return false;
       }),
+    nftPrice: yup.string().when("isPutOnMarketplace", {
+      is: true,
+      then: yup
+        .string()
+        .required("el precio es nesesario para colocarlalo en la marketplace"),
+      otherwise: yup.string().notRequired(),
+    }),
   });
 
   const resolver = useYupValidationResolver(mintValidationSchema);
@@ -173,6 +180,7 @@ export default function MintNftForm() {
               step="0.00000001"
               onWheel={preventScroll}
               placeholder="Ej 0.05"
+              errorMessage={errors.nftPrice ? errors.nftPrice.message : ""}
             />
 
             {saleMethodWacth === saleMethod.auction && (
