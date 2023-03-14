@@ -21,9 +21,13 @@ import ArrayFieldsReactHookForm from "../../../components/form-controls/inputs/A
 import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFieldInputGroup";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
+import { useDispatch } from "react-redux";
+import { openModal
+ } from "../../../features/modals/modalsSlice";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
+  const dispatch = useDispatch();
 
   const mintValidationSchema = yup.object({
     nftName: yup.string().required("Epa el nombre de la nft es requerida"),
