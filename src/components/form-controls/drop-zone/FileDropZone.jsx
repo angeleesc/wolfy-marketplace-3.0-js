@@ -1,20 +1,18 @@
 import React, { useCallback, useMemo } from "react";
 import "./file-drop-zone.scss";
 import { useDropzone } from "react-dropzone";
+import { isImageFileRegEx, isVideoFileRegEx } from "../../../helpers/regEx";
+import MultimediaZone from "./MultimediaZone";
 
 export default function FileDropZone({ name, onChange, value, reset }) {
   const onDrop = useCallback((files) => {
-    console.log(files);
+    // console.log(files);
     onChange(files);
   }, []);
 
   console.log(value);
 
-  const fileReader = value
-    ? { path: URL.createObjectURL(value[0]), type: value[0].type }
-    : null;
-
-    console.log(fileReader)
+  // console.log(fileReader)
 
   const {
     getRootProps,
@@ -38,6 +36,8 @@ export default function FileDropZone({ name, onChange, value, reset }) {
     return "wolf-dropzone";
   });
 
+  let defType = null;
+
   return (
     <div className="wolf-file-drop-zone">
       <div
@@ -46,10 +46,8 @@ export default function FileDropZone({ name, onChange, value, reset }) {
         })}
       >
         <input {...getInputProps()} />
-        {fileReader ? (
-          <div className="multimedia-content">
-            <h3>hay archivo</h3>
-          </div>
+        {value ? (
+          <MultimediaZone value={value} />
         ) : (
           <div className="input-content">
             <span className="text-[12px] info-header">
