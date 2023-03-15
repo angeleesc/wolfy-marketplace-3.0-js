@@ -125,3 +125,15 @@ export const sortByOption = [
     }
 
 ]
+
+export const rootApipaht = {
+    local: "http://localhost:5000",
+    porduction: ""
+}
+
+export const requestEndPoints ={
+    ipfs:{
+        POSTuploadFile: "api/v1/ipfs-routes"
+    },
+    
+}

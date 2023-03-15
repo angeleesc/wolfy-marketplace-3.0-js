@@ -10,9 +10,7 @@ import {
 } from "@mui/material";
 
 export default function AtributesDisplay({ attributes, trayCollectionDef }) {
-  // definimos el tipo de pantalllas
 
-  // defitimos la clasificacion de los atributos
 
   const basicAtributes = [];
   const rangeAtribute = [];
@@ -20,6 +18,8 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
   const boostPercentageAtributes = [];
   const boostNumberAtributes = [];
   const numberAtributes = [];
+
+  
 
   attributes.map((atribute, i) => {
     const getLimitRange = trayCollectionDef.filter((def) => {
@@ -90,23 +90,6 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
       });
     }
   });
-  // console.log("number atributes");
-  // console.log(numberAtributes);
-
-  // console.log("boost number atributes");
-  // console.log(boostNumberAtributes);
-
-  // console.log("precentage atributes");
-  // console.log(boostPercentageAtributes);
-
-  // console.log("date atributes ");
-  // console.log(dateAtribute);
-
-  // console.log("range atributes");
-  // console.log(rangeAtribute);
-
-  // console.log("basic atributes");
-  // console.log(basicAtributes);
 
 
 

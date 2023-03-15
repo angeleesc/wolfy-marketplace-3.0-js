@@ -8,7 +8,7 @@ import { CircularProgress } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(0);
+  const [stepProcess, setStepProcess] = useState(3);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(0);
 
   const modalData = useSelector(
