@@ -22,8 +22,7 @@ import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFi
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 import { useDispatch } from "react-redux";
-import { openModal
- } from "../../../features/modals/modalsSlice";
+import { keyModalSate, openModal } from "../../../features/modals/modalsSlice";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
@@ -60,8 +59,8 @@ export default function MintNftForm() {
             key: yup.string().required(),
             nftValue: yup.string().required(),
           })
-        )
-        .required(),
+        ),
+     
       otherwise: yup.array().notRequired(),
     }),
     royalties: yup.string().required("regalias es requerida"),
@@ -102,7 +101,13 @@ export default function MintNftForm() {
   }
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
+    dispatch(
+      openModal({
+        modal: keyModalSate.mintModal,
+        data,
+      })
+    );
   };
 
   return (

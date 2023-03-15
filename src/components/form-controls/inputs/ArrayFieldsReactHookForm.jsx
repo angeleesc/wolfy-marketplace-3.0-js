@@ -104,6 +104,7 @@ export default function ArrayFieldsReactHookForm({
               nftValue: "",
             });
           }}
+          type="button"
         >
           <FiPlus />
           <div className="wolf-toop-tips">
