@@ -82,6 +82,22 @@
         }
     }
 
+    &.wolf-btn-secondary-traparent {
+
+        // background-color: theme("colors.wolf-gray-dark.800");
+        color: theme("colors.wolf-gray-light.2200");
+
+        // background-color: red;
+
+        &:focus {
+            background-color: theme("colors.wolf-gray-accent.700");
+            outline         : none;
+        }
+
+        &:hover {
+            background-color: theme("colors.wolf-gray-accent.600");
+        }
+    }
     &.wolf-btn-secondary {
 
         background-color: theme("colors.wolf-gray-dark.800");

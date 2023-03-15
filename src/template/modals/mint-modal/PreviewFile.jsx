@@ -14,6 +14,16 @@ export default function PreviewFile({ file }) {
     );
   }
 
+  if (type.indexOf("video") >= 0) {
+    return (
+      <div className="modal-multimedia-zone">
+        <video loop autoPlay muted>
+          <source src={URL.createObjectURL(file[0])} type={type}></source>
+        </video>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h4>Archivo desconocido</h4>

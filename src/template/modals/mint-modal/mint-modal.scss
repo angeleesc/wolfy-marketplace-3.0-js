@@ -46,4 +46,16 @@
         // padding: 0 3px;
 
     }
+
+    .step-box {
+
+        // background-color: red;
+        span {
+            color     : theme("colors.wolf-gray-light.1500");
+            font-size : 14px;
+            text-align: justify;
+            display   : block;
+        }
+    }
+
 }
