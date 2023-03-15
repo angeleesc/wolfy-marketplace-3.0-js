@@ -1,8 +1,22 @@
+import { RouterProvider } from "react-router-dom";
+import CheckoutModal from "./template/modals/checkoutModal/CheckoutModal";
+import MintModal from "./template/modals/mint-modal/MintModal";
+import router from "./routes/Routes";
+import { useSelector } from "react-redux";
+
+
+
 function App() {
+
+  const modalState = useSelector((state) => state.modals);
+
+
   return (
-    <div className="App">
-      <h3>Wolfy funcionando</h3>
-    </div>
+    <>
+      <RouterProvider router={router} />
+      {modalState.checkoutModal.open && <CheckoutModal />}
+      {modalState.mintModal.open && < MintModal />}
+    </>
   );
 }
 

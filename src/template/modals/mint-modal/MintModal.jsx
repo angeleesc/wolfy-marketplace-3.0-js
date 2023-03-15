@@ -13,6 +13,12 @@ export default function MintModal() {
     (state) => state.modals[keyModalSate.mintModal].dataToProccess
   );
 
+  const starEtherProcess = async ()=>{
+    console.log("process")
+    setStepProcess(1)
+    setEthereumStepProcess(1)
+  }
+
   console.log(modalData);
 
   return (
@@ -29,7 +35,7 @@ export default function MintModal() {
                   crea las nfts
                 </span>
                 <div className="mt-3">
-                  <button className="wolf-buttom wolf-btn-primary-2 w-[100%] my-2 ">
+                  <button className="wolf-buttom wolf-btn-primary-2 w-[100%] my-2" onClick={starEtherProcess} >
                     Comenzar
                   </button>
                   <div className="w-[100%] h-[1px]  bg-wolf-gray-light-100"></div>
