@@ -8,7 +8,7 @@ import { CircularProgress } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(3);
+  const [stepProcess, setStepProcess] = useState(2);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(0);
 
   const modalData = useSelector(
@@ -29,7 +29,10 @@ export default function MintModal() {
         {modalData && (
           <div className="mint-modal-content">
             <h3 className="mb-2">Acuñado de la nft</h3>
-            <PreviewFile file={modalData.metadataFile} />
+            <PreviewFile
+              file={modalData.metadataFile}
+              currentStep={stepProcess}
+            />
             {stepProcess === 0 && (
               <div className="step-box mt-3">
                 <span>
@@ -154,6 +157,23 @@ export default function MintModal() {
                 )}
               </div>
             )}
+            {
+              stepProcess === 2 && <div className="step-box mt-3" >
+                <span>Durante el proseso de acu;ado susedio un error. que deseas hacer ?</span>
+                <div className="mt-3">
+                  <button
+                    className="wolf-buttom wolf-btn-primary-2 w-[100%] my-2"
+                    onClick={starEtherProcess}
+                  >
+                    intentar nuevamente
+                  </button>
+                  <div className="w-[100%] h-[1px]  bg-wolf-gray-light-100"></div>
+                  <button className="wolf-buttom w-[100%] my-2 wolf-btn-secondary-traparent">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            }
           </div>
         )}
       </div>
