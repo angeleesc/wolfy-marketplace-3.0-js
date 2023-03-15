@@ -1,6 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import React from "react";
 import WolfSad from "../../../components/icons/WolfSad";
+import WolfHappy from "../../../components/icons/WolfHappy";
 
 export default function PreviewFile({ file, percent = 50, currentStep }) {
   const { type } = file[0];
@@ -33,6 +34,16 @@ export default function PreviewFile({ file, percent = 50, currentStep }) {
                 Upss Ocurrio un error
               </h3>
               <WolfSad />
+            </div>
+          </div>
+        )}
+        {currentStep === 3 && (
+          <div className="progres-zone fillter-blur ">
+            <div className="flex flex-col items-center">
+              <h3 className="font-extrabold text-[20px] text-wolf-gray-light-2100">
+                Operacion finalizada
+              </h3>
+              <WolfHappy size="120" />
             </div>
           </div>
         )}

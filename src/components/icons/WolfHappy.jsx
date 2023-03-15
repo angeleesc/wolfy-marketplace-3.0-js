@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function WolfHappy() {
+export default function WolfHappy({size="150"}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="150"
-      height="150"
+      width={size}
+      height={size}
       enableBackground="new 0 0 512 512"
       viewBox="0 0 499.559 447.563"
     >

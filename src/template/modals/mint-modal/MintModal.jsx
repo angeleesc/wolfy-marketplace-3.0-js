@@ -8,7 +8,7 @@ import { CircularProgress } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(2);
+  const [stepProcess, setStepProcess] = useState(3);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(0);
 
   const modalData = useSelector(
@@ -157,9 +157,12 @@ export default function MintModal() {
                 )}
               </div>
             )}
-            {
-              stepProcess === 2 && <div className="step-box mt-3" >
-                <span>Durante el proseso de acu;ado susedio un error. que deseas hacer ?</span>
+            {stepProcess === 2 && (
+              <div className="step-box mt-3">
+                <span>
+                  Durante el proseso de acu;ado susedio un error. que deseas
+                  hacer ?
+                </span>
                 <div className="mt-3">
                   <button
                     className="wolf-buttom wolf-btn-primary-2 w-[100%] my-2"
@@ -173,7 +176,28 @@ export default function MintModal() {
                   </button>
                 </div>
               </div>
-            }
+            )}
+            {stepProcess === 3 && (
+              <div className="step-box mt-3">
+                <span>
+                  El proceso ha sido finalizado correctamente. que desea hacer
+                </span>
+                <div className="mt-3">
+                  <button
+                    className="wolf-buttom wolf-btn-primary-2 w-[100%] my-2"
+                    // onClick={starEtherProcess}
+                  >
+                   ver mi nft en la marketplace
+                  </button>
+                  <div className="w-[100%] h-[1px]  bg-wolf-gray-light-100"></div>
+                  <button className="wolf-buttom w-[100%] my-2 wolf-btn-secondary-traparent">
+                    Cancelar
+                  </button>
+                </div>
+
+
+              </div>
+            )}
           </div>
         )}
       </div>
