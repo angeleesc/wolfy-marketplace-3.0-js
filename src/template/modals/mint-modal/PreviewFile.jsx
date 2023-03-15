@@ -1,6 +1,7 @@
+import { CircularProgress } from "@mui/material";
 import React from "react";
 
-export default function PreviewFile({ file }) {
+export default function PreviewFile({ file, percent = 50 }) {
   const { type } = file[0];
   const url = URL.createObjectURL(file[0]);
 
@@ -10,6 +11,18 @@ export default function PreviewFile({ file }) {
     return (
       <div className="modal-multimedia-zone">
         <img src={url} alt="nft-preview-file" />
+        <div className="progres-zone">
+          <CircularProgress
+            sx={{
+              color: "#3B43DD",
+              borderRadius: "50%",
+              backgroundColor: "#13161a",
+            }}
+            size={120}
+            value={percent}
+            variant="determinate"
+          />
+        </div>
       </div>
     );
   }

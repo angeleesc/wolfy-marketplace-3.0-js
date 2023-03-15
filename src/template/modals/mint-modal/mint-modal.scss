@@ -56,6 +56,25 @@
             text-align: justify;
             display   : block;
         }
+
+        h4 {
+            font-size  : 18px;
+            font-weight: 600;
+            padding    : 5px;
+        }
+    }
+
+    .progres-zone {
+        background-color: rgba($color: #23272f, $alpha: .5);
+        position        : absolute;
+        top             : 0;
+        left            : 0;
+        border-radius   : 8px;
+        width           : 100%;
+        height          : 100%;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
     }
 
 }
