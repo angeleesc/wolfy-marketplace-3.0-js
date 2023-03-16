@@ -3,10 +3,7 @@ import WolfyModalLayoutReduxController from "../../../components/layout/WolfyMod
 import { keyModalSate } from "../../../features/modals/modalsSlice";
 import { useSelector } from "react-redux";
 import "./mint-modal.scss";
-import PreviewFile from "./PreviewFile";
-import { CircularProgress } from "@mui/material";
-import { AiFillCheckCircle } from "react-icons/ai";
-import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
+
 
 const cuadradopromise = (value) => {
   return new Promise((resolve, rejet) => {

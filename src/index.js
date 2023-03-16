@@ -11,13 +11,16 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react"
 import 'overlayscrollbars/overlayscrollbars.css';
 import MintModal from './template/modals/mint-modal/MintModal';
 import App from './App';
+import WolfFileContexProvider from "./context/FileContex"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store} >
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <WolfFileContexProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </WolfFileContexProvider>
   </Provider>
 );
 
