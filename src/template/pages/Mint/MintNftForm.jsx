@@ -109,6 +109,7 @@ export default function MintNftForm() {
 
     const dataToset = {
       ...restData,
+      metadataFile
     };
 
     fileContex.setCurentfile(dataToset);

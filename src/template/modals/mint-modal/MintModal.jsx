@@ -3,6 +3,7 @@ import WolfyModalLayoutReduxController from "../../../components/layout/WolfyMod
 import { keyModalSate } from "../../../features/modals/modalsSlice";
 import { useSelector } from "react-redux";
 import "./mint-modal.scss";
+import { useWFileContex } from "../../../context/FileContex";
 
 
 const cuadradopromise = (value) => {
@@ -18,6 +19,11 @@ const cuadradopromise = (value) => {
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
+  const fileContext = useWFileContex()
+
+  console.log("el modal recibio")
+  console.log(fileContext.curentfile)
+  console.log("fin del recibimiento")
 
   const modalData = useSelector(
     (state) => state.modals[keyModalSate.mintModal].dataToProccess
