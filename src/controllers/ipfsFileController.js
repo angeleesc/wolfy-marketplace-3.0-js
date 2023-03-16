@@ -1,20 +1,21 @@
 import axios from "axios";
-import { rootApipaht } from "../helpers/global-constants";
+import { rootApipaht, requestEndPoints } from "../helpers/global-constants";
 
 export const uploadFileToIpfs = async (file, data) => {
 
-    // console.log("archivo")
-    // console.log(file)
-    // console.log("datos")
-    // console.log(data)
-    // console.log("archivo envado")
 
-    // const data = 
+    const formadta = new FormData()
 
-    const rootPath = rootApipaht.local
-    const dataObtained = await axios.get(rootPath)
+    formadta.append("file", file[0])
+
+    const rootPath = rootApipaht.local + requestEndPoints.ipfs.POSTuploadFile
+    const dataObtained = await axios.post(rootPath, formadta, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    })
     // cons
-    console.log(dataObtained)
+    console.log(dataObtained.data)
 
 
 

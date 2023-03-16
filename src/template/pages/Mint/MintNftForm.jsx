@@ -297,6 +297,7 @@ export default function MintNftForm() {
             register={register}
             errors={errors}
           />
+          // <div><h3>Array xd</h3></div>
         )}
 
         <div className="my-[10px]">

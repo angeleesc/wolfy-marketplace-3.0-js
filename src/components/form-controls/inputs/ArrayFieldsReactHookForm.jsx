@@ -27,19 +27,19 @@ export default function ArrayFieldsReactHookForm({
   // console.log("obscervando");
   // console.log(atributesWacth);
 
-  atributesWacth.map((atribute) => {
-    if (atribute.key && atribute.key != "") {
-      isOk = true;
-    } else {
-      isOk = false;
-    }
+  // atributesWacth.map((atribute) => {
+  //   if (atribute.key && atribute.key != "") {
+  //     isOk = true;
+  //   } else {
+  //     isOk = false;
+  //   }
 
-    if (atribute.nftValue && atribute.nftValue != "") {
-      isOk = true;
-    } else {
-      isOk = false;
-    }
-  });
+  //   if (atribute.nftValue && atribute.nftValue != "") {
+  //     isOk = true;
+  //   } else {
+  //     isOk = false;
+  //   }
+  // });
 
   // console.log(isOk);
 
@@ -64,17 +64,17 @@ export default function ArrayFieldsReactHookForm({
               <input
                 type={type}
                 className="wolf-form-control-text-input"
-                {...register(`${name}.${index}.key`)}
+                // {...register(`${name}.${index}.key`)}
               />
-              {errors[`nftsAtributes[${index}].key`] && (
+              {/* {errors[`nftsAtributes[${index}].key`] && (
                 <span className="wolf-form-control-error">Reuerido</span>
-              )}
+              )} */}
             </div>
             <div className="wolf-form-control">
               <input
                 type={type}
                 className="wolf-form-control-text-input"
-                {...register(`${name}.${index}.nftValue`)}
+                // {...register(`${name}.${index}.nftValue`)}
               />
               {errors[`nftsAtributes[${index}].nftValue`] && (
                 <span className="wolf-form-control-error">Requerido</span>

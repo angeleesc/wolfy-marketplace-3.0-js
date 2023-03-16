@@ -133,7 +133,7 @@ export const rootApipaht = {
 
 export const requestEndPoints ={
     ipfs:{
-        POSTuploadFile: "api/v1/ipfs-routes"
+        POSTuploadFile: "/api/v1/ipfs"
     },
     
 }

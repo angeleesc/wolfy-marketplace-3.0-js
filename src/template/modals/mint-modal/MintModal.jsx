@@ -33,6 +33,20 @@ export default function MintModal() {
     setStepProcess(1);
     setEthereumStepProcess(1);
 
+    const dataFormated = {
+      nftName: data["nftName"],
+      nftDescription: data["nftDescription"],
+      ...(data["nftUrlPage"] && data["nftUrlPage"] !== ""
+        ? { nftUrlPage: data["nftUrlPage"] }
+        : {}), // esto es un condicional que indica que sil exite el campo que lo agrege si no ok
+      ...(data["isAddPropieties"] && data["isAddPropieties"] === true
+        ? { nftsAtributes: JSON.stringify(data["nftsAtributes"]) }
+        : {}),
+    };
+    console.log("datos formateado");
+    console.log(dataFormated);
+    console.log("ok si se puede");
+
     try {
       let obj = await cuadradopromise(0);
       await uploadFileToIpfs(metadataFile, data);
@@ -40,10 +54,15 @@ export default function MintModal() {
       setStepProcess(3);
 
       obj = cuadradopromise(1);
-    } catch (error) {}
+    } catch (error) {
+      console.log("ocurrion error");
+      setStepProcess(2);
+    }
   };
 
+  console.log("datos para la metadata");
   console.log(modalData);
+  console.log("----fin----");
 
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
