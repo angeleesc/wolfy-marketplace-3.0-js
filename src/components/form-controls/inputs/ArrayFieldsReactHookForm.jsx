@@ -27,27 +27,24 @@ export default function ArrayFieldsReactHookForm({
 
   let isOk = true;
 
-  // console.log("obscervando");
-  // console.log(atributesWacth);
+  console.log("obscervando");
+  console.log(atributesWacth);
 
-  // atributesWacth.map((atribute) => {
-  //   if (atribute.key && atribute.key != "") {
-  //     isOk = true;
-  //   } else {
-  //     isOk = false;
-  //   }
+  atributesWacth.map((atribute) => {
+    if (atribute.key && atribute.key != "") {
+      isOk = true;
+    } else {
+      isOk = false;
+    }
 
-  //   if (atribute.nftValue && atribute.nftValue != "") {
-  //     isOk = true;
-  //   } else {
-  //     isOk = false;
-  //   }
-  // });
+    if (atribute.nftValue && atribute.nftValue != "") {
+      isOk = true;
+    } else {
+      isOk = false;
+    }
+  });
 
-  // console.log(isOk);
-console.log("registe")
-  console.log(register)
-  console.log("fin del registe")
+
 
   return (
     <div className="array-fields-container">

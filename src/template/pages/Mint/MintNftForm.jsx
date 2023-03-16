@@ -102,12 +102,15 @@ export default function MintNftForm() {
 
   const onSubmit = async (data) => {
     console.log(data);
-    // dispatch(
-    //   openModal({
-    //     modal: keyModalSate.mintModal,
-    //     data,
-    //   })
-    // );
+    dispatch(
+      openModal({
+        modal: keyModalSate.mintModal,
+        data: {
+          nombre:"angel",
+          apellido:"snachez"
+        },
+      })
+    );
   };
 
   return (
