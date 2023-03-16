@@ -7,18 +7,50 @@ import PreviewFile from "./PreviewFile";
 import { CircularProgress } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
 
+const cuadradopromise = (value) =>{
+
+  return new Promise((resolve, rejet)=>{
+    setTimeout(()=>{
+      resolve({
+        value,
+        result: value * value
+      })
+    }, 1000)
+  })
+
+}
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(3);
-  const [ethereumStepProcess, setEthereumStepProcess] = useState(0);
+  const [stepProcess, setStepProcess] = useState(0);
+  const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
+
+
+
+
 
   const modalData = useSelector(
     (state) => state.modals[keyModalSate.mintModal].dataToProccess
   );
 
   const starEtherProcess = async () => {
+
     console.log("process");
     setStepProcess(1);
     setEthereumStepProcess(1);
+
+    try {
+      
+      let obj = await cuadradopromise(0)
+
+      setStepProcess(3)
+
+      obj = cuadradopromise(1)
+
+    } catch (error) {
+      
+    }
+
+  
+
   };
 
   console.log(modalData);
@@ -191,7 +223,7 @@ export default function MintModal() {
                   </button>
                   <div className="w-[100%] h-[1px]  bg-wolf-gray-light-100"></div>
                   <button className="wolf-buttom w-[100%] my-2 wolf-btn-secondary-traparent">
-                    Cancelar
+                    Finalizar
                   </button>
                 </div>
 
