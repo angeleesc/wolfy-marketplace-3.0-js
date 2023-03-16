@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/array-input.scss";
 import { FiTrash, FiPlus } from "react-icons/fi";
 import { Tooltip } from "@mui/material";
-import { useWatch, useFieldArray } from "react-hook-form";
+import { useWatch, useFieldArray, useForm } from "react-hook-form";
 
 export default function ArrayFieldsReactHookForm({
   type = "text",
@@ -12,6 +12,9 @@ export default function ArrayFieldsReactHookForm({
   watch,
   errors,
 }) {
+
+
+
   const { fields, append, remove } = useFieldArray({
     control,
     name,
@@ -42,6 +45,9 @@ export default function ArrayFieldsReactHookForm({
   // });
 
   // console.log(isOk);
+console.log("registe")
+  console.log(register)
+  console.log("fin del registe")
 
   return (
     <div className="array-fields-container">
@@ -61,20 +67,20 @@ export default function ArrayFieldsReactHookForm({
               <span>1</span>
             </div>
             <div className="wolf-form-control">
-              <input
+            {register &&  <input
                 type={type}
                 className="wolf-form-control-text-input"
-                // {...register(`${name}.${index}.key`)}
-              />
-              {/* {errors[`nftsAtributes[${index}].key`] && (
+                {...register(`nftsAtributes.${index}.key`)}
+              />}
+              {errors[`nftsAtributes[${index}].key`] && (
                 <span className="wolf-form-control-error">Reuerido</span>
-              )} */}
+              )}
             </div>
             <div className="wolf-form-control">
               <input
                 type={type}
                 className="wolf-form-control-text-input"
-                // {...register(`${name}.${index}.nftValue`)}
+                {...register(`nftsAtributes.${index}.nftValue`)}
               />
               {errors[`nftsAtributes[${index}].nftValue`] && (
                 <span className="wolf-form-control-error">Requerido</span>
