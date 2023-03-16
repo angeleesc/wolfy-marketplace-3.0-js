@@ -6,51 +6,41 @@ import "./mint-modal.scss";
 import PreviewFile from "./PreviewFile";
 import { CircularProgress } from "@mui/material";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
 
-const cuadradopromise = (value) =>{
-
-  return new Promise((resolve, rejet)=>{
-    setTimeout(()=>{
+const cuadradopromise = (value) => {
+  return new Promise((resolve, rejet) => {
+    setTimeout(() => {
       resolve({
         value,
-        result: value * value
-      })
-    }, 1000)
-  })
-
-}
+        result: value * value,
+      });
+    }, 1000);
+  });
+};
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
-
-
-
-
 
   const modalData = useSelector(
     (state) => state.modals[keyModalSate.mintModal].dataToProccess
   );
 
-  const starEtherProcess = async () => {
+  const { metadataFile, ...data } = modalData;
 
+  const starEtherProcess = async () => {
     console.log("process");
     setStepProcess(1);
     setEthereumStepProcess(1);
 
     try {
-      
-      let obj = await cuadradopromise(0)
+      let obj = await cuadradopromise(0);
+      await uploadFileToIpfs(metadataFile, data);
 
-      setStepProcess(3)
+      setStepProcess(3);
 
-      obj = cuadradopromise(1)
-
-    } catch (error) {
-      
-    }
-
-  
-
+      obj = cuadradopromise(1);
+    } catch (error) {}
   };
 
   console.log(modalData);
@@ -219,15 +209,13 @@ export default function MintModal() {
                     className="wolf-buttom wolf-btn-primary-2 w-[100%] my-2"
                     // onClick={starEtherProcess}
                   >
-                   ver mi nft en la marketplace
+                    ver mi nft en la marketplace
                   </button>
                   <div className="w-[100%] h-[1px]  bg-wolf-gray-light-100"></div>
                   <button className="wolf-buttom w-[100%] my-2 wolf-btn-secondary-traparent">
                     Finalizar
                   </button>
                 </div>
-
-
               </div>
             )}
           </div>
