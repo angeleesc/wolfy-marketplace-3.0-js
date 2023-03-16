@@ -5,6 +5,7 @@ const WFileContext = createContext();
 export const useWFileContex = () => {
 
     const dataContex = useContext(WFileContext);
+    return dataContex
 
 }
 

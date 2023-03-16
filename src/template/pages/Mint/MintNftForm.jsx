@@ -23,9 +23,15 @@ import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 import { useDispatch } from "react-redux";
 import { keyModalSate, openModal } from "../../../features/modals/modalsSlice";
+import { useWFileContex } from "../../../context/FileContex";
 
 export default function MintNftForm() {
   const [isAddAtribute, setIsAddAtribute] = useState(false);
+  const fileContex = useWFileContex();
+  console.log("file contex");
+  console.log(fileContex);
+  console.log("---contex--");
+
   const dispatch = useDispatch();
 
   const mintValidationSchema = yup.object({
@@ -52,15 +58,13 @@ export default function MintNftForm() {
     }),
     nftsAtributes: yup.array().when("isAddPropieties", {
       is: true,
-      then: yup
-        .array()
-        .of(
-          yup.object().shape({
-            key: yup.string().required(),
-            nftValue: yup.string().required(),
-          })
-        ),
-     
+      then: yup.array().of(
+        yup.object().shape({
+          key: yup.string().required(),
+          nftValue: yup.string().required(),
+        })
+      ),
+
       otherwise: yup.array().notRequired(),
     }),
     royalties: yup.string().required("regalias es requerida"),
@@ -101,13 +105,20 @@ export default function MintNftForm() {
   }
 
   const onSubmit = async (data) => {
+    const { metadataFile, ...restData } = data;
+
+    const dataToset = {
+      ...restData,
+    };
+
+    fileContex.setCurentfile(dataToset);
+
     console.log(data);
     dispatch(
       openModal({
         modal: keyModalSate.mintModal,
         data: {
-          nombre:"angel",
-          apellido:"snachez"
+          nombre: "xd",
         },
       })
     );
