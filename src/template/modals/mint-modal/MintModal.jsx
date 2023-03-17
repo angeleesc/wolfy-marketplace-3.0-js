@@ -7,9 +7,10 @@ import MultimediaZone from "./MultimediaZone";
 import WolfCheck from "../../../components/icons/WolfCheck";
 import { useDispatch } from "react-redux";
 import WolfSad from "../../../components/icons/WolfSad";
+import WolfHappy from "../../../components/icons/WolfHappy";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(2);
+  const [stepProcess, setStepProcess] = useState(3);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
   const fileContext = useWFileContex();
   const dispatch = useDispatch();
@@ -42,11 +43,22 @@ export default function MintModal() {
             <div className="multimedia-content">
               <h3>Oparacion Fallida</h3>
               {/* <WolfCheck size={"120"} /> */}
-              <WolfSad  size="120" />
+              <WolfSad size="120" />
               <span>
                 Ha ocurrido un eero durante la oprecion de la creacion de la
                 nft. que deseas
               </span>
+            </div>
+          </div>
+        )}
+        {stepProcess === 3 && (
+          <div className="wolf-mint-modal-header">
+            <MultimediaZone file={metadataFile} />
+            <div className="multimedia-content">
+              <h3>Oparacion Exitosa</h3>
+              {/* <WolfCheck size={"120"} /> */}
+              <WolfHappy size="120" />
+              <span>Tu nft ha sido creada</span>
             </div>
           </div>
         )}
@@ -100,9 +112,16 @@ export default function MintModal() {
         )}
         {stepProcess === 3 && (
           <div className="flex justify-center mt-5">
-
             <button
-              className="wolf-buttom w-[100%] wolf-btn-primary-2"
+              className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1"
+              onClick={() => {
+                starMinpres();
+              }}
+            >
+              Finalizar
+            </button>
+            <button
+              className="wolf-buttom w-[50%] wolf-btn-secondary-traparent ml-1 border-[2px]  border-wolf-gray-dark-800"
               onClick={() => {
                 dispatch(
                   closeModal({
@@ -111,7 +130,7 @@ export default function MintModal() {
                 );
               }}
             >
-              Cancelar
+              Hacer otra NFT
             </button>
           </div>
         )}
