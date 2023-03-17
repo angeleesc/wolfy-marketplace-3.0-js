@@ -1,11 +1,11 @@
 .wolf-mint-modal-header {
-    // background-color: red;
+
     position  : relative;
     max-height: 500px;
     min-height: 10px;
 
     .preview-box-container {
-        // padding: 5px;
+
         width : 100%;
         height: 100%;
 
@@ -19,12 +19,36 @@
     }
 
     .multimedia-content {
-        width   : 100%;
-        height  : 100%;
-        position: absolute;
-        top     : 0;
-        left    : 0;
-        background-color: rgba($color: #171a1f, $alpha: .5);
+        width           : 100%;
+        height          : 100%;
+        position        : absolute;
+        top             : 0;
+        left            : 0;
+        background-color: rgba($color: #171a1f, $alpha: .6);
     }
+
+    .multimedia-content {
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+
+        h3 {
+            font-size  : 24px;
+            font-weight: 600;
+            color      : theme("colors.wolf-gray-light.2200");
+        }
+
+        span {
+            font-size          : 16px;
+            // background-color: red;
+            text-align         : center;
+            color              : theme("colors.wolf-gray-light.2200");
+            font-weight        : 600;
+        }
+
+    }
+
+
 
 }

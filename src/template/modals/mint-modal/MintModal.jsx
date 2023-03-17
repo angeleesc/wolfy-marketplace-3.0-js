@@ -4,6 +4,7 @@ import { keyModalSate } from "../../../features/modals/modalsSlice";
 import "./mint-modal.scss";
 import { useWFileContex } from "../../../context/FileContex";
 import MultimediaZone from "./MultimediaZone";
+import WolfCheck from "../../../components/icons/WolfCheck";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
@@ -23,7 +24,20 @@ export default function MintModal() {
           <MultimediaZone file={metadataFile} />
           <div className="multimedia-content">
             <h3>Todo esta listo</h3>
+            <WolfCheck size={"120"} />
+            <span>
+              Todos los datos estan listo haz click en comensar para hacer tu
+              nueva nft
+            </span>
           </div>
+        </div>
+        <div className="flex justify-center mt-5">
+          <button className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1">
+            Comnezar
+          </button>
+          <button className="wolf-buttom w-[50%] wolf-btn-secondary-traparent ml-1 border-[2px]  border-wolf-gray-dark-800">
+            Cancelar
+          </button>
         </div>
       </div>
     </WolfyModalLayoutReduxController>
