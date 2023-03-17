@@ -25,6 +25,12 @@ export default function MintModal() {
     const dataformated = fromMatMinData(rest);
     console.log(dataformated);
     console.log("opracion exitosa");
+
+    setStepProcess(1);
+    
+    // obtenemos la url del archivo json de la metadata 
+    
+
     setStepProcess(3);
   };
 
