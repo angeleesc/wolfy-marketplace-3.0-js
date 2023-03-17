@@ -11,17 +11,21 @@ import WolfHappy from "../../../components/icons/WolfHappy";
 import WolfTinking from "../../../components/icons/WolfTinking";
 import { CircularProgress, circularProgressClasses } from "@mui/material";
 import Check from "../../../components/icons/Check";
+import { fromMatMinData } from "./constrollers/formatjson";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(1);
+  const [stepProcess, setStepProcess] = useState(0);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
   const fileContext = useWFileContex();
   const dispatch = useDispatch();
 
-  const { metadataFile } = fileContext.curentfile;
+  const { metadataFile, ...rest } = fileContext.curentfile;
 
   const starMinpres = async () => {
+    const dataformated = fromMatMinData(rest);
+    console.log(dataformated);
     console.log("opracion exitosa");
+    setStepProcess(3);
   };
 
   return (
