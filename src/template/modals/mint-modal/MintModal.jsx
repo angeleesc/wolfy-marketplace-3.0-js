@@ -12,6 +12,7 @@ import WolfTinking from "../../../components/icons/WolfTinking";
 import { CircularProgress, circularProgressClasses } from "@mui/material";
 import Check from "../../../components/icons/Check";
 import { fromMatMinData } from "./constrollers/formatjson";
+import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
@@ -23,13 +24,13 @@ export default function MintModal() {
 
   const starMinpres = async () => {
     const dataformated = fromMatMinData(rest);
-    console.log(dataformated);
+    // console.log(dataformated);
     console.log("opracion exitosa");
 
     setStepProcess(1);
-    
-    // obtenemos la url del archivo json de la metadata 
-    
+
+    // obtenemos la url del archivo json de la metadata
+    const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated);
 
     setStepProcess(3);
   };

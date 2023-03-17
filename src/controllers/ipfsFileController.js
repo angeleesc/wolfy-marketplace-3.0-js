@@ -8,6 +8,10 @@ export const uploadFileToIpfs = async (file, data) => {
 
     formadta.append("file", file[0])
 
+    for (let key in data) {
+        formadta.append(key, data[key])
+    }
+
     const rootPath = rootApipaht.local + requestEndPoints.ipfs.POSTuploadFile
     const dataObtained = await axios.post(rootPath, formadta, {
         headers: {
