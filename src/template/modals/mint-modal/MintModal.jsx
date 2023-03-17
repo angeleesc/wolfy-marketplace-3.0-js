@@ -8,9 +8,12 @@ import WolfCheck from "../../../components/icons/WolfCheck";
 import { useDispatch } from "react-redux";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfHappy from "../../../components/icons/WolfHappy";
+import WolfTinking from "../../../components/icons/WolfTinking";
+import { CircularProgress, circularProgressClasses } from "@mui/material";
+import Check from "../../../components/icons/Check";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(3);
+  const [stepProcess, setStepProcess] = useState(1);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
   const fileContext = useWFileContex();
   const dispatch = useDispatch();
@@ -132,6 +135,124 @@ export default function MintModal() {
             >
               Hacer otra NFT
             </button>
+          </div>
+        )}
+        {stepProcess === 1 && (
+          <div className="wolf-mint-modal-procees">
+            <div className="ethereum-procces-step-1">
+              <MultimediaZone file={metadataFile} />
+              <div className="progres-bar-box">
+                <h3 className="absolute bottom-0">Cargando 50%</h3>
+
+                <div className="progras-bar-content">
+                  <WolfTinking size="60" />
+                  <CircularProgress
+                    variant="determinate"
+                    size={120}
+                    value={100}
+                    sx={{
+                      position: "absolute",
+                      color: "#23272f",
+                      backgroundColor: "#0c0d10",
+                      borderRadius: "50%",
+                    }}
+                  />
+                  <CircularProgress
+                    size={120}
+                    variant="determinate"
+                    value={50}
+                    sx={{
+                      position: "absolute",
+                      color: "#3B43DD",
+                      borderRadius: "50%",
+                      [`& .${circularProgressClasses.circle}`]: {
+                        strokeLinecap: "round",
+                      },
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+              <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
+                Creacion de la collecion
+              </span>
+
+              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                <CircularProgress
+                  sx={{
+                    position: "absolute",
+                    color: "#4e5667",
+                    borderRadius: "50%",
+                    [`& .${circularProgressClasses.circle}`]: {
+                      strokeLinecap: "round",
+                    },
+                  }}
+                  size={30}
+                />
+                <Check />
+              </div>
+            </div>
+            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+              <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
+                Acuñando las nfts
+              </span>
+
+              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                <CircularProgress
+                  sx={{
+                    position: "absolute",
+                    color: "#4e5667",
+                    borderRadius: "50%",
+                    [`& .${circularProgressClasses.circle}`]: {
+                      strokeLinecap: "round",
+                    },
+                  }}
+                  size={30}
+                />
+                <Check />
+              </div>
+            </div>
+            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+              <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
+                Aprobando la transacion
+              </span>
+
+              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                <CircularProgress
+                  sx={{
+                    position: "absolute",
+                    color: "#4e5667",
+                    borderRadius: "50%",
+                    [`& .${circularProgressClasses.circle}`]: {
+                      strokeLinecap: "round",
+                    },
+                  }}
+                  size={30}
+                />
+                <Check />
+              </div>
+            </div>
+            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+              <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
+                Poniendolos en venta
+              </span>
+
+              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                <CircularProgress
+                  sx={{
+                    position: "absolute",
+                    color: "#4e5667",
+                    borderRadius: "50%",
+                    [`& .${circularProgressClasses.circle}`]: {
+                      strokeLinecap: "round",
+                    },
+                  }}
+                  size={30}
+                />
+                <Check />
+              </div>
+            </div>
           </div>
         )}
       </div>

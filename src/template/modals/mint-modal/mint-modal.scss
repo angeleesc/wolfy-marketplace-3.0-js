@@ -52,3 +52,57 @@
 
 
 }
+
+.wolf-mint-modal-procees {
+    .preview-box-container {
+        max-height: 200px;
+
+        img {
+            height       : 200px;
+            width        : 100%;
+            object-fit   : cover;
+            border-radius: 8px;
+        }
+
+    }
+
+    .ethereum-procces-step-1 {
+        position: relative;
+
+
+        .progres-bar-box {
+            position           : absolute;
+            width              : 100%;
+            height             : 100%;
+            // background-color: red;
+            top                : 0;
+            left               : 0;
+            border-radius      : 8px;
+            display            : flex;
+            justify-content    : center;
+            align-items        : center;
+            flex-direction     : column;
+
+            h3 {
+                font-weight: 600;
+                font-size  : 20px;
+            }
+
+            .progras-bar-content {
+                position       : relative;
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+
+                svg {
+                    position: absolute;
+                    z-index : 10;
+                }
+            }
+        }
+    }
+
+    .step-ethereum-proccess {
+        padding: 15px 0;
+    }
+}
