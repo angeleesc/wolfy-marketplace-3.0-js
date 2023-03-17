@@ -1,44 +1,101 @@
 import React, { useState } from "react";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
-import { keyModalSate } from "../../../features/modals/modalsSlice";
+import { closeModal, keyModalSate } from "../../../features/modals/modalsSlice";
 import "./mint-modal.scss";
 import { useWFileContex } from "../../../context/FileContex";
 import MultimediaZone from "./MultimediaZone";
 import WolfCheck from "../../../components/icons/WolfCheck";
+import { useDispatch } from "react-redux";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(0);
+  const [stepProcess, setStepProcess] = useState(2 );
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
   const fileContext = useWFileContex();
+  const dispatch = useDispatch();
 
   const { metadataFile } = fileContext.curentfile;
 
-  console.log("el modal recibio");
-  console.log(fileContext.curentfile);
-  console.log("fin del recibimiento");
+  const starMinpres = async () => {
+    console.log("opracion exitosa");
+  };
 
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
       <div className="wolf-modal-body w-[100%] max-w-[560px] min-h-[40px]">
-        <div className="wolf-mint-modal-header">
-          <MultimediaZone file={metadataFile} />
-          <div className="multimedia-content">
-            <h3>Todo esta listo</h3>
-            <WolfCheck size={"120"} />
-            <span>
-              Todos los datos estan listo haz click en comensar para hacer tu
-              nueva nft
-            </span>
+        {stepProcess === 0 && (
+          <div className="wolf-mint-modal-header">
+            <MultimediaZone file={metadataFile} />
+            <div className="multimedia-content">
+              <h3>Todo esta listo</h3>
+              <WolfCheck size={"120"} />
+              <span>
+                Todos los datos estan listo haz click en comensar para hacer tu
+                nueva nft
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="flex justify-center mt-5">
-          <button className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1">
-            Comnezar
-          </button>
-          <button className="wolf-buttom w-[50%] wolf-btn-secondary-traparent ml-1 border-[2px]  border-wolf-gray-dark-800">
-            Cancelar
-          </button>
-        </div>
+        )}
+        {stepProcess === 2 && (
+          <div className="wolf-mint-modal-header">
+            <MultimediaZone file={metadataFile} />
+            <div className="multimedia-content">
+              <h3>Oparacion Fallida</h3>
+              <WolfCheck size={"120"} />
+              <span>
+                Ha ocurrido un eero durante la oprecion de la creacion de la nft.
+                que deseas
+              </span>
+            </div>
+          </div>
+        )}
+        {stepProcess === 0 && (
+          <div className="flex justify-center mt-5">
+            <button
+              className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1"
+              onClick={() => {
+                starMinpres();
+              }}
+            >
+              Comnezar
+            </button>
+            <button
+              className="wolf-buttom w-[50%] wolf-btn-secondary-traparent ml-1 border-[2px]  border-wolf-gray-dark-800"
+              onClick={() => {
+                dispatch(
+                  closeModal({
+                    modal: keyModalSate.mintModal,
+                  })
+                );
+              }}
+            >
+              Cancelar
+            </button>
+          </div>
+        )}
+        {stepProcess === 2 && (
+          <div className="flex justify-center mt-5">
+            <button
+              className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1"
+              onClick={() => {
+                starMinpres();
+              }}
+            >
+              intentar nuevamente
+            </button>
+            <button
+              className="wolf-buttom w-[50%] wolf-btn-secondary-traparent ml-1 border-[2px]  border-wolf-gray-dark-800"
+              onClick={() => {
+                dispatch(
+                  closeModal({
+                    modal: keyModalSate.mintModal,
+                  })
+                );
+              }}
+            >
+              Cancelar
+            </button>
+          </div>
+        )}
       </div>
     </WolfyModalLayoutReduxController>
   );
