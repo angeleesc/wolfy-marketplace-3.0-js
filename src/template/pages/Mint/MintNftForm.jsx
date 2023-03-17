@@ -1,17 +1,16 @@
-import React, { useState, Fragment, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import WTextFields from "../../../components/form-controls/inputs/WTextFields";
 import WTextAreaInput from "../../../components/form-controls/inputs/WTextAreaInput";
-import { FormControlLabel, Switch, TextField } from "@mui/material";
+import { FormControlLabel, Switch } from "@mui/material";
 import "./style/botom-group-box.scss";
 import CAdd from "../../../components/icons/CAdd";
 import Logo from "../../../components/icons/Logo";
 import CSearch from "../../../components/icons/CSearch";
 import TagBlack from "../../../components/icons/TagBlack";
 import ClockBlack from "../../../components/icons/ClockBlack";
-import DateTimePikerNotModal from "../../../components/form-controls/pickers/DateTimePikerNotModal";
 import DatePikckerReacDP from "../../../components/form-controls/pickers/DatePikckerReacDP";
 import FileDropZone from "../../../components/form-controls/drop-zone/FileDropZone";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { preventScroll } from "../../../controllers/domController";
 import {
   collectionsOptions,

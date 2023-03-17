@@ -19,8 +19,11 @@ export default function MintModal() {
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
       <div className="wolf-modal-body w-[100%] max-w-[560px] min-h-[40px]">
-        <div className="header">
+        <div className="wolf-mint-modal-header">
           <MultimediaZone file={metadataFile} />
+          <div className="multimedia-content">
+            <h3>Todo esta listo</h3>
+          </div>
         </div>
       </div>
     </WolfyModalLayoutReduxController>
