@@ -6,9 +6,10 @@ import { useWFileContex } from "../../../context/FileContex";
 import MultimediaZone from "./MultimediaZone";
 import WolfCheck from "../../../components/icons/WolfCheck";
 import { useDispatch } from "react-redux";
+import WolfSad from "../../../components/icons/WolfSad";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(2 );
+  const [stepProcess, setStepProcess] = useState(2);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
   const fileContext = useWFileContex();
   const dispatch = useDispatch();
@@ -40,10 +41,11 @@ export default function MintModal() {
             <MultimediaZone file={metadataFile} />
             <div className="multimedia-content">
               <h3>Oparacion Fallida</h3>
-              <WolfCheck size={"120"} />
+              {/* <WolfCheck size={"120"} /> */}
+              <WolfSad  size="120" />
               <span>
-                Ha ocurrido un eero durante la oprecion de la creacion de la nft.
-                que deseas
+                Ha ocurrido un eero durante la oprecion de la creacion de la
+                nft. que deseas
               </span>
             </div>
           </div>
@@ -84,6 +86,23 @@ export default function MintModal() {
             </button>
             <button
               className="wolf-buttom w-[50%] wolf-btn-secondary-traparent ml-1 border-[2px]  border-wolf-gray-dark-800"
+              onClick={() => {
+                dispatch(
+                  closeModal({
+                    modal: keyModalSate.mintModal,
+                  })
+                );
+              }}
+            >
+              Cancelar
+            </button>
+          </div>
+        )}
+        {stepProcess === 3 && (
+          <div className="flex justify-center mt-5">
+
+            <button
+              className="wolf-buttom w-[100%] wolf-btn-primary-2"
               onClick={() => {
                 dispatch(
                   closeModal({
