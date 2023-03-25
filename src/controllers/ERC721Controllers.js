@@ -12,13 +12,13 @@ export const connectErc721Ups = async () => {
     const signer = provider.getSigner();
     const account = await signer.getAddress();
     console.log("hay provider");
-    const contrat = new ethers.Contract(
+    const contract = new ethers.Contract(
       smartContracts.ERC721UUPS,
       ERC721UUPSabi,
       signer
     );
     return {
-      contrat,
+      contract,
       account,
     };
   }
@@ -28,9 +28,9 @@ export const connectErc721Ups = async () => {
 };
 
 export const safewMint = async (url) => {
-  const { contrat, account } = await connectErc721Ups();
+  const { contract, account } = await connectErc721Ups();
   console.log(account);
-  const result = await contrat.safeMint(account, url);
+  const result = await contract.safeMint(account, url);
   const data = await result.wait();
   console.log(data);
 
@@ -39,23 +39,24 @@ export const safewMint = async (url) => {
 };
 
 export const getTokensIds = async () => {
-  const { contrat, account } = await connectErc721Ups();
+  const { contract, account } = await connectErc721Ups();
   try {
-    const tokeensId = await contrat.tokensByOwner(account);
+    const tokeensId = await contract.tokensByOwner(account);
     // console.log(tokeensId)
     const tokensIdsFormated = tokeensId.map((token) => {
       return Number(token.toString());
     });
     console.log(tokensIdsFormated);
+    return tokensIdsFormated;
   } catch (error) {
     return null;
   }
 };
 
 export const aporveTransaction = async (blockChain) => {
-  const { contrat, account } = await connectErc721Ups();
+  const { contract, account } = await connectErc721Ups();
   try {
-    const getAproveTrasaction = await contrat.setApprovalForAll(
+    const getAproveTrasaction = await contract.setApprovalForAll(
       smartContracts.market,
       true
     );

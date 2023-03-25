@@ -13,7 +13,14 @@ import { CircularProgress, circularProgressClasses } from "@mui/material";
 import Check from "../../../components/icons/Check";
 import { fromMatMinData } from "./constrollers/formatjson";
 import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
-import {  getSymbol, getTokensIds, safeMint, safewMint } from "../../../controllers/ERC721Controllers";
+import {
+  aporveTransaction,
+  getSymbol,
+  getTokensIds,
+  safeMint,
+  safewMint,
+} from "../../../controllers/ERC721Controllers";
+import { readyToSelltoken } from "../../../controllers/makertPlaceSmarContractControllers";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
@@ -27,7 +34,6 @@ export default function MintModal() {
     const dataformated = fromMatMinData(rest);
     // console.log(dataformated);
     console.log("opracion exitosa");
-
     setStepProcess(1);
 
     // obtenemos la url del archivo json de la metadata
@@ -35,14 +41,20 @@ export default function MintModal() {
     // // await getSymbol()
     // await safewMint()
 
-   const tokenId = await getTokensIds();
-   if(tokenId){
+    if (rest.isPutOnMarketplace === true) {
+      const tokenId = await getTokensIds();
+      console.log("se ponde en venta");
+      setStepProcess(3);
+      readyToSelltoken({
+        ...rest,
+        tokenId,
+      });
+      return;
+    }
 
-   }else{
-    console.log("no tiene token")
-   }
+    console.log("no se pondra en venta");
 
-    setStepProcess(3);
+    // if()
   };
 
   return (
