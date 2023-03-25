@@ -13,6 +13,7 @@ import { CircularProgress, circularProgressClasses } from "@mui/material";
 import Check from "../../../components/icons/Check";
 import { fromMatMinData } from "./constrollers/formatjson";
 import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
+import {  getSymbol, getTokensIds, safeMint, safewMint } from "../../../controllers/ERC721Controllers";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
@@ -30,7 +31,16 @@ export default function MintModal() {
     setStepProcess(1);
 
     // obtenemos la url del archivo json de la metadata
-    const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated);
+    // const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated);
+    // // await getSymbol()
+    // await safewMint()
+
+   const tokenId = await getTokensIds();
+   if(tokenId){
+
+   }else{
+    console.log("no tiene token")
+   }
 
     setStepProcess(3);
   };
