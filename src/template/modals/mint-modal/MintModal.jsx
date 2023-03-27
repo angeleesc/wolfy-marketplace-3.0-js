@@ -20,7 +20,7 @@ import {
   safeMint,
   safewMint,
 } from "../../../controllers/ERC721Controllers";
-import { readyToSelltoken } from "../../../controllers/makertPlaceSmarContractControllers";
+import { readyToSell2, readyToSelltoken } from "../../../controllers/makertPlaceSmarContractControllers";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
@@ -39,16 +39,20 @@ export default function MintModal() {
     // obtenemos la url del archivo json de la metadata
     // const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated);
     // // await getSymbol()
-    // await safewMint()
+    // await safewMint("ipfs://Qmdtj2ksCM9u71faWt9e8fzMRwst2b2s3tNqHfPRxZijm2")
 
     if (rest.isPutOnMarketplace === true) {
-      const tokenId = await getTokensIds();
+      // const tokenId = await getTokensIds();
+
       console.log("se ponde en venta");
+      //  await aporveTransaction()
+      const tokenId = await getTokensIds()
+      
+      console.log(tokenId)
+      readyToSell2(
+        rest.nftPrice
+      )
       setStepProcess(3);
-      readyToSelltoken({
-        ...rest,
-        tokenId,
-      });
       return;
     }
 

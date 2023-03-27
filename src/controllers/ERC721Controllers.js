@@ -44,11 +44,13 @@ export const getTokensIds = async () => {
     const tokeensId = await contract.tokensByOwner(account);
     // console.log(tokeensId)
     const tokensIdsFormated = tokeensId.map((token) => {
-      return Number(token.toString());
+      return token.toString();
     });
     console.log(tokensIdsFormated);
     return tokensIdsFormated;
   } catch (error) {
+    console.log("ocurrio un error")
+    console.log(error)
     return null;
   }
 };
@@ -56,6 +58,7 @@ export const getTokensIds = async () => {
 export const aporveTransaction = async (blockChain) => {
   const { contract, account } = await connectErc721Ups();
   try {
+    console.log("aprovando transacion")
     const getAproveTrasaction = await contract.setApprovalForAll(
       smartContracts.market,
       true
