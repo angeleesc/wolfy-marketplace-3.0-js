@@ -22,7 +22,11 @@ export default function HabugerMenuLayuot({ icon, children }) {
       {isOpen && <div className="hambuger-bg-1"></div>}
       {isOpen && <div className="hambuger-bg-2"></div>}
       {isOpen && <div className="hambuger-bg-3"></div>}
-      {isOpen && <div className="hambuger-drop-menu-body">{children}</div>}
+      {isOpen && (
+        <div className="hambuger-drop-menu-body">
+          <div className="contain-data" >{children}</div>
+        </div>
+      )}
     </div>
   );
 }
