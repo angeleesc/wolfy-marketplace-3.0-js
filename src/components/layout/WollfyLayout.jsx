@@ -5,12 +5,12 @@ import PcNavbar from "../navbar/PcNavbar";
 
 export default function WollfyLayout({ isProtected, children, rediredTo }) {
   const [isMobile, setIsMobile] = useState(
-    window.innerWidth <= 800 ? true : false
+    window.innerWidth < 800 ? true : false
   );
 
   const changeMenu = () => {
     console.log(window.innerWidth);
-    setIsMobile(window.innerWidth <= 800 ? true : false);
+    setIsMobile(window.innerWidth < 800 ? true : false);
     return;
   };
 
