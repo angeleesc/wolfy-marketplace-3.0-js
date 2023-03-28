@@ -1,11 +1,11 @@
 import React from "react";
-import { FaUserAlt } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
-export default function HambugerUserMenu({}) {
+export default function HambuguerSearchMenu() {
   return (
     <div className="hambuger-drop-menu">
       <button className="hambuger-drop-menu-button">
-        <FaUserAlt />
+        <FaSearch />
       </button>
       <div className="hambuger-drop-menu-body"></div>
     </div>

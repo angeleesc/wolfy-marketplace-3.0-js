@@ -24,12 +24,12 @@
             justify-content    : center;
 
             h1 {
-                font-size          : 20px;
-                font-weight        : 800;
-                color              : theme("colors.wolf-gray-light.2200");
+                font-size             : 20px;
+                font-weight           : 800;
+                color                 : theme("colors.wolf-gray-light.2200");
                 // background-color: red;
                 // height             : 100%;
-                position           : relative;
+                position              : relative;
             }
 
             .logo-img {
@@ -42,6 +42,37 @@
             }
 
 
+
+        }
+    }
+
+    .menu-drop-sections {
+        display: flex;
+
+        .hambuger-drop-menu {
+            margin          : 0 5px;
+            
+            .hambuger-drop-menu-button{
+                border-radius   : 50%;
+                justify-content : center;
+                align-items     : center;
+                display         : flex;
+                font-size       : 18px;
+                width           : 40px;
+                height          : 40px;
+                font-size       : 20px;
+                background-color: rgba($color: #a1a9b8, $alpha: 0.2);
+                color           : #fff;
+            }
+
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
         }
     }
 }

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Logo from "../icons/Logo";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import HambugerDropmenu from "./HambugerDropmenu";
+import HambugerUserMenu from "./HambugerUserMenu";
+import HambuguerSearchMenu from "./HambuguerSearchMenu";
 import "./mobile-navbar.scss";
 
 export default function MobileNavbar() {
@@ -19,7 +21,9 @@ export default function MobileNavbar() {
           </div>
           <h1>Wolf Inu</h1>
         </Link>
-        <div className="menu-drop-options">
+        <div className="menu-drop-sections">
+          <HambuguerSearchMenu/>
+          <HambugerUserMenu />
           <HambugerDropmenu />
         </div>
       </div>
