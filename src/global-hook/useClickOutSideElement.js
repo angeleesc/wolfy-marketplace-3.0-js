@@ -4,6 +4,8 @@ export default function useClickOutSideElement(ref, handler, noRef) {
   const listener = (event) => {
     const el = ref?.current;
     const el2 = noRef?.current;
+    
+
     if (el && el2) {
       if (el.contains(event.target) || el2.contains(event.target)) {
         return;

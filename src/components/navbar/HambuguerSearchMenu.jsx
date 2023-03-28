@@ -7,9 +7,10 @@ export default function HambuguerSearchMenu() {
 
   const buttonRef = useRef();
   const handler = ()=>{
-    
+   
+
   }
-  useClickOutSideElements(handler);
+  useClickOutSideElements(handler, buttonRef);
 
 
 
