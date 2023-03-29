@@ -56,6 +56,11 @@
         animation-duration : 1.2s;
         animation-fill-mode: forwards;
 
+        .h-social-section {
+            font-size: 20px;
+            color    : theme("colors.wolf-gray-light.2000")
+        }
+
         .h-title-secction {
             font-size  : 20px;
             font-weight: 600;

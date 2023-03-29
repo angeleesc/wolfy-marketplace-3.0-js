@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { FaBars } from "react-icons/fa";
+import {
+  FaBars,
+  FaDiscord,
+  FaFacebook,
+  FaInstagram,
+  FaTelegram,
+  FaTwitter,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
 import { staticRoutes } from "../../helpers/static-routes";
@@ -23,6 +30,9 @@ export default function HambugerDropmenu({ children }) {
             </li>
             <li>
               <Link to={staticRoutes.exporersColections}>Coleciones</Link>
+            </li>
+            <li>
+              <Link to={staticRoutes.exporersColections}>Actividad</Link>
             </li>
             <li>
               <span className="h-title-secction  block mb-4">
@@ -53,8 +63,56 @@ export default function HambugerDropmenu({ children }) {
             </li>
           </ul>
         </li>
+        <li className="mt-[15px]">
+          <span className="h-title-secction">Recursos</span>
+          <ul>
+            <li>
+              <Link to={staticRoutes.exporersNfts}>Whitepaper</Link>
+            </li>
+            <li>
+              <Link to={staticRoutes.exporersNfts}>Auditoria</Link>
+            </li>
+            <li>
+              <Link to={staticRoutes.exporersNfts}>Audotoria 2</Link>
+            </li>
+            <li>
+              <Link to={staticRoutes.exporersNfts}>Sobre Wolfy</Link>
+            </li>
+            <li>
+              <Link to={staticRoutes.exporersNfts}>Anto Rug</Link>
+            </li>
+          </ul>
+        </li>
         <li>
-          <span></span>
+          <span className="h-title-secction">Comunidad</span>
+          <ul className=" h-social-section flex justify-between mt-[16px] ">
+            <li>
+              <button>
+                <FaInstagram />
+              </button>
+            </li>
+            <li>
+              <button>
+                <FaFacebook />
+              </button>
+            </li>
+            <li>
+              <button>
+                <FaTwitter />
+              </button>
+            </li>
+            <li>
+              <button>
+                <FaTelegram />
+              </button>
+            </li>
+
+            <li>
+              <button>
+                <FaDiscord />
+              </button>
+            </li>
+          </ul>
         </li>
       </ul>
     </HabugerMenuLayuot>
