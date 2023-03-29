@@ -4,8 +4,11 @@ import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
 export default function HabugerMenuLayuot({ icon, children }) {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef();
-  const handler = () => {};
-  useClickOutSideElements(handler, buttonRef);
+  const boxRef = useRef();
+  const handler = (e) => {
+    setIsOpen(false);
+  };
+  useClickOutSideElements(handler, buttonRef, boxRef);
 
   return (
     <div className="hambuger-drop-menu h-menu-active">
@@ -29,7 +32,11 @@ export default function HabugerMenuLayuot({ icon, children }) {
           }}
         ></div>
       )}
-      {isOpen && <div className="hambuger-drop-menu-body">{children}</div>}
+      {isOpen && (
+        <div className="hambuger-drop-menu-body" ref={boxRef}>
+          {children}
+        </div>
+      )}
     </div>
   );
 }
