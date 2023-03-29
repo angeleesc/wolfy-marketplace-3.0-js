@@ -48,13 +48,29 @@
 
     .habuguer-navabr-section {
         // background-color: red;
-        width    : 100%;
-        max-width: 400px;
+        width              : 100%;
+        max-width          : 400px;
+        padding            : 0 30px;
+        margin-top         : 20px;
+        animation-name     : fadeInOpacity;
+        animation-duration : 1.2s;
+        animation-fill-mode: forwards;
 
         .h-title-secction {
             font-size  : 20px;
             font-weight: 600;
             color      : theme("colors.wolf-gray-light.2200");
+            display    : block;
+            position   : relative;
+
+            &::after {
+                content         : '';
+                display         : block;
+                width           : 100%;
+                height          : 1px;
+                background-color: theme("colors.wolf-gray-dark.1100");
+            }
+
         }
 
         ul {
@@ -207,5 +223,15 @@
 
     100% {
         background-color: theme("colors.wolf-gray-dark.700");
+    }
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
