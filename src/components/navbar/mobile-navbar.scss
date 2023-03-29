@@ -46,6 +46,12 @@
         }
     }
 
+    .habuguer-navabr-section {
+        // background-color: red;
+        width           : 100%;
+        max-width       : 400px;
+    }
+
     .menu-drop-sections {
         display: flex;
 
@@ -127,6 +133,9 @@
                 left               : 0;
                 top                : 0;
                 padding-top        : 60px;
+                overflow           : auto;
+                display            : flex;
+                justify-content    : center;
             }
 
             &:last-child {
