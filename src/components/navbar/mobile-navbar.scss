@@ -48,8 +48,32 @@
 
     .habuguer-navabr-section {
         // background-color: red;
-        width           : 100%;
-        max-width       : 400px;
+        width    : 100%;
+        max-width: 400px;
+
+        .h-title-secction {
+            font-size  : 20px;
+            font-weight: 600;
+            color      : theme("colors.wolf-gray-light.2200");
+        }
+
+        ul {
+            li {
+                margin: 5px 0;
+            }
+
+        }
+
+        a {
+            font-size  : 18px;
+            font-weight: 500;
+            color      : theme("colors.wolf-gray-light.1400");
+            transition : color .2s;
+
+            &:hover {
+                color: theme("colors.wolf-gray-light.2200");
+            }
+        }
     }
 
     .menu-drop-sections {
