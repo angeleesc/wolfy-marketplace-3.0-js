@@ -8,7 +8,6 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
 import { staticRoutes } from "../../helpers/static-routes";
 import ArbitrumOficialLogo from "../icons/ArbitrumOficialLogo";
 import BinanceOficialLogo from "../icons/BinanceOficialLogo";

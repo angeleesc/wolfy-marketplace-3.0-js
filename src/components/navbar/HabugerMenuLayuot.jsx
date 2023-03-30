@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
 
 export default function HabugerMenuLayuot({ icon, children }) {
@@ -6,9 +6,32 @@ export default function HabugerMenuLayuot({ icon, children }) {
   const buttonRef = useRef();
   const boxRef = useRef();
   const handler = (e) => {
-    setIsOpen(false);
+    // setIsOpen(false);
+
+    const el1 = buttonRef.current;
+    const el2 = boxRef.current;
+
+    if (el1 && el2) {
+      console.log("el elemento exite");
+
+      if(el1.contains(e.target)|| el2.contains(e.target)){
+        console.log("estas dentro del elemnto")
+        return
+      }
+
+      console.log("estas fuera del elemento")
+      setIsOpen(false)
+
+    }
   };
-  useClickOutSideElements(handler, buttonRef, boxRef);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handler);
+
+    return()=>{
+      document.removeEventListener("mousedown", handler)
+    }
+  }, []);
 
   return (
     <div className="hambuger-drop-menu h-menu-active">
