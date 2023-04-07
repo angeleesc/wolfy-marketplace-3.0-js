@@ -1,13 +1,6 @@
 import { ethers } from 'ethers'
 
 
-export const getAccout = async ()=>{
-    try {
-        
-    } catch (error) {
-        
-    }
-}
 
 export const getProvider = async () => {
 
@@ -20,6 +13,33 @@ export const getProvider = async () => {
     return null
 }
 
+export const checWaletConected = async () => {
+    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+    if (accounts.length) {
+        console.log("estas conectado")
+        return true
+    } else {
+        console.log("no esta conectado")
+        return false
+    }
+}
+
+
+
+export const getWaletData = async () => {
+    const provider = await getProvider()
+    const signer = provider.getSigner()
+    const addres = await signer.getAddress()
+    const rawBalance = await signer.getBalance();
+    const balance = Number(ethers.utils.formatEther(rawBalance))
+
+    return {
+        addres,
+        balance,
+    }
+}
+
+
 export const connetWalletMetamask = async () => {
 
     const provider = await getProvider()
@@ -27,16 +47,7 @@ export const connetWalletMetamask = async () => {
     if (provider) {
         console.log('si tiene un provider')
         await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner()
-        const address = await signer.getAddress()
-        const balance = await signer.getBalance()
-        const intBalance = ethers.utils.formatEther(balance)
-
-        return {
-            address,
-            intBalance
-        }
-
+        return true
     } else {
         console.log('no hay provider')
         return null

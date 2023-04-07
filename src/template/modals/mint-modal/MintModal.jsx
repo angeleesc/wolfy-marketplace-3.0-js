@@ -54,6 +54,7 @@ export default function MintModal() {
 
     console.log("no se pondra en venta");
 
+
     // if()
   };
 

@@ -9,7 +9,12 @@ import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import WolfTooltip from "../tooltip/WolfTooltip";
 import ExplorerDropMenu from "./ExplorerDropMenu";
 import ResourceDropMenu from "./ResourceDropMenu";
-import { connetWalletMetamask } from "../../controllers/Web3Controllers";
+import {
+  checWaletConected,
+  connetWalletMetamask,
+  getWaletData,
+} from "../../controllers/Web3Controllers";
+import HabugerMenuLayuot from "./HabugerMenuLayuot";
 
 // import
 
@@ -46,12 +51,36 @@ export default function PcNavbar() {
 
   const getWalletAccout = async () => {
     try {
-      const userData = await connetWalletMetamask();
-      console.log(userData);
+      const isSuccess = await connetWalletMetamask();
+      console.log(isSuccess);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const init = async () => {
+    let isConected = await checWaletConected();
+    if (isConected) {
+      const walletData = await getWaletData();
+      setValletAccount(walletData.addres);
+      setBalance(walletData.balance);
+    }
+  };
+
+  const conectWallet = async () => {
+    const isConectedSucces = await connetWalletMetamask();
+    if (isConectedSucces) {
+      const walletData = await getWaletData();
+      setValletAccount(walletData.addres);
+      setBalance(walletData.balance);
+    }
+  };
+
+  // verificar si el usuario esta conectado
+
+  useEffect(() => {
+    init();
+  }, []);
 
   return (
     <div className="wolf-pc-navbar">
@@ -99,7 +128,10 @@ export default function PcNavbar() {
             </button>
           ) : (
             <WolfTooltip title="iniciar seccion">
-              <button className="avatar-zone ml-1 mr-[15px]" onClick={getWalletAccout} >
+              <button
+                className="avatar-zone ml-1 mr-[15px]"
+                onClick={getWalletAccout}
+              >
                 <FaUserAlt />
               </button>
             </WolfTooltip>
