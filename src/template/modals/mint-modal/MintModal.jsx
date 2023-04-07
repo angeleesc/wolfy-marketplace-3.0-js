@@ -24,10 +24,19 @@ import {
   readyToSell2,
   readyToSelltoken,
 } from "../../../controllers/makertPlaceSmarContractControllers";
+import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
+import {
+  checWaletConected,
+  connetWalletMetamask,
+  getWaletData,
+} from "../../../controllers/Web3Controllers";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(0);
+  const [stepProcess, setStepProcess] = useState(-3);
   const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
+  const [balance, setBalance] = useState(null);
+  const [walletAccoutn, setWalletAccoutn] = useState(null);
+
   const fileContext = useWFileContex();
   const dispatch = useDispatch();
 
@@ -54,13 +63,80 @@ export default function MintModal() {
 
     console.log("no se pondra en venta");
 
-
     // if()
+  };
+
+  const conectMetamas = async () => {
+    const isCenected = await connetWalletMetamask();
+    if (isCenected) {
+      const walletAccoutn = await getWaletData();
+      setBalance(walletAccoutn.balance);
+      setWalletAccoutn(walletAccoutn.addres);
+    }
+  };
+
+  const init = async () => {
+    // verificamos si esta coectado a una wallet ya sea metamask u otra
+
+    let anyWaletConect = false;
+
+    const isConectedMetamas = await checWaletConected();
+    if (isConectedMetamas) {
+      anyWaletConect = true;
+    } else {
+      anyWaletConect = false;
+    }
+
+    if(anyWaletConect){
+      console.log("esta conectado a una walet")
+    }else{
+      console.log("")
+    }
+
   };
 
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
       <div className="wolf-modal-body w-[100%] max-w-[560px] min-h-[40px]">
+        {stepProcess === -3 && (
+          <div className="wolf-mint-modal-header  ">
+            <MultimediaZone file={metadataFile} />
+            <div className="multimedia-content justify-center flex items-center flex-col">
+              <h3 className="mb-[20px]">No esta conectado</h3>
+              <span>
+                Para realizar una operacion en la blochain es nesesario estar
+                conectado a al waler
+              </span>
+            </div>
+          </div>
+        )}
+        {stepProcess === -3 && (
+          <div className="flex flex-col items-center justify-center mt-5">
+            <button
+              className="wolf-buttom flex w-[100%] wolf-btn-primary-2 my-2 "
+              onClick={() => {
+                // starMinpres();
+                conectMetamas();
+              }}
+            >
+              <MetamaskOficialLgo size={30} className="mx-[20px]" />{" "}
+              <span> Conectar a metamask</span>
+            </button>
+            <button
+              className="wolf-buttom w-[100%] wolf-btn-secondary-traparent border-[2px] my-2 border-wolf-gray-dark-800"
+              onClick={() => {
+                dispatch(
+                  closeModal({
+                    modal: keyModalSate.mintModal,
+                  })
+                );
+              }}
+            >
+              Cancelar
+            </button>
+          </div>
+        )}
+
         {stepProcess === 0 && (
           <div className="wolf-mint-modal-header">
             <MultimediaZone file={metadataFile} />
@@ -68,7 +144,7 @@ export default function MintModal() {
               <h3>Todo esta listo</h3>
               <WolfCheck size={"120"} />
               <span>
-                Todos los datos estan listo haz click en comensar para hacer tu
+                Todos los datos estan listo haz click en comenzar para hacer tu
                 nueva nft
               </span>
             </div>

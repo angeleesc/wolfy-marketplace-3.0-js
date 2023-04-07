@@ -17,8 +17,8 @@ const getpost = createAsyncThunk("web3/fetchPost", async () => {
 const web3Slide = createSlice({
     name: "web3",
     initialState: {
-        walletAcc: "xd",
-        post: []
+        walletAcc: "",
+        balance: null
     },
     reducers: {
         setWalletAccount: (state, action) => {
