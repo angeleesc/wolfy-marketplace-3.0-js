@@ -1,7 +1,7 @@
 import axios from "axios";
 import { rootApipaht, requestEndPoints } from "../helpers/global-constants";
 
-export const uploadFileToIpfs = async (file, data) => {
+export const uploadFileToIpfs = async (file, data, updatedState) => {
   const formadta = new FormData();
 
   formadta.append("file", file[0]);
@@ -16,6 +16,22 @@ export const uploadFileToIpfs = async (file, data) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
+
+      onUploadProgress: (e) => {
+
+        const totalLentg = e.total
+        const loaded = e.loaded
+
+        console.log(totalLentg, loaded)
+        const progress = parseInt((loaded * 100) / totalLentg)
+        console.log(progress)
+
+        if (updatedState && typeof (updatedState) === "function") {
+          updatedState(progress)
+        }
+
+
+      }
     });
 
     console.log(dataObtained.data.urlMetadata);

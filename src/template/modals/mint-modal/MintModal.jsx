@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
 import { closeModal, keyModalSate } from "../../../features/modals/modalsSlice";
 import "./mint-modal.scss";
@@ -15,6 +15,7 @@ import { fromMatMinData } from "./constrollers/formatjson";
 import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
 import {
   aporveTransaction,
+  getEstimateGasMint,
   getSymbol,
   getTokensIds,
   safeMint,
@@ -30,12 +31,36 @@ import {
   connetWalletMetamask,
   getWaletData,
 } from "../../../controllers/Web3Controllers";
+import { stateProcessMint } from "../../../helpers/global-constants";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(-3);
-  const [ethereumStepProcess, setEthereumStepProcess] = useState(5);
+  const [stepProcess, setStepProcess] = useState(0);
   const [balance, setBalance] = useState(null);
   const [walletAccoutn, setWalletAccoutn] = useState(null);
+
+  // estados del ethereum step
+
+const [stepFileUpload, setstepFileUpload] = useState(true)
+const [fileProgres, setFileProgres] = useState(0)
+
+  const [stepCreateColletion, setStepCreateCollection] = useState(false);
+  const [stepCreateCollectionStatus, setStepCreateCollectionStatus] = useState(
+    stateProcessMint.checking
+  );
+
+  const [stepSafeMint, setStepSafeMint] = useState(false);
+  const [stepSafeMintSatus, setStepSafeMintSatus] = useState(
+    stateProcessMint.checking
+  );
+
+  const [stepAproveTransaction, setStepAproveTransaction] = useState(false);
+  const [stepAprovetransactionStatus, setstepAprovetransactionStatus] =
+    useState(stateProcessMint.checking);
+
+  const [stepListinMakePlace, setStepListinMakePlace] = useState(false);
+  const [stepListingStatus, setStepListingStatus] = useState(
+    stateProcessMint.checking
+  );
 
   const fileContext = useWFileContex();
   const dispatch = useDispatch();
@@ -49,19 +74,19 @@ export default function MintModal() {
     setStepProcess(1);
 
     // obtenemos la url del archivo json de la metadata
-    const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated);
+    const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated, setFileProgres);
     console.log(ipfsUrlMetadata.url);
-    await safewMint(ipfsUrlMetadata.url);
+    // await safewMint(ipfsUrlMetadata.url);
 
-    if (rest.isPutOnMarketplace === true) {
-      console.log("se ponde en venta");
-      await aporveTransaction();
-      await readyToSell2(rest.nftPrice);
-      setStepProcess(3);
-      return;
-    }
-
+    // if (rest.isPutOnMarketplace === true) {
+    //   console.log("se ponde en venta");
+    //   await aporveTransaction();
+    //   await readyToSell2(rest.nftPrice);
+    //   return;
+    // }
+    
     console.log("no se pondra en venta");
+      setStepProcess(3);
 
     // if()
   };
@@ -79,21 +104,33 @@ export default function MintModal() {
     // verificamos si esta coectado a una wallet ya sea metamask u otra
 
     let anyWaletConect = false;
+    let haveEnoughBalance = false;
 
     const isConectedMetamas = await checWaletConected();
     if (isConectedMetamas) {
       anyWaletConect = true;
+      // const mintGast =  await getEstimateGasMint("www.gatos.com")
+      const waletData = await getWaletData();
+
+      if (waletData.balance > 0) {
+        console.log("tiene balance suficiente");
+      } else {
+        console.log("no tiene balance suficiente");
+      }
     } else {
       anyWaletConect = false;
     }
 
-    if(anyWaletConect){
-      console.log("esta conectado a una walet")
-    }else{
-      console.log("")
+    if (anyWaletConect) {
+      console.log("esta conectado a una walet");
+    } else {
+      console.log("");
     }
-
   };
+
+  useEffect(() => {
+    init();
+  }, []);
 
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
@@ -110,6 +147,20 @@ export default function MintModal() {
             </div>
           </div>
         )}
+
+        {stepProcess === -2 && (
+          <div className="wolf-mint-modal-header  ">
+            <MultimediaZone file={metadataFile} />
+            <div className="multimedia-content justify-center flex items-center flex-col">
+              <h3 className="mb-[20px]">Saldo insuficiente</h3>
+              <span>
+                Para realizar una operacion en la blochain es nesesario tener el
+                saldo suficiente para realizar la transacion
+              </span>
+            </div>
+          </div>
+        )}
+
         {stepProcess === -3 && (
           <div className="flex flex-col items-center justify-center mt-5">
             <button
@@ -122,6 +173,23 @@ export default function MintModal() {
               <MetamaskOficialLgo size={30} className="mx-[20px]" />{" "}
               <span> Conectar a metamask</span>
             </button>
+            <button
+              className="wolf-buttom w-[100%] wolf-btn-secondary-traparent border-[2px] my-2 border-wolf-gray-dark-800"
+              onClick={() => {
+                dispatch(
+                  closeModal({
+                    modal: keyModalSate.mintModal,
+                  })
+                );
+              }}
+            >
+              Cancelar
+            </button>
+          </div>
+        )}
+
+        {stepProcess === -2 && (
+          <div className="flex flex-col items-center justify-center mt-5">
             <button
               className="wolf-buttom w-[100%] wolf-btn-secondary-traparent border-[2px] my-2 border-wolf-gray-dark-800"
               onClick={() => {
@@ -252,7 +320,7 @@ export default function MintModal() {
             <div className="ethereum-procces-step-1">
               <MultimediaZone file={metadataFile} />
               <div className="progres-bar-box">
-                <h3 className="absolute bottom-0">Cargando 50%</h3>
+                <h3 className="absolute bottom-0">Cargando {fileProgres}%</h3>
 
                 <div className="progras-bar-content">
                   <WolfTinking size="60" />
@@ -270,7 +338,7 @@ export default function MintModal() {
                   <CircularProgress
                     size={120}
                     variant="determinate"
-                    value={50}
+                    value={fileProgres}
                     sx={{
                       position: "absolute",
                       color: "#3B43DD",

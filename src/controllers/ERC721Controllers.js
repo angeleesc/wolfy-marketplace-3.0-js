@@ -55,6 +55,15 @@ export const getTokensIds = async () => {
   }
 };
 
+
+export const getEstimateGasMint = async (url) => {
+
+  const { contract, account } = await connectErc721Ups()
+  const estimateGas = await contract.estimateGas.safeMint(account, url)
+  console.log(estimateGas)
+
+}
+
 export const aporveTransaction = async (blockChain) => {
   const { contract, account } = await connectErc721Ups();
   try {

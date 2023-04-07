@@ -131,11 +131,11 @@ export const rootApipaht = {
     porduction: ""
 }
 
-export const requestEndPoints ={
-    ipfs:{
+export const requestEndPoints = {
+    ipfs: {
         POSTuploadFile: "/api/v1/ipfs"
     },
-    
+
 }
 
 
@@ -145,4 +145,10 @@ export const smartContracts = {
     Auction: '0xfB8E92055823e6d8A32C58d806eBFB309Dda1D72',
     ERC721UUPS: '0xC78129830079d324d906c6Af0c831EEF6d04fA78',
     market: '0xcf9e4516CC6d820C58f697120E4EdD55Fcd44bD5'
+}
+
+export const stateProcessMint = {
+    checking: "checking",
+    success: "success",
+    fail: "fail"
 }
