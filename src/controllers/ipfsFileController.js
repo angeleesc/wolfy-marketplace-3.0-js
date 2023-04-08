@@ -11,7 +11,8 @@ export const uploadFileToIpfs = async (file, data, updatedState) => {
   }
 
   try {
-    const rootPath = rootApipaht.local + requestEndPoints.ipfs.POSTuploadFile;
+    // const rootPath = rootApipaht.local + requestEndPoints.ipfs.POSTuploadFile;
+    const rootPath = rootApipaht.porduction + requestEndPoints.ipfs.POSTuploadFile
     const dataObtained = await axios.post(rootPath, formadta, {
       headers: {
         "Content-Type": "multipart/form-data",

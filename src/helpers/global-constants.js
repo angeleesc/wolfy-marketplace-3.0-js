@@ -128,7 +128,7 @@ export const sortByOption = [
 
 export const rootApipaht = {
     local: "http://localhost:5000",
-    porduction: ""
+    porduction: "https://wolfy-server-v3-fj4ojc4eoa-uc.a.run.app"
 }
 
 export const requestEndPoints = {

@@ -36,7 +36,7 @@ import Fail from "../../../components/icons/Fail";
 import { retardante } from "../../../controllers/domController";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(0);
+  const [stepProcess, setStepProcess] = useState(-4);
   const [balance, setBalance] = useState(null);
   const [walletAccoutn, setWalletAccoutn] = useState(null);
 
@@ -90,7 +90,7 @@ export default function MintModal() {
     const checkIsSuccessSafeMint = await safewMint(ipfsUrlMetadata.url);
     if (!checkIsSuccessSafeMint.isSucces) {
       setStepSafeMintSatus(stateProcessMint.fail);
-      await retardante(2000);
+      // await retardante(2000);
       setStepProcess(2);
       return;
     }
@@ -103,12 +103,13 @@ export default function MintModal() {
       setStepAproveTransaction(true);
       const checkIsSuccessAprove = await aporveTransaction();
       if (!checkIsSuccessAprove.isSucces) {
-        stepAprovetransactionStatus(stateProcessMint.fail);
-        await retardante(2000);
+        setStepCreateCollectionStatus(stateProcessMint.fail);
+        // await retardante(2000);
         setStepProcess(2);
         return;
       }
 
+      setStepCreateCollectionStatus(stateProcessMint.success);
       setStepListinMakePlace(true);
       const checkIsListingInMarketplace = await readyToSell2(rest.nftPrice);
       if (!checkIsListingInMarketplace) {
@@ -135,7 +136,17 @@ export default function MintModal() {
       const walletAccoutn = await getWaletData();
       setBalance(walletAccoutn.balance);
       setWalletAccoutn(walletAccoutn.addres);
+
+      if (walletAccoutn.balance <= 0) {
+        setStepProcess(-2);
+        return;
+      }
+
+      setStepProcess(0);
+      return;
     }
+
+    setStepProcess(2);
   };
 
   const init = async () => {
@@ -143,24 +154,24 @@ export default function MintModal() {
     let haveEnoughBalance = false;
 
     const isConectedMetamas = await checWaletConected();
-    if (isConectedMetamas) {
-      anyWaletConect = true;
-      // const mintGast =  await getEstimateGasMint("www.gatos.com")
-      const waletData = await getWaletData();
+    if (isConectedMetamas) anyWaletConect = true;
 
-      if (waletData.balance > 0) {
-        console.log("tiene balance suficiente");
-      } else {
-        console.log("no tiene balance suficiente");
-      }
-    } else {
-      anyWaletConect = false;
+    if (!anyWaletConect) {
+      console.log("esta conectado a una walet");
+      setStepProcess(-3);
+      return;
     }
 
-    if (anyWaletConect) {
-      console.log("esta conectado a una walet");
-    } else {
-      console.log("");
+    if (isConectedMetamas) {
+      const walletData = await getWaletData();
+
+      if (walletData.balance <= 0) {
+        console.log("no tienes saldo suficiente");
+        setStepProcess(-2);
+        return;
+      }
+
+      setStepProcess(0);
     }
   };
 
@@ -171,6 +182,18 @@ export default function MintModal() {
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
       <div className="wolf-modal-body w-[100%] max-w-[560px] min-h-[40px]">
+        {stepProcess === -4 && (
+          <div className="wolf-mint-modal-header  ">
+            <MultimediaZone file={metadataFile} />
+            <div className="multimedia-content justify-center flex items-center flex-col">
+              <h3 className="mb-[20px]">Cargando</h3>
+              <span>
+                Estamos verificando si tienes los datos correcto para realizar
+                la operacion
+              </span>
+            </div>
+          </div>
+        )}
         {stepProcess === -3 && (
           <div className="wolf-mint-modal-header  ">
             <MultimediaZone file={metadataFile} />
@@ -332,9 +355,11 @@ export default function MintModal() {
             <button
               className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1"
               onClick={() => {
-                closeModal({
-                  modal: keyModalSate.mintModal,
-                });
+                dispatch(
+                  closeModal({
+                    modal: keyModalSate.mintModal,
+                  })
+                );
               }}
             >
               Finalizar
