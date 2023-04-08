@@ -135,6 +135,9 @@ export const requestEndPoints = {
     ipfs: {
         POSTuploadFile: "/api/v1/ipfs"
     },
+    firebase: {
+        POSTGetAsk: "/api/v1/firebase/orders-nfts"
+    }
 
 }
 

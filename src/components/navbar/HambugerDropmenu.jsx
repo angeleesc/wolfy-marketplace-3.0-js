@@ -75,7 +75,7 @@ export default function HambugerDropmenu({ children }) {
               <Link to={staticRoutes.exporersNfts}>Audotoria 2</Link>
             </li>
             <li>
-              <Link to={staticRoutes.exporersNfts}>Sobre Wolfy</Link>
+              {/* <Link to={staticRoutes.exporersNfts}>Sobre Wolfy</Link> */}
             </li>
             <li>
               <Link to={staticRoutes.exporersNfts}>Anto Rug</Link>
