@@ -193,7 +193,7 @@ export default function MintNftForm() {
                         <TagBlack />
                       </div>
                     </button>
-                    <button
+                    {/* <button
                       className="boton-group-box"
                       type="button"
                       onClick={() => {
@@ -209,7 +209,7 @@ export default function MintNftForm() {
                         <span>Cronometrada</span>
                         <ClockBlack />
                       </div>
-                    </button>
+                    </button> */}
                   </div>
                 );
               }}
@@ -348,7 +348,7 @@ export default function MintNftForm() {
                     <Logo />
                   </div>
                 </button>
-                <button
+                {/* <button
                   className="boton-group-box"
                   type="button"
                   onClick={() => {
@@ -364,8 +364,8 @@ export default function MintNftForm() {
                     <span>ERC-721</span>
                     <CAdd />
                   </div>
-                </button>
-                <button
+                </button> */}
+                {/* <button
                   className="boton-group-box"
                   type="button"
                   onClick={() => {
@@ -382,7 +382,7 @@ export default function MintNftForm() {
                     <span>Ver Coleciones</span>
                     <CSearch />
                   </div>
-                </button>
+                </button> */}
               </div>
             </div>
           )}
