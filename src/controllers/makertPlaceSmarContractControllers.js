@@ -74,27 +74,27 @@ export const getSymbol = async () => {
   const account = await signer.getAddress()
 
   if (account) {
-      console.log(account)
-      const contrat = new ethers.Contract(smartContracts.ERC721UUPS, ERC721UUPSabi, signer)
-      const symbol = await contrat.symbol()
-      console.log(symbol)
-      const tokensByOwner = await contrat.tokensByOwner(account)
-      console.log(tokensByOwner)
+    console.log(account)
+    const contrat = new ethers.Contract(smartContracts.ERC721UUPS, ERC721UUPSabi, signer)
+    const symbol = await contrat.symbol()
+    console.log(symbol)
+    const tokensByOwner = await contrat.tokensByOwner(account)
+    console.log(tokensByOwner)
 
-      const tokenURi = await contrat.tokenURI(tokensByOwner[0])
-      console.log("tokenUri")
-      console.log(tokenURi)
+    const tokenURi = await contrat.tokenURI(tokensByOwner[0])
+    console.log("tokenUri")
+    console.log(tokenURi)
 
-      const intTokensByOwner = tokensByOwner.map((tokenIdBN) => {
-          return tokenIdBN.toString()
-      })
+    const intTokensByOwner = tokensByOwner.map((tokenIdBN) => {
+      return tokenIdBN.toString()
+    })
 
-      console.log(intTokensByOwner)
+    console.log(intTokensByOwner)
 
-      return {
-          tokensId: intTokensByOwner
+    return {
+      tokensId: intTokensByOwner
 
-      }
+    }
   }
 
   return null
@@ -107,17 +107,27 @@ export const readyToSell2 = async (price) => {
   const priceTest = ethers.utils.parseEther(price)
   console.log(price)
   console.log(priceTest)
-  const provider = await getProvider();
-  const signer = provider.getSigner();
-  const marketContrac = new ethers.Contract(smartContracts.market, marketAbI, signer);
-  const data = await getSymbol()
-  console.log(data)
+  try {
+    const provider = await getProvider();
+    const signer = provider.getSigner();
+    const marketContrac = new ethers.Contract(smartContracts.market, marketAbI, signer);
+    const data = await getSymbol()
+    console.log(data)
+    console.log(data.tokensId.length)
+    const transaction = await marketContrac.readyToSellToken(data.tokensId, data.tokensId.length, priceTest, 0, smartContracts.ERC721UUPS);
+    const result = await transaction.wait()
+    console.log(result)
+    console.log("nft puesta en venta XD")
 
-  console.log(data.tokensId.length)
+    return {
+      isSuccess: true
+    }
 
-  const transaction = await marketContrac.readyToSellToken(data.tokensId, data.tokensId.length, priceTest, 0, smartContracts.ERC721UUPS);
-  const result = await transaction.wait()
-  console.log(result)
-  console.log("nft puesta en venta XD")
+  } catch (error) {
+
+    return {
+      isSuccess: false
+    }
+  }
 
 }

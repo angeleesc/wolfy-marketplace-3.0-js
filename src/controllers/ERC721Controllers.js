@@ -30,9 +30,24 @@ export const connectErc721Ups = async () => {
 export const safewMint = async (url) => {
   const { contract, account } = await connectErc721Ups();
   console.log(account);
-  const result = await contract.safeMint(account, url);
-  const data = await result.wait();
-  console.log(data);
+
+  try {
+    const result = await contract.safeMint(account, url);
+    const data = await result.wait();
+    console.log(data);
+
+    return {
+      isSucces: true
+    }
+
+  } catch (error) {
+
+    return {
+      isSucces: false
+    }
+
+  }
+
 
   //   console.log(symbol);
   //   console.log("acunado exitoso");
@@ -75,8 +90,14 @@ export const aporveTransaction = async (blockChain) => {
     const transation = await getAproveTrasaction.wait();
     console.log("transacion exitosa");
     console.log(transation);
+    return {
+      isSucces: true
+    }
   } catch (error) {
     console.log("ocurrio un error");
     console.log(error);
+    return {
+      isSucces: false
+    }
   }
 };

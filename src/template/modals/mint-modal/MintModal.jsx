@@ -32,6 +32,8 @@ import {
   getWaletData,
 } from "../../../controllers/Web3Controllers";
 import { stateProcessMint } from "../../../helpers/global-constants";
+import Fail from "../../../components/icons/Fail";
+import { retardante } from "../../../controllers/domController";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(0);
@@ -40,8 +42,8 @@ export default function MintModal() {
 
   // estados del ethereum step
 
-const [stepFileUpload, setstepFileUpload] = useState(true)
-const [fileProgres, setFileProgres] = useState(0)
+  const [stepFileUpload, setstepFileUpload] = useState(true);
+  const [fileProgres, setFileProgres] = useState(0);
 
   const [stepCreateColletion, setStepCreateCollection] = useState(false);
   const [stepCreateCollectionStatus, setStepCreateCollectionStatus] = useState(
@@ -74,19 +76,55 @@ const [fileProgres, setFileProgres] = useState(0)
     setStepProcess(1);
 
     // obtenemos la url del archivo json de la metadata
-    const ipfsUrlMetadata = await uploadFileToIpfs(metadataFile, dataformated, setFileProgres);
-    console.log(ipfsUrlMetadata.url);
-    // await safewMint(ipfsUrlMetadata.url);
+    const ipfsUrlMetadata = await uploadFileToIpfs(
+      metadataFile,
+      dataformated,
+      setFileProgres
+    );
 
-    // if (rest.isPutOnMarketplace === true) {
-    //   console.log("se ponde en venta");
-    //   await aporveTransaction();
-    //   await readyToSell2(rest.nftPrice);
-    //   return;
-    // }
-    
-    console.log("no se pondra en venta");
+    if (!ipfsUrlMetadata.isSucces) {
+      setStepProcess(2);
+      return;
+    }
+    setStepSafeMint(true);
+    const checkIsSuccessSafeMint = await safewMint(ipfsUrlMetadata.url);
+    if (!checkIsSuccessSafeMint.isSucces) {
+      setStepSafeMintSatus(stateProcessMint.fail);
+      await retardante(2000);
+      setStepProcess(2);
+      return;
+    }
+
+    setStepSafeMintSatus(stateProcessMint.success);
+
+    if (rest.isPutOnMarketplace === true) {
+      console.log("se ponde en venta");
+
+      setStepAproveTransaction(true);
+      const checkIsSuccessAprove = await aporveTransaction();
+      if (!checkIsSuccessAprove.isSucces) {
+        stepAprovetransactionStatus(stateProcessMint.fail);
+        await retardante(2000);
+        setStepProcess(2);
+        return;
+      }
+
+      setStepListinMakePlace(true);
+      const checkIsListingInMarketplace = await readyToSell2(rest.nftPrice);
+      if (!checkIsListingInMarketplace) {
+        setStepListingStatus(stateProcessMint.fail);
+        return;
+      }
+
+      setStepListingStatus(stateProcessMint.success);
+      // await retardante(2000);
       setStepProcess(3);
+
+      // return;
+    }
+
+    console.log("no se pondra en venta");
+    setStepProcess(3);
 
     // if()
   };
@@ -101,8 +139,6 @@ const [fileProgres, setFileProgres] = useState(0)
   };
 
   const init = async () => {
-    // verificamos si esta coectado a una wallet ya sea metamask u otra
-
     let anyWaletConect = false;
     let haveEnoughBalance = false;
 
@@ -236,7 +272,7 @@ const [fileProgres, setFileProgres] = useState(0)
           <div className="wolf-mint-modal-header">
             <MultimediaZone file={metadataFile} />
             <div className="multimedia-content">
-              <h3>Oparacion Exitosa</h3>
+              <h3>Operacion Exitosa</h3>
               {/* <WolfCheck size={"120"} /> */}
               <WolfHappy size="120" />
               <span>Tu nft ha sido creada</span>
@@ -296,7 +332,9 @@ const [fileProgres, setFileProgres] = useState(0)
             <button
               className="wolf-buttom w-[50%] wolf-btn-primary-2 mr-1"
               onClick={() => {
-                starMinpres();
+                closeModal({
+                  modal: keyModalSate.mintModal,
+                });
               }}
             >
               Finalizar
@@ -351,7 +389,7 @@ const [fileProgres, setFileProgres] = useState(0)
                 </div>
               </div>
             </div>
-            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+            {/* <div className="w-[100%] h-[30px] flex justify-between items-center mt-[20px]">
               <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
                 Creacion de la collecion
               </span>
@@ -370,66 +408,107 @@ const [fileProgres, setFileProgres] = useState(0)
                 />
                 <Check />
               </div>
-            </div>
-            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+            </div> */}
+            <div className="w-[100%] h-[30px] flex justify-between items-center mt-[20px]">
               <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
                 Acuñando las nfts
               </span>
-
-              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
-                <CircularProgress
-                  sx={{
-                    position: "absolute",
-                    color: "#4e5667",
-                    borderRadius: "50%",
-                    [`& .${circularProgressClasses.circle}`]: {
-                      strokeLinecap: "round",
-                    },
-                  }}
-                  size={30}
-                />
-                <Check />
-              </div>
+              {stepSafeMint && (
+                <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                  {stepSafeMintSatus === stateProcessMint.checking && (
+                    <CircularProgress
+                      sx={{
+                        position: "absolute",
+                        color: "#4e5667",
+                        borderRadius: "50%",
+                        [`& .${circularProgressClasses.circle}`]: {
+                          strokeLinecap: "round",
+                        },
+                      }}
+                      size={30}
+                    />
+                  )}
+                  {stepSafeMintSatus === stateProcessMint.success && (
+                    <div className="absolute">
+                      <Check />
+                    </div>
+                  )}
+                  {stepSafeMintSatus === stateProcessMint.fail && (
+                    <div className="absolute">
+                      <Fail />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+            <div className="w-[100%] h-[30px] flex justify-between items-center mt-[20px]">
               <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
                 Aprobando la transacion
               </span>
 
-              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
-                <CircularProgress
-                  sx={{
-                    position: "absolute",
-                    color: "#4e5667",
-                    borderRadius: "50%",
-                    [`& .${circularProgressClasses.circle}`]: {
-                      strokeLinecap: "round",
-                    },
-                  }}
-                  size={30}
-                />
-                <Check />
-              </div>
+              {stepAproveTransaction && (
+                <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                  {stepAprovetransactionStatus ===
+                    stateProcessMint.checking && (
+                    <CircularProgress
+                      sx={{
+                        position: "absolute",
+                        color: "#4e5667",
+                        borderRadius: "50%",
+                        [`& .${circularProgressClasses.circle}`]: {
+                          strokeLinecap: "round",
+                        },
+                      }}
+                      size={30}
+                    />
+                  )}
+                  {stepAprovetransactionStatus === stateProcessMint.success && (
+                    <div className="absolute">
+                      <Check />
+                    </div>
+                  )}
+                  {stepAprovetransactionStatus === stateProcessMint.fail && (
+                    <div className="absolute">
+                      <Fail />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-            <div className="w-[100%] flex justify-between items-center mt-[20px]">
+            <div className="w-[100%] h-[30px] flex justify-between items-center mt-[20px]">
               <span className="text-[16px] font-semibold text-wolf-gray-light-1200">
                 Poniendolos en venta
               </span>
 
-              <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
-                <CircularProgress
-                  sx={{
-                    position: "absolute",
-                    color: "#4e5667",
-                    borderRadius: "50%",
-                    [`& .${circularProgressClasses.circle}`]: {
-                      strokeLinecap: "round",
-                    },
-                  }}
-                  size={30}
-                />
-                <Check />
-              </div>
+              {stepListinMakePlace && (
+                <div className="relative w-[30px] h-[30px] flex items-center justify-center ">
+                  {stepListingStatus === stateProcessMint.checking && (
+                    <CircularProgress
+                      sx={{
+                        position: "absolute",
+                        color: "#4e5667",
+                        borderRadius: "50%",
+                        [`& .${circularProgressClasses.circle}`]: {
+                          strokeLinecap: "round",
+                        },
+                      }}
+                      size={30}
+                    />
+                  )}
+
+                  {stepListingStatus === stateProcessMint.success && (
+                    <div className="absolute">
+                      <Check />
+                    </div>
+                  )}
+
+                  {stepListingStatus === stateProcessMint.fail && (
+                    <div className="absolute">
+                      <Fail />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}

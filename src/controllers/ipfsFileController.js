@@ -41,6 +41,8 @@ export const uploadFileToIpfs = async (file, data, updatedState) => {
       url: dataObtained.data.urlMetadata,
     };
   } catch (error) {
-    return {};
+    return {
+      isSucces: false
+    };
   }
 };
