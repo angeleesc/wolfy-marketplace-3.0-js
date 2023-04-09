@@ -9,10 +9,15 @@ export const getOdres = async (fillter) => {
     try {
         const result = await axios.post(rootPath, fillter)
         console.log(result.data)
+        return result.data
 
     } catch (error) {
 
         console.log(error)
+        return {
+
+            isSuccess: false
+        }
 
     }
 
