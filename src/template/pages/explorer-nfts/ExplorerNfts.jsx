@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { saleMethod } from "../../../helpers/global-constants";
 import NftsCardList from "../../../components/list/NftsCardList";
 import ExplorerMenuFillter from "../../../components/menus/ExplorerMenuFillter";
+import { useSearchParams } from "react-router-dom";
+import { getOdres } from "../../../controllers/firebaseControllers";
 
 const tempJson = [
   {
@@ -557,9 +559,29 @@ const tempJson = [
 ];
 
 export default function ExplorerNfts() {
+  // const [queryPrams, setQueryPrams] = useState({})
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [orders, setOrders] = useState([]);
+  // console.log(searchParams)
+
+  const filleterData = {
+    ...(searchParams.get("sortBy")
+      ? { sortBy: searchParams.get("sortBy") }
+      : {}),
+  };
+
+  const getAllOrders = async () => {
+    const result = await getOdres({});
+    console.log(result);
+  };
+
+  useEffect(() => {
+    getAllOrders();
+  }, []);
+
   return (
     <div className="mt-[60px] mb-[60px] px-[30px]">
-      <ExplorerMenuFillter  />
+      <ExplorerMenuFillter />
       <NftsCardList cards={tempJson} />
     </div>
   );
