@@ -6,7 +6,11 @@ import PolygonOficialLogo from "../../../components/icons/PolygonOficialLogo";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
 import { preventScroll } from "../../../controllers/domController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
-import { blockchainNetwork, saleMethod, saleMethodOptions } from "../../../helpers/global-constants";
+import {
+  blockchainNetwork,
+  saleMethod,
+  saleMethodOptions,
+} from "../../../helpers/global-constants";
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
 import { closeModal } from "../../../features/modals/modalsSlice";
@@ -175,80 +179,82 @@ export default function CheckoutModal() {
                 className="bill-checkout-zone px-[15px]"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                {false && (
-                  <div className="counter-quantity mb-[15px] ">
+                {modalData.saleMethod === saleMethod.sales && (
+                  <>
                     <span className="text-wolf-gray-light-1000 text-[14px]">
                       Cantidad a comprar *
                     </span>
-                    <Controller
-                      control={control}
-                      name="cuantity"
-                      render={({ field: { onChange, value } }) => (
-                        <button
-                          type="button"
-                          className="counter-btn mr-2"
-                          onClick={() => {
-                            console.log("aumentado");
-                            console.log(value);
-                            onChange(Number(value) + 1);
-                          }}
-                        >
-                          <MdOutlineAddCircle />
-                        </button>
-                      )}
-                    />
+                    <div className="counter-quantity mb-[15px]">
+                      <Controller
+                        control={control}
+                        name="cuantity"
+                        render={({ field: { onChange, value } }) => (
+                          <button
+                            type="button"
+                            className="counter-btn mr-2"
+                            onClick={() => {
+                              console.log("aumentado");
+                              console.log(value);
+                              onChange(Number(value) + 1);
+                            }}
+                          >
+                            <MdOutlineAddCircle />
+                          </button>
+                        )}
+                      />
 
-                    <Controller
-                      control={control}
-                      name="cuantity"
-                      render={({ field: { onChange, value } }) => (
-                        <WTextFields
-                          id="checkout-quantity"
-                          type="number"
-                          onWheel={preventScroll}
-                          readOnly={isReadMode}
-                          value={value}
-                          onClick={() => {
-                            setIsReadMode(false);
-                            console.log(isReadMode);
-                          }}
-                          onChange={(e) => {
-                            if (!isReadMode) {
-                              console.log("se puede editar");
-                              onChange(e.target.value);
-                              return;
-                            }
-                            console.log("no se puede editar");
-                          }}
-                          onBlur={() => {
-                            setIsReadMode(true);
-                          }}
-                        />
-                      )}
-                    />
+                      <Controller
+                        control={control}
+                        name="cuantity"
+                        render={({ field: { onChange, value } }) => (
+                          <WTextFields
+                            id="checkout-quantity"
+                            type="number"
+                            onWheel={preventScroll}
+                            readOnly={isReadMode}
+                            value={value}
+                            onClick={() => {
+                              setIsReadMode(false);
+                              console.log(isReadMode);
+                            }}
+                            onChange={(e) => {
+                              if (!isReadMode) {
+                                console.log("se puede editar");
+                                onChange(e.target.value);
+                                return;
+                              }
+                              console.log("no se puede editar");
+                            }}
+                            onBlur={() => {
+                              setIsReadMode(true);
+                            }}
+                          />
+                        )}
+                      />
 
-                    <Controller
-                      control={control}
-                      name="cuantity"
-                      render={({ field: { onChange, value } }) => (
-                        <button
-                          type="button"
-                          className="counter-btn mr-2"
-                          onClick={() => {
-                            console.log("aumentado");
-                            console.log(value);
-                            if (Number(value) - 1 <= 0) return;
-                            onChange(Number(value) - 1);
-                          }}
-                        >
-                          <MdOutlineRemoveCircle />
-                        </button>
-                      )}
-                    />
-                  </div>
+                      <Controller
+                        control={control}
+                        name="cuantity"
+                        render={({ field: { onChange, value } }) => (
+                          <button
+                            type="button"
+                            className="counter-btn ml-2"
+                            onClick={() => {
+                              console.log("aumentado");
+                              console.log(value);
+                              if (Number(value) - 1 <= 0) return;
+                              onChange(Number(value) - 1);
+                            }}
+                          >
+                            <MdOutlineRemoveCircle />
+                          </button>
+                        )}
+                      />
+                    </div>
+                  </>
                 )}
 
-                {modalData === saleMethod.auction && (
+                {modalData.saleMethod === saleMethod.auction && (
                   <div className="mb-[10px]">
                     <WTextFields
                       register={register("bid")}
