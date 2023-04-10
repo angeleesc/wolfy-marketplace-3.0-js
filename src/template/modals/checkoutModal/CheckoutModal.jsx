@@ -6,7 +6,7 @@ import PolygonOficialLogo from "../../../components/icons/PolygonOficialLogo";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
 import { preventScroll } from "../../../controllers/domController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
-import { blockchainNetwork } from "../../../helpers/global-constants";
+import { blockchainNetwork, saleMethod, saleMethodOptions } from "../../../helpers/global-constants";
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 import { useForm, Controller } from "react-hook-form";
 import { closeModal } from "../../../features/modals/modalsSlice";
@@ -19,13 +19,23 @@ import {
   changeBlochainNetworkMetamas,
   checWaletConected,
   checkCorrertBlockchain,
+  connetWalletMetamask,
+  getWaletData,
 } from "../../../controllers/Web3Controllers";
 import { useEffect } from "react";
+import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
+import { getOrderByid } from "../../../controllers/makertPlaceSmarContractControllers";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-2);
-  // const [cuantityCounter, setCuantityCounter] = useState(0)
+
   const [isReadMode, setIsReadMode] = useState(true);
+  const [price, setPrice] = useState(0);
+  const [maxQ, setMaxQ] = useState(1);
+  const [balace, setBalace] = useState(0);
+  const [address, setAddress] = useState("");
+  const [isSufficientBalance, setIsSufficientBalance] = useState(false);
+
   const dispatch = useDispatch();
 
   // CONFIGURACION DE REACT HOOK FORM
@@ -37,7 +47,7 @@ export default function CheckoutModal() {
     handleSubmit,
   } = useForm({
     defaultValues: {
-      cuantity: 0,
+      cuantity: 1,
       bid: 0,
     },
   });
@@ -52,10 +62,11 @@ export default function CheckoutModal() {
 
   const BlockChainIcon = useMemo(() => {
     const blockChainIncon = {
-      [blockchainNetwork.polygon]: PolygonOficialLogo,
+      [blockchainNetwork.polygon]: <PolygonOficialLogo />,
+      [blockchainNetwork.optimism]: <OptimismOficialLogo size="36" />,
     };
 
-    return blockChainIncon[blockchainNetwork.polygon];
+    return blockChainIncon[blockchainNetwork.optimism];
   }, []);
 
   // funcion del checkout
@@ -79,14 +90,30 @@ export default function CheckoutModal() {
       return;
     }
 
+    const orderDAta = await getOrderByid(modalData.orderId);
+    const walletData = await getWaletData();
+
+    setBalace(walletData.balance);
+    setAddress(walletData.addres);
+    setPrice(orderDAta.price);
+    setMaxQ(orderDAta.quantity);
+
     setStepProcces(0);
     console.log("estas conectado a una wallet");
+  };
 
-    //si esta en la blockchain correcta verificamos si tiene el monto necesario para la compra
+  const conectWalletMetamas = async () => {
+    const result = await connetWalletMetamask();
+    if (!result) {
+      setStepProcces(2);
+      return;
+    }
+    await init();
   };
 
   const changeBlochainN = async () => {
     await changeBlochainNetworkMetamas(420);
+    await init();
   };
 
   useEffect(() => {
@@ -130,15 +157,14 @@ export default function CheckoutModal() {
                 <div></div>
                 <div className="flex items-center">
                   <div className="wolf-blockchain-logo">
-                    <div className="uncenected-signer"></div>
-                    <BlockChainIcon />
+                    {BlockChainIcon}
                     <span className=""></span>
                   </div>
                   <div className="ml-[15px] wallet-accoutn flex flex-col">
                     <span className="wallet-public-key">
                       0x23b05735...4d64f
                     </span>
-                    <span className="blochain-name">Polygon</span>
+                    <span className="blochain-name">Optimism</span>
                   </div>
                 </div>
                 <div className="w-100% h-[1px] bg-wolf-gray-dark-1000 my-[10px]"></div>
@@ -222,7 +248,7 @@ export default function CheckoutModal() {
                   </div>
                 )}
 
-                {true && (
+                {modalData === saleMethod.auction && (
                   <div className="mb-[10px]">
                     <WTextFields
                       register={register("bid")}
@@ -348,6 +374,7 @@ export default function CheckoutModal() {
                     <button
                       type="button"
                       className="wolf-buttom wolf-buttom-primary w-[100%] mb-2 flex"
+                      onClick={conectWalletMetamas}
                     >
                       <span className="mr-2">
                         <MetamaskOficialLgo size={"20"} />

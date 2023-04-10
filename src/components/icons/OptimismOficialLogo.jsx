@@ -1,17 +1,13 @@
 import React from "react";
 
-export default function OptimismOficialLogo({
-  width = "18",
-  height = "18",
-  ...props
-}) {
+export default function OptimismOficialLogo({ size = "18", ...props }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 236.44 236.44"
       {...props}
-      width={width}
-      height={height}
+      width={size}
+      height={size}
     >
       <defs>
         <style>{".red-xd{fill:#fe0420}.cls-2{fill:#fefefe}"}</style>

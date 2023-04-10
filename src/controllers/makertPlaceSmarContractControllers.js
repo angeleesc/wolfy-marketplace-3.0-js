@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import ERC721UUPSabi from "../abi/ERC721UUPS";
 import marketAbI from "../abi/marketplace";
-import { smartContracts } from "../helpers/global-constants";
+import { markerOperation, smartContracts } from "../helpers/global-constants";
 import { getProvider } from "./Web3Controllers";
 
 
@@ -18,36 +18,13 @@ export const connectMarketContact = async (blockChain) => {
 };
 
 
-export const conectMarketPlaceContract = async () => {
-  const provider = await getProvider();
-  if (provider) {
-    const signer = provider.getSigner();
-    const account = await signer.getAddress();
-    const marketContract = new ethers.Contract(
-      smartContracts.market,
-      marketAbI,
-      signer
-    );
-
-    // console.log(account);
-    console.log("market contract");
-    console.log(marketContract);
-    return {
-      account,
-      marketContract,
-    };
-  } else {
-    console.log("no hay provider");
-    return {};
-  }
-};
 
 export const readyToSelltoken = async (data) => {
   const {
     // console.log(account);
     account,
     marketContract,
-  } = await conectMarketPlaceContract();
+  } = await connectMarketContact();
 
   if (account && marketContract) {
     const {
@@ -148,7 +125,28 @@ export const readyToSell2 = async (price) => {
 
 export const getOrderByid = async (orderId) => {
   const contract = await connectMarketContact();
-  const order = await contract.getOrder(orderId);
+  const rawOrder = await contract.getOrder(orderId);
+
+  console.log(rawOrder)
+
+  const order = {
+    price: Number(ethers.utils.formatEther(rawOrder.ethPrice)),
+    quantity: Number(rawOrder.quantity)
+    // cuantity: 
+  }
+
   console.log(order);
   return order
 };
+
+export const getEstimatedGas = async (opration, options) => {
+
+  const contract = await connectMarketContact()
+
+  console.log("tiene diero suficiente")
+
+  return true
+
+
+
+}

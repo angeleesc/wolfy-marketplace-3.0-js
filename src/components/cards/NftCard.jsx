@@ -108,6 +108,7 @@ export default function NftCard({ cardData }) {
                       orderId,
                       nftCover,
                       nftName,
+                      saleMethod
                     },
                   })
                 );

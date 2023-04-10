@@ -163,3 +163,9 @@ export const chainIdList = {
 export const networkLis = {
     "optimism-goerli": "optimism-goerli"
 }
+
+export const markerOperation = {
+    readyToSell: "readyToSell",
+    buy: "buy",
+    cancel: "cancelOrders"
+}
