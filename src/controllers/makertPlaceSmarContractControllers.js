@@ -139,11 +139,23 @@ export const getOrderByid = async (orderId) => {
   return order
 };
 
-export const getEstimatedGas = async (opration, options) => {
+export const getEstimatedGastxd = async (operation, options) => {
 
   const contract = await connectMarketContact()
 
-  console.log("tiene diero suficiente")
+  // console.log("tiene diero suficiente")
+
+
+  switch (operation) {
+    case markerOperation.buy:
+      console.log("calculando los datos nesesario para la venta")
+      
+
+      break;
+
+    default:
+      break;
+  }
 
   return true
 

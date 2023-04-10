@@ -8,6 +8,7 @@ import { preventScroll } from "../../../controllers/domController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
 import {
   blockchainNetwork,
+  markerOperation,
   saleMethod,
   saleMethodOptions,
 } from "../../../helpers/global-constants";
@@ -28,7 +29,7 @@ import {
 } from "../../../controllers/Web3Controllers";
 import { useEffect } from "react";
 import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
-import { getOrderByid } from "../../../controllers/makertPlaceSmarContractControllers";
+import {  getEstimatedGastxd, getOrderByid } from "../../../controllers/makertPlaceSmarContractControllers";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-2);
@@ -59,8 +60,8 @@ export default function CheckoutModal() {
   });
 
   const cuantityWatch = watch("cuantity");
-  console.log("cantidad actual");
-  console.log(cuantityWatch);
+  // console.log("cantidad actual");
+  // console.log(cuantityWatch);
 
   // CONFIGURACION DE ESTADO GLOBAL DE REDUX
 
@@ -68,7 +69,7 @@ export default function CheckoutModal() {
     (state) => state.modals.checkoutModal.dataToProccess
   );
 
-  console.log(modalData);
+  // console.log(modalData);
 
   const BlockChainIcon = useMemo(() => {
     const blockChainIncon = {
@@ -86,7 +87,7 @@ export default function CheckoutModal() {
 
     const checkWallet = await checWaletConected();
     if (!checkWallet) {
-      console.log("no estas conectado a la wallet");
+      // console.log("no estas conectado a la wallet");
       setStepProcces(-3);
       return;
     }
@@ -110,7 +111,7 @@ export default function CheckoutModal() {
     if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
 
     setStepProcces(0);
-    console.log("estas conectado a una wallet");
+    // console.log("estas conectado a una wallet");
   };
 
   const conectWalletMetamas = async () => {
@@ -127,11 +128,22 @@ export default function CheckoutModal() {
     await init();
   };
 
+  const checkCorrectBalance = async ()=>{
+
+    const isSufycientBalance = await getEstimatedGastxd(markerOperation.buy, {})
+
+
+  }
+
   useEffect(() => {
     init();
   }, []);
 
-  useEffect(() => {}, [cuantityWatch]);
+  useEffect(() => {
+
+    checkCorrectBalance()
+
+  }, [cuantityWatch, balace]);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -202,9 +214,9 @@ export default function CheckoutModal() {
                             type="button"
                             className="counter-btn mr-2"
                             onClick={() => {
-                              console.log("aumentado");
+                              // console.log("aumentado");
                               if (Number(value) + 1 > Number(maxQ)) return;
-                              console.log(value);
+                              // console.log(value);
                               onChange(Number(value) + 1);
                             }}
                             disabled={disableQuantityField}
@@ -227,15 +239,15 @@ export default function CheckoutModal() {
                             disabled={disableQuantityField}
                             onClick={() => {
                               setIsReadMode(false);
-                              console.log(isReadMode);
+                              // console.log(isReadMode);
                             }}
                             onChange={(e) => {
                               if (!isReadMode) {
-                                console.log("se puede editar");
+                                // console.log("se puede editar");
                                 onChange(e.target.value);
                                 return;
                               }
-                              console.log("no se puede editar");
+                              // console.log("no se puede editar");
                             }}
                             onBlur={() => {
                               setIsReadMode(true);
@@ -252,8 +264,8 @@ export default function CheckoutModal() {
                             type="button"
                             className="counter-btn ml-2"
                             onClick={() => {
-                              console.log("aumentado");
-                              console.log(value);
+                              // console.log("aumentado");
+                              // console.log(value);
                               if (Number(value) - 1 <= 0) return;
                               onChange(Number(value) - 1);
                             }}
