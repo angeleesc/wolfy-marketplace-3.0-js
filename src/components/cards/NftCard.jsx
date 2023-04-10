@@ -27,6 +27,8 @@ export default function NftCard({ cardData }) {
     copies,
     sale,
     order,
+    id,
+    orderId,
     sellerName,
   } = cardData;
 
@@ -103,6 +105,7 @@ export default function NftCard({ cardData }) {
                     modal: keyModalSate.checkoutModal,
                     data: {
                       order,
+                      orderId,
                       nftCover,
                       nftName,
                     },

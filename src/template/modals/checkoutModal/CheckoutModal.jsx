@@ -16,7 +16,7 @@ import WolfSad from "../../../components/icons/WolfSad";
 import WolfHappy from "../../../components/icons/WolfHappy";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(3);
+  const [stepProcces, setStepProcces] = useState(0);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
   const dispatch = useDispatch();
@@ -41,7 +41,9 @@ export default function CheckoutModal() {
     (state) => state.modals.checkoutModal.dataToProccess
   );
 
-  // configuracion de icono por defento de la blochain de origien de la nft
+  console.log(modalData)
+
+
 
   const BlockChainIcon = useMemo(() => {
     const blockChainIncon = {
