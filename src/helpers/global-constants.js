@@ -155,3 +155,11 @@ export const stateProcessMint = {
     success: "success",
     fail: "fail"
 }
+
+export const chainIdList = {
+    "420": 420,
+}
+
+export const networkLis = {
+    "optimism-goerli": "optimism-goerli"
+}

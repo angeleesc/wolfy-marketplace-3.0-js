@@ -4,6 +4,20 @@ import marketAbI from "../abi/marketplace";
 import { smartContracts } from "../helpers/global-constants";
 import { getProvider } from "./Web3Controllers";
 
+
+export const connectMarketContact = async (blockChain) => {
+  const provider = await getProvider();
+  const signer = provider.getSigner();
+  const marketContrac = new ethers.Contract(
+    smartContracts.market,
+    marketAbI,
+    signer
+  );
+
+  return marketContrac;
+};
+
+
 export const conectMarketPlaceContract = async () => {
   const provider = await getProvider();
   if (provider) {
@@ -131,3 +145,10 @@ export const readyToSell2 = async (price) => {
   }
 
 }
+
+export const getOrderByid = async (orderId) => {
+  const contract = await connectMarketContact();
+  const order = await contract.getOrder(orderId);
+  console.log(order);
+  return order
+};

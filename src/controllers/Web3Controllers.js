@@ -24,7 +24,38 @@ export const checWaletConected = async () => {
     }
 }
 
+export const checkCorrertBlockchain = async (ref) => {
+    const provider = await getProvider()
+    const network = await provider.getNetwork()
+    // console.log(network.chainId)
+    // console.log(network.name)
 
+    if (network.chainId === ref) return true
+    return false
+
+    // console.log(network.)
+}
+
+
+export const changeBlochainNetworkMetamas = async (ref) => {
+
+    const web3Provider = window.ethereum
+    const format = ethers.utils.hexValue(420)
+    console.log(format)
+
+    try {
+        await web3Provider.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId:"0x1a4" }],
+        })
+    } catch (error) {
+        console.log("ocuurio un error")
+        console.log(error)
+    }
+
+
+
+}
 
 export const getWaletData = async () => {
     const provider = await getProvider()

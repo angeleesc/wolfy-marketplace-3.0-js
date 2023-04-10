@@ -14,9 +14,16 @@ import "./checkout-modal.scss";
 import { Skeleton } from "@mui/material";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfHappy from "../../../components/icons/WolfHappy";
+import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
+import {
+  changeBlochainNetworkMetamas,
+  checWaletConected,
+  checkCorrertBlockchain,
+} from "../../../controllers/Web3Controllers";
+import { useEffect } from "react";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(0);
+  const [stepProcces, setStepProcces] = useState(-2);
   // const [cuantityCounter, setCuantityCounter] = useState(0)
   const [isReadMode, setIsReadMode] = useState(true);
   const dispatch = useDispatch();
@@ -41,9 +48,7 @@ export default function CheckoutModal() {
     (state) => state.modals.checkoutModal.dataToProccess
   );
 
-  console.log(modalData)
-
-
+  console.log(modalData);
 
   const BlockChainIcon = useMemo(() => {
     const blockChainIncon = {
@@ -54,6 +59,39 @@ export default function CheckoutModal() {
   }, []);
 
   // funcion del checkout
+
+  const init = async () => {
+    // checkeamos si esta conectado a una wallet
+
+    const checkWallet = await checWaletConected();
+    if (!checkWallet) {
+      console.log("no estas conectado a la wallet");
+      setStepProcces(-3);
+      return;
+    }
+    // si esta conectamos a la wallet
+    // verificamos que este en la blockchain correcta
+
+    const isCorrectBlochain = await checkCorrertBlockchain(420);
+
+    if (!isCorrectBlochain) {
+      setStepProcces(-2);
+      return;
+    }
+
+    setStepProcces(0);
+    console.log("estas conectado a una wallet");
+
+    //si esta en la blockchain correcta verificamos si tiene el monto necesario para la compra
+  };
+
+  const changeBlochainN = async () => {
+    await changeBlochainNetworkMetamas(420);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -276,8 +314,45 @@ export default function CheckoutModal() {
                     <button
                       type="button"
                       className="wolf-buttom wolf-buttom-primary w-[100%] mb-2"
+                      onClick={changeBlochainN}
                     >
                       Cambiar de blockchain
+                    </button>
+
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.checkoutModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              )
+            }
+
+            {
+              // caso cuando no tiene saldo suficiente
+              stepProcces === -3 && (
+                <div className="insufficient-balance">
+                  <span className="text-wollf-red-200 text-[14px] font-semibold ">
+                    lo siento pero no estas conectado a ninguna wallet
+                  </span>
+                  <div className="mt-[10px]">
+                    <button
+                      type="button"
+                      className="wolf-buttom wolf-buttom-primary w-[100%] mb-2 flex"
+                    >
+                      <span className="mr-2">
+                        <MetamaskOficialLgo size={"20"} />
+                      </span>
+                      <span> conectar a metamask </span>
                     </button>
 
                     <button
@@ -352,12 +427,13 @@ export default function CheckoutModal() {
                 <span className="text-[14px] text-wolf-gray-light-800">
                   Para saber mas puede hacer click de la operacion
                 </span>
-                
-                <div className="mt-[10px] flex flex-col" >
-                  <span className="text-[14px] text-wolf-gray-light-2200 font-semibold">Id de la Trasancion</span>
-                  <span className="" >0xea4e613b...0365b31912</span>
-                </div>
 
+                <div className="mt-[10px] flex flex-col">
+                  <span className="text-[14px] text-wolf-gray-light-2200 font-semibold">
+                    Id de la Trasancion
+                  </span>
+                  <span className="">0xea4e613b...0365b31912</span>
+                </div>
               </div>
             )}
           </div>

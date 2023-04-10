@@ -65,7 +65,6 @@ export default function ExplorerNfts() {
       console.log("resulrado xd")
       console.log(resultReturned)
       console.log()
-
       
       setOrders(resultReturned)
 
