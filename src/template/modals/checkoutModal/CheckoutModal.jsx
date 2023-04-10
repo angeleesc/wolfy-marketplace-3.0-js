@@ -12,7 +12,7 @@ import {
   saleMethodOptions,
 } from "../../../helpers/global-constants";
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import { closeModal } from "../../../features/modals/modalsSlice";
 import "./checkout-modal.scss";
 import { Skeleton } from "@mui/material";
@@ -36,6 +36,7 @@ export default function CheckoutModal() {
   const [isReadMode, setIsReadMode] = useState(true);
   const [price, setPrice] = useState(0);
   const [maxQ, setMaxQ] = useState(1);
+  const [disableQuantityField, setDisableQuantityField] = useState(false);
   const [balace, setBalace] = useState(0);
   const [address, setAddress] = useState("");
   const [isSufficientBalance, setIsSufficientBalance] = useState(false);
@@ -49,12 +50,17 @@ export default function CheckoutModal() {
     control,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm({
     defaultValues: {
       cuantity: 1,
       bid: 0,
     },
   });
+
+  const cuantityWatch = watch("cuantity");
+  console.log("cantidad actual");
+  console.log(cuantityWatch);
 
   // CONFIGURACION DE ESTADO GLOBAL DE REDUX
 
@@ -101,6 +107,7 @@ export default function CheckoutModal() {
     setAddress(walletData.addres);
     setPrice(orderDAta.price);
     setMaxQ(orderDAta.quantity);
+    if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
 
     setStepProcces(0);
     console.log("estas conectado a una wallet");
@@ -123,6 +130,8 @@ export default function CheckoutModal() {
   useEffect(() => {
     init();
   }, []);
+
+  useEffect(() => {}, [cuantityWatch]);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -150,7 +159,7 @@ export default function CheckoutModal() {
                   </div>
                   <div className="price-zone-item">
                     <span className="key">Disponible :</span>
-                    <span className="value">1</span>
+                    <span className="value">{maxQ}</span>
                   </div>
                 </div>
               </div>
@@ -194,9 +203,11 @@ export default function CheckoutModal() {
                             className="counter-btn mr-2"
                             onClick={() => {
                               console.log("aumentado");
+                              if (Number(value) + 1 > Number(maxQ)) return;
                               console.log(value);
                               onChange(Number(value) + 1);
                             }}
+                            disabled={disableQuantityField}
                           >
                             <MdOutlineAddCircle />
                           </button>
@@ -213,6 +224,7 @@ export default function CheckoutModal() {
                             onWheel={preventScroll}
                             readOnly={isReadMode}
                             value={value}
+                            disabled={disableQuantityField}
                             onClick={() => {
                               setIsReadMode(false);
                               console.log(isReadMode);
@@ -245,6 +257,7 @@ export default function CheckoutModal() {
                               if (Number(value) - 1 <= 0) return;
                               onChange(Number(value) - 1);
                             }}
+                            disabled={disableQuantityField}
                           >
                             <MdOutlineRemoveCircle />
                           </button>
@@ -270,11 +283,11 @@ export default function CheckoutModal() {
                 <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
                 <div className="bill-checkout-item mt-[5px]">
                   <span className="bill-key">Precio</span>{" "}
-                  <span className="bill-value">0.005 ETH</span>
+                  <span className="bill-value">{price} ETH</span>
                 </div>
                 <div className="bill-checkout-item">
                   <span className="bill-key">Cantidad</span>{" "}
-                  <span className="bill-value">1</span>
+                  <span className="bill-value">{cuantityWatch}</span>
                 </div>
                 <div className="bill-checkout-item mb-[5px] ">
                   <span className="bill-key">Comision del la platafomar</span>{" "}
