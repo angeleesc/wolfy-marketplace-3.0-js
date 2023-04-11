@@ -8,9 +8,7 @@ import { preventScroll } from "../../../controllers/domController";
 import { keyModalSate } from "../../../features/modals/modalsSlice";
 import {
   blockchainNetwork,
-  markerOperation,
   saleMethod,
-  saleMethodOptions,
 } from "../../../helpers/global-constants";
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 import { useForm, Controller, useWatch } from "react-hook-form";
@@ -29,7 +27,12 @@ import {
 } from "../../../controllers/Web3Controllers";
 import { useEffect } from "react";
 import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
-import {  getEstimatedGastxd, getOrderByid } from "../../../controllers/makertPlaceSmarContractControllers";
+import {
+  buyToken,
+  getEstimateGasBuyToken,
+  getOrderByid,
+} from "../../../controllers/makertPlaceSmarContractControllers";
+import { ethers } from "ethers";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-2);
@@ -59,9 +62,9 @@ export default function CheckoutModal() {
     },
   });
 
-  const cuantityWatch = watch("cuantity");
+  const quantityWatch = watch("cuantity");
   // console.log("cantidad actual");
-  // console.log(cuantityWatch);
+  // console.log(quantityWatch);
 
   // CONFIGURACION DE ESTADO GLOBAL DE REDUX
 
@@ -82,6 +85,11 @@ export default function CheckoutModal() {
 
   // funcion del checkout
 
+  const buyTokenNow = async () => {
+    const ehtPrice = ethers.utils.parseEther(price.toString());
+    await buyToken(modalData.orderId, quantityWatch.toString(),ehtPrice );
+  };
+
   const init = async () => {
     // checkeamos si esta conectado a una wallet
 
@@ -101,9 +109,14 @@ export default function CheckoutModal() {
       return;
     }
 
-    const orderDAta = await getOrderByid(modalData.orderId);
-    const walletData = await getWaletData();
+    // verivicamos si tiene el balance correcto para al menos una compra
 
+    
+    const orderDAta = await getOrderByid(modalData.orderId);
+    console.log(orderDAta)
+    const walletData = await getWaletData();
+    // const gast = await getEstimateGasBuyToken(modalData.orderId, 1 , ethers.utils.parseEther(orderDAta.price.toString()) )
+    
     setBalace(walletData.balance);
     setAddress(walletData.addres);
     setPrice(orderDAta.price);
@@ -128,22 +141,12 @@ export default function CheckoutModal() {
     await init();
   };
 
-  const checkCorrectBalance = async ()=>{
 
-    const isSufycientBalance = await getEstimatedGastxd(markerOperation.buy, {})
-
-
-  }
 
   useEffect(() => {
     init();
   }, []);
 
-  useEffect(() => {
-
-    checkCorrectBalance()
-
-  }, [cuantityWatch, balace]);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -299,7 +302,7 @@ export default function CheckoutModal() {
                 </div>
                 <div className="bill-checkout-item">
                   <span className="bill-key">Cantidad</span>{" "}
-                  <span className="bill-value">{cuantityWatch}</span>
+                  <span className="bill-value">{quantityWatch}</span>
                 </div>
                 <div className="bill-checkout-item mb-[5px] ">
                   <span className="bill-key">Comision del la platafomar</span>{" "}
@@ -312,6 +315,7 @@ export default function CheckoutModal() {
                     <button
                       type="submit"
                       className="wolf-buttom wolf-buttom-primary w-[100%]"
+                      onClick={buyTokenNow}
                     >
                       {true ? "hacer una puja" : "Comprar Ahora"}
                     </button>

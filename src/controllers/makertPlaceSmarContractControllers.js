@@ -148,8 +148,13 @@ export const getEstimatedGastxd = async (operation, options) => {
 
   switch (operation) {
     case markerOperation.buy:
-      console.log("calculando los datos nesesario para la venta")
-      
+      // console.log("calculando los datos nesesario para la venta")
+      console.log(options)
+      const value = options.price.mul(options.c)
+      console.log(value)
+
+      // const gast = await contract.estimateGas.buyToken(options.orden, options.c)
+
 
       break;
 
@@ -159,6 +164,30 @@ export const getEstimatedGastxd = async (operation, options) => {
 
   return true
 
+}
+
+export const buyToken = async (orden, cantidad, price) => {
+  let c = cantidad;
+  if (typeof c === "number") c = c.toString();
+  const contract = await connectMarketContact();
+  const request = await contract.buyToken(orden, c, {
+    value: price.mul(c)
+  });
+  const transaction = await request.wait();
+  console.log("transaciuon exitosa")
+};
+
+export const getEstimateGasBuyToken = async (orden, cantidad, price) => {
+  let c = cantidad;
+  console.log(orden)
+  console.log(price)
+  if (typeof c === "number") c = c.toString();
+  const contract = await connectMarketContact();
+  const gast = await contract.estimateGas.buyToken(orden, c, {
+    value: price.mul(c)
+  });
+
+  console.log(gast)
 
 
 }
