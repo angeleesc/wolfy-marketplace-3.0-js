@@ -14,6 +14,11 @@ export const getProvider = async () => {
 }
 
 export const checWaletConected = async () => {
+
+    if(!window.ethereum){
+        return "notBlockchain"
+    }
+
     const accounts = await window.ethereum.request({ method: 'eth_accounts' });
     if (accounts.length) {
         console.log("estas conectado")
@@ -59,15 +64,21 @@ export const changeBlochainNetworkMetamas = async (ref) => {
 
 export const getWaletData = async () => {
     const provider = await getProvider()
-    const signer = provider.getSigner()
-    const addres = await signer.getAddress()
-    const rawBalance = await signer.getBalance();
-    const balance = Number(ethers.utils.formatEther(rawBalance))
 
-    return {
-        addres,
-        balance,
+    if(provider){
+        const signer = provider.getSigner()
+        const addres = await signer.getAddress()
+        const rawBalance = await signer.getBalance();
+        const balance = Number(ethers.utils.formatEther(rawBalance))
+    
+        return {
+            addres,
+            balance,
+        }
     }
+
+    return null
+
 }
 
 
