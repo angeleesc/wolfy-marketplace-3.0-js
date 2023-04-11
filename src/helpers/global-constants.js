@@ -136,7 +136,8 @@ export const requestEndPoints = {
         POSTuploadFile: "/api/v1/ipfs"
     },
     firebase: {
-        POSTGetAsk: "/api/v1/firebase/orders-nfts"
+        POSTGetAsk: "/api/v1/firebase/orders-nfts",
+        POSTGetAskByUser: "/api/v1/firebase/orders-by-users"
     }
 
 }
@@ -169,3 +170,4 @@ export const markerOperation = {
     buy: "buy",
     cancel: "cancelOrders"
 }
+

@@ -8,6 +8,7 @@ import {
 import { useEffect } from "react";
 import UserCardList from "../list/UserCardList";
 import UserWalletCardList from "../list/UserWalletCardList";
+import { getOrdersByWalletAddres } from "../../controllers/firebaseControllers";
 
 export default function ProfileExplorer() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export default function ProfileExplorer() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const mode = searchParams.get("mode");
-  const type = searchParams.get("type")
+  const type = searchParams.get("type");
 
   const initt = async () => {
     const checkWalletConected = await checWaletConected();
@@ -31,24 +32,32 @@ export default function ProfileExplorer() {
       if (walletData.addres === id) {
         setIsWalletUser(true);
       }
+
+      if (mode) {
+        console.log("obtenemos los datos de la walet");
+        return;
+      }
+      console.log("obtenemos las nfts de la marketplace");
+
+      const ordersByUsersX = await getOrdersByWalletAddres(id, {});
+
+      if(ordersByUsersX){
+        setUserNftsOnMarketPlace(ordersByUsersX.orders)
+      }
+
     }
 
     // seguidamente se obtine las nft segun el mosdo en esta caso hay dos modos los que estan dentro de la marketpplace y los que estan dentro de su billetera
-
-    console.log("modo")
-    console.log(mode)
-    console.log(type)
-
   };
 
   useEffect(() => {
     initt();
-  }, []);
+  }, [mode]);
 
   return (
     <div className="mt-[30px] px-[30px] min-[700px]:px-[60px] profile-explorer-box">
       <ProfileExplorerMenu />
-      { !mode ? (
+      {!mode ? (
         <UserCardList nfts={userNftsOnMarketPlace} />
       ) : (
         <UserWalletCardList nfts={userNftsOnWallet} />

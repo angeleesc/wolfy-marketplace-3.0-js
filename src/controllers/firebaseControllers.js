@@ -23,3 +23,21 @@ export const getOdres = async (fillter) => {
 
 
 }
+
+
+export const getOrdersByWalletAddres = async (wallet, fillter) => {
+
+    const rootPath = rootApipaht.local + requestEndPoints.firebase.POSTGetAskByUser
+    // const rootPath = rootApipaht.porduction + requestEndPoints.firebase.POSTGetAsk
+
+    console.log("orteniendop la ordene por usuario")
+
+    const result = await axios.post(rootPath, {
+        wallet,
+        fillter
+    })
+
+    console.log(result.data)
+
+
+}
