@@ -1,4 +1,5 @@
 import React from "react";
+import NftCard from "../cards/NftCard";
 
 export default function UserCardList({ nfts }) {
   return (
@@ -6,7 +7,8 @@ export default function UserCardList({ nfts }) {
       {nfts.map((nft, i) => {
         return (
           <div className="card-nfts-item" key={"nfts-explorer-card-" + i}>
-            <h3>Carta</h3>
+               
+               <NftCard cardData={nft} />
           </div>
         );
       })}
