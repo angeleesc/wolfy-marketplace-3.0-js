@@ -70,7 +70,8 @@ export default function ProfileExplorer() {
 
           return{
             ...tempJson,
-            ...nft
+            ...nft,
+            ...(nft.metadata? {nftName: nft.metadata.nftName?  nft.metadata.nftName : "no"}:{nftName: "desconocido"})
           }
 
         })
