@@ -32,12 +32,23 @@ export const getOrdersByWalletAddres = async (wallet, fillter) => {
 
     console.log("orteniendop la ordene por usuario")
 
-    const result = await axios.post(rootPath, {
-        wallet,
-        fillter
-    })
+    try {
 
-    console.log(result.data)
+        const result = await axios.post(rootPath, {
+            wallet,
+            fillter
+        })
 
+        return result.data
+
+
+    } catch (error) {
+        return null
+    }
+
+
+    // console.log(result.data)
 
 }
+
+

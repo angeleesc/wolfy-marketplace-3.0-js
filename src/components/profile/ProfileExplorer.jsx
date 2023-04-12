@@ -41,9 +41,13 @@ export default function ProfileExplorer() {
 
       const ordersByUsersX = await getOrdersByWalletAddres(id, {});
 
-      if(ordersByUsersX){
+      // console.log(ordersByUsersX)
+
+
+      if(ordersByUsersX.isSuccess && ordersByUsersX.hasData ){
         setUserNftsOnMarketPlace(ordersByUsersX.orders)
       }
+
 
     }
 
