@@ -116,6 +116,7 @@ export default function NftCard({ cardData }) {
                         nftName,
                         saleMethod,
                         walletLog,
+                        seller
                       },
                     })
                   );

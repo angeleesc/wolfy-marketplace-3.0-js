@@ -87,7 +87,7 @@ export default function CheckoutModal() {
 
   const buyTokenNow = async () => {
     const ehtPrice = ethers.utils.parseEther(price.toString());
-    await buyToken(modalData.orderId, quantityWatch.toString(),ehtPrice );
+    await buyToken(modalData.orderId, quantityWatch.toString(), ehtPrice);
   };
 
   const init = async () => {
@@ -109,19 +109,32 @@ export default function CheckoutModal() {
       return;
     }
 
+    // verificamos si es el mismo usuario de la cuenta si es asi solo le habiliamos la opncion de cancela
+
     // verivicamos si tiene el balance correcto para al menos una compra
 
-    
     const orderDAta = await getOrderByid(modalData.orderId);
-    console.log(orderDAta)
+    // console.log(orderDAta);
     const walletData = await getWaletData();
+
     // const gast = await getEstimateGasBuyToken(modalData.orderId, 1 , ethers.utils.parseEther(orderDAta.price.toString()) )
-    
+
     setBalace(walletData.balance);
     setAddress(walletData.addres);
     setPrice(orderDAta.price);
     setMaxQ(orderDAta.quantity);
     if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
+
+    console.log("vendedor");
+    console.log(modalData.seller);
+    console.log("susuario");
+    console.log(walletData.addres);
+
+    if (modalData.seller && modalData.seller === walletData.addres) {
+      // console.log("el es duenio de la orden actuacl")
+      setStepProcces(-4);
+      return;
+    }
 
     setStepProcces(0);
     // console.log("estas conectado a una wallet");
@@ -141,15 +154,12 @@ export default function CheckoutModal() {
     await init();
   };
 
-
-
   useEffect(() => {
     init();
   }, []);
 
-
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return (
@@ -338,6 +348,49 @@ export default function CheckoutModal() {
                 </div>
               </form>
             )}
+
+            {
+              // caso cuando no tiene saldo suficiente
+              stepProcces === -4 && (
+                <div className="insufficient-balance">
+                  <span className="text-wolf-gray-light-1500 text-[14px]">
+                    Useted es el actual dueño de esta nfts que esta en venta en
+                    nuestra marketplace
+                  </span>
+                  <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                    Deseas Sacarla de venta en nuestra marketplace?
+                  </span>
+                  <div className="mt-[10px]">
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  wolf-buttom-primary"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.checkoutModal,
+                          })
+                        );
+                      }}
+                    >
+                     Si deseo sacar de la venta
+                    </button>
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.checkoutModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              )
+            }
 
             {
               // caso cuando no tiene saldo suficiente
