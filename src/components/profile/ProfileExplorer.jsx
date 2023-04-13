@@ -11,6 +11,7 @@ import UserCardList from "../list/UserCardList";
 import UserWalletCardList from "../list/UserWalletCardList";
 import { getOrdersByWalletAddres } from "../../controllers/firebaseControllers";
 import { saleMethod } from "../../helpers/global-constants";
+import { getNftsByWallet } from "../../controllers/alchemyController";
 
 export default function ProfileExplorer() {
   const { id } = useParams();
@@ -36,10 +37,12 @@ export default function ProfileExplorer() {
       walletLog = walletData.addres;
     }
 
-    if(mode){
-      console.log("obteniondo las nfts del usuario sede la wallet")
-      
-      return
+    if (mode) {
+      console.log("obteniondo las nfts del usuario sede la wallet");
+      const data = await getNftsByWallet();
+      console.log(data);
+
+      return;
     }
 
     const tempData = {
@@ -64,9 +67,6 @@ export default function ProfileExplorer() {
       order: 5,
     };
 
-
-
-
     const ordesByUsers = await getOrdersByWalletAddres(id, {});
 
     // console.log(ordesByUsers)
@@ -87,12 +87,10 @@ export default function ProfileExplorer() {
         };
       });
 
-      console.log("datos para enviar")
+      console.log("datos para enviar");
       // console.log(dataToSend)
-      setUserNftsOnMarketPlace(dataToSend)
-
+      setUserNftsOnMarketPlace(dataToSend);
     }
-
 
     // console.log(ordesByUsers);
 
