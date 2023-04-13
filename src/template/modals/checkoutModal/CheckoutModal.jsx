@@ -31,6 +31,7 @@ import {
   buyToken,
   getEstimateGasBuyToken,
   getOrderByid,
+  cancelOder,
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { ethers } from "ethers";
 
@@ -84,6 +85,11 @@ export default function CheckoutModal() {
   }, []);
 
   // funcion del checkout
+  const cancelTokenNow = async () => {
+    const result = await cancelOder(modalData.orderId);
+    console.log("resultado");
+    console.log("resul");
+  };
 
   const buyTokenNow = async () => {
     const ehtPrice = ethers.utils.parseEther(price.toString());
@@ -364,15 +370,9 @@ export default function CheckoutModal() {
                     <button
                       type="button"
                       className="wolf-buttom w-[100%]  wolf-buttom-primary"
-                      onClick={() => {
-                        dispatch(
-                          closeModal({
-                            modal: keyModalSate.checkoutModal,
-                          })
-                        );
-                      }}
+                      onClick={cancelTokenNow}
                     >
-                     Si deseo sacar de la venta
+                      Si deseo sacar de la venta
                     </button>
                     <button
                       type="button"

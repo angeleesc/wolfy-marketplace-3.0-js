@@ -36,6 +36,12 @@ export default function ProfileExplorer() {
       walletLog = walletData.addres;
     }
 
+    if(mode){
+      console.log("obteniondo las nfts del usuario sede la wallet")
+      
+      return
+    }
+
     const tempData = {
       // nftName: "Eric Way ",
       colectionName: "Eric Pause Editions",
@@ -57,6 +63,9 @@ export default function ProfileExplorer() {
       sale: 1,
       order: 5,
     };
+
+
+
 
     const ordesByUsers = await getOrdersByWalletAddres(id, {});
 

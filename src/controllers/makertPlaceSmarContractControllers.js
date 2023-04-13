@@ -191,3 +191,15 @@ export const getEstimateGasBuyToken = async (orden, cantidad, price) => {
 
 
 }
+
+export const cancelOder = async (orderId) => {
+  const provider = await getProvider();
+  const signer = provider.getSigner();
+  const marketContrac = new ethers.Contract(
+    smartContracts.market,
+    marketAbI,
+    signer
+  );
+  const transaction = await marketContrac.cancelSellToken(orderId);
+  const receipt = await transaction.wait();
+};

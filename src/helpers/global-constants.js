@@ -138,6 +138,9 @@ export const requestEndPoints = {
     firebase: {
         POSTGetAsk: "/api/v1/firebase/orders-nfts",
         POSTGetAskByUser: "/api/v1/firebase/orders-by-users"
+    },
+    alchemy: {
+        getNftsBalanceOnWalet : "/api/v1/alchemy"
     }
 
 }
