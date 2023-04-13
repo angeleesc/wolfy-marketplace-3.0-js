@@ -22,19 +22,22 @@ export default function NftCard({ cardData }) {
     nftCover,
     price,
     saleMethod,
-    tokenId,
-    copies,
-    sale,
+    // tokenId,
+    // copies,
+    // sale,
     order,
     id,
     orderId,
     isOwner,
     sellerName,
+    walletLog,
   } = cardData;
+
+  console.log("es el dueno de la order", walletLog && walletLog === seller);
 
   const dispatch = useDispatch();
 
-  console.log("es duenio", isOwner)
+  console.log("es duenio", isOwner);
 
   return (
     <div className="nft-card-container">
@@ -98,7 +101,29 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
           <div className="checkout-secction">
-            {!isOwner ? (
+            {walletLog && walletLog === seller ? (
+              <button
+                className="wolf-buttom wolf-btn-primary-2 mr-2 "
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch(
+                    openModal({
+                      modal: keyModalSate.checkoutModal,
+                      data: {
+                        order,
+                        orderId,
+                        nftCover,
+                        nftName,
+                        saleMethod,
+                        walletLog,
+                      },
+                    })
+                  );
+                }}
+              >
+                Cancelar
+              </button>
+            ) : (
               <>
                 <button
                   className="wolf-buttom wolf-btn-primary-2 mr-2 "
@@ -124,27 +149,6 @@ export default function NftCard({ cardData }) {
                   <MdAddShoppingCart />
                 </button>
               </>
-            ) : (
-              <button
-                className="wolf-buttom wolf-btn-primary-2 mr-2 "
-                onClick={(e) => {
-                  e.stopPropagation();
-                  dispatch(
-                    openModal({
-                      modal: keyModalSate.checkoutModal,
-                      data: {
-                        order,
-                        orderId,
-                        nftCover,
-                        nftName,
-                        saleMethod,
-                      },
-                    })
-                  );
-                }}
-              >
-                Cancelar
-              </button>
             )}
           </div>
         </div>
