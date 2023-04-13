@@ -9,7 +9,6 @@ import { staticRoutes } from "../../helpers/static-routes";
 import { useDispatch } from "react-redux";
 import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
 
-
 export default function NftCard({ cardData }) {
   const {
     nftName,
@@ -29,10 +28,13 @@ export default function NftCard({ cardData }) {
     order,
     id,
     orderId,
+    isOwner,
     sellerName,
   } = cardData;
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  console.log("es duenio", isOwner)
 
   return (
     <div className="nft-card-container">
@@ -96,29 +98,54 @@ export default function NftCard({ cardData }) {
             </div>
           </div>
           <div className="checkout-secction">
-            <button
-              className="wolf-buttom wolf-btn-primary-2 mr-2 "
-              onClick={(e) => {
-                e.stopPropagation();
-                dispatch(
-                  openModal({
-                    modal: keyModalSate.checkoutModal,
-                    data: {
-                      order,
-                      orderId,
-                      nftCover,
-                      nftName,
-                      saleMethod
-                    },
-                  })
-                );
-              }}
-            >
-              Comprar
-            </button>
-            <button className="wolf-buttom wolf-btn-primary-2 ">
-              <MdAddShoppingCart />
-            </button>
+            {!isOwner ? (
+              <>
+                <button
+                  className="wolf-buttom wolf-btn-primary-2 mr-2 "
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch(
+                      openModal({
+                        modal: keyModalSate.checkoutModal,
+                        data: {
+                          order,
+                          orderId,
+                          nftCover,
+                          nftName,
+                          saleMethod,
+                        },
+                      })
+                    );
+                  }}
+                >
+                  Comprar
+                </button>
+                <button className="wolf-buttom wolf-btn-primary-2 ">
+                  <MdAddShoppingCart />
+                </button>
+              </>
+            ) : (
+              <button
+                className="wolf-buttom wolf-btn-primary-2 mr-2 "
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatch(
+                    openModal({
+                      modal: keyModalSate.checkoutModal,
+                      data: {
+                        order,
+                        orderId,
+                        nftCover,
+                        nftName,
+                        saleMethod,
+                      },
+                    })
+                  );
+                }}
+              >
+                Cancelar
+              </button>
+            )}
           </div>
         </div>
       </div>

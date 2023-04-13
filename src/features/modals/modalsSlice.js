@@ -2,7 +2,9 @@ import { createSlice, } from "@reduxjs/toolkit";
 
 export const keyModalSate = {
   checkoutModal: "checkoutModal",
-  mintModal: "mintModal"
+  mintModal: "mintModal",
+  cancelModal: "cancelModal",
+  listingModal: "listingModal"
 };
 
 
@@ -16,6 +18,14 @@ const modalSlide = createSlice({
     mintModal: {
       open: false,
       dataToProccess: {},
+    },
+    cancelModal: {
+      open: false,
+      dataToProccess: {}
+    },
+    listingModal: {
+      open: false,
+      dataToProccess: {}
     }
   },
   reducers: {

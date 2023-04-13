@@ -15,7 +15,7 @@ export const getProvider = async () => {
 
 export const checWaletConected = async () => {
 
-    if(!window.ethereum){
+    if (!window.ethereum) {
         return "notBlockchain"
     }
 
@@ -51,7 +51,7 @@ export const changeBlochainNetworkMetamas = async (ref) => {
     try {
         await web3Provider.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId:"0x1a4" }],
+            params: [{ chainId: "0x1a4" }],
         })
     } catch (error) {
         console.log("ocuurio un error")
@@ -65,12 +65,12 @@ export const changeBlochainNetworkMetamas = async (ref) => {
 export const getWaletData = async () => {
     const provider = await getProvider()
 
-    if(provider){
+    if (provider) {
         const signer = provider.getSigner()
         const addres = await signer.getAddress()
         const rawBalance = await signer.getBalance();
         const balance = Number(ethers.utils.formatEther(rawBalance))
-    
+
         return {
             addres,
             balance,
@@ -94,5 +94,25 @@ export const connetWalletMetamask = async () => {
         console.log('no hay provider')
         return null
     }
+
+}
+
+export const checkIsEqualAddres = async (id) => {
+
+    const provider = await getProvider()
+
+    if (provider) {
+        const signer = provider.getSigner()
+        const wallet = await signer.getAddress()
+
+        if (id === wallet) {
+            return true
+        }
+
+        return false
+
+    }
+
+    return null
 
 }

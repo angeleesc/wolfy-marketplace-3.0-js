@@ -38,7 +38,7 @@ export default function ExplorerNfts() {
     copies: 1,
     sale: 1,
     order: 5,
-    // sellerName: "angelxd sanche de la con",
+    
   };
 
   const getAllOrders = async () => {
