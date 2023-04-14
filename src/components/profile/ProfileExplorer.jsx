@@ -19,7 +19,7 @@ export default function ProfileExplorer() {
   const [userNftsOnWallet, setUserNftsOnWallet] = useState([]);
   const [loadind, setLoadind] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [walletAddres, setWalletAddres] = useState("");
+  const [setLastRefIdNftsOnWallet, setSetLastRefIdNftsOnWallet] = useState("");
 
   const mode = searchParams.get("mode");
   const type = searchParams.get("type");
@@ -39,8 +39,11 @@ export default function ProfileExplorer() {
 
     if (mode) {
       console.log("obteniondo las nfts del usuario sede la wallet");
-      const data = await getNftsByWallet();
-      console.log(data);
+      const data = await getNftsByWallet(id);
+      // setUserNftsOnWallet()
+      // console.log(data);
+      setUserNftsOnWallet(data.nfts);
+      if (data.pageKey) setSetLastRefIdNftsOnWallet(data.pageKey);
 
       return;
     }
@@ -93,7 +96,6 @@ export default function ProfileExplorer() {
     }
 
     // console.log(ordesByUsers);
-
     // seguidamente se obtine las nft segun el mosdo en esta caso hay dos modos los que estan dentro de la marketpplace y los que estan dentro de su billetera
   };
 
