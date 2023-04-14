@@ -174,3 +174,14 @@ export const markerOperation = {
     cancel: "cancelOrders"
 }
 
+// jpg|png|jpeg|webp|avif
+
+export const defTye = {
+    jpg: "image",
+    png: "image",
+    jpeg: "image",
+    webp: "image",
+    // avif: " image"
+
+
+}
