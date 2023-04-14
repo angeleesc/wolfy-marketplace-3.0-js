@@ -14,7 +14,7 @@
                 bottom  : 10px;
                 left    : 0;
                 padding : 0 10px;
-                z-index : 20;
+                z-index : 40;
 
                 .tooltip-box {
                     background-color: red !important;
@@ -41,21 +41,11 @@
 
                 }
 
+
                 .waller-nft-info {
                     background-color: theme("colors.wolf-gray-dark.400");
 
-                    .tokenId {
-                        min-width      : 30px;
-                        min-height     : 30px;
-                        display        : flex;
-                        justify-content: center;
-                        align-items    : center;
 
-                        span {
-                            display: block;
-                            padding: 5px;
-                        }
-                    }
 
                     // margin          : 0 10px;
                     width        : 100%;
@@ -77,8 +67,63 @@
                         color      : theme("colors.wolf-gray-light.1500");
                     }
 
+                    .token-id {
+                        background-color: theme("colors.wolf-blue-purple.500");
+                        position        : absolute;
+                        right           : 5px;
+                        bottom          : 5px;
+                        min-width       : 20px;
+                        min-height      : 20px;
+                        display         : flex;
+                        justify-content : center;
+                        align-items     : center;
+                        border-radius   : 10px;
+
+                        span {
+                            font-size  : 14px;
+                            font-weight: 600;
+                            padding    : 4px;
+                            display    : block;
+                            color      : theme("colors.wolf-gray-light.2000");
+
+                        }
+
+
+                    }
+
                 }
+
             }
+
+            .button-zone {
+                position        : absolute;
+                background-color: rgba($color: #171a1f, $alpha: 0.5);
+                backdrop-filter : blur(10px);
+                width           : 100%;
+                height          : 100%;
+                top             : 0;
+                left            : 0;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                border-radius   : 10px;
+                display         : flex;
+                justify-content : center;
+                flex-direction  : column;
+                align-items     : center;
+                padding         : 0 15px;
+                opacity         : 0;
+                transition      : opacity .5s;
+
+            }
+        }
+
+        &:hover {
+
+            .button-zone {
+                opacity: 1;
+            }
+
         }
 
     }

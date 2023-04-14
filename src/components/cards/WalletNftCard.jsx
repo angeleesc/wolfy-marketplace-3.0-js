@@ -86,6 +86,17 @@ export default function WalletNftCard({ nft }) {
               )}
             </div>
           </div>
+
+          <div className="button-zone">
+            <div className="flex  flex-col justify-center absolute top-[0px] w-[100%] h-[205px] px-[20px]">
+              <button className="wolf-buttom wolf-btn-primary-2 my-[10px]">
+                Poner en la Marketplace
+              </button>
+              <button className="wolf-buttom wolf-btn-primary-2 my-[10px]">
+                Ver Detarlle de la nft
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
