@@ -25,6 +25,8 @@ export default function ProfileExplorer() {
   const mode = searchParams.get("mode");
   const type = searchParams.get("type");
 
+
+
   const initt = async () => {
     console.log("iniciando");
 
@@ -131,7 +133,7 @@ export default function ProfileExplorer() {
 
   return (
     <div className="mt-[30px] px-[30px] min-[700px]:px-[60px] profile-explorer-box">
-      <ProfileExplorerMenu />
+      <ProfileExplorerMenu setMode={setSearchParams} />
       {!mode ? (
         <div className="mb-80px">
           <UserCardList nfts={userNftsOnMarketPlace} />
