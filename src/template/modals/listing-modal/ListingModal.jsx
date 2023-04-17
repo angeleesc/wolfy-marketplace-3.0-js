@@ -10,7 +10,7 @@ import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
 import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(-3);
+  const [stepProccess, setStepProccess] = useState(1);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -191,7 +191,7 @@ export default function ListingModal() {
 
               {stepProccess === -2 && (
                 <>
-                  <h4>No tiene estas En la blochain correcta</h4>
+                  <h4>No tiene estas En la blockhain correcta</h4>
                   <span>
                     para poner en venta la wallet debe estar en la mima
                     blockchain donde se encuentra la nft
@@ -205,6 +205,93 @@ export default function ListingModal() {
                       }}
                     >
                       <span>Cambiar de Blockchain</span>
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
+              {stepProccess === -1 && (
+                <>
+                  <h4>La blockchain no esta registrada en la wallet</h4>
+                  <span>
+                    es nesesario tener la blockchain asociada a la nfts al la
+                    wallet para hacer la operacion
+                  </span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      Agregar la Blockchain
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
+              {stepProccess === 0 && (
+                <>
+                  <h4>Fondo insufuciente</h4>
+                  <span>
+                    no tiene los fondos nesesario para hace la operacio
+                  </span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
+              {stepProccess === 1 && (
+                <>
+                  <h4>Datos para la venta</h4>
+                  <span>
+                    no tiene los fondos nesesario para hace la operacio
+                  </span>
+                  <span>Que deseas hacer</span>
+
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      Poner a la venta
                     </button>
                     <button
                       className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
