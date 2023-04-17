@@ -3,11 +3,16 @@ import WolfyModalLayoutReduxController from "../../../components/layout/WolfyMod
 import { closeModal, keyModalSate } from "../../../features/modals/modalsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { readyTosell3 } from "../../../controllers/makertPlaceSmarContractControllers";
-import { smartContracts } from "../../../helpers/global-constants";
+import { saleMethod, smartContracts } from "../../../helpers/global-constants";
 import wondering from "../../../static-images/wondering.png";
 import "./.lidting-modal.scss";
 import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
 import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
+import { Controller, useForm } from "react-hook-form";
+import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFieldInputGroup";
+import { preventScroll } from "../../../controllers/domController";
+import TagBlack from "../../../components/icons/TagBlack";
+import ClockBlack from "../../../components/icons/ClockBlack";
 
 export default function ListingModal() {
   const [stepProccess, setStepProccess] = useState(1);
@@ -19,6 +24,20 @@ export default function ListingModal() {
   console.log(modalData);
 
   const { contaract, tokenId, nftType, nftName, thumbnails } = modalData;
+  const {
+    reset,
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      salesMethod: saleMethod.sales,
+    },
+  });
+
+  const saleMethodWacth = watch("salesMethod");
 
   const dispatch = useDispatch();
 
@@ -31,12 +50,9 @@ export default function ListingModal() {
     console.log("operacion exitoxa listing modadl");
   };
 
-  {
-  }
-  // ventana para verificar si tiene metamas instalado
-  // ventana para verificar si esta en la blockchain de la nmft corrrecta
-  // ventana para verificar si tiene la blochain resgistrada en sun wallet
-  // ventana para verifica si tiene balance suficiente para hacer la transacion por ahora cero
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
 
   return (
     <WolfyModalLayoutReduxController
@@ -88,10 +104,11 @@ export default function ListingModal() {
                 <>
                   <h4>No tiene una wallet para hacer la transacion</h4>
                   <span>
-                    Para porder poner esta nft a la venta es nesesatio tene una
-                    wallet
+                    para hacel la operacion es nesecatio tene un servicio de
+                    wallet asociado
                   </span>
-                  <span>Que deseas hacer</span>
+                  <span>que deseas hacer</span>
+
                   <div>
                     <button
                       className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
@@ -279,10 +296,73 @@ export default function ListingModal() {
               {stepProccess === 1 && (
                 <>
                   <h4>Datos para la venta</h4>
-                  <span>
-                    no tiene los fondos nesesario para hace la operacio
-                  </span>
-                  <span>Que deseas hacer</span>
+                  <form className="wolf-form">
+                    <div className="wolft-form-control-label mb-[10px]">
+                      <span>Metodo de operacion</span>
+                    </div>
+
+                    <Controller
+                      control={control}
+                      name="salesMethod"
+                      render={({ field: { onChange, value: lValue } }) => {
+                        return (
+                          <div className="grid grid-cols-2">
+                            <button
+                              className="boton-group-box "
+                              type="button"
+                              onClick={() => {
+                                onChange(saleMethod.sales);
+                              }}
+                            >
+                              <div
+                                className={`botom-group-body ${
+                                  lValue === saleMethod.sales &&
+                                  "boton-box-active"
+                                }`}
+                              >
+                                <h4>Precio fijo</h4>
+                                <TagBlack />
+                              </div>
+                            </button>
+                            {/* <button
+                              className="boton-group-box"
+                              type="button"
+                              onClick={() => {
+                                onChange(saleMethod.auction);
+                              }}
+                            >
+                              <div
+                                className={`botom-group-body ${
+                                  lValue === saleMethod.auction &&
+                                  "boton-box-active"
+                                }  `}
+                              >
+                                <h4>Subasta</h4>
+                                <ClockBlack />
+                              </div>
+                            </button> */}
+                          </div>
+                        );
+                      }}
+                    />
+
+                    <TextFieldInputGroup
+                      textLabel={
+                        saleMethodWacth === saleMethod.auction
+                          ? "Puja Minima *"
+                          : "Precio *"
+                      }
+                      info={"Colloca el precio establecido"}
+                      register={register("nftPrice")}
+                      type="number"
+                      step="0.00000001"
+                      onWheel={preventScroll}
+                      placeholder="Ej 0.05"
+                      errorMessage={
+                        errors.nftPrice ? errors.nftPrice.message : ""
+                      }
+                    />
+                  </form>
 
                   <div>
                     <button
