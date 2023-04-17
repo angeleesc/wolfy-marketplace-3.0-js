@@ -21,7 +21,7 @@ import Fail from "../../../components/icons/Fail";
 import WolfSad from "../../../components/icons/WolfSad";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(3);
+  const [stepProccess, setStepProccess] = useState(4);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -444,7 +444,7 @@ export default function ListingModal() {
               {stepProccess === 3 && (
                 <>
                   <h4 className="fail-transation">Operacion fallida</h4>
-                  <span>ocurrio un eero duante la operacion</span>
+                  <span>ocurrio un error duante la operacion</span>
                   <span>Que deseas hacer</span>
                   <div>
                     <button
