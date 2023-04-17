@@ -135,4 +135,32 @@
 
         }
     }
+
+    .step-listing-process {
+        display        : flex;
+        align-items    : center;
+        margin         : 10px 0;
+        justify-content: space-between;
+
+        .progress {
+            width           : 30px;
+            height          : 30px;
+            // background-color: red;
+            position        : relative;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+
+            .circular-progress {
+                position       : absolute;
+                width          : 30px;
+                height         : 30px;
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                overflow       : hidden;
+
+            }
+        }
+    }
 }

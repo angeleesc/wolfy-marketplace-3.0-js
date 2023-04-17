@@ -15,9 +15,12 @@ import TagBlack from "../../../components/icons/TagBlack";
 import ClockBlack from "../../../components/icons/ClockBlack";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
+import { CircularProgress } from "@mui/material";
+import Check from "../../../components/icons/Check";
+import Fail from "../../../components/icons/Fail";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(1);
+  const [stepProccess, setStepProccess] = useState(2);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -43,7 +46,7 @@ export default function ListingModal() {
     defaultValues: {
       salesMethod: saleMethod.sales,
     },
-    resolver
+    resolver,
   });
 
   const saleMethodWacth = watch("salesMethod");
@@ -395,6 +398,43 @@ export default function ListingModal() {
                       </button>
                     </div>
                   </form>
+                </>
+              )}
+              {stepProccess === 2 && (
+                <>
+                  <h4>Procesando</h4>
+                  <div className="step-listing-process">
+                    <div className="text">
+                      <span>aprovando la ransacion</span>
+                    </div>
+                    <div className="progress">
+                      <div className="circular-progress">
+                        <CircularProgress size={25} />
+                      </div>
+                      <div className="circular-progress">
+                        <Check />
+                      </div>
+                      <div className="circular-progress">
+                        <Fail />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="step-listing-process">
+                    <div className="text">
+                      <span>poniendolo a la venta</span>
+                    </div>
+                    <div className="progress">
+                      <div className="circular-progress">
+                        <CircularProgress size={25} />
+                      </div>
+                      <div className="circular-progress">
+                        <Check />
+                      </div>
+                      <div className="circular-progress">
+                        <Fail />
+                      </div>
+                    </div>
+                  </div>
                 </>
               )}
             </div>
