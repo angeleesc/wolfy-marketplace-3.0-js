@@ -12,6 +12,7 @@ import UserWalletCardList from "../list/UserWalletCardList";
 import { getOrdersByWalletAddres } from "../../controllers/firebaseControllers";
 import { saleMethod } from "../../helpers/global-constants";
 import { getNftsByWallet } from "../../controllers/alchemyController";
+import worderin from "../../static-images/wondering.png";
 
 export default function ProfileExplorer() {
   const { id } = useParams();
@@ -76,16 +77,41 @@ export default function ProfileExplorer() {
 
     if (ordesByUsers.isSuccess && ordesByUsers.hasData) {
       const dataToSend = ordesByUsers.orders.map((orderData) => {
+        let nftCover;
+
+        if (orderData) {
+          nftCover = {
+            ...(orderData.metadata && orderData.metadata.nftName
+              ? { nftName: orderData.metadata.nftName }
+              : { nftName: "desconocido" }),
+            ...(orderData.metadata && orderData.metadata.thumbnail
+              ? { nftCover: orderData.metadata.thumbnail }
+              : orderData.metadata.image
+              ? { nftCover: orderData.metadata.image }
+              : { nftCover: worderin }),
+            ...(orderData.metadata && orderData.metadata.contractType
+              ? { contractType: orderData.metadata.contractType }
+              : {}),
+            price: orderData.price,
+            colection: orderData.colection,
+            sale: orderData.onSale,
+            onSale: orderData.onSale,
+            orderId: orderData.orderId,
+            selleror: orderData.seller,
+            listingAt: orderData.listingAt,
+            ...(orderData.sellerName
+              ? { sellerName: orderData.sellerName }
+              : {}),
+            saleMethod: orderData.saleMethod,
+            ...(orderData.collectionFace
+              ? { collectionFace: orderData.collectionFace }
+              : {}),
+          };
+        }
+
         return {
           ...tempData,
-          ...orderData,
-          ...(orderData.metadata
-            ? {
-                nftName: orderData.metadata.nftName
-                  ? orderData.metadata.nftName
-                  : "no",
-              }
-            : { nftName: "desconocido" }),
+          ...nftCover,
           ...(walletLog ? { walletLog } : {}),
         };
       });
