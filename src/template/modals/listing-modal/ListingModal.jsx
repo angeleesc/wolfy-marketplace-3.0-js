@@ -10,7 +10,7 @@ import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
 import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(-4);
+  const [stepProccess, setStepProccess] = useState(-3);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -120,10 +120,9 @@ export default function ListingModal() {
                 </>
               )}
 
-              {
-                stepProccess === -4 && (
-                  <>
-                        <h4>No tiene estas conectado a una Walllet</h4>
+              {stepProccess === -4 && (
+                <>
+                  <h4>No tiene estas conectado a una Walllet</h4>
                   <span>
                     Para porder poner esta nft a la venta es nesesatio tene una
                     wallet
@@ -154,9 +153,74 @@ export default function ListingModal() {
                       Cancelar
                     </button>
                   </div>
-                  </>
-                )
-              }
+                </>
+              )}
+
+              {stepProccess === -3 && (
+                <>
+                  <h4>No tiene estas En la blochain correcta</h4>
+                  <span>
+                    para poner en venta la wallet debe estar en la mima
+                    blockchain donde se encuentra la nft
+                  </span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      <span>Cambiar de Blockchain</span>
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {stepProccess === -2 && (
+                <>
+                  <h4>No tiene estas En la blochain correcta</h4>
+                  <span>
+                    para poner en venta la wallet debe estar en la mima
+                    blockchain donde se encuentra la nft
+                  </span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      <span>Cambiar de Blockchain</span>
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
