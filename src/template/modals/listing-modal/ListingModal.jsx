@@ -18,9 +18,10 @@ import { useYupValidationResolver } from "../../../global-hook/useYupValidatonRe
 import { CircularProgress } from "@mui/material";
 import Check from "../../../components/icons/Check";
 import Fail from "../../../components/icons/Fail";
+import WolfSad from "../../../components/icons/WolfSad";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(2);
+  const [stepProccess, setStepProccess] = useState(3);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -81,6 +82,9 @@ export default function ListingModal() {
                 <div className="multimedia-zone relative">
                   <div className="blockChain-logo">
                     <OptimismOficialLogo size="25" />
+                  </div>
+                  <div className="fail-fillter">
+                    <WolfSad size="80" />
                   </div>
                   {thumbnails ? (
                     <img src={thumbnails} alt="thunails-nft" />
@@ -434,6 +438,56 @@ export default function ListingModal() {
                         <Fail />
                       </div>
                     </div>
+                  </div>
+                </>
+              )}
+              {stepProccess === 3 && (
+                <>
+                  <h4 className="fail-transation">Operacion fallida</h4>
+                  <span>ocurrio un eero duante la operacion</span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      Intentar nuevamaen
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
+              {stepProccess === 4 && (
+                <>
+                  <h4 className="fail-transation">Operacion Exitoza</h4>
+                  <span>Tu nft es a la venta en nuestra plataforma</span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Finalizar
+                    </button>
                   </div>
                 </>
               )}

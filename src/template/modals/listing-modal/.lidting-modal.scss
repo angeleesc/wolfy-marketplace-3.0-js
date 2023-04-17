@@ -3,6 +3,21 @@
     max-height: 100vh;
     overflow  : auto;
 
+
+    .fail-fillter {
+        position        : absolute;
+        top             : 0;
+        left            : 0;
+        background-color: rgba(#4e5667, .5);
+        backdrop-filter : blur(5px);
+        width           : 100%;
+        height          : 100%;
+        border-radius   : 5px;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+    }
+
     .listing-modal-header {
 
         background-color: theme("colors.wolf-gray-dark.600");
@@ -26,6 +41,7 @@
 
             .blockChain-logo {
                 position: absolute;
+                z-index : 10;
                 right   : -10px;
                 top     : -10px;
             }
@@ -143,13 +159,13 @@
         justify-content: space-between;
 
         .progress {
-            width           : 30px;
-            height          : 30px;
+            width              : 30px;
+            height             : 30px;
             // background-color: red;
-            position        : relative;
-            display         : flex;
-            justify-content : center;
-            align-items     : center;
+            position           : relative;
+            display            : flex;
+            justify-content    : center;
+            align-items        : center;
 
             .circular-progress {
                 position       : absolute;
@@ -162,5 +178,9 @@
 
             }
         }
+    }
+
+    .fail-transation {
+        color: theme("colors.wollf-red.400") !important;
     }
 }
