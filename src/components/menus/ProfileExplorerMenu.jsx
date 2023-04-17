@@ -1,7 +1,7 @@
 import React from "react";
 import "./explorer-menu-profile.scss";
 
-export default function ProfileExplorerMenu({ setMode }) {
+export default function ProfileExplorerMenu({ setMode, mode }) {
   return (
     <div className="profile-menu mb-[15px]">
       <div className="nfts-section">

@@ -1,9 +1,11 @@
-.profile-menu{
-    height: 60px;
-    width: 100%;
+.profile-menu {
+    height          : 60px;
+    width           : 100%;
     background-color: theme("colors.wolf-gray-dark.400");
+    position        : sticky;
+    top             : 80px;
+    z-index         : 500;
 
-    span{
-        
-    }
+
+    span {}
 }
