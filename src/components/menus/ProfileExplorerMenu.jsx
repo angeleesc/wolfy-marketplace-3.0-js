@@ -6,6 +6,7 @@ export default function ProfileExplorerMenu({ setMode, mode }) {
     <div className="profile-menu mb-[15px]">
       <div className="nfts-section">
         <button
+          className="wolf-buttom wolf-btn-secondary-traparent"
           onClick={() => {
             setMode({});
           }}
@@ -13,12 +14,15 @@ export default function ProfileExplorerMenu({ setMode, mode }) {
           Marketplace
         </button>
         <button
-        onClick={()=>{
-          setMode({
-            mode:"wallet"
-          })
-        }}
-        >walllet</button>
+          className="wolf-buttom wolf-btn-secondary-traparent"
+          onClick={() => {
+            setMode({
+              mode: "wallet",
+            });
+          }}
+        >
+          walllet
+        </button>
       </div>
     </div>
   );

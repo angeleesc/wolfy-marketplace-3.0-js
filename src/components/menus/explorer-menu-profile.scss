@@ -5,6 +5,26 @@
     position        : sticky;
     top             : 80px;
     z-index         : 500;
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+    padding         : 0 30px;
+
+    .wolf-btn-secondary-traparent {
+        border-radius   : 5px;
+        // border       : 1px solid theme("colors.wolf-gray-dark.600");wolf-btn-secondary-traparent
+        background-color: theme("colors.wolf-gray-dark.700");
+        margin          : 0 5px;
+        padding         : 8px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
 
 
     span {}

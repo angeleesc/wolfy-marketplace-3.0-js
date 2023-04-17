@@ -770,7 +770,7 @@ export default function ProfileExplorer() {
   }, [mode]);
 
   return (
-    <div className="mt-[30px] px-[30px] min-[700px]:px-[60px] profile-explorer-box">
+    <div className="mt-[30px] px-[30px] min-[700px]:px-[30px] profile-explorer-box">
       <ProfileExplorerMenu setMode={setSearchParams} mode={mode} />
       {!mode ? (
         <div className="mb-80px">
