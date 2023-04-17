@@ -10,7 +10,7 @@ import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
 import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(-5);
+  const [stepProccess, setStepProccess] = useState(-4);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -119,12 +119,50 @@ export default function ListingModal() {
                   </div>
                 </>
               )}
+
+              {
+                stepProccess === -4 && (
+                  <>
+                        <h4>No tiene estas conectado a una Walllet</h4>
+                  <span>
+                    Para porder poner esta nft a la venta es nesesatio tene una
+                    wallet
+                  </span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      <span className="pr-[15px] block">
+                        <MetamaskOficialLgo size={"20"} />
+                      </span>
+                      <span>Conectar metamas</span>
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                  </>
+                )
+              }
             </div>
           </div>
 
-          <button className="" onClick={goToSell}>
+          {/* <button className="" onClick={goToSell}>
             poner en venta
-          </button>
+          </button> */}
         </div>
       )}
     </WolfyModalLayoutReduxController>
