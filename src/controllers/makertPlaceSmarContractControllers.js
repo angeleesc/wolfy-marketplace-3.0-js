@@ -166,6 +166,21 @@ export const getEstimatedGastxd = async (operation, options) => {
 
 }
 
+export const readyTosell3 = async (_tokensId, price, contract) => {
+  const contrat = await connectMarketContact();
+  const ethPrice = ethers.utils.parseEther(price);
+
+  const transaction = await contrat.readyToSellToken(
+    _tokensId,
+    _tokensId.length,
+    ethPrice,
+    0,
+    smartContracts.ERC721UUPS
+  );
+  const result = await transaction.wait();
+  console.log(result);
+};
+
 export const buyToken = async (orden, cantidad, price) => {
   let c = cantidad;
   if (typeof c === "number") c = c.toString();
@@ -176,6 +191,8 @@ export const buyToken = async (orden, cantidad, price) => {
   const transaction = await request.wait();
   console.log("transaciuon exitosa")
 };
+
+
 
 export const getEstimateGasBuyToken = async (orden, cantidad, price) => {
   let c = cantidad;

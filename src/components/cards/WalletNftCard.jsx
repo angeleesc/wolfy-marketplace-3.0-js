@@ -3,16 +3,21 @@ import "./walllet-card.scss";
 import { WolfTooltipNotButton } from "../tooltip/WolfTooltipNotButton";
 import WolfTooltip from "../tooltip/WolfTooltip";
 import { staticRoutes } from "../../helpers/static-routes";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isImageFormatCompatible } from "../../helpers/regEx";
 import { defTye } from "../../helpers/global-constants";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { Tooltip } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
 
 export default function WalletNftCard({ nft }) {
   // descubrimos el formto de la metadad
 
   // console.log(nft);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     collection,
@@ -71,7 +76,12 @@ export default function WalletNftCard({ nft }) {
                   placement="top"
                   arrow
                 >
-                  <button className="colleciotn-b">
+                  <button
+                    className="colleciotn-b"
+                    onClick={() => {
+                      navigate(staticRoutes.colectionInfoData(collection));
+                    }}
+                  >
                     {colectionFace ? <div></div> : <WolfIdentidcon size={42} />}
                   </button>
                 </WolfTooltip>
@@ -89,7 +99,21 @@ export default function WalletNftCard({ nft }) {
 
           <div className="button-zone">
             <div className="flex  flex-col justify-center absolute top-[0px] w-[100%] h-[205px] px-[20px]">
-              <button className="wolf-buttom wolf-btn-primary-2 my-[10px]">
+              <button
+                className="wolf-buttom wolf-btn-primary-2 my-[10px]"
+                onClick={() => {
+                  dispatch(
+                    openModal({
+                      modal: keyModalSate.listingModal,
+                      data: {
+                        contaract: collection,
+                        tokenId,
+                        nftType,
+                      },
+                    })
+                  ); // dispatch(=)
+                }}
+              >
                 Poner en la Marketplace
               </button>
               <button className="wolf-buttom wolf-btn-primary-2 my-[10px]">

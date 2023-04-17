@@ -5,11 +5,11 @@ import { ethers } from 'ethers'
 export const getProvider = async () => {
 
     if (window.ethereum) {
-        console.log('tiene metamas')
+        // console.log('tiene metamas')
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         return provider
     }
-    console.log("no hay provider")
+    // console.log("no hay provider")
     return null
 }
 

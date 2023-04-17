@@ -84,7 +84,11 @@ export default function NftCard({ cardData }) {
                     className="w-[100%] h-[100%] block"
                     to={staticRoutes.colectionInfoData(colection)}
                   >
-                    <img src={collectionFace} alt="collection-face-photo" />
+                    {collectionFace ? (
+                      <img src={collectionFace} alt="collection-face-photo" />
+                    ) : (
+                      <WolfIdentidcon size={42} />
+                    )}
                   </Link>
                 </div>
               </WolfTooltipNotButton>
@@ -116,7 +120,7 @@ export default function NftCard({ cardData }) {
                         nftName,
                         saleMethod,
                         walletLog,
-                        seller
+                        seller,
                       },
                     })
                   );
