@@ -10,6 +10,8 @@ import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { Tooltip } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
+import { TbFileDatabase } from "react-icons/tb";
+import OptimismOficialLogo from "../icons/OptimismOficialLogo";
 
 export default function WalletNftCard({ nft }) {
   // descubrimos el formto de la metadad
@@ -19,6 +21,8 @@ export default function WalletNftCard({ nft }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // console.log(nft);
+
   const {
     collection,
     collectionName,
@@ -26,18 +30,21 @@ export default function WalletNftCard({ nft }) {
     nftName,
     nftType,
     colectionFace,
+    chainId,
     tokenId,
+    blockChainNetowork,
   } = nft;
   // console.log(thumbnails[0].format);
 
   console.log(thumbnails[0].format);
   const fileType = defTye[thumbnails[0].format];
-  console.log(fileType);
+  // console.log(fileType);
 
   return (
     <div className="nft-card-container">
       <div className="card-body wallet-card">
         <div className="multimedia-secction">
+ 
           {thumbnails &&
             (fileType ? (
               fileType === "image" ? (
@@ -109,6 +116,12 @@ export default function WalletNftCard({ nft }) {
                         contaract: collection,
                         tokenId,
                         nftType,
+                        nftName,
+                        chainId,
+                        blockChainNetowork,
+                        ...(thumbnails
+                          ? { thumbnails: thumbnails[0].url }
+                          : {}),
                       },
                     })
                   ); // dispatch(=)
