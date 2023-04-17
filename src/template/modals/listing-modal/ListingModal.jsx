@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
-import { keyModalSate } from "../../../features/modals/modalsSlice";
+import { closeModal, keyModalSate } from "../../../features/modals/modalsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { readyTosell3 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { smartContracts } from "../../../helpers/global-constants";
 import wondering from "../../../static-images/wondering.png";
 import "./.lidting-modal.scss";
 import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
+import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
 
 export default function ListingModal() {
+  const [stepProccess, setStepProccess] = useState(-5);
+
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
   );
@@ -28,6 +31,8 @@ export default function ListingModal() {
     console.log("operacion exitoxa listing modadl");
   };
 
+  {
+  }
   // ventana para verificar si tiene metamas instalado
   // ventana para verificar si esta en la blockchain de la nmft corrrecta
   // ventana para verificar si tiene la blochain resgistrada en sun wallet
@@ -77,6 +82,43 @@ export default function ListingModal() {
                   </p> */}
                 </div>
               </div>
+            </div>
+            <div className="listing-modal-content">
+              {stepProccess === -5 && (
+                <>
+                  <h4>No tiene una wallet para hacer la transacion</h4>
+                  <span>
+                    Para porder poner esta nft a la venta es nesesatio tene una
+                    wallet
+                  </span>
+                  <span>Que deseas hacer</span>
+                  <div>
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                      onClick={() => {
+                        window.open("https://metamask.io/");
+                      }}
+                    >
+                      <span className="pr-[15px] block">
+                        <MetamaskOficialLgo size={"20"} />
+                      </span>
+                      <span>Instalar metamas (recomendado)</span>
+                    </button>
+                    <button
+                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.listingModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
