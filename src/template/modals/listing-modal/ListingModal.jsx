@@ -13,6 +13,8 @@ import TextFieldInputGroup from "../../../components/form-controls/inputs/TextFi
 import { preventScroll } from "../../../controllers/domController";
 import TagBlack from "../../../components/icons/TagBlack";
 import ClockBlack from "../../../components/icons/ClockBlack";
+import * as yup from "yup";
+import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 
 export default function ListingModal() {
   const [stepProccess, setStepProccess] = useState(1);
@@ -22,6 +24,12 @@ export default function ListingModal() {
   );
 
   console.log(modalData);
+
+  const listingValidationSchema = yup.object({
+    nftPrice: yup.string().required("El precio es requerido"),
+  });
+
+  const resolver = useYupValidationResolver(listingValidationSchema);
 
   const { contaract, tokenId, nftType, nftName, thumbnails } = modalData;
   const {
@@ -35,6 +43,7 @@ export default function ListingModal() {
     defaultValues: {
       salesMethod: saleMethod.sales,
     },
+    resolver
   });
 
   const saleMethodWacth = watch("salesMethod");
@@ -51,6 +60,7 @@ export default function ListingModal() {
   };
 
   const onSubmit = async (data) => {
+    console.log("vendido");
     console.log(data);
   };
 
@@ -296,9 +306,9 @@ export default function ListingModal() {
               {stepProccess === 1 && (
                 <>
                   <h4>Datos para la venta</h4>
-                  <form className="wolf-form">
+                  <form className="wolf-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="wolft-form-control-label mb-[10px]">
-                      <span>Metodo de operacion</span>
+                      <span>Tippo de venta</span>
                     </div>
 
                     <Controller
@@ -362,30 +372,29 @@ export default function ListingModal() {
                         errors.nftPrice ? errors.nftPrice.message : ""
                       }
                     />
-                  </form>
 
-                  <div>
-                    <button
-                      className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
-                      onClick={() => {
-                        window.open("https://metamask.io/");
-                      }}
-                    >
-                      Poner a la venta
-                    </button>
-                    <button
-                      className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
-                      onClick={() => {
-                        dispatch(
-                          closeModal({
-                            modal: keyModalSate.listingModal,
-                          })
-                        );
-                      }}
-                    >
-                      Cancelar
-                    </button>
-                  </div>
+                    <div className="mt-[15px]">
+                      <button
+                        className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
+                        type="submit"
+                      >
+                        Poner a la venta
+                      </button>
+                      <button
+                        className="wolf-buttom wolf-btn-secondary-traparent mt-3 text-center w-[100%]"
+                        type="button"
+                        onClick={() => {
+                          dispatch(
+                            closeModal({
+                              modal: keyModalSate.listingModal,
+                            })
+                          );
+                        }}
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </form>
                 </>
               )}
             </div>

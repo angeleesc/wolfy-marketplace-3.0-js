@@ -1,5 +1,8 @@
 .listing-modal-body {
 
+    max-height: 100vh;
+    overflow  : auto;
+
     .listing-modal-header {
 
         background-color: theme("colors.wolf-gray-dark.600");
@@ -110,6 +113,26 @@
 
         span {
             text-align: left;
+        }
+
+        .boton-group-box {
+
+            .botom-group-body {
+                // background-color: red;
+                min-height: 80px;
+
+                h4 {
+                    font-size  : 14px;
+                    font-weight: 600;
+                }
+
+                svg {
+                    width : 25px;
+                    height: 25px;
+                }
+
+            }
+
         }
     }
 }
