@@ -248,7 +248,6 @@ export const readyTosellHttp = async (_tokensId, price) => {
     // console.log("nftAddress", nftAddress)
     // console.log("order", order_.toString())
 
-    const endpointUrl = serverListenerNodeRootPath.local + serverListenerNodeEnpoind.marketV1.pos
     const datataToSent = {
       seller,
       nftAddress,
