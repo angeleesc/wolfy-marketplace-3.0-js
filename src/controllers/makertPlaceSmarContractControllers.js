@@ -236,9 +236,14 @@ export const readyTosellHttp = async (_tokensId, price) => {
   );
   const result = await transaction.wait();
 
+  console.log(result)
+
   // console.log(result.events[2]);
   if (result.events[2].args) {
     // console.log("si hay evento")
+
+    console.log(result.events[2].args)
+
     const {
       seller,
       nftAddress,
@@ -294,11 +299,28 @@ export const cancelOderHttp = async (orderId) => {
 
 };
 
+// export const goToSell = async (tokensIds, price) => {
+
+//   try {
+
+//     const data = await readyTosellHttp(tokensIds, price)
+//     await axios.post("http://localhost:5001/api/v1/makertplace", data)
+//     return {
+//       isSuccess: true
+//     }
+//   } catch (error) {
+//     return {
+//       isSuccess: false
+//     }
+//   }
+
+// }
+
 export const goToSell = async (tokenId, price) => {
 
   const data = await readyTosellHttp(tokenId, price)
   // console.log("recibido")
-  // console.log(data)
+  console.log(data)
   await axios.post("http://localhost:5001/api/v1/makertplace", data)
 
 }

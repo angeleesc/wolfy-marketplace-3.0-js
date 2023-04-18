@@ -34,13 +34,20 @@ export const safewMint = async (url) => {
   try {
     const result = await contract.safeMint(account, url);
     const data = await result.wait();
-    console.log(data);
+    console.log(data)
+
+
+
+    // console.log(tokenId);
 
     return {
-      isSucces: true
+      isSucces: true,
+      // tokenId
     }
 
   } catch (error) {
+
+    console.log(error)
 
     return {
       isSucces: false
@@ -52,6 +59,31 @@ export const safewMint = async (url) => {
   //   console.log(symbol);
   //   console.log("acunado exitoso");
 };
+
+
+export const safeMintBatch = async (metadatas) => {
+
+  const { contract, account } = await connectErc721Ups()
+
+  try {
+    const result = await contract.safeMintBatch(account, metadatas)
+    const transaction = await result.wait()
+    console.log(transaction)
+    // const transactionInfo = await transaction.getTransaction()
+
+    console.log("transancion")
+    console.log(transaction.events[1].args.tokenId.toString())
+
+    const tokenId = transaction.events[1].args.tokenId.toString()
+    return tokenId
+
+  } catch (error) {
+    console.log(error)
+    return null
+
+  }
+
+}
 
 export const getTokensIds = async () => {
   const { contract, account } = await connectErc721Ups();

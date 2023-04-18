@@ -19,9 +19,11 @@ import {
   getSymbol,
   getTokensIds,
   safeMint,
+  safeMintBatch,
   safewMint,
 } from "../../../controllers/ERC721Controllers";
 import {
+  goToSell,
   readyToSell2,
   readyToSelltoken,
 } from "../../../controllers/makertPlaceSmarContractControllers";
@@ -69,6 +71,18 @@ export default function MintModal() {
 
   const { metadataFile, ...rest } = fileContext.curentfile;
 
+  const updateMintStatusMint = (value) => {
+    setStepSafeMintSatus(value);
+  };
+
+  const updateAprovetransactionStatus = (value) => {
+    setstepAprovetransactionStatus(value);
+  };
+
+  const updateListingStatus = (value) => {
+    setStepListingStatus(value);
+  };
+
   const starMinpres = async () => {
     const dataformated = fromMatMinData(rest);
     // console.log(dataformated);
@@ -76,57 +90,27 @@ export default function MintModal() {
     setStepProcess(1);
 
     // obtenemos la url del archivo json de la metadata
-    const ipfsUrlMetadata = await uploadFileToIpfs(
-      metadataFile,
-      dataformated,
-      setFileProgres
-    );
+    // const ipfsUrlMetadata = await uploadFileToIpfs(
+    //   metadataFile,
+    //   dataformated,
+    //   setFileProgres
+    // );
 
-    if (!ipfsUrlMetadata.isSucces) {
-      setStepProcess(2);
-      return;
-    }
-    setStepSafeMint(true);
-    const checkIsSuccessSafeMint = await safewMint(ipfsUrlMetadata.url);
-    if (!checkIsSuccessSafeMint.isSucces) {
-      setStepSafeMintSatus(stateProcessMint.fail);
-      // await retardante(2000);
-      setStepProcess(2);
-      return;
+    // if (!ipfsUrlMetadata.isSucces) {
+    //   setStepProcess(2);
+    //   return;
+    // }
+    // setStepSafeMint(true);
+
+   
+    if(true){
+      const res = await goToSell(['79'], "0.00035")
     }
 
-    setStepSafeMintSatus(stateProcessMint.success);
+   
 
-    if (rest.isPutOnMarketplace === true) {
-      console.log("se ponde en venta");
 
-      setStepAproveTransaction(true);
-      const checkIsSuccessAprove = await aporveTransaction();
-      if (!checkIsSuccessAprove.isSucces) {
-        setStepCreateCollectionStatus(stateProcessMint.fail);
-        setStepProcess(2);
-        return;
-      }
-
-      setStepCreateCollectionStatus(stateProcessMint.success);
-      setStepListinMakePlace(true);
-      const checkIsListingInMarketplace = await readyToSell2(rest.nftPrice);
-      if (!checkIsListingInMarketplace) {
-        setStepListingStatus(stateProcessMint.fail);
-        return;
-      }
-
-      setStepListingStatus(stateProcessMint.success);
-      // await retardante(2000);
-      setStepProcess(3);
-
-      // return;
-    }
-
-    console.log("no se pondra en venta");
-    setStepProcess(3);
-
-    // if()
+  
   };
 
   const conectMetamas = async () => {
