@@ -27,22 +27,47 @@ export const connectErc721Ups = async () => {
   return null;
 };
 
-export const safewMint = async (url) => {
+export const safeMint = async (url) => {
   const { contract, account } = await connectErc721Ups();
   console.log(account);
 
   try {
     const result = await contract.safeMint(account, url);
     const data = await result.wait();
-    console.log(data)
+
+    if (data.events) {
+
+      const event = data.events.filter((eventI) => {
+        if (eventI.args) {
+          return eventI
+        }
+      })
+
+      if (event.length && event.length > 0) {
+
+
+        console.log(event[0].args)
+        const { tokenId } = event[0].args
+
+        if (tokenId) {
+          return {
+            isSucces: true,
+            hasTokenId: true,
+            tokenId: tokenId.toString()
+          }
+        }
+
+
+      }
 
 
 
-    // console.log(tokenId);
+    }
 
+    // console.log(data)
     return {
       isSucces: true,
-      // tokenId
+      hasEventData: false
     }
 
   } catch (error) {
@@ -67,19 +92,22 @@ export const safeMintBatch = async (metadatas) => {
 
   try {
     const result = await contract.safeMintBatch(account, metadatas)
-    const transaction = await result.wait()
-    console.log(transaction)
-    // const transactionInfo = await transaction.getTransaction()
+    const data = await result.wait()
+    console.log(data)
 
-    console.log("transancion")
-    console.log(transaction.events[1].args.tokenId.toString())
 
-    const tokenId = transaction.events[1].args.tokenId.toString()
-    return tokenId
+    return {
+      isSucces: true,
+    }
+
+
 
   } catch (error) {
     console.log(error)
-    return null
+    return {
+      isSucces: false,
+      reason: "Ocurrion un error en la blockchain"
+    }
 
   }
 

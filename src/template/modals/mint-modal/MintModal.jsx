@@ -90,27 +90,34 @@ export default function MintModal() {
     setStepProcess(1);
 
     // obtenemos la url del archivo json de la metadata
-    // const ipfsUrlMetadata = await uploadFileToIpfs(
-    //   metadataFile,
-    //   dataformated,
-    //   setFileProgres
-    // );
+    const ipfsUrlMetadata = await uploadFileToIpfs(
+      metadataFile,
+      dataformated,
+      setFileProgres
+    );
 
-    // if (!ipfsUrlMetadata.isSucces) {
-    //   setStepProcess(2);
-    //   return;
-    // }
-    // setStepSafeMint(true);
+    if (!ipfsUrlMetadata.isSucces) {
+      setStepProcess(2);
+      return;
+    }
+    setStepSafeMint(true);
 
-   
-    if(true){
-      const res = await goToSell(['79'], "0.00035")
+    const metadatas = []
+
+    for(let i = 0 ; i < Number(rest.amount); i++){
+      metadatas.push(ipfsUrlMetadata.url)
     }
 
-   
+    const mintResult = await safeMintBatch(metadatas);
+    if (!mintResult.isSucces) {
+      updateMintStatusMint(stateProcessMint.fail);
+      setStepProcess(2);
+      return;
+    }
 
-
-  
+    if (true) {
+      // const res = await goToSell(['79'], "0.00035")
+    }
   };
 
   const conectMetamas = async () => {
