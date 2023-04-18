@@ -3,6 +3,7 @@ import ERC721UUPSabi from "../abi/ERC721UUPS";
 import marketAbI from "../abi/marketplace";
 import { markerOperation, smartContracts } from "../helpers/global-constants";
 import { getProvider } from "./Web3Controllers";
+import axios from "axios";
 
 
 export const connectMarketContact = async (blockChain) => {
@@ -220,3 +221,136 @@ export const cancelOder = async (orderId) => {
   const transaction = await marketContrac.cancelSellToken(orderId);
   const receipt = await transaction.wait();
 };
+
+
+export const readyTosellHttp = async (_tokensId, price) => {
+  const contrat = await connectMarketContact();
+  const ethPrice = ethers.utils.parseEther(price);
+
+  const transaction = await contrat.readyToSellToken(
+    _tokensId,
+    _tokensId.length,
+    ethPrice,
+    0,
+    smartContracts.ERC721UUPS
+  );
+  const result = await transaction.wait();
+
+  // console.log(result.events[2]);
+  if (result.events[2].args) {
+    // console.log("si hay evento")
+    const {
+      seller,
+      nftAddress,
+      order_ } = result.events[2].args
+
+    // console.log("seller", seller)
+    // console.log("nftAddress", nftAddress)
+    // console.log("order", order_.toString())
+
+    const endpointUrl = serverListenerNodeRootPath.local + serverListenerNodeEnpoind.marketV1.pos
+    const datataToSent = {
+      seller,
+      nftAddress,
+      order: order_.toString()
+    }
+
+    // console.log(endpointUrl)
+    // console.log(datataToSent)
+
+    return datataToSent
+  }
+
+};
+
+
+export const cancelOderHttp = async (orderId) => {
+  const provider = await getProvider();
+  const signer = provider.getSigner();
+  const marketContrac = new ethers.Contract(
+    smartContracts.market,
+    marketAbI,
+    signer
+  );
+  const transaction = await marketContrac.cancelSellToken(orderId);
+  const receipt = await transaction.wait();
+
+  if (receipt.events[2].args) {
+
+    // console.log("si hay evento")
+    // console.log(receipt.events[2].args)
+    const { nftAddress, order_, seller } = receipt.events[2].args
+
+    return {
+      ...(nftAddress ? { nftAddress } : {}),
+      ...(order_ ? { order: order_.toString() } : {}),
+      ...(seller ? { seller } : { seller })
+    }
+
+
+  }
+
+  return null;
+
+
+};
+
+export const goToSell = async (tokenId, price) => {
+
+  const data = await readyTosellHttp(tokenId, price)
+  // console.log("recibido")
+  // console.log(data)
+  await axios.post("http://localhost:5001/api/v1/makertplace", data)
+
+}
+
+export const gTooCancel = async (orderId) => {
+  const eventData = await cancelOderHttp(orderId);
+  console.log("resultado de la transacion")
+  console.log(eventData)
+
+  if (eventData) {
+    await axios.delete(`http://localhost:5001/api/v1/makertplace/${eventData.order}/${eventData.seller}`)
+  }
+
+}
+
+
+export const buyTokenHttp = async (orden, cantidad, price) => {
+  let c = cantidad;
+  if (typeof c === "number") c = c.toString();
+  const contract = await connectMarketContact();
+  const request = await contract.buyToken(orden, c, {
+    value: price.mul(c)
+  });
+  const transaction = await request.wait();
+  // console.log("transaciuon exitosa")
+
+
+  if (transaction.events[2].args) {
+
+    console.log("si hay evento")
+    console.log(transaction.events[2].args)
+
+    const { deltaQuantity, order_ } = transaction.events[2].args
+
+    return {
+      orderId: order_.toString(),
+      deltaQuantity: deltaQuantity.toString(),
+    }
+
+
+  }
+
+};
+
+
+export const goToBuy = async (orden, cantidad, price) => {
+  const eventData = await buyTokenHttp(orden, cantidad, price)
+
+  await axios.put("http://localhost:5001/api/v1/makertplace/", {
+    ...eventData
+  })
+
+
+}

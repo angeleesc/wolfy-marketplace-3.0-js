@@ -104,7 +104,6 @@ export default function MintModal() {
       const checkIsSuccessAprove = await aporveTransaction();
       if (!checkIsSuccessAprove.isSucces) {
         setStepCreateCollectionStatus(stateProcessMint.fail);
-        // await retardante(2000);
         setStepProcess(2);
         return;
       }
