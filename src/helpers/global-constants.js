@@ -128,7 +128,10 @@ export const sortByOption = [
 
 export const rootApipaht = {
     local: "http://localhost:5000",
-    porduction: "https://wolfy-server-v3-fj4ojc4eoa-uc.a.run.app"
+    porduction: "https://wolfy-server-v3-fj4ojc4eoa-uc.a.run.app",
+    enventLocal: "http://localhost:5001",
+    eventProducion: "https://wolfy-markert-contract-listener-v3-fj4ojc4eoa-uc.a.run.app"
+
 }
 
 export const requestEndPoints = {
@@ -140,7 +143,13 @@ export const requestEndPoints = {
         POSTGetAskByUser: "/api/v1/firebase/orders-by-users"
     },
     alchemy: {
-        getNftsBalanceOnWalet : "/api/v1/alchemy"
+        getNftsBalanceOnWalet: "/api/v1/alchemy"
+    },
+    eventSeverEndpoint: {
+        marketPlaceContractPostNewOrder: "/api/v1/makertplace",
+        marketPlaceContractDeletOrder: (orderId, seller) => `/api/v1/makertplace/${orderId}/${seller}`,
+        marketplaceUpdateOrderPut: "/api/v1/makertplace"
+
     }
 
 }

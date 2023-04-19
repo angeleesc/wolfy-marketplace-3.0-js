@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import ERC721UUPSabi from "../abi/ERC721UUPS";
 import marketAbI from "../abi/marketplace";
-import { markerOperation, smartContracts } from "../helpers/global-constants";
+import { markerOperation, requestEndPoints, rootApipaht, smartContracts } from "../helpers/global-constants";
 import { getProvider } from "./Web3Controllers";
 import axios from "axios";
 
@@ -299,20 +299,6 @@ export const cancelOderHttp = async (orderId) => {
   }
 
 
-  // if (receipt.events[2].args) {
-
-  //   // console.log("si hay evento")
-  //   // console.log(receipt.events[2].args)
-  //   const { nftAddress, order_, seller } = receipt.events[2].args
-
-  //   return {
-  //     ...(nftAddress ? { nftAddress } : {}),
-  //     ...(order_ ? { order: order_.toString() } : {}),
-  //     ...(seller ? { seller } : { seller })
-  //   }
-
-
-  // }
 
   return null;
 
@@ -331,7 +317,11 @@ export const goToSell = async (tokenId, price) => {
 
     try {
 
-      await axios.post("http://localhost:5001/api/v1/makertplace", data)
+      const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+  // const endPoint = rootApipaht.porduction + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+
+
+      await axios.post(endPoint, data)
 
       return ({
         isSuccess: true
@@ -361,8 +351,12 @@ export const goToCancel = async (orderId) => {
   console.log("resultado de la transacion")
   console.log(eventData)
 
+  const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketPlaceContractDeletOrder(eventData.order, eventData.seller)
+  // const endPoint = rootApipaht.porduction + requestEndPoints.eventSeverEndpoint.marketPlaceContractDeletOrder(eventData.order, eventData.seller)
+
+
   if (eventData) {
-    await axios.delete(`http://localhost:5001/api/v1/makertplace/${eventData.order}/${eventData.seller}`)
+    await axios.delete(endPoint)
   }
 
 }
@@ -379,20 +373,45 @@ export const buyTokenHttp = async (orden, cantidad, price) => {
   // console.log("transaciuon exitosa")
 
 
-  if (transaction.events[2].args) {
+  if (transaction.events) {
 
-    console.log("si hay evento")
-    console.log(transaction.events[2].args)
+    const events = transaction.events.filter((event) => {
+      if (event.args) {
+        return event
+      }
+    })
 
-    const { deltaQuantity, order_ } = transaction.events[2].args
 
-    return {
-      orderId: order_.toString(),
-      deltaQuantity: deltaQuantity.toString(),
+
+    if (events.length > 0) {
+
+      const { deltaQuantity, order_ } = events[0].args
+
+      return {
+        orderId: order_.toString(),
+        deltaQuantity: deltaQuantity.toString(),
+      }
+
     }
 
 
+
   }
+
+  // if (transaction.events[2].args) {
+
+  //   console.log("si hay evento")
+  //   console.log(transaction.events[2].args)
+
+  //   const { deltaQuantity, order_ } = transaction.events[2].args
+
+  //   return {
+  //     orderId: order_.toString(),
+  //     deltaQuantity: deltaQuantity.toString(),
+  //   }
+
+
+  // }
 
 };
 
@@ -400,9 +419,34 @@ export const buyTokenHttp = async (orden, cantidad, price) => {
 export const goToBuy = async (orden, cantidad, price) => {
   const eventData = await buyTokenHttp(orden, cantidad, price)
 
-  await axios.put("http://localhost:5001/api/v1/makertplace/", {
-    ...eventData
-  })
+  if (eventData) {
+
+    const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketplaceUpdateOrderPut
+    // const endPoint = rootApipaht.porduction + requestEndPoints.eventSeverEndpoint.marketplaceUpdateOrderPut
+
+    try {
+      await axios.put(endPoint, {
+        ...eventData
+      })
+
+      return {
+        isSuccess: true
+      }
+    } catch (error) {
+      return {
+        isSuccess: false,
+        reason: "falla en el servidor"
+      }
+    }
+
+
+  }
+
+  return {
+    isSuccess: false,
+    reason: "No hay datos del evento"
+  }
+
 
 
 }

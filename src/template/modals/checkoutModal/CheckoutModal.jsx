@@ -33,6 +33,7 @@ import {
   getOrderByid,
   cancelOder,
   goToCancel,
+  goToBuy,
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { ethers } from "ethers";
 
@@ -94,7 +95,7 @@ export default function CheckoutModal() {
 
   const buyTokenNow = async () => {
     const ehtPrice = ethers.utils.parseEther(price.toString());
-    await buyToken(modalData.orderId, quantityWatch.toString(), ehtPrice);
+    await goToBuy(modalData.orderId, quantityWatch.toString(), ehtPrice);
   };
 
   const init = async () => {
