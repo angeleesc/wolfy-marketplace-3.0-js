@@ -317,8 +317,8 @@ export const goToSell = async (tokenId, price) => {
 
     try {
 
-      const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
-  // const endPoint = rootApipaht.porduction + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+      // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+  const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
 
 
       await axios.post(endPoint, data)
@@ -351,8 +351,8 @@ export const goToCancel = async (orderId) => {
   console.log("resultado de la transacion")
   console.log(eventData)
 
-  const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketPlaceContractDeletOrder(eventData.order, eventData.seller)
-  // const endPoint = rootApipaht.porduction + requestEndPoints.eventSeverEndpoint.marketPlaceContractDeletOrder(eventData.order, eventData.seller)
+  // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketPlaceContractDeletOrder(eventData.order, eventData.seller)
+  const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketPlaceContractDeletOrder(eventData.order, eventData.seller)
 
 
   if (eventData) {
@@ -398,20 +398,6 @@ export const buyTokenHttp = async (orden, cantidad, price) => {
 
   }
 
-  // if (transaction.events[2].args) {
-
-  //   console.log("si hay evento")
-  //   console.log(transaction.events[2].args)
-
-  //   const { deltaQuantity, order_ } = transaction.events[2].args
-
-  //   return {
-  //     orderId: order_.toString(),
-  //     deltaQuantity: deltaQuantity.toString(),
-  //   }
-
-
-  // }
 
 };
 
@@ -421,8 +407,8 @@ export const goToBuy = async (orden, cantidad, price) => {
 
   if (eventData) {
 
-    const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketplaceUpdateOrderPut
-    // const endPoint = rootApipaht.porduction + requestEndPoints.eventSeverEndpoint.marketplaceUpdateOrderPut
+    // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.marketplaceUpdateOrderPut
+    const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketplaceUpdateOrderPut
 
     try {
       await axios.put(endPoint, {

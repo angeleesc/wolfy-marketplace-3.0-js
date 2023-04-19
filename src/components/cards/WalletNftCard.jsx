@@ -36,29 +36,17 @@ export default function WalletNftCard({ nft }) {
   } = nft;
   // console.log(thumbnails[0].format);
 
-  console.log(thumbnails[0].format);
-  const fileType = defTye[thumbnails[0].format];
-  // console.log(fileType);
+  console.log(thumbnails[0]);
+
+  // console.log(thumbnails[0].format);
+  // const fileType = defTye[thumbnails[0].format];
+  // // console.log(fileType);
 
   return (
     <div className="nft-card-container">
       <div className="card-body wallet-card">
         <div className="multimedia-secction">
- 
-          {thumbnails &&
-            (fileType ? (
-              fileType === "image" ? (
-                <img src={thumbnails[0].url} alt="miniatura" />
-              ) : (
-                <div>
-                  <h3>Es un video</h3>
-                </div>
-              )
-            ) : (
-              <div>
-                <h3>Formato desconocido</h3>
-              </div>
-            ))}
+          {thumbnails && <img src={thumbnails[0].url} alt="miniatura" />}
 
           <div className="wallet-colection-info">
             <div className="waller-nft-info">
