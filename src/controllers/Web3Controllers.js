@@ -32,10 +32,10 @@ export const checWaletConected = async () => {
 export const checkCorrertBlockchain = async (ref) => {
     const provider = await getProvider()
     const network = await provider.getNetwork()
-    // console.log(network.chainId)
+    console.log(network.chainId)
     // console.log(network.name)
 
-    if (network.chainId === ref) return true
+    if (network.chainId === Number(ref)) return true
     return false
 
     // console.log(network.)

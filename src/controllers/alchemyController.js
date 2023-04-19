@@ -3,8 +3,8 @@ import { requestEndPoints, rootApipaht } from "../helpers/global-constants"
 
 export const getNftsByWallet = async (acccount) => {
 
-    const rootPath = rootApipaht.local + requestEndPoints.alchemy.getNftsBalanceOnWalet
-    // const rootPath = rootApipaht.porduction + requestEndPoints.alchemy.getNftsBalanceOnWalet
+    // const rootPath = rootApipaht.local + requestEndPoints.alchemy.getNftsBalanceOnWalet
+    const rootPath = rootApipaht.porduction + requestEndPoints.alchemy.getNftsBalanceOnWalet
 
     try {
 

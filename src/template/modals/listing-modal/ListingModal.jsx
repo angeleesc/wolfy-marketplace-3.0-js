@@ -19,6 +19,14 @@ import { CircularProgress } from "@mui/material";
 import Check from "../../../components/icons/Check";
 import Fail from "../../../components/icons/Fail";
 import WolfSad from "../../../components/icons/WolfSad";
+import WolfHappy from "../../../components/icons/WolfHappy";
+import {
+  checWaletConected,
+  checkCorrertBlockchain,
+  checkIsEqualAddres,
+  connetWalletMetamask,
+} from "../../../controllers/Web3Controllers";
+import { useEffect } from "react";
 
 export default function ListingModal() {
   const [stepProccess, setStepProccess] = useState(4);
@@ -68,6 +76,33 @@ export default function ListingModal() {
     console.log(data);
   };
 
+  const init = async () => {
+    // verificamos si tiene al meno un provider
+
+    const walletVerified = await checWaletConected();
+
+    if (walletVerified === "notBlockchain") {
+      setStepProccess(-5);
+      return;
+    }
+
+    if (walletVerified === false) {
+      setStepProccess(-4);
+      return;
+    }
+
+    const isSameNetwork = await checkCorrertBlockchain(modalData.chainId);
+    console.log(isSameNetwork);
+
+    // console.log(modalData)
+
+    setStepProccess(1);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+
   return (
     <WolfyModalLayoutReduxController
       modalController={keyModalSate.listingModal}
@@ -83,9 +118,16 @@ export default function ListingModal() {
                   <div className="blockChain-logo">
                     <OptimismOficialLogo size="25" />
                   </div>
-                  <div className="fail-fillter">
-                    <WolfSad size="80" />
-                  </div>
+                  {stepProccess === 3 && (
+                    <div className="fail-fillter">
+                      <WolfSad size="80" />
+                    </div>
+                  )}
+                  {stepProccess === 4 && (
+                    <div className="fail-fillter">
+                      <WolfHappy size="80" />
+                    </div>
+                  )}
                   {thumbnails ? (
                     <img src={thumbnails} alt="thunails-nft" />
                   ) : (
@@ -165,8 +207,9 @@ export default function ListingModal() {
                   <div>
                     <button
                       className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
-                      onClick={() => {
-                        window.open("https://metamask.io/");
+                      onClick={async () => {
+                        await connetWalletMetamask();
+                        await init();
                       }}
                     >
                       <span className="pr-[15px] block">
@@ -472,7 +515,7 @@ export default function ListingModal() {
               )}
               {stepProccess === 4 && (
                 <>
-                  <h4 className="fail-transation">Operacion Exitoza</h4>
+                  <h4 className="success-transation">Operacion Exitosa</h4>
                   <span>Tu nft es a la venta en nuestra plataforma</span>
                   <span>Que deseas hacer</span>
                   <div>

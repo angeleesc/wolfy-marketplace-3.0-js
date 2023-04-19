@@ -36,7 +36,7 @@ export default function WalletNftCard({ nft }) {
   } = nft;
   // console.log(thumbnails[0].format);
 
-  console.log(thumbnails[0]);
+  // console.log(thumbnails[0]);
 
   // console.log(thumbnails[0].format);
   // const fileType = defTye[thumbnails[0].format];
