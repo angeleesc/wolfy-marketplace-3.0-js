@@ -236,34 +236,31 @@ export const readyTosellHttp = async (_tokensId, price) => {
   );
   const result = await transaction.wait();
 
-  console.log(result)
 
-  // console.log(result.events[2]);
-  if (result.events[2].args) {
-    // console.log("si hay evento")
+  console.log()
 
-    console.log(result.events[2].args)
+  if (result.events) {
+    // console.log(result.events)
+    const contractEvents = result.events.filter((event) => {
+      if (event.args) {
+        return event
+      }
+    })
+    if (contractEvents.length > 0) {
+      console.log(contractEvents[0].args)
+      const { nftAddress, order_, seller } = contractEvents[0].args
+      return {
+        nftAddress,
+        order: order_.toString(),
+        seller
+      }
 
-    const {
-      seller,
-      nftAddress,
-      order_ } = result.events[2].args
-
-    // console.log("seller", seller)
-    // console.log("nftAddress", nftAddress)
-    // console.log("order", order_.toString())
-
-    const datataToSent = {
-      seller,
-      nftAddress,
-      order: order_.toString()
     }
 
-    // console.log(endpointUrl)
-    // console.log(datataToSent)
-
-    return datataToSent
   }
+
+  return null
+
 
 };
 
@@ -279,53 +276,87 @@ export const cancelOderHttp = async (orderId) => {
   const transaction = await marketContrac.cancelSellToken(orderId);
   const receipt = await transaction.wait();
 
-  if (receipt.events[2].args) {
+  if (receipt.events) {
 
-    // console.log("si hay evento")
-    // console.log(receipt.events[2].args)
-    const { nftAddress, order_, seller } = receipt.events[2].args
+    const events = receipt.events.filter((event) => {
+      if (event.args) {
+        return event
+      }
+    })
 
-    return {
-      ...(nftAddress ? { nftAddress } : {}),
-      ...(order_ ? { order: order_.toString() } : {}),
-      ...(seller ? { seller } : { seller })
+    if (events.length > 0) {
+
+      const { nftAddress, order_, seller } = events[0].args
+
+      return {
+        ...(nftAddress ? { nftAddress } : {}),
+        ...(order_ ? { order: order_.toString() } : {}),
+        ...(seller ? { seller } : { seller })
+      }
+
     }
 
-
   }
+
+
+  // if (receipt.events[2].args) {
+
+  //   // console.log("si hay evento")
+  //   // console.log(receipt.events[2].args)
+  //   const { nftAddress, order_, seller } = receipt.events[2].args
+
+  //   return {
+  //     ...(nftAddress ? { nftAddress } : {}),
+  //     ...(order_ ? { order: order_.toString() } : {}),
+  //     ...(seller ? { seller } : { seller })
+  //   }
+
+
+  // }
 
   return null;
 
 
 };
 
-// export const goToSell = async (tokensIds, price) => {
 
-//   try {
-
-//     const data = await readyTosellHttp(tokensIds, price)
-//     await axios.post("http://localhost:5001/api/v1/makertplace", data)
-//     return {
-//       isSuccess: true
-//     }
-//   } catch (error) {
-//     return {
-//       isSuccess: false
-//     }
-//   }
-
-// }
 
 export const goToSell = async (tokenId, price) => {
 
   const data = await readyTosellHttp(tokenId, price)
   // console.log("recibido")
   console.log(data)
-  await axios.post("http://localhost:5001/api/v1/makertplace", data)
+
+  if (data) {
+
+    try {
+
+      await axios.post("http://localhost:5001/api/v1/makertplace", data)
+
+      return ({
+        isSuccess: true
+      })
+
+
+    } catch (error) {
+
+      return {
+        isSuccess: false,
+        reason: "Ocrurio unproblema durante la peticio en el servidor"
+      }
+
+    }
+
+  }
+
+  return {
+    isSuccess: false,
+    reason: "No se pudo obtener el id de la orden de la nft"
+  }
 
 }
 
-export const gTooCancel = async (orderId) => {
+export const goToCancel = async (orderId) => {
   const eventData = await cancelOderHttp(orderId);
   console.log("resultado de la transacion")
   console.log(eventData)

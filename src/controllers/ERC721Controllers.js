@@ -161,3 +161,31 @@ export const aporveTransaction = async (blockChain) => {
     }
   }
 };
+
+
+export const getLasNtokenId = async (index) => {
+
+  const utils = await connectErc721Ups()
+  if (utils) {
+
+    const { contract,
+      account, } = utils
+    console.log(contract)
+
+    const balance = await contract.balanceOf(account)
+    let intBalance = Number(balance.toString()) - 1
+
+    const tokensIds = []
+
+    for (let i = 0; i < Number(index); i++) {
+      const tokenId = await contract.tokenOfOwnerByIndex(account , (intBalance - i).toString())
+      console.log(tokenId.toString())
+      tokensIds.push(tokenId.toString())
+
+    }
+
+    return tokensIds
+
+  }
+}
+

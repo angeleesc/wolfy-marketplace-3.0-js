@@ -32,6 +32,7 @@ import {
   getEstimateGasBuyToken,
   getOrderByid,
   cancelOder,
+  goToCancel,
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { ethers } from "ethers";
 
@@ -86,7 +87,7 @@ export default function CheckoutModal() {
 
   // funcion del checkout
   const cancelTokenNow = async () => {
-    const result = await cancelOder(modalData.orderId);
+    const result = await goToCancel(modalData.orderId);
     console.log("resultado");
     console.log("resul");
   };

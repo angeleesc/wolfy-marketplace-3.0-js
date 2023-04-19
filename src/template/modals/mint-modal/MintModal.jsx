@@ -16,6 +16,7 @@ import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
 import {
   aporveTransaction,
   getEstimateGasMint,
+  getLasNtokenId,
   getSymbol,
   getTokensIds,
   safeMint,
@@ -102,10 +103,10 @@ export default function MintModal() {
     }
     setStepSafeMint(true);
 
-    const metadatas = []
+    const metadatas = [];
 
-    for(let i = 0 ; i < Number(rest.amount); i++){
-      metadatas.push(ipfsUrlMetadata.url)
+    for (let i = 0; i < Number(rest.amount); i++) {
+      metadatas.push(ipfsUrlMetadata.url);
     }
 
     const mintResult = await safeMintBatch(metadatas);
@@ -115,9 +116,17 @@ export default function MintModal() {
       return;
     }
 
-    if (true) {
-      // const res = await goToSell(['79'], "0.00035")
+    const tokensIds = await getLasNtokenId(Number(rest.amount));
+    console.log("tokens id obtenidos");
+    console.log(tokensIds);
+    updateMintStatusMint(stateProcessMint.success);
+
+    if (rest.isPutOnMarketplace === true) {
+      const aproveResult = await aporveTransaction();
+      const res = await goToSell(tokensIds, rest.nftPrice);
     }
+
+    setStepProcess(3);
   };
 
   const conectMetamas = async () => {

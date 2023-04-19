@@ -27,8 +27,8 @@ export const getOdres = async (fillter) => {
 
 export const getOrdersByWalletAddres = async (wallet, fillter) => {
 
-    const rootPath = rootApipaht.local + requestEndPoints.firebase.POSTGetAskByUser
-    // const rootPath = rootApipaht.porduction + requestEndPoints.firebase.POSTGetAsk
+    // const rootPath = rootApipaht.local + requestEndPoints.firebase.POSTGetAskByUser
+    const rootPath = rootApipaht.porduction + requestEndPoints.firebase.POSTGetAsk
 
     console.log("orteniendop la ordene por usuario")
 
