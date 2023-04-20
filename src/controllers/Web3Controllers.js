@@ -32,11 +32,13 @@ export const checWaletConected = async () => {
 export const checkCorrertBlockchain = async (ref) => {
     const provider = await getProvider()
     const network = await provider.getNetwork()
-    console.log(network.chainId)
+    // console.log(network.chainId)
     // console.log(network.name)
 
     if (network.chainId === Number(ref)) return true
     return false
+
+
 
     // console.log(network.)
 }
@@ -53,14 +55,52 @@ export const changeBlochainNetworkMetamas = async (ref) => {
             method: 'wallet_switchEthereumChain',
             params: [{ chainId: "0x1a4" }],
         })
+
+        return true
+
     } catch (error) {
         console.log("ocuurio un error")
         console.log(error)
+
+        return false
     }
 
 
 
 }
+
+
+export const addNewBlockChainNetWork = async () => {
+
+    const web3Provider = window.ethereum
+
+    try {
+        await web3Provider.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+                {
+                    chainId: "0x1a4",
+                    chainName: 'optimism-goerli',
+                    rpcUrls: ['https://goerli.optimism.io/'],
+                    blockExplorerUrls: ['https://goerli-optimism.etherscan.io/'],
+                    nativeCurrency: {
+                        symbol: 'ETH',
+                        decimals: 18
+                    }
+                }
+            ]
+        })
+
+        console.log("vinculacion exitosa")
+
+    } catch (error) {
+
+        console.log("ocurrio un error")
+
+    }
+
+}
+
 
 export const getWaletData = async () => {
     const provider = await getProvider()

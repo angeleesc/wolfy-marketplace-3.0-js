@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import WolfyModalLayoutReduxController from "../../../components/layout/WolfyModalLayoutReduxController";
 import { closeModal, keyModalSate } from "../../../features/modals/modalsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { readyTosell3 } from "../../../controllers/makertPlaceSmarContractControllers";
-import { saleMethod, smartContracts } from "../../../helpers/global-constants";
+import {
+  goToSell,
+  readyTosell3,
+} from "../../../controllers/makertPlaceSmarContractControllers";
+import {
+  saleMethod,
+  saleMethodOptions,
+  smartContracts,
+} from "../../../helpers/global-constants";
 import wondering from "../../../static-images/wondering.png";
 import "./.lidting-modal.scss";
 import OptimismOficialLogo from "../../../components/icons/OptimismOficialLogo";
@@ -21,15 +28,18 @@ import Fail from "../../../components/icons/Fail";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfHappy from "../../../components/icons/WolfHappy";
 import {
+  addNewBlockChainNetWork,
+  changeBlochainNetworkMetamas,
   checWaletConected,
   checkCorrertBlockchain,
   checkIsEqualAddres,
   connetWalletMetamask,
 } from "../../../controllers/Web3Controllers";
 import { useEffect } from "react";
+import { aporveTransaction } from "../../../controllers/ERC721Controllers";
 
 export default function ListingModal() {
-  const [stepProccess, setStepProccess] = useState(4);
+  const [stepProccess, setStepProccess] = useState(2);
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -62,18 +72,27 @@ export default function ListingModal() {
 
   const dispatch = useDispatch();
 
-  const goToSell = async () => {
-    const result = await readyTosell3(
-      [tokenId],
-      "0.0004",
-      smartContracts.ERC721UUPS
-    );
-    console.log("operacion exitoxa listing modadl");
-  };
+  // const goToSell = async () => {
+  //   const result = await readyTosell3(
+  //     [tokenId],
+  //     "0.0004",
+  //     smartContracts.ERC721UUPS
+  //   );
+  //   console.log("operacion exitoxa listing modadl");
+  // };
 
   const onSubmit = async (data) => {
     console.log("vendido");
     console.log(data);
+
+    setStepProccess(2);
+
+    if (data.salesMethod === saleMethod.sales) {
+      const resultAprove = await aporveTransaction();
+      const resultListing = await goToSell([modalData.tokenId], data.nftPrice);
+    }
+
+    setStepProccess(4);
   };
 
   const init = async () => {
@@ -93,6 +112,11 @@ export default function ListingModal() {
 
     const isSameNetwork = await checkCorrertBlockchain(modalData.chainId);
     console.log(isSameNetwork);
+
+    if (!isSameNetwork) {
+      setStepProccess(-2);
+      return;
+    }
 
     // console.log(modalData)
 
@@ -277,8 +301,14 @@ export default function ListingModal() {
                   <div>
                     <button
                       className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
-                      onClick={() => {
-                        window.open("https://metamask.io/");
+                      onClick={async () => {
+                        const isSuccess = await changeBlochainNetworkMetamas();
+                        if (!isSuccess) {
+                          setStepProccess(-1);
+                          return;
+                        }
+
+                        await init();
                       }}
                     >
                       <span>Cambiar de Blockchain</span>
@@ -309,8 +339,8 @@ export default function ListingModal() {
                   <div>
                     <button
                       className="wolf-buttom wolf-btn-primary-2 w-[100%] flex justify-center"
-                      onClick={() => {
-                        window.open("https://metamask.io/");
+                      onClick={async () => {
+                        await addNewBlockChainNetWork();
                       }}
                     >
                       Agregar la Blockchain
@@ -334,7 +364,7 @@ export default function ListingModal() {
                 <>
                   <h4>Fondo insufuciente</h4>
                   <span>
-                    no tiene los fondos nesesario para hace la operacio
+                    no tiene los fondos nesesario para hace la operacion
                   </span>
                   <span>Que deseas hacer</span>
                   <div>
