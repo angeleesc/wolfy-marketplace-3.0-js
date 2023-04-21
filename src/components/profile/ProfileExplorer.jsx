@@ -55,7 +55,7 @@ export default function ProfileExplorer() {
     const tempData = {
       // nftName: "Eric Way ",
       colectionName: "Eric Pause Editions",
-      seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
+      // seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
       colection: "0xA41f28031d1165cD45c69E6AB9ba2A8BE0201008",
       // collectionFace:
       //   "https://i.seadn.io/gae/xN0Abpk1755I8dMsCh0A2-3CBgpURNerqHOX96k8odPWZhy_RpQAGMqMKPxyP1OUl-fg4P9A596AnuuoAZ4H_d9_2XMxmU29adaV?auto=format&w=256",
@@ -100,7 +100,7 @@ export default function ProfileExplorer() {
             sale: orderData.onSale,
             onSale: orderData.onSale,
             orderId: orderData.orderId,
-            selleror: orderData.seller,
+            seller: orderData.seller,
             listingAt: orderData.listingAt,
             ...(orderData.sellerName
               ? { sellerName: orderData.sellerName }
