@@ -17,11 +17,9 @@ import {
   aporveTransaction,
   getEstimateGasMint,
   getLasNtokenId,
-  getSymbol,
   getTokensIds,
   safeMint,
   safeMintBatch,
-  safewMint,
 } from "../../../controllers/ERC721Controllers";
 import {
   goToSell,

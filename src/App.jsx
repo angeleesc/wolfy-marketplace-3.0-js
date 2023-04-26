@@ -18,6 +18,7 @@ function App() {
       {modalState.checkoutModal.open && <CheckoutModal />}
       {modalState.mintModal.open && < MintModal />}
       {modalState.listingModal.open && <ListingModal/>}
+      {/* <h3>Migracion exitosa</h3> */}
     </>
   );
 }
