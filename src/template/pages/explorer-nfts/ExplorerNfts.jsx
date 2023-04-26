@@ -5,6 +5,10 @@ import ExplorerMenuFillter from "../../../components/menus/ExplorerMenuFillter";
 import { useSearchParams } from "react-router-dom";
 import { getOdres } from "../../../controllers/firebaseControllers";
 import worderin from "../../../static-images/wondering.png";
+import {
+  checWaletConected,
+  getWaletData,
+} from "../../../controllers/Web3Controllers";
 
 export default function ExplorerNfts() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -40,6 +44,14 @@ export default function ExplorerNfts() {
   const getAllOrders = async () => {
     const result = await getOdres({});
 
+    let walletLog = null;
+
+    const checkWalletConected = await checWaletConected();
+    if (checkWalletConected === true) {
+      const walletData = await getWaletData();
+      walletLog = walletData.addres;
+    }
+
     if (result.isSuccess && result.hasData) {
       console.log(result.orders);
 
@@ -51,7 +63,7 @@ export default function ExplorerNfts() {
             ...(orderData.metadata && orderData.metadata.nftName
               ? { nftName: orderData.metadata.nftName }
               : { nftName: "desconocido" }),
-            ...( orderData.metadata && orderData.metadata.thumbnail
+            ...(orderData.metadata && orderData.metadata.thumbnail
               ? { nftCover: orderData.metadata.thumbnail }
               : orderData.metadata.image
               ? { nftCover: orderData.metadata.image }
@@ -73,7 +85,6 @@ export default function ExplorerNfts() {
             ...(orderData.collectionFace
               ? { collectionFace: orderData.collectionFace }
               : {}),
-
           };
         }
 
@@ -86,6 +97,7 @@ export default function ExplorerNfts() {
         return {
           ...tempJsonObjet,
           ...nftCover,
+          ...(walletLog ? { walletLog } : {}),
           // ...orderData,
           // ...(orderData.metadata? {nftName: orderData.metadata.nftName?  orderData.metadata.nftName : "no"}:{nftName: "desconocido"})
         };
