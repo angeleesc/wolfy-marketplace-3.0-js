@@ -40,6 +40,14 @@ export default function MintNftForm() {
     isPutOnMarketplace: yup.bool(),
     isAddPropieties: yup.bool(),
     salesMethod: yup.string(),
+    auctionDays: yup
+      .string()
+      .test("max-day", "El maximo de dias es de 60", (value) => {
+        console.log("valor a evaluar");
+        console.log(value);
+        if (value <= 60) return true;
+        return false;
+      }),
     metadataFile: yup
       .mixed()
       .test("isFile", "Epa el archivo es requerido", (file) => {
@@ -262,7 +270,36 @@ export default function MintNftForm() {
                   />
                 </div>
 
-                <div className="mt-[10px]"></div>
+                <div className="mt-[10px] flex">
+                  <TextFieldInputGroup
+                    textLabel={"Horas"}
+                    info={
+                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
+                    }
+                    register={register("auctionHours")}
+                    type="number"
+                    step="1"
+                    onWheel={preventScroll}
+                    placeholder="Ej 10 horas"
+                    errorMessage={
+                      errors.nftPrice ? errors.nftPrice.message : ""
+                    }
+                  />
+                  <TextFieldInputGroup
+                    textLabel={"Horas"}
+                    info={
+                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
+                    }
+                    register={register("auctionMinutes")}
+                    type="number"
+                    step="1"
+                    onWheel={preventScroll}
+                    placeholder="Ej 10 minutos"
+                    errorMessage={
+                      errors.nftPrice ? errors.nftPrice.message : ""
+                    }
+                  />
+                </div>
               </div>
             )}
           </>
