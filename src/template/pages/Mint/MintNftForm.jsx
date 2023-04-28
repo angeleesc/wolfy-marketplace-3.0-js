@@ -40,14 +40,48 @@ export default function MintNftForm() {
     isPutOnMarketplace: yup.bool(),
     isAddPropieties: yup.bool(),
     salesMethod: yup.string(),
-    auctionDays: yup
-      .string()
-      .test("max-day", "El maximo de dias es de 60", (value) => {
-        console.log("valor a evaluar");
-        console.log(value);
-        if (value <= 60) return true;
-        return false;
-      }),
+    auctionMinutes: yup.string().when("salesMethod", {
+      is: (salesMethod) => {
+        return salesMethod === saleMethod.auction;
+      },
+      then: yup
+        .string()
+        .test("max-day", "El maximo de Minutos es de 60", (value) => {
+          if (Number(value) <= 60) return true;
+          return false;
+        })
+        .required("el campo de Minutos es requerido"),
+      otherwise: yup.string().notRequired(),
+    }),
+    auctionDays: yup.string().when("salesMethod", {
+      is: (salesMethod) => {
+        return salesMethod === saleMethod.auction;
+      },
+      then: yup
+        .string()
+        .test("max-day", "El maximo de dias es de 60", (value) => {
+          console.log("valor a evaluar");
+          console.log(value);
+          if (Number(value) <= 60) return true;
+          return false;
+        })
+        .required("el campo de dias es requerido"),
+      otherwise: yup.string().notRequired(),
+    }),
+    auctionHours: yup.string().when("salesMethod", {
+      is: (salesMethod) => {
+        return salesMethod === saleMethod.auction;
+      },
+      then: yup
+        .string()
+        .test("max-day", "El maximo de horas es de 24", (value) => {
+          if (value <= 24) return true;
+          return false;
+        })
+        .required("el campo de Horas es requerido"),
+      otherwise: yup.string().notRequired(),
+    }),
+
     metadataFile: yup
       .mixed()
       .test("isFile", "Epa el archivo es requerido", (file) => {
@@ -74,7 +108,7 @@ export default function MintNftForm() {
 
       otherwise: yup.array().notRequired(),
     }),
-    royalties: yup.string().required("regalias es requerida"),
+    // royalties: yup.string().required("regalias es requerida"),
     amount: yup.string().required("cantidad es requerida"),
   });
 
@@ -265,7 +299,7 @@ export default function MintNftForm() {
                     onWheel={preventScroll}
                     placeholder="Ej 1 dia"
                     errorMessage={
-                      errors.nftPrice ? errors.nftPrice.message : ""
+                      errors.auctionDays ? errors.auctionDays.message : ""
                     }
                   />
                 </div>
@@ -273,30 +307,26 @@ export default function MintNftForm() {
                 <div className="mt-[10px] flex">
                   <TextFieldInputGroup
                     textLabel={"Horas"}
-                    info={
-                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
-                    }
+                    info={"Maximo 24 Horas"}
                     register={register("auctionHours")}
                     type="number"
                     step="1"
                     onWheel={preventScroll}
                     placeholder="Ej 10 horas"
                     errorMessage={
-                      errors.nftPrice ? errors.nftPrice.message : ""
+                      errors.auctionHours ? errors.auctionHours.message : ""
                     }
                   />
                   <TextFieldInputGroup
-                    textLabel={"Horas"}
-                    info={
-                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
-                    }
+                    textLabel={"Minutos"}
+                    info={"Maximo 60 minutos"}
                     register={register("auctionMinutes")}
                     type="number"
                     step="1"
                     onWheel={preventScroll}
                     placeholder="Ej 10 minutos"
                     errorMessage={
-                      errors.nftPrice ? errors.nftPrice.message : ""
+                      errors.auctionMinutes ? errors.auctionMinutes.message : ""
                     }
                   />
                 </div>
@@ -481,7 +511,7 @@ export default function MintNftForm() {
         )}
 
         <div className="grid grid-cols-2 ">
-          <div className="mr-[5px]">
+          {/* <div className="mr-[5px]">
             <WTextFields
               id="colection-fee"
               textLabel="Retgalias *"
@@ -490,8 +520,8 @@ export default function MintNftForm() {
               type="number"
               register={register("royalties")}
             />
-          </div>
-          <div className="ml-[5px]">
+          </div> */}
+          <div className="col-span-2">
             <WTextFields
               id="nft-quantity"
               textLabel="Numeros de copias NFTS *"
