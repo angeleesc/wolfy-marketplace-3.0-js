@@ -59,8 +59,7 @@ const tempJson = [
     faceImg: "https://i.seadn.io/gcs/files/9515d56f17653c4a275e319be04fa7cd.jpg?auto=format&w=1920",
     colectionName: "Rumble Kong League",
     colectionAuthor: "RKL-Kongs-Deployer",
-    isAuthorVerified: true,
-    isAuthorVerified: true,
+
     items: 10000,
     floorPrice: "0.001"
 

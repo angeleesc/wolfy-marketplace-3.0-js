@@ -108,7 +108,7 @@ export default function MintNftForm() {
 
     const dataToset = {
       ...restData,
-      metadataFile
+      metadataFile,
     };
 
     fileContex.setCurentfile(dataToset);
@@ -193,7 +193,7 @@ export default function MintNftForm() {
                         <TagBlack />
                       </div>
                     </button>
-                    {/* <button
+                    <button
                       className="boton-group-box"
                       type="button"
                       onClick={() => {
@@ -209,7 +209,7 @@ export default function MintNftForm() {
                         <span>Cronometrada</span>
                         <ClockBlack />
                       </div>
-                    </button> */}
+                    </button>
                   </div>
                 );
               }}
@@ -230,7 +230,7 @@ export default function MintNftForm() {
               errorMessage={errors.nftPrice ? errors.nftPrice.message : ""}
             />
 
-            {saleMethodWacth === saleMethod.auction && (
+            {/* {saleMethodWacth === saleMethod.auction && (
               <div className="mt-[20px]">
                 <Controller
                   name="rangeAuction"
@@ -239,6 +239,30 @@ export default function MintNftForm() {
                     return <DatePikckerReacDP onChange={onChange} />;
                   }}
                 />
+              </div>
+            )} */}
+
+            {saleMethodWacth === saleMethod.auction && (
+              <div className="mt-[20px]">
+                <h3 className="my-[15px]">Tiempo de la subasta Duracion*</h3>
+                <div className="flex">
+                  <TextFieldInputGroup
+                    textLabel={"Dias"}
+                    info={
+                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
+                    }
+                    register={register("auctionDays")}
+                    type="number"
+                    step="1"
+                    onWheel={preventScroll}
+                    placeholder="Ej 1 dia"
+                    errorMessage={
+                      errors.nftPrice ? errors.nftPrice.message : ""
+                    }
+                  />
+                </div>
+
+                <div className="mt-[10px]"></div>
               </div>
             )}
           </>
