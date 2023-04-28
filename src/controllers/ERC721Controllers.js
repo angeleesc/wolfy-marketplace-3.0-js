@@ -139,17 +139,17 @@ export const getEstimateGasMint = async (url) => {
 
 }
 
-export const aporveTransaction = async (blockChain) => {
+export const aporveTransaction = async (contractAddress) => {
   const { contract, account } = await connectErc721Ups();
   try {
     console.log("aprovando transacion")
     const getAproveTrasaction = await contract.setApprovalForAll(
-      smartContracts.market,
+      contractAddress,
       true
     );
     const transation = await getAproveTrasaction.wait();
-    console.log("transacion exitosa");
-    console.log(transation);
+    // console.log("transacion exitosa");
+    // console.log(transation);
     return {
       isSucces: true
     }
@@ -178,7 +178,7 @@ export const getLasNtokenId = async (index) => {
     const tokensIds = []
 
     for (let i = 0; i < Number(index); i++) {
-      const tokenId = await contract.tokenOfOwnerByIndex(account , (intBalance - i).toString())
+      const tokenId = await contract.tokenOfOwnerByIndex(account, (intBalance - i).toString())
       console.log(tokenId.toString())
       tokensIds.push(tokenId.toString())
 

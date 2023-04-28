@@ -9,10 +9,15 @@ import { useDispatch } from "react-redux";
 import WolfSad from "../../../components/icons/WolfSad";
 import WolfHappy from "../../../components/icons/WolfHappy";
 import WolfTinking from "../../../components/icons/WolfTinking";
-import { CircularProgress, circularProgressClasses } from "@mui/material";
+import {
+  CircularProgress,
+  circularProgressClasses,
+  duration,
+} from "@mui/material";
 import Check from "../../../components/icons/Check";
 import { fromMatMinData } from "./constrollers/formatjson";
 import { uploadFileToIpfs } from "../../../controllers/ipfsFileController";
+import { hoursToSeconds, minutesToSeconds } from "date-fns";
 import {
   aporveTransaction,
   getEstimateGasMint,
@@ -32,9 +37,14 @@ import {
   connetWalletMetamask,
   getWaletData,
 } from "../../../controllers/Web3Controllers";
-import { stateProcessMint } from "../../../helpers/global-constants";
+import {
+  saleMethod,
+  smartContracts,
+  stateProcessMint,
+} from "../../../helpers/global-constants";
 import Fail from "../../../components/icons/Fail";
 import { retardante } from "../../../controllers/domController";
+import { goToAuctionHttp } from "../../../controllers/auctionControllers";
 
 export default function MintModal() {
   const [stepProcess, setStepProcess] = useState(-4);
@@ -120,8 +130,34 @@ export default function MintModal() {
     updateMintStatusMint(stateProcessMint.success);
 
     if (rest.isPutOnMarketplace === true) {
-      const aproveResult = await aporveTransaction();
-      const res = await goToSell(tokensIds, rest.nftPrice);
+      // const aproveResult = await aporveTransaction();
+      // const res = await goToSell(tokensIds, rest.nftPrice);
+
+      if (rest.salesMethod === saleMethod.sales) {
+        console.log("se pondra a la venta");
+
+        const aproveResult = await aporveTransaction(smartContracts.market);
+        const res = await goToSell(tokensIds, rest.nftPrice);
+      } else if (rest.salesMethod === saleMethod.auction) {
+        console.log("se pondra en subasta");
+
+        // pasamos los valores a segundos y luego lo sumamos
+
+        // auctionMinutes
+        // auctionDays
+        // auctionHours
+
+        const sHours = hoursToSeconds(Number(rest.auctionHours));
+        const sDays = hoursToSeconds(Number(rest.auctionDays) * 24);
+        const sMinutes = minutesToSeconds(Number(rest.auctionMinutes));
+
+        const duration = sHours + sDays + sMinutes;
+
+        console.log(duration);
+
+        const aproveResult = await aporveTransaction(smartContracts.Auction);
+        const res = await goToAuctionHttp(smartContracts.ERC721UUPS, tokensIds, rest.nftPrice, duration )
+      }
     }
 
     setStepProcess(3);

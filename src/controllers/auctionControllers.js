@@ -1,16 +1,17 @@
 import { ethers } from "ethers";
 import { smartContracts } from "../helpers/global-constants";
+import auctionAbi from "../abi/auction";
 
 export const getProvider = async () => {
     // verificamos si hay provider verificado
     if (window.ethereum) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      return provider;
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        return provider;
     }
     // console.log("no hay provider");ap
     return null;
-  };
-  
+};
+
 
 export const conectAuctionContrac = async () => {
     const provider = await getProvider()
@@ -19,6 +20,30 @@ export const conectAuctionContrac = async () => {
         const contract = new ethers.Contract(smartContracts.Auction, auctionAbi, signer)
         return contract
     }
+}
+
+const extractArgs = (receipt, args)=>{
+
+    if(receipt.events){
+
+        const args = receipt.filter((event) => {
+            if (event.args) {
+              return event
+            }
+          })
+
+          if(args.length > 0){
+            
+          }
+
+
+
+        return
+    }
+
+    return null;
+        
+
 }
 
 export const goToAuction = async (erc721, tokenIds, price, duration) => {
@@ -31,7 +56,20 @@ export const goToAuction = async (erc721, tokenIds, price, duration) => {
     const transation = await resquet.wait()
     console.log(transation)
 
+
+
+
+
 }
+
+
+export const goToAuctionHttp = async (erc721, tokenIds, price, duration) => {
+
+    const args = await goToAuction(erc721, tokenIds, price, duration)
+    console.log(args)
+
+}
+
 
 export const getAuctionOrderBySeller = async () => {
 
