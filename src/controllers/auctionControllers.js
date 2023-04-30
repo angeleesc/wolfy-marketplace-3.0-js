@@ -118,7 +118,7 @@ export const goToAuctionHttp = async (erc721, tokenIds, price, duration) => {
 
         const dataToSend = {
             fOrderId: id,
-            fPrice: ethers.utils.formatEther(_price),
+            fPrice: Number(ethers.utils.formatEther(_price)),
             seller,
             duration: _duration
 
