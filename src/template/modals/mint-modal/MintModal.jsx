@@ -33,7 +33,10 @@ import {
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import MetamaskOficialLgo from "../../../components/icons/MetamaskOficialLgo";
 import {
+  addNewBlockChainNetWork,
+  changeBlochainNetworkMetamas,
   checWaletConected,
+  checkCorrertBlockchain,
   connetWalletMetamask,
   getWaletData,
 } from "../../../controllers/Web3Controllers";
@@ -47,7 +50,7 @@ import { retardante } from "../../../controllers/domController";
 import { goToAuctionHttp } from "../../../controllers/auctionControllers";
 
 export default function MintModal() {
-  const [stepProcess, setStepProcess] = useState(-4);
+  const [stepProcess, setStepProcess] = useState(-5);
   const [balance, setBalance] = useState(null);
   const [walletAccoutn, setWalletAccoutn] = useState(null);
 
@@ -141,12 +144,6 @@ export default function MintModal() {
       } else if (rest.salesMethod === saleMethod.auction) {
         console.log("se pondra en subasta");
 
-        // pasamos los valores a segundos y luego lo sumamos
-
-        // auctionMinutes
-        // auctionDays
-        // auctionHours
-
         const sHours = hoursToSeconds(Number(rest.auctionHours));
         const sDays = hoursToSeconds(Number(rest.auctionDays) * 24);
         const sMinutes = minutesToSeconds(Number(rest.auctionMinutes));
@@ -156,7 +153,12 @@ export default function MintModal() {
         console.log(duration);
 
         const aproveResult = await aporveTransaction(smartContracts.Auction);
-        const res = await goToAuctionHttp(smartContracts.ERC721UUPS, tokensIds, rest.nftPrice, duration )
+        const res = await goToAuctionHttp(
+          smartContracts.ERC721UUPS,
+          tokensIds,
+          rest.nftPrice,
+          duration
+        );
       }
     }
 
@@ -186,12 +188,22 @@ export default function MintModal() {
     let anyWaletConect = false;
     let haveEnoughBalance = false;
 
+    console.log(rest);
+
     const isConectedMetamas = await checWaletConected();
     if (isConectedMetamas) anyWaletConect = true;
 
     if (!anyWaletConect) {
       console.log("esta conectado a una walet");
       setStepProcess(-3);
+      return;
+    }
+    const chainId = Number(rest.chainId);
+    console.log(chainId);
+    const isCorrectBlockchain = await checkCorrertBlockchain(chainId);
+    if (!isCorrectBlockchain) {
+      console.log("estas en la blockchain incorrecta");
+      setStepProcess(-1);
       return;
     }
 
@@ -204,6 +216,8 @@ export default function MintModal() {
         return;
       }
 
+      // verificamos si esta en la blockchain corecta
+
       setStepProcess(0);
     }
   };
@@ -215,6 +229,50 @@ export default function MintModal() {
   return (
     <WolfyModalLayoutReduxController modalController={keyModalSate.mintModal}>
       <div className="wolf-modal-body w-[100%] max-w-[560px] min-h-[40px]">
+        {stepProcess === -5 && (
+          <>
+            <div className="wolf-mint-modal-header  ">
+              <MultimediaZone file={metadataFile} />
+              <div className="multimedia-content justify-center flex items-center flex-col">
+                <h3 className="mb-[20px] text-center">
+                  La blockChain nop esta en su billetera
+                </h3>
+                <span className="p-2">
+                  Para realizar una operacion en la blochain es nesesario tener
+                  la blockchain en su billetera
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center mt-5">
+              <button
+                className="wolf-buttom flex w-[100%] justify-center wolf-btn-primary-2 my-2 "
+                onClick={async () => {
+                  try {
+                    await addNewBlockChainNetWork();
+                    init();
+                  } catch (error) {
+                    setStepProcess(-6);
+                  }
+                }}
+              >
+                <span>Agregar la blockchain</span>
+              </button>
+              <button
+                className="wolf-buttom w-[100%] wolf-btn-secondary-traparent border-[2px] my-2 border-wolf-gray-dark-800"
+                onClick={() => {
+                  dispatch(
+                    closeModal({
+                      modal: keyModalSate.mintModal,
+                    })
+                  );
+                }}
+              >
+                Cancelar
+              </button>
+            </div>
+          </>
+        )}
+
         {stepProcess === -4 && (
           <div className="wolf-mint-modal-header  ">
             <MultimediaZone file={metadataFile} />
@@ -234,10 +292,56 @@ export default function MintModal() {
               <h3 className="mb-[20px]">No esta conectado</h3>
               <span>
                 Para realizar una operacion en la blochain es nesesario estar
-                conectado a al waler
+                conectado a al wallet
               </span>
             </div>
           </div>
+        )}
+        {stepProcess === -1 && (
+          <>
+            <div className="wolf-mint-modal-header  ">
+              <MultimediaZone file={metadataFile} />
+              <div className="multimedia-content justify-center flex items-center flex-col">
+                <h3 className="mb-[20px] text-center">
+                  No esta En la blockchain correcta
+                </h3>
+                <span className="p-2">
+                  Para realizar una operacion en la blochain es nesesario estar
+                  en la misma blockchain
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center mt-5">
+              <button
+                className="wolf-buttom flex w-[100%] justify-center wolf-btn-primary-2 my-2 "
+                onClick={async () => {
+                  try {
+                  const isSucces =   await changeBlochainNetworkMetamas();
+
+                  if(!isSucces) throw new Error("No existe la blockchain")
+
+                    init();
+                  } catch (error) {
+                    setStepProcess(-5);
+                  }
+                }}
+              >
+                <span> Cambiar de blockchain</span>
+              </button>
+              <button
+                className="wolf-buttom w-[100%] wolf-btn-secondary-traparent border-[2px] my-2 border-wolf-gray-dark-800"
+                onClick={() => {
+                  dispatch(
+                    closeModal({
+                      modal: keyModalSate.mintModal,
+                    })
+                  );
+                }}
+              >
+                Cancelar
+              </button>
+            </div>
+          </>
         )}
 
         {stepProcess === -2 && (

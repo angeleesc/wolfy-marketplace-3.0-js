@@ -127,6 +127,7 @@ export default function MintNftForm() {
       isAddPropieties: false,
       nftsAtributes: [{ key: "", nftValue: "" }],
       colectionOptions: collectionsOptions.wolfy,
+      chainId: "420"
     },
     resolver,
   });
