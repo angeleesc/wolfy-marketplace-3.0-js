@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
-import { smartContracts } from "../helpers/global-constants";
+import { requestEndPoints, rootApipaht, smartContracts } from "../helpers/global-constants";
 import auctionAbi from "../abi/auction";
+import axios from "axios";
 
 export const getProvider = async () => {
     // verificamos si hay provider verificado
@@ -22,27 +23,64 @@ export const conectAuctionContrac = async () => {
     }
 }
 
-const extractArgs = (receipt, args)=>{
+const extractArgs = (receipt, keys = []) => {
 
-    if(receipt.events){
+    if (receipt.events) {
 
-        const args = receipt.filter((event) => {
+        const args = receipt.events.filter((event) => {
             if (event.args) {
-              return event
+                return event
             }
-          })
+        })
 
-          if(args.length > 0){
-            
-          }
+        if (args.length > 0) {
+
+            const eventArgs = args[0].args
+
+            console.log("evetn args")
+            console.log(eventArgs)
+
+            let dataToSend = {}
+
+            for (let key of keys) {
+
+                if (eventArgs[key]) {
+                    console.log("el campo exites")
+                    console.log(eventArgs[key])
+
+                    if (typeof (eventArgs[key]) === "string") {
+                        dataToSend[key] = eventArgs[key]
+                    } else if (typeof (eventArgs[key]) === "object" && eventArgs[key]._isBigNumber) {
+                        dataToSend[key] = eventArgs[key].toString()
+                    } else {
+                        dataToSend[key] = eventArgs[key]
+                    }
 
 
 
-        return
+
+                } else {
+                    console.log("el campo no existe")
+                }
+
+            }
+
+            console.log("datos a enviar")
+            console.log(dataToSend)
+
+            // console.log(args[0].args)
+
+            return dataToSend
+
+        }
+
+
+        return null
+
     }
 
     return null;
-        
+
 
 }
 
@@ -56,6 +94,15 @@ export const goToAuction = async (erc721, tokenIds, price, duration) => {
     const transation = await resquet.wait()
     console.log(transation)
 
+    const dataToSend = extractArgs(transation, ["seller", "_duration", "_price", "_tokenId", "id"])
+    if (dataToSend) return {
+        isSuccess: true,
+        hasEventData: true,
+        data: dataToSend,
+
+    }
+
+    return { isSuccess: true, hasEventData: false }
 
 
 
@@ -65,7 +112,31 @@ export const goToAuction = async (erc721, tokenIds, price, duration) => {
 
 export const goToAuctionHttp = async (erc721, tokenIds, price, duration) => {
 
-    const args = await goToAuction(erc721, tokenIds, price, duration)
+    const args = await goToAuction(erc721, tokenIds, price, duration,)
+    if (args.hasEventData && args.data) {
+        const { seller, _duration, _price, _tokenId, id } = args.data
+
+        const dataToSend = {
+            fOrderId: id,
+            fPrice: ethers.utils.formatEther(_price),
+            seller,
+            duration: _duration
+
+        }
+
+        const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+        // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+
+        try {
+
+            await axios.post(endPoint, dataToSend)
+
+        } catch (error) {
+
+        }
+
+    }
+
     console.log(args)
 
 }

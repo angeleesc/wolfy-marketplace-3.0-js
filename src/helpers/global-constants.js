@@ -148,7 +148,8 @@ export const requestEndPoints = {
     eventSeverEndpoint: {
         marketPlaceContractPostNewOrder: "/api/v1/makertplace",
         marketPlaceContractDeletOrder: (orderId, seller) => `/api/v1/makertplace/${orderId}/${seller}`,
-        marketplaceUpdateOrderPut: "/api/v1/makertplace"
+        marketplaceUpdateOrderPut: "/api/v1/makertplace",
+        auctionCreatePost : "/api/v1/auction"
 
     }
 
