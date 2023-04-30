@@ -305,30 +305,36 @@ export default function MintNftForm() {
                 </div>
 
                 <div className="mt-[10px] flex">
-                  <TextFieldInputGroup
-                    textLabel={"Horas"}
-                    info={"Maximo 24 Horas"}
-                    register={register("auctionHours")}
-                    type="number"
-                    step="1"
-                    onWheel={preventScroll}
-                    placeholder="Ej 10 horas"
-                    errorMessage={
-                      errors.auctionHours ? errors.auctionHours.message : ""
-                    }
-                  />
-                  <TextFieldInputGroup
-                    textLabel={"Minutos"}
-                    info={"Maximo 60 minutos"}
-                    register={register("auctionMinutes")}
-                    type="number"
-                    step="1"
-                    onWheel={preventScroll}
-                    placeholder="Ej 10 minutos"
-                    errorMessage={
-                      errors.auctionMinutes ? errors.auctionMinutes.message : ""
-                    }
-                  />
+                  <div className="mr-1 w-[50%] ">
+                    <TextFieldInputGroup
+                      textLabel={"Horas *"}
+                      info={"Maximo 24 Horas"}
+                      register={register("auctionHours")}
+                      type="number"
+                      step="1"
+                      onWheel={preventScroll}
+                      placeholder="Ej 10 horas"
+                      errorMessage={
+                        errors.auctionHours ? errors.auctionHours.message : ""
+                      }
+                    />
+                  </div>
+                  <div className="ml-1 w-[50%]">
+                    <TextFieldInputGroup
+                      textLabel={"Minutos"}
+                      info={"Maximo 60 minutos"}
+                      register={register("auctionMinutes")}
+                      type="number"
+                      step="1"
+                      onWheel={preventScroll}
+                      placeholder="Ej 10 minutos"
+                      errorMessage={
+                        errors.auctionMinutes
+                          ? errors.auctionMinutes.message
+                          : ""
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             )}
