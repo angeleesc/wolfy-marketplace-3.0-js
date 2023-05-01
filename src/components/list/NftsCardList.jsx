@@ -9,7 +9,6 @@ export default function NftsCardList({ cards }) {
       {cards.map((card, i) => {
         return (
           <div className="card-nfts-item" key={"nfts-explorer-card-" + i}>
-          
             <NftCard cardData={card} />
           </div>
         );

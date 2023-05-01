@@ -9,9 +9,9 @@ import { staticRoutes } from "../../helpers/static-routes";
 import { useDispatch } from "react-redux";
 import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
 import { saleMethod as saleMethodOp } from "../../helpers/global-constants";
-import { BsFillTagFill } from "react-icons/bs"
-import { ImClock } from "react-icons/im"
-import { FaHourglassStart } from "react-icons/fa"
+import { BsFillTagFill } from "react-icons/bs";
+import { ImClock } from "react-icons/im";
+import { FaHourglassStart } from "react-icons/fa";
 
 export default function NftCard({ cardData }) {
   const {
@@ -52,8 +52,15 @@ export default function NftCard({ cardData }) {
             className="w-[100%] h-[100%]"
             to={staticRoutes.tokenInfoData(order)}
           >
-            <img src={nftCover} alt="cover-img" />
+            {nftCover && <img src={nftCover} alt="cover-img" />}
           </Link>
+
+          {saleMethod === saleMethodOp.auction && (
+            <div className="auction-hourglass">
+              <span>termina</span>
+              <h3>1 dia</h3>
+            </div>
+          )}
 
           <Link
             className="seller-info-section"
@@ -61,8 +68,10 @@ export default function NftCard({ cardData }) {
           >
             <div className="seller-info-body">
               <div className="seller-name">
-                <span>vendedor</span>
-                <h3>{sellerName ? sellerName : seller}</h3>
+                <span>Vendedor</span>
+                <h3 className="seller-title">
+                  {sellerName ? sellerName : seller}
+                </h3>
               </div>
               <div className="seller-avatar">
                 {sellerFace ? (
@@ -106,9 +115,15 @@ export default function NftCard({ cardData }) {
               <h3>{nftName}</h3>
             </div>
             <div className="price-zone px-[5px]">
-              <span className="price-info" >{saleMethod === saleMethodOp.sales? "Precio": "Puja Maxima"}</span>
+              <span className="price-info">
+                {saleMethod === saleMethodOp.sales ? "Precio" : "Puja Minima"}
+              </span>
               <h2 className="flex items-center">
-               { saleMethod === saleMethodOp.sales ?<BsFillTagFill className="mr-2" />: <ImClock className="mr-2"/>}
+                {saleMethod === saleMethodOp.sales ? (
+                  <BsFillTagFill className="mr-2" />
+                ) : (
+                  <ImClock className="mr-2" />
+                )}
                 {saleMethod === saleMethodOp.sales ? price : currentPrice} ETH
               </h2>
             </div>
