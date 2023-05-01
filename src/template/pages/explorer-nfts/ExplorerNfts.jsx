@@ -43,8 +43,9 @@ export default function ExplorerNfts() {
 
   const getAllOrders = async () => {
     const result = await getOdres({});
-
     let walletLog = null;
+
+  
 
     const checkWalletConected = await checWaletConected();
     if (checkWalletConected === true) {

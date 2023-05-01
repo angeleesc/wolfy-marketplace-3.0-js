@@ -195,3 +195,7 @@ export const defTye = {
 
 
 }
+
+export const jsonRpc = {
+    "optimism-goerli": "https://goerli.optimism.io/"
+}
