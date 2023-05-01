@@ -7,6 +7,14 @@
     border-radius: 16px;
     position     : relative;
 
+    .price-info {
+        // background-color: red;
+        color      : theme("colors.wolf-gray-light.100");
+        font-size  : 12px;
+        line-height: 12px;
+        font-weight: 600;
+    }
+
     &::before,
     &::after {
         content            : '';
@@ -217,7 +225,8 @@
 
                 .price-zone {
                     h2 {
-                        font-size  : 18px;
+                        font-size  : 16px;
+                        line-height: 16px;
                         font-weight: 700;
                         color      : theme("colors.wolf-blue-purple.600");
                     }

@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import { useDispatch } from "react-redux";
 import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
+import { saleMethod as saleMethodOp } from "../../helpers/global-constants";
+import { BsFillTagFill } from "react-icons/bs"
+import { ImClock } from "react-icons/im"
+import { FaHourglassStart } from "react-icons/fa"
 
 export default function NftCard({ cardData }) {
   const {
@@ -31,6 +35,7 @@ export default function NftCard({ cardData }) {
     isOwner,
     sellerName,
     walletLog,
+    currentPrice,
   } = cardData;
 
   console.log("es el dueno de la order", walletLog && walletLog === seller);
@@ -101,7 +106,11 @@ export default function NftCard({ cardData }) {
               <h3>{nftName}</h3>
             </div>
             <div className="price-zone px-[5px]">
-              <h2>{price} ETH</h2>
+              <span className="price-info" >{saleMethod === saleMethodOp.sales? "Precio": "Puja Maxima"}</span>
+              <h2 className="flex items-center">
+               { saleMethod === saleMethodOp.sales ?<BsFillTagFill className="mr-2" />: <ImClock className="mr-2"/>}
+                {saleMethod === saleMethodOp.sales ? price : currentPrice} ETH
+              </h2>
             </div>
           </div>
           <div className="checkout-secction">
@@ -148,11 +157,15 @@ export default function NftCard({ cardData }) {
                     );
                   }}
                 >
-                  Comprar
+                  {saleMethod === saleMethodOp.sales
+                    ? "comprar"
+                    : "hacer una puja"}
                 </button>
-                <button className="wolf-buttom wolf-btn-primary-2 ">
-                  <MdAddShoppingCart />
-                </button>
+                {saleMethod === saleMethodOp.sales && (
+                  <button className="wolf-buttom wolf-btn-primary-2 ">
+                    <MdAddShoppingCart />
+                  </button>
+                )}
               </>
             )}
           </div>
