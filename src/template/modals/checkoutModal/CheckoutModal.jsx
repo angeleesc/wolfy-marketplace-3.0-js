@@ -37,6 +37,7 @@ import {
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { ethers } from "ethers";
 import { getAuctionById } from "../../../controllers/auctionControllers";
+import * as yup from "yup";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-5);
@@ -59,6 +60,7 @@ export default function CheckoutModal() {
     formState: { errors },
     handleSubmit,
     setValue,
+
     watch,
   } = useForm({
     defaultValues: {
@@ -68,6 +70,7 @@ export default function CheckoutModal() {
   });
 
   const quantityWatch = watch("cuantity");
+  const bidWatch = watch("bid");
 
   const modalData = useSelector(
     (state) => state.modals.checkoutModal.dataToProccess
@@ -134,13 +137,14 @@ export default function CheckoutModal() {
 
       const auctionData = await getAuctionById(modalData.orderId);
 
-      if (!auctionData.isSuccess) {
+      if (!auctionData.isSuccess && !auctionData.data) {
         setStepProcces(2);
         return;
       }
 
-      
+      const { currentPrice, bestBidder, endTime } = auctionData.data;
 
+      setValue("bid", (currentPrice * 1.05).toString());
     } else {
       orderDAta = await getOrderByid(modalData.orderId);
 
@@ -165,6 +169,8 @@ export default function CheckoutModal() {
       return;
     }
 
+    setValue("saleMethod", modalData.saleMethod);
+
     setStepProcces(0);
     // console.log("estas conectado a una wallet");
   };
@@ -188,7 +194,13 @@ export default function CheckoutModal() {
   }, []);
 
   const onSubmit = async (data) => {
-    // console.log(data);
+    console.log(data);
+
+    if (modalData.saleMethod === saleMethod.auction) {
+      bidTokenNow();
+    } else {
+      buyTokenNow();
+    }
   };
 
   return (
@@ -326,6 +338,7 @@ export default function CheckoutModal() {
                     <WTextFields
                       register={register("bid")}
                       textLabel={"Puja Minima *"}
+                      step="0.00000001"
                       placeholder="Ej: ETH"
                       id="checkout-bid"
                       type="number"
@@ -354,13 +367,6 @@ export default function CheckoutModal() {
                     <button
                       type="submit"
                       className="wolf-buttom wolf-buttom-primary w-[100%]"
-                      onClick={() => {
-                        if (modalData.saleMethod === saleMethod.auction) {
-                          bidTokenNow();
-                        } else {
-                          buyTokenNow();
-                        }
-                      }}
                     >
                       {modalData.saleMethod === saleMethod.auction
                         ? "hacer una puja"
