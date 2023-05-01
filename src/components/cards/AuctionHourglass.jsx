@@ -1,3 +1,5 @@
+import { formatDistance, formatDistanceStrict } from "date-fns";
+import { es } from "date-fns/locale";
 import React from "react";
 
 export default function AuctionHourglass({ endTime }) {
@@ -6,7 +8,13 @@ export default function AuctionHourglass({ endTime }) {
 
   const { _seconds } = endTime;
 
-  console.log(_seconds);
+  const time = Date.now();
+  //   console.log(_seconds);
+
+  const distance = formatDistanceStrict(_seconds * 1000, time, {
+    locale: es,
+  });
+  //   console.log(distance);
 
   console.log();
   return (
@@ -14,7 +22,7 @@ export default function AuctionHourglass({ endTime }) {
       <div className="auction-hourglass-body">
         <div className="p-0 m-0 flex flex-col justify-center">
           <span>termina</span>
-          <h3>3 minutos</h3>
+          <h3>{distance}</h3>
         </div>
       </div>
     </div>
