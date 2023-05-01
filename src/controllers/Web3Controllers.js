@@ -1,4 +1,5 @@
 import { ethers } from 'ethers'
+import { jsonRpc } from '../helpers/global-constants'
 
 
 
@@ -11,6 +12,12 @@ export const getProvider = async () => {
     }
     // console.log("no hay provider")
     return null
+}
+
+
+export const getProviderByJsonRpc = async () => {
+    const provider = new ethers.providers.JsonRpcProvider(jsonRpc["optimism-goerli"])
+    return provider
 }
 
 export const checWaletConected = async () => {

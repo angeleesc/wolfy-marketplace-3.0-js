@@ -38,11 +38,11 @@ export default function NftCard({ cardData }) {
     currentPrice,
   } = cardData;
 
-  console.log("es el dueno de la order", walletLog && walletLog === seller);
+  // console.log("es el dueno de la order", walletLog && walletLog === seller);
 
   const dispatch = useDispatch();
 
-  console.log("es duenio", isOwner);
+  // console.log("es duenio", isOwner);
 
   return (
     <div className="nft-card-container">

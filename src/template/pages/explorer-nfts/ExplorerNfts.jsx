@@ -7,6 +7,7 @@ import { getOdres } from "../../../controllers/firebaseControllers";
 import worderin from "../../../static-images/wondering.png";
 import {
   checWaletConected,
+  getProviderByJsonRpc,
   getWaletData,
 } from "../../../controllers/Web3Controllers";
 
@@ -21,21 +22,11 @@ export default function ExplorerNfts() {
   };
 
   const tempJsonObjet = {
-    // nftName: "Eric Way ",
     colectionName: "Eric Pause Editions",
-    // seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
-    // colection: "0xA41f28031d1165cD45c69E6AB9ba2A8BE0201008",
-    // collectionFace:
-    //   "https://i.seadn.io/gae/xN0Abpk1755I8dMsCh0A2-3CBgpURNerqHOX96k8odPWZhy_RpQAGMqMKPxyP1OUl-fg4P9A596AnuuoAZ4H_d9_2XMxmU29adaV?auto=format&w=256",
-    // sellerFace:
-    //   "https://i.seadn.io/gcs/files/74ba0d3cf36ea79af0896e2f5b32d17e.jpg?auto=format&w=384",
     isCollectionCheck: true,
     isSellerCheck: true,
     nftCover: worderin,
-    // nftVideo: "",
-    price: 0.055,
     saleMethod: saleMethod.sales,
-    tokenId: 2670,
     copies: 1,
     sale: 1,
     order: 5,
@@ -45,7 +36,8 @@ export default function ExplorerNfts() {
     const result = await getOdres({});
     let walletLog = null;
 
-  
+    console.log("obteniendo el provider");
+    const provider = await getProviderByJsonRpc();
 
     const checkWalletConected = await checWaletConected();
     if (checkWalletConected === true) {
@@ -54,7 +46,7 @@ export default function ExplorerNfts() {
     }
 
     if (result.isSuccess && result.hasData) {
-      console.log(result.orders);
+      // console.log(result.orders);
 
       const resultReturned = result.orders.map((orderData) => {
         let nftCover = null;
@@ -79,7 +71,9 @@ export default function ExplorerNfts() {
             orderId: orderData.orderId,
             seller: orderData.seller,
             listingAt: orderData.listingAt,
-            ...(orderData.currentPrice?{currentPrice:orderData.currentPrice}:{}),
+            ...(orderData.currentPrice
+              ? { currentPrice: orderData.currentPrice }
+              : {}),
             ...(orderData.sellerName
               ? { sellerName: orderData.sellerName }
               : {}),
@@ -91,7 +85,7 @@ export default function ExplorerNfts() {
         }
 
         if (orderData.metadata) {
-          console.log(orderData.metadata.nftName);
+          // console.log(orderData.metadata.nftName);
         } else {
           console.log("no tiene metadata");
         }
@@ -105,9 +99,9 @@ export default function ExplorerNfts() {
         };
       });
 
-      console.log("resulrado xd");
-      console.log(resultReturned);
-      console.log();
+      // console.log("resulrado xd");
+      // console.log(resultReturned);
+      // console.log();
 
       setOrders(resultReturned);
     }
