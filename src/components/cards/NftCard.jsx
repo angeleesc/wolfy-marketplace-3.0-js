@@ -12,6 +12,7 @@ import { saleMethod as saleMethodOp } from "../../helpers/global-constants";
 import { BsFillTagFill } from "react-icons/bs";
 import { ImClock } from "react-icons/im";
 import { FaHourglassStart } from "react-icons/fa";
+import AuctionHourglass from "./AuctionHourglass";
 
 export default function NftCard({ cardData }) {
   const {
@@ -36,6 +37,7 @@ export default function NftCard({ cardData }) {
     sellerName,
     walletLog,
     currentPrice,
+    endTime,
   } = cardData;
 
   // console.log("es el dueno de la order", walletLog && walletLog === seller);
@@ -56,14 +58,7 @@ export default function NftCard({ cardData }) {
           </Link>
 
           {saleMethod === saleMethodOp.auction && (
-            <div className="auction-hourglass">
-              <div className="auction-hourglass-body">
-                <div className="p-0 m-0 flex flex-col justify-center">
-                  <span>termina</span>
-                  <h3 >3 minutos</h3>
-                </div>
-              </div>
-            </div>
+            <AuctionHourglass endTime={endTime} />
           )}
 
           <Link

@@ -50,6 +50,8 @@ export default function ExplorerNfts() {
       const resultReturned = result.orders.map((orderData) => {
         let nftCover = null;
 
+        // console.log(orderData);
+
         if (orderData) {
           nftCover = {
             ...(orderData.metadata && orderData.metadata.nftName
@@ -63,6 +65,7 @@ export default function ExplorerNfts() {
             ...(orderData.metadata && orderData.metadata.contractType
               ? { contractType: orderData.metadata.contractType }
               : {}),
+            ...(orderData.endTime ? { endTime: orderData.endTime } : {}),
             price: orderData.price,
             colection: orderData.colection,
             sale: orderData.onSale,
