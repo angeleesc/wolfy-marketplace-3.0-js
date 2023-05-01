@@ -36,9 +36,10 @@ import {
   goToBuy,
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { ethers } from "ethers";
+import { getAuctionById } from "../../../controllers/auctionControllers";
 
 export default function CheckoutModal() {
-  const [stepProcces, setStepProcces] = useState(-2);
+  const [stepProcces, setStepProcces] = useState(-5);
 
   const [isReadMode, setIsReadMode] = useState(true);
   const [price, setPrice] = useState(0);
@@ -57,6 +58,7 @@ export default function CheckoutModal() {
     control,
     formState: { errors },
     handleSubmit,
+    setValue,
     watch,
   } = useForm({
     defaultValues: {
@@ -66,10 +68,6 @@ export default function CheckoutModal() {
   });
 
   const quantityWatch = watch("cuantity");
-  // console.log("cantidad actual");
-  // console.log(quantityWatch);
-
-  // CONFIGURACION DE ESTADO GLOBAL DE REDUX
 
   const modalData = useSelector(
     (state) => state.modals.checkoutModal.dataToProccess
@@ -98,6 +96,10 @@ export default function CheckoutModal() {
     await goToBuy(modalData.orderId, quantityWatch.toString(), ehtPrice);
   };
 
+  const bidTokenNow = async () => {
+    console.log("oferta realizada");
+  };
+
   const init = async () => {
     // checkeamos si esta conectado a una wallet
 
@@ -121,22 +123,41 @@ export default function CheckoutModal() {
 
     // verivicamos si tiene el balance correcto para al menos una compra
 
-    const orderDAta = await getOrderByid(modalData.orderId);
     // console.log(orderDAta);
     const walletData = await getWaletData();
+    let orderDAta;
+    setBalace(walletData.balance);
+    setAddress(walletData.addres);
+
+    if (modalData.saleMethod === saleMethod.auction) {
+      console.log("obteniendo la orden de la subasta");
+
+      const auctionData = await getAuctionById(modalData.orderId);
+
+      if (!auctionData.isSuccess) {
+        setStepProcces(2);
+        return;
+      }
+
+      
+
+    } else {
+      orderDAta = await getOrderByid(modalData.orderId);
+
+      setPrice(orderDAta.price);
+      setMaxQ(orderDAta.quantity);
+      if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
+    }
 
     // const gast = await getEstimateGasBuyToken(modalData.orderId, 1 , ethers.utils.parseEther(orderDAta.price.toString()) )
 
+    // console.log("vendedor");
+    // console.log(modalData.seller);
+    // console.log("susuario");
+    // console.log(walletData.addres);
+
     setBalace(walletData.balance);
     setAddress(walletData.addres);
-    setPrice(orderDAta.price);
-    setMaxQ(orderDAta.quantity);
-    if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
-
-    console.log("vendedor");
-    console.log(modalData.seller);
-    console.log("susuario");
-    console.log(walletData.addres);
 
     if (modalData.seller && modalData.seller === walletData.addres) {
       // console.log("el es duenio de la orden actuacl")
@@ -218,8 +239,8 @@ export default function CheckoutModal() {
             )}
             {stepProcces === 0 && (
               <form
-                className="bill-checkout-zone px-[15px]"
                 onSubmit={handleSubmit(onSubmit)}
+                className="bill-checkout-zone px-[15px]"
               >
                 {modalData.saleMethod === saleMethod.sales && (
                   <>
@@ -333,9 +354,17 @@ export default function CheckoutModal() {
                     <button
                       type="submit"
                       className="wolf-buttom wolf-buttom-primary w-[100%]"
-                      onClick={buyTokenNow}
+                      onClick={() => {
+                        if (modalData.saleMethod === saleMethod.auction) {
+                          bidTokenNow();
+                        } else {
+                          buyTokenNow();
+                        }
+                      }}
                     >
-                      {true ? "hacer una puja" : "Comprar Ahora"}
+                      {modalData.saleMethod === saleMethod.auction
+                        ? "hacer una puja"
+                        : "Comprar Ahora"}
                     </button>
                     <div className="mt-[10px]">
                       <button
@@ -355,6 +384,16 @@ export default function CheckoutModal() {
                   </div>
                 </div>
               </form>
+            )}
+
+            {stepProcces === -5 && (
+              <div className="procesing-step loading-data">
+                <h3>cargando</h3>
+                <Skeleton animation="wave" width={"100%"} height={40} />
+                <span className="text-[14px] text-wolf-gray-light-800">
+                  Esto puede tardar unos minutos
+                </span>
+              </div>
             )}
 
             {
@@ -508,12 +547,12 @@ export default function CheckoutModal() {
                   Ocurrio u error durante la transsacion
                 </span>
                 <div className="w-[100%] mt-[10px]">
-                  <button
+                  {/* <button
                     type="button"
                     className="wolf-buttom wolf-buttom-primary w-[100%]"
                   >
                     Intentar nuevamente
-                  </button>
+                  </button> */}
                   <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1200 my-[15px]"></div>
                   <div className="mt-[10px]">
                     <button

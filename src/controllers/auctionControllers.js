@@ -174,6 +174,42 @@ export const goFinishAuction = async (order) => {
 
 }
 
+
+export const getAuctionById = async (order) => {
+
+    const contract = await conectAuctionContrac()
+
+    const aOrderId = typeof (order) === "number" ? order.toString() : order
+    const orderData = await contract.auctions(aOrderId)
+
+    try {
+        const { currentPrice, bestBidder, endTime, } = orderData
+
+        const dataTosend = {
+            currentPrice: ethers.utils.formatEther(currentPrice),
+            bestBidder,
+            endTime: Number(endTime.toString()) * 1000
+        }
+
+        console.log("se recibio del contratop")
+        console.log(orderData)
+
+        return {
+            isSuccess: true,
+            data: dataTosend
+        }
+
+    } catch (error) {
+
+
+        return{
+            isSuccess: false
+        }
+        console.log("ocurrio un error haciecndo la peticio al contrato")
+    }
+
+}
+
 export const getAllAuctionOrder = async () => {
 
     const provider = await getProvider()

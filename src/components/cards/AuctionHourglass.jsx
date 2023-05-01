@@ -10,6 +10,7 @@ export default function AuctionHourglass({ endTime }) {
 
   const time = Date.now();
   //   console.log(_seconds);
+  const diff = _seconds * 1000 - time;
 
   const distance = formatDistanceStrict(_seconds * 1000, time, {
     locale: es,
@@ -20,10 +21,16 @@ export default function AuctionHourglass({ endTime }) {
   return (
     <div className="auction-hourglass">
       <div className="auction-hourglass-body">
-        <div className="p-0 m-0 flex flex-col justify-center">
-          <span>termina</span>
-          <h3>{distance}</h3>
-        </div>
+        {diff > 0 ? (
+          <div className="p-0 m-0 flex flex-col justify-center">
+            <span>termina</span>
+            <h3>{distance}</h3>
+          </div>
+        ) : (
+          <div className="p-0 m-0 flex flex-col justify-center">
+            <h3>Subasta finalizada</h3>
+          </div>
+        )}
       </div>
     </div>
   );
