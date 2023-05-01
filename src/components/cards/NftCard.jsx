@@ -57,8 +57,12 @@ export default function NftCard({ cardData }) {
 
           {saleMethod === saleMethodOp.auction && (
             <div className="auction-hourglass">
-              <span>termina</span>
-              <h3>1 dia</h3>
+              <div className="auction-hourglass-body">
+                <div className="p-0 m-0 flex flex-col justify-center">
+                  <span>termina</span>
+                  <h3 >3 minutos</h3>
+                </div>
+              </div>
             </div>
           )}
 
