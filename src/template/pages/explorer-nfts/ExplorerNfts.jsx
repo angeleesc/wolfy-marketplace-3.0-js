@@ -37,7 +37,6 @@ export default function ExplorerNfts() {
     let walletLog = null;
 
     console.log("obteniendo el provider");
-    const provider = await getProviderByJsonRpc();
 
     const checkWalletConected = await checWaletConected();
     if (checkWalletConected === true) {
