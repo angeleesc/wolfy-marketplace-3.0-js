@@ -1,20 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
-import "./scss/index.scss"
-import { Provider } from 'react-redux';
-import store from './redux-app/stores';
-import 'overlayscrollbars/overlayscrollbars.css';
-import App from './App';
-import WolfFileContexProvider from "./context/FileContex"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import "./scss/index.scss";
+import { Provider } from "react-redux";
+import store from "./redux-app/stores";
+import "overlayscrollbars/overlayscrollbars.css";
+import App from "./App";
+import WolfFileContexProvider from "./context/FileContex";
+import Web3ContextProvider from "./context/Web3ContextProvider";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <WolfFileContexProvider>
-      {/* <React.StrictMode> */}
+      <Web3ContextProvider>
+        {/* <React.StrictMode> */}
         <App />
-      {/* </React.StrictMode> */}
+        {/* </React.StrictMode> */}
+      </Web3ContextProvider>
     </WolfFileContexProvider>
   </Provider>
 );

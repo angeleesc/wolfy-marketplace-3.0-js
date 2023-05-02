@@ -15,12 +15,15 @@ import {
   getWaletData,
 } from "../../controllers/Web3Controllers";
 import HabugerMenuLayuot from "./HabugerMenuLayuot";
+import { useWeb3Context } from "../../context/Web3ContextProvider";
 
 // import
 
 export default function PcNavbar() {
-  const [valletAccount, setValletAccount] = useState("");
-  const [balance, setBalance] = useState("");
+  // const [valletAccount, setValletAccount] = useState("");
+  // const [balance, setBalance] = useState("");
+
+  const { valletAccount, balance } = useWeb3Context();
 
   const location = useLocation();
   const bodyRef = useRef();
@@ -42,7 +45,6 @@ export default function PcNavbar() {
     console.log(explorermodePath);
 
     if (explorermodePath) {
-      console.log("estas en una rua del explorer");
       return "wolf-pc-navbar-body mode-explorer";
     }
 
@@ -58,60 +60,6 @@ export default function PcNavbar() {
     }
   };
 
-  const init = async () => {
-    let isConected = await checWaletConected();
-    if (isConected) {
-      const walletData = await getWaletData();
-      setValletAccount(walletData.addres);
-      setBalance(walletData.balance);
-    }
-  };
-
-  const conectWallet = async () => {
-    const isConectedSucces = await connetWalletMetamask();
-    if (isConectedSucces) {
-      const walletData = await getWaletData();
-      setValletAccount(walletData.addres);
-      setBalance(walletData.balance);
-    }
-  };
-
-  // verificar si el usuario esta conectado
-
-  const listentAccountMetasmas = () => {
-    if (window.ethereum) {
-      window.ethereum.on("disconect", (error) => {
-        console.log("billetera desconectada");
-        console.log(error);
-      });
-
-      return () => {
-        window.ethereum.removeListener("disconect", (error) => {
-          console.log("billetera desconectada");
-          console.log(error);
-        });
-      };
-    }
-  };
-
-  useEffect(() => {
-    init();
-
-    const unsub = listentAccountMetasmas();
-
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
-        // console.log("billetera desconectada");
-        // console.log(accounts);
-        if (accounts.length > 0) {
-          init();
-        } else {
-          setValletAccount("");
-          setBalance("");
-        }
-      });
-    }
-  }, []);
 
   return (
     <div className="wolf-pc-navbar">
