@@ -7,8 +7,6 @@ import { connetWalletMetamask } from "../../controllers/Web3Controllers";
 import MetamaskOficialLgo from "../icons/MetamaskOficialLgo";
 
 export default function HambugerUserMenu({}) {
-  const [isOpen, setIsOpen] = useState(false);
-
   const { valletAccount, balance, hasWeb3Provider } = useWeb3Context();
 
   return (
@@ -20,19 +18,32 @@ export default function HambugerUserMenu({}) {
           <FaUserAlt />
         )
       }
+      handlerClose={(func) => {
+        setCloseDrop(func);
+      }}
     >
       {valletAccount ? (
-        <div>
+        <>
           <h3>Usuario</h3>
-        </div>
+        </>
       ) : (
         <div className="w-[100%]  max-w-[400px] mt-[20px]">
           <button
             className="wolf-buttom wolf-btn-primary-2 w-[100%] flex items-center justify-center"
-            onClick={connetWalletMetamask}
+            data-closedrop="true"
+            onClick={async () => {
+              connetWalletMetamask();
+            }}
           >
-            <MetamaskOficialLgo  className="mr-2" size={30} />
-            <span className="text-wolf-gray-light-2200 text-[16px]">
+            <MetamaskOficialLgo
+              className="mr-2"
+              size={30}
+              data-closedrop="true"
+            />
+            <span
+              className="text-wolf-gray-light-2200 text-[16px]"
+              data-closedrop="true"
+            >
               Conectar Wallet Metamask
             </span>
           </button>

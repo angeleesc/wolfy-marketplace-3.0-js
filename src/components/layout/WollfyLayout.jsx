@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import MobileNavbar from "../navbar/MobileNavbar";
 import PcNavbar from "../navbar/PcNavbar";
+import MobileNavbarV2 from "../navbar/MobileNavbarV2";
 
 export default function WollfyLayout({ isProtected, children, rediredTo }) {
   const [isMobile, setIsMobile] = useState(
@@ -30,7 +31,7 @@ export default function WollfyLayout({ isProtected, children, rediredTo }) {
     if (user) {
       return (
         <>
-          {isMobile === true ? <MobileNavbar /> : <PcNavbar />}
+          {isMobile === true ? <MobileNavbarV2 /> : <PcNavbar />}
           {children ? children : <Outlet />}
         </>
       );
