@@ -36,7 +36,10 @@ import {
   goToBuy,
 } from "../../../controllers/makertPlaceSmarContractControllers";
 import { ethers } from "ethers";
-import { getAuctionById } from "../../../controllers/auctionControllers";
+import {
+  bidHttp,
+  getAuctionById,
+} from "../../../controllers/auctionControllers";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 
@@ -124,6 +127,7 @@ export default function CheckoutModal() {
 
   const bidTokenNow = async () => {
     console.log("oferta realizada");
+    await bidHttp(modalData.orderId, bidWatch);
   };
 
   const init = async () => {

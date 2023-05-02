@@ -202,7 +202,7 @@ export const getAuctionById = async (order) => {
     } catch (error) {
 
 
-        return{
+        return {
             isSuccess: false
         }
         console.log("ocurrio un error haciecndo la peticio al contrato")
@@ -275,15 +275,71 @@ export const bid = async (orderId, value) => {
 
     const etherPrice = ethers.utils.parseEther(value)
 
-    const contract = await conectAuctionContrac()
-    const req = await contract.bid(orderId, etherPrice, {
-        value: etherPrice
-    })
-    const transation = await req.wait()
+    try {
+        const contract = await conectAuctionContrac()
+        const req = await contract.bid(orderId, etherPrice, {
+            value: etherPrice
+        })
+        const transation = await req.wait()
 
-    console.log(transation)
+        const dataToSend = extractArgs(transation, ["bidder", "id", "_price"])
+
+        if (dataToSend && Object.keys(dataToSend).length > 0) return {
+            isSuccess: true,
+            hasData: true,
+            data: dataToSend
+        }
+
+        return {
+            isSuccess: true,
+            hasData: false
+        }
+    } catch (error) {
+        return {
+            isSuccess: false
+        }
+    }
+
 
 }
+
+export const bidHttp = async (orderId, value) => {
+
+    const data = await bid(orderId, value)
+    if (data.isSuccess && data.hasData) {
+        if (data.data) {
+            const { bidder,
+                id,
+                _price } = data.data
+
+
+            const cPrice = Number(ethers.utils.formatEther(_price))
+
+            const dataToSend = {
+                orderId: id,
+                cPrice,
+                bidder
+            }
+
+
+            const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+            // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+
+
+            try {
+
+                await axios.put(endPoint, dataToSend)
+
+            } catch (error) {
+                console.log("ocurrio un erro mientras se hacia la orden")
+            }
+
+        }
+
+    }
+}
+
+
 
 export const removeBid = async (orderId) => {
 
