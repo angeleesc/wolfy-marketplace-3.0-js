@@ -1,12 +1,13 @@
 import React from "react";
-import {  FaRegUserCircle } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
-export default function HambuguerUserMenuV2() {
+
+export default function HambugerSearchMenu() {
   return (
     <div className="wolf-habuguer-drop-menu mx-3">
       <button className="wolf-habuguer-drop-menu-buttom">
         <span className="text-[20px]">
-          <FaRegUserCircle />
+          <FaSearch />
         </span>
       </button>
     </div>
