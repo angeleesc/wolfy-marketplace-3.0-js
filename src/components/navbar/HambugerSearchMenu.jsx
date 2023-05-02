@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 export default function HambugerSearchMenu() {
   return (
-    <div className="wolf-habuguer-drop-menu mx-3">
+    <div className="wolf-habuguer-drop-menu">
       <button className="wolf-habuguer-drop-menu-buttom">
         <span className="text-[20px]">
           <FaSearch />
