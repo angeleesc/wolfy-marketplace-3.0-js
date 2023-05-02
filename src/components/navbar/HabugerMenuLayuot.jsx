@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
 
-export default function HabugerMenuLayuot({ icon, children }) {
+export default function HabugerMenuLayuot({ icon, children, }) {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef();
   const boxRef = useRef();

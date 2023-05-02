@@ -134,7 +134,7 @@
                 }
 
                 .hambuger-bg-1 {
-                    background-color   : theme("colors.wolf-gray-accent.200");
+                    background-color   : theme("colors.wolf-gray-accent.100");
                     z-index            : -5;
                     // transform       : scale(15);
                     animation-name     : growcircle1;
@@ -143,7 +143,7 @@
                 }
 
                 .hambuger-bg-2 {
-                    background-color   : theme("colors.wolf-blue-purple.400");
+                    background-color   : theme("colors.wolf-gray-dark.900") !important;
                     z-index            : -10;
                     animation-name     : growcircle2;
                     animation-duration : 1s;
@@ -157,7 +157,7 @@
                     position           : fixed;
                     top                : 0;
                     left               : 0;
-                    // background-color: theme("colors.wolf-gray-accent.100");
+                    background-color: theme("colors.wolf-gray-accent.200") !important;
                     z-index            : -20;
                     animation-name     : fadeIn;
                     animation-duration : 1s;
