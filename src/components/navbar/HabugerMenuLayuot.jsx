@@ -6,7 +6,6 @@ export default function HabugerMenuLayuot({ icon, children, handlerClose }) {
   const buttonRef = useRef();
   const boxRef = useRef();
 
-
   const handler = (e) => {
     // setIsOpen(false);
 
@@ -61,6 +60,10 @@ export default function HabugerMenuLayuot({ icon, children, handlerClose }) {
           }}
         ></div>
       )}
+
+      {isOpen
+      }
+
       {isOpen && (
         <div className="hambuger-drop-menu-body" ref={boxRef}>
           {children}
