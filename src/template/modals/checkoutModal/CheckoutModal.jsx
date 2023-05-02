@@ -38,6 +38,7 @@ import {
 import { ethers } from "ethers";
 import { getAuctionById } from "../../../controllers/auctionControllers";
 import * as yup from "yup";
+import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-5);
@@ -49,10 +50,31 @@ export default function CheckoutModal() {
   const [balace, setBalace] = useState(0);
   const [address, setAddress] = useState("");
   const [isSufficientBalance, setIsSufficientBalance] = useState(false);
+  const [besBidder, setBesBidder] = useState("");
+  const [auctionExpirationTime, setAuctionExpirationTime] = useState(0);
 
   const dispatch = useDispatch();
 
   // CONFIGURACION DE REACT HOOK FORM
+
+  const checkoutValidateSchema = yup.object({
+    bid: yup.string().when("saleMethod", {
+      is: (saleMethodEvale) => saleMethodEvale === saleMethod.auction,
+      then: yup
+        .string()
+        .test(
+          "coorectPrice",
+          "El precio debe ser mayor al que se propone en la oferta",
+          (value) => {
+            if (Number(value) > price) return true;
+            return false;
+          }
+        )
+        .required("La puja es requerida"),
+    }),
+  });
+
+  const resolver = useYupValidationResolver(checkoutValidateSchema);
 
   const {
     register,
@@ -67,6 +89,7 @@ export default function CheckoutModal() {
       cuantity: 1,
       bid: 0,
     },
+    resolver,
   });
 
   const quantityWatch = watch("cuantity");
@@ -142,9 +165,11 @@ export default function CheckoutModal() {
         return;
       }
 
-      const { currentPrice, bestBidder, endTime } = auctionData.data;
+      const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
 
       setValue("bid", (currentPrice * 1.05).toString());
+      setBesBidder(bBider);
+      setAuctionExpirationTime(endTime);
     } else {
       orderDAta = await getOrderByid(modalData.orderId);
 
@@ -152,13 +177,6 @@ export default function CheckoutModal() {
       setMaxQ(orderDAta.quantity);
       if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
     }
-
-    // const gast = await getEstimateGasBuyToken(modalData.orderId, 1 , ethers.utils.parseEther(orderDAta.price.toString()) )
-
-    // console.log("vendedor");
-    // console.log(modalData.seller);
-    // console.log("susuario");
-    // console.log(walletData.addres);
 
     setBalace(walletData.balance);
     setAddress(walletData.addres);
@@ -343,6 +361,7 @@ export default function CheckoutModal() {
                       id="checkout-bid"
                       type="number"
                       onWheel={preventScroll}
+                      errorMessage={errors.bid ? errors.bid.message : ""}
                     />
                   </div>
                 )}
