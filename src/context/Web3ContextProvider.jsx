@@ -82,12 +82,27 @@ export default function Web3ContextProvider({ children }) {
 
   useEffect(() => {
     console.log("inicio en el context xd");
+
+    let unSubListenerAccoutns;
+
     init();
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", listentAccounts);
+      unSubListenerAccoutns = () => {
+        window.ethereum.removeListener("accountsChanged", listentAccounts);
+      };
     } else {
       console.log("no hay provider");
     }
+
+    return () => {
+      if (
+        unSubListenerAccoutns &&
+        typeof unSubListenerAccoutns === "function"
+      ) {
+        unSubListenerAccoutns();
+      }
+    };
   }, []);
 
   return (
