@@ -3,6 +3,7 @@ import "./mobile-navbar-v2.scss";
 import { Link } from "react-router-dom";
 import Logo from "../icons/Logo";
 import HambugerMenuV2 from "./HambugerMenuV2";
+import HambuguerUserMenuV2 from "./HambuguerUserMenuV2";
 
 export default function MobileNavbarV2() {
   return (
@@ -20,11 +21,10 @@ export default function MobileNavbarV2() {
       </Link>
 
       <div className="flex">
-
-        <div className="hambuguer-drop-menu-secction" >
-        <HambugerMenuV2/>
+        <div className="hambuguer-drop-menu-secction">
+          <HambuguerUserMenuV2 />
+          <HambugerMenuV2 />
         </div>
-
       </div>
     </div>
   );
