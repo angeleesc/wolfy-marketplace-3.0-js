@@ -46,7 +46,7 @@ export default function WollfyLayout({ isProtected, children, rediredTo }) {
 
   return (
     <>
-      {isMobile === true ? <MobileNavbar /> : <PcNavbar />}
+      {isMobile === true ? <MobileNavbarV2 /> : <PcNavbar />}
       {children ? children : <Outlet />}
     </>
   );
