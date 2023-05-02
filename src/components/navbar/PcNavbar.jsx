@@ -78,8 +78,39 @@ export default function PcNavbar() {
 
   // verificar si el usuario esta conectado
 
+  const listentAccountMetasmas = () => {
+    if (window.ethereum) {
+      window.ethereum.on("disconect", (error) => {
+        console.log("billetera desconectada");
+        console.log(error);
+      });
+
+      return () => {
+        window.ethereum.removeListener("disconect", (error) => {
+          console.log("billetera desconectada");
+          console.log(error);
+        });
+      };
+    }
+  };
+
   useEffect(() => {
     init();
+
+    const unsub = listentAccountMetasmas();
+
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        // console.log("billetera desconectada");
+        // console.log(accounts);
+        if (accounts.length > 0) {
+          init();
+        } else {
+          setValletAccount("");
+          setBalance("");
+        }
+      });
+    }
   }, []);
 
   return (
