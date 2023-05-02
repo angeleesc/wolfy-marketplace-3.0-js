@@ -10,12 +10,12 @@ import "./mobile-navbar.scss";
 
 export default function MobileNavbar() {
 
-  
+
   return (
     <div className="mobile-navbar">
       <div className="mobile-navbar-body">
         <Link
-          className="logo-section flex items-center  relative h-[60px]"
+          className="logo-section flex items-center"
           to="/"
         >
           <div className="logo-img">
