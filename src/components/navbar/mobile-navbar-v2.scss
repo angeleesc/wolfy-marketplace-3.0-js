@@ -48,7 +48,8 @@
                 background-color: theme("colors.wolf-gray-dark.300");
                 left            : 0;
                 bottom          : 0;
-                z-index: -1;
+                z-index         : -10;
+                clip-path       : circle(2000px at 50% 100%);
             }
 
             .wolf-habuguer-drop-menu-box {

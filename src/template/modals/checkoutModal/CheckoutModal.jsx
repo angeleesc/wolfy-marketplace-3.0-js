@@ -122,12 +122,24 @@ export default function CheckoutModal() {
 
   const buyTokenNow = async () => {
     const ehtPrice = ethers.utils.parseEther(price.toString());
-    await goToBuy(modalData.orderId, quantityWatch.toString(), ehtPrice);
+    setStepProcces(1);
+    try {
+      await goToBuy(modalData.orderId, quantityWatch.toString(), ehtPrice);
+      setStepProcces(3);
+    } catch (error) {
+      setStepProcces(2);
+    }
   };
 
   const bidTokenNow = async () => {
     console.log("oferta realizada");
-    await bidHttp(modalData.orderId, bidWatch);
+    setStepProcces(1);
+    try {
+      await bidHttp(modalData.orderId, bidWatch);
+      setStepProcces(3);
+    } catch (error) {
+      setStepProcces(2);
+    }
   };
 
   const init = async () => {
