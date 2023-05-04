@@ -6,16 +6,33 @@ import HambugerMenuLayoutV2, {
 import { useContext } from "react";
 
 export default function HambugerMenuV2() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <HambugerMenuLayoutV2
-      iconElement={<MenuGridRounded size={"20"} />}
-      id={"wolfy-hambuger-menu"}
-      key={"wolfy-habuger-menu"}
+    <div className="wolf-habuguer-drop-menu">
+    <button
+
+      className="wolf-habuguer-drop-menu-buttom"
+      onClick={() => {
+        setIsOpen(!isOpen);
+      }}
     >
-      <h3>Seccion de menu</h3>
-      <HambuguerMenuOptionButoon>Click XD</HambuguerMenuOptionButoon>
-    </HambugerMenuLayoutV2>
+      <MenuGridRounded/>
+    </button>
+    {isOpen && <div className="bg-cover"></div>}
+
+    {isOpen && (
+      <div
+
+        className="wolf-habuguer-drop-menu-box"
+        onClick={() => {
+          setIsOpen(false);
+        }}
+      >
+        <h3>XD</h3>
+      </div>
+    )}
+  </div>
+
   );
 }
