@@ -1,35 +1,19 @@
 import React, { useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
+import HambugerMenuLayoutV2, {
+  HambuguerMenuOptionButoon,
+} from "./HambugerMenuLayoutV2";
 
 export default function HambuguerUserMenuV2() {
   const [isOpen, setIsOpen] = useState(false);
+  // <FaRegUserCircle />
 
   return (
-    <div className="wolf-habuguer-drop-menu mx-3">
-      <button
-        className="wolf-habuguer-drop-menu-buttom"
-        onClick={() => {
-          // console.log("cliclk xd")
-          setIsOpen(!isOpen);
-        }}
-      >
-        <span className="text-[20px]">
-          <FaRegUserCircle />
-        </span>
-      </button>
-
-      {isOpen && <div className="bg-cover"></div>}
-
-      {isOpen && (
-        <div
-          className="wolf-habuguer-drop-menu-box"
-          onClick={() => {
-            setIsOpen(false);
-          }}
-        >
-          <h3>Menu</h3>
-        </div>
-      )}
-    </div>
+    <HambugerMenuLayoutV2
+      id={"hambugre-menu-user"}
+      iconElement={<FaRegUserCircle />}
+    >
+      <HambuguerMenuOptionButoon>usuario xd</HambuguerMenuOptionButoon>
+    </HambugerMenuLayoutV2>
   );
 }

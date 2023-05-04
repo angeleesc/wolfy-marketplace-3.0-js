@@ -1,7 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 
 const hambugerMenuContex = React.createContext();
+
+export const useHambugerContext = () => {
+  const context = useContext(hambugerMenuContex);
+  return context;
+};
 
 export default function HambugerMenuLayoutV2({ iconElement, children, id }) {
   const [isOpen, setIsOpen] = useState(false);
