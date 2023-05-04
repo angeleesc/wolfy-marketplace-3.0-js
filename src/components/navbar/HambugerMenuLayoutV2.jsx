@@ -100,6 +100,7 @@ export const HambuguerMenuOptionButoon = ({
         }
         closeDrop();
       }}
+      {...props}
     >
       {children}
     </button>
