@@ -9,13 +9,16 @@ export default function HambuguerUserMenuV2() {
       <button
         className="wolf-habuguer-drop-menu-buttom"
         onClick={() => {
-    console.log("cliclk xd")
+          // console.log("cliclk xd")
+          setIsOpen(!isOpen);
         }}
       >
         <span className="text-[20px]">
           <FaRegUserCircle />
         </span>
       </button>
+
+      {isOpen && <div className="bg-cover"></div>}
 
       {isOpen && (
         <div
@@ -25,7 +28,6 @@ export default function HambuguerUserMenuV2() {
           }}
         >
           <h3>Menu</h3>
-          <div className="bg-cover"></div>
         </div>
       )}
     </div>

@@ -124,8 +124,8 @@ export const goToAuctionHttp = async (erc721, tokenIds, price, duration) => {
 
         }
 
-        const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
-        // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+        // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+        const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
 
         try {
 
@@ -322,8 +322,8 @@ export const bidHttp = async (orderId, value) => {
             }
 
 
-            const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
-            // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.marketPlaceContractPostNewOrder
+            // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+            const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
 
 
             try {

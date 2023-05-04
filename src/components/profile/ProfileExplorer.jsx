@@ -14,7 +14,6 @@ import { saleMethod } from "../../helpers/global-constants";
 import { getNftsByWallet } from "../../controllers/alchemyController";
 import worderin from "../../static-images/wondering.png";
 
-
 export default function ProfileExplorer() {
   const { id } = useParams();
   const [userNftsOnMarketPlace, setUserNftsOnMarketPlace] = useState([]);
@@ -25,8 +24,6 @@ export default function ProfileExplorer() {
 
   const mode = searchParams.get("mode");
   const type = searchParams.get("type");
-
-
 
   const initt = async () => {
     console.log("iniciando");
@@ -95,6 +92,7 @@ export default function ProfileExplorer() {
             ...(orderData.metadata && orderData.metadata.contractType
               ? { contractType: orderData.metadata.contractType }
               : {}),
+            ...(orderData.endTime ? { endTime: orderData.endTime } : {}),
             price: orderData.price,
             colection: orderData.colection,
             sale: orderData.onSale,
