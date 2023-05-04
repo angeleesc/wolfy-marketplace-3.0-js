@@ -8,11 +8,12 @@ import { useContext } from "react";
 export default function HambugerMenuV2() {
   const [isOpen, setIsOpen] = useState(false);
 
+
   return (
     <div className="wolf-habuguer-drop-menu">
     <button
 
-      className="wolf-habuguer-drop-menu-buttom"
+      className={`wolf-habuguer-drop-menu-buttom ${isOpen? " h-button-active": ""}`}
       onClick={() => {
         setIsOpen(!isOpen);
       }}
