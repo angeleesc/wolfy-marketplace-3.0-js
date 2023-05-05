@@ -35,6 +35,19 @@
 
         }
 
+        .acordeon-menu-box {
+            width  : 100%;
+            padding: 15px 15px 15px 30px;
+
+            a,
+            button {
+                display: block;
+                padding: 15px;
+                display: flex;
+            }
+
+        }
+
 
     }
 

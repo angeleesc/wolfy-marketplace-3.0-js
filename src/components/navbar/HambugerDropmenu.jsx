@@ -25,6 +25,8 @@ export default function HambugerDropmenu({ children }) {
   
     <HambugerAcordeonMEnu title={"Explorar"}>
 
+      <h3>Nfts</h3>
+
     </HambugerAcordeonMEnu>
 
     </HabugerMenuLayuot>

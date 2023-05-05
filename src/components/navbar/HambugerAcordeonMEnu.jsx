@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-export default function HambugerAcordeonMEnu({ title }) {
+export default function HambugerAcordeonMEnu({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -14,6 +14,7 @@ export default function HambugerAcordeonMEnu({ title }) {
           {isOpen ? <FaMinus /> : <FaPlus />}
         </div>
       </button>
+      {isOpen && <div className="acordeon-menu-box">{children}</div>}
     </div>
   );
 }
