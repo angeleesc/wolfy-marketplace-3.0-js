@@ -15,7 +15,7 @@ export default function HambugerUserMenu({}) {
     <HabugerMenuLayuot
       icon={
         valletAccount ? (
-          <WolfIdentidcon size={50} name={valletAccount} />
+          <WolfIdentidcon size={24} name={valletAccount} />
         ) : (
           <BiUserCircle />
         )
