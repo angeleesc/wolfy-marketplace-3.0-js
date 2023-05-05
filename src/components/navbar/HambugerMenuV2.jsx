@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import MenuGridRounded from "../icons/MenuGridRounded";
-import HambugerMenuLayoutV2, {
-  HambuguerMenuOptionButoon,
-} from "./HambugerMenuLayoutV2";
-import { useContext } from "react";
 import AcordeonMEnu from "./AcordeonMEnu";
 
 export default function HambugerMenuV2() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isExplorerAcordeonMenuOpen, setisExplorerAcordeonMenuOpen] =
+    useState(false);
 
   return (
     <div className="wolf-habuguer-drop-menu">
@@ -38,7 +36,9 @@ export default function HambugerMenuV2() {
           }}
         >
           <AcordeonMEnu title={<span>Explorar</span>}>
-            <h4>XD vamo</h4>
+            <h3>
+              ok xd
+            </h3>
           </AcordeonMEnu>
         </div>
       )}

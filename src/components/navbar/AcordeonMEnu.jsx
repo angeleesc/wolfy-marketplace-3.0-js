@@ -16,7 +16,8 @@ export default function AcordeonMEnu({ title, children }) {
         className={ isOPen?  "wolf-acordeon-buton wolf-acordeon-button-active":  "wolf-acordeon-buton"}
         
       >
-        {title}
+     <div className="w-a--btitle-section" >{title}</div>
+     <div className="w-a-chevron" ></div>
       </button>
       {isOPen && <div className="wolf-acordeon-box">
         {/* <h3>Ok xd</h3> */}
