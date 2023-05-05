@@ -1,7 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, createContext } from "react";
 import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
 
-export default function HabugerMenuLayuot({ icon, children, handlerClose }) {
+const hambugerMenuContext = createContext();
+
+export default function HabugerMenuLayuot({
+  icon,
+  children,
+  handlerClose,
+  id,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef();
   const boxRef = useRef();
@@ -39,36 +46,43 @@ export default function HabugerMenuLayuot({ icon, children, handlerClose }) {
   }, []);
 
   return (
-    <div className="hambuger-drop-menu h-menu-active">
-      <button
-        ref={buttonRef}
-        className="hambuger-drop-menu-button"
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-      >
-        {/* <FaBars /> */}
-        {icon ? icon : "?"}
-      </button>
-      {/* {isOpen && <div className="hambuger-bg-1"></div>} */}
-      {/* {isOpen && <div className="hambuger-bg-2"></div>} */}
-      {isOpen && (
-        <div
-          className="hambuger-bg-3"
-          onAnimationEnd={(e) => {
-            console.log("animacion finalizada");
+    <hambugerMenuContext.Provider
+      value={{
+        ...(id ? { id } : {}),
+        constextName: "prueba",
+      }}
+    >
+      <div className="hambuger-drop-menu h-menu-active">
+        <button
+          ref={buttonRef}
+          className="hambuger-drop-menu-button"
+          onClick={() => {
+            setIsOpen(!isOpen);
           }}
-        ></div>
-      )}
+        >
+          {/* <FaBars /> */}
+          {icon ? icon : "?"}
+        </button>
+        {/* {isOpen && <div className="hambuger-bg-1"></div>} */}
+        {/* {isOpen && <div className="hambuger-bg-2"></div>} */}
+        {isOpen && (
+          <div
+            className="hambuger-bg-3"
+            onAnimationEnd={(e) => {
+              console.log("animacion finalizada");
+            }}
+          ></div>
+        )}
 
-      {isOpen
-      }
+        {isOpen}
 
-      {isOpen && (
-        <div className="hambuger-drop-menu-body" ref={boxRef}>
-          {children}
-        </div>
-      )}
-    </div>
+        {isOpen && (
+          <div className="hambuger-drop-menu-body" ref={boxRef}>
+            {children}
+          </div>
+        )}
+      </div>
+    </hambugerMenuContext.Provider>
   );
 }
+

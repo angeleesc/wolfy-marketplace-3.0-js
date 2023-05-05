@@ -36,8 +36,9 @@
         }
 
         .acordeon-menu-box {
-            width  : 100%;
-            padding: 15px 15px 15px 30px;
+            width           : 100%;
+            padding         : 15px 15px 15px 30px;
+            background-color: theme("colors.wolf-gray-dark.400");
 
             a,
             button {
