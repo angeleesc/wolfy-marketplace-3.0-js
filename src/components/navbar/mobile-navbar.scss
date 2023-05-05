@@ -42,9 +42,12 @@
 
             a,
             button {
-                display: block;
-                padding: 15px;
-                display: flex;
+                display    : block;
+                padding    : 15px;
+                display    : flex;
+                color      : theme("colors.wolf-gray-light.2200");
+                font-size  : 14px;
+                font-weight: 600;
             }
 
         }
