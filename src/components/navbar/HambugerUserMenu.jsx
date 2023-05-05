@@ -5,6 +5,8 @@ import { useWeb3Context } from "../../context/Web3ContextProvider";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { connetWalletMetamask } from "../../controllers/Web3Controllers";
 import MetamaskOficialLgo from "../icons/MetamaskOficialLgo";
+import { BiUserCircle } from "react-icons/bi";
+
 
 export default function HambugerUserMenu({}) {
   const { valletAccount, balance, hasWeb3Provider } = useWeb3Context();
@@ -15,7 +17,7 @@ export default function HambugerUserMenu({}) {
         valletAccount ? (
           <WolfIdentidcon size={50} name={valletAccount} />
         ) : (
-          <FaUserAlt />
+          <BiUserCircle />
         )
       }
       handlerClose={(func) => {

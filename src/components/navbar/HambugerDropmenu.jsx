@@ -16,10 +16,11 @@ import OptimismLogon from "../icons/OptimismLogon";
 import OptimismOficialLogo from "../icons/OptimismOficialLogo";
 import PoligonOficialLogo from "../icons/PoligonOficialLogo";
 import HabugerMenuLayuot from "./HabugerMenuLayuot";
+import MenuGridRounded from "../icons/MenuGridRounded";
 
 export default function HambugerDropmenu({ children }) {
   return (
-    <HabugerMenuLayuot icon={<FaBars />}>
+    <HabugerMenuLayuot icon={<MenuGridRounded />}>
       <ul className="habuguer-navabr-section">
         <li>
           <span className="h-title-secction">Explorar</span>

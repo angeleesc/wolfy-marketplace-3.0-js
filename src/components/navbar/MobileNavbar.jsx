@@ -19,7 +19,7 @@ export default function MobileNavbar() {
           to="/"
         >
           <div className="logo-img">
-            <Logo size="46" />
+            <Logo size="42" />
           </div>
           <h1>Wolf Inu</h1>
         </Link>

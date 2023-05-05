@@ -24,21 +24,20 @@
             justify-content    : center;
 
             h1 {
-                font-size             : 18px;
-                font-weight           : 700;
-                color                 : theme("colors.wolf-gray-light.2200");
-                // background-color: red;
-                // height             : 100%;
-                position              : relative;
+                font-size  : 20px;
+                font-weight: 700;
+                color      : theme("colors.wolf-gray-light.2200");
+                position   : relative;
             }
 
             .logo-img {
 
                 // position     : absolute;
-                bottom       : -15px;
+                // bottom       : -15px;
                 left         : 0px;
                 padding      : 2px;
                 border-radius: 50%;
+                margin-right : 10px;
             }
 
 
@@ -105,16 +104,21 @@
             position: relative;
 
             .hambuger-drop-menu-button {
-                border-radius   : 50%;
+                border-radius   : 8px;
                 justify-content : center;
                 align-items     : center;
                 display         : flex;
-                font-size       : 18px;
-                width           : 40px;
-                height          : 40px;
-                font-size       : 18px;
+                font-size       : 20px;
+                width           : 36px;
+                height          : 36px;
+                font-size       : 24px;
                 background-color: rgba($color: #a1a9b8, $alpha: 0.2);
                 color           : #fff;
+
+                svg {
+                    // width : 20px;
+                    // height: 20px;
+                }
 
 
             }
