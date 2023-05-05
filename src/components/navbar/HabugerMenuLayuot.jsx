@@ -14,6 +14,10 @@ export default function HabugerMenuLayuot({
   const buttonRef = useRef();
   const boxRef = useRef();
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   const handler = (e) => {
     // setIsOpen(false);
 
@@ -51,6 +55,7 @@ export default function HabugerMenuLayuot({
       value={{
         ...(id ? { id } : {}),
         constextName: "prueba",
+        closeMenu,
       }}
     >
       <div className="hambuger-drop-menu h-menu-active">
@@ -88,7 +93,7 @@ export default function HabugerMenuLayuot({
 }
 
 export function HambugerOptionButton({ onClick, children, ...props }) {
-  const { id } = useContext(hambugerMenuContext);
+  const { id, closeMenu } = useContext(hambugerMenuContext);
   console.log(id);
 
   return (
@@ -97,11 +102,7 @@ export function HambugerOptionButton({ onClick, children, ...props }) {
         if (onClick && typeof onClick === "function") {
           onClick();
         }
-        console.log(
-          "el boton de opcion de haburguesa esta en menu: " + id
-            ? id
-            : "ninguno"
-        );
+        closeMenu();
       }}
       {...props}
     >

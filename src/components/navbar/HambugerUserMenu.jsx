@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
-import HabugerMenuLayuot from "./HabugerMenuLayuot";
+import HabugerMenuLayuot, { HambugerOptionButton } from "./HabugerMenuLayuot";
 import { useWeb3Context } from "../../context/Web3ContextProvider";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { connetWalletMetamask } from "../../controllers/Web3Controllers";
@@ -30,7 +30,7 @@ export default function HambugerUserMenu({}) {
         </>
       ) : (
         <div className="w-[100%]  max-w-[400px] mt-[20px]">
-          <button
+          <HambugerOptionButton
             className="wolf-buttom wolf-btn-primary-2 w-[100%] flex items-center justify-center"
             data-closedrop="true"
             onClick={async () => {
@@ -48,7 +48,7 @@ export default function HambugerUserMenu({}) {
             >
               Conectar Wallet Metamask
             </span>
-          </button>
+          </HambugerOptionButton>
         </div>
       )}
     </HabugerMenuLayuot>
