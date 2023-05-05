@@ -17,12 +17,15 @@ import OptimismOficialLogo from "../icons/OptimismOficialLogo";
 import PoligonOficialLogo from "../icons/PoligonOficialLogo";
 import HabugerMenuLayuot from "./HabugerMenuLayuot";
 import MenuGridRounded from "../icons/MenuGridRounded";
+import HambugerAcordeonMEnu from "./HambugerAcordeonMEnu";
 
 export default function HambugerDropmenu({ children }) {
   return (
     <HabugerMenuLayuot icon={<MenuGridRounded />}>
   
-    
+    <HambugerAcordeonMEnu title={"Explorar"}>
+
+    </HambugerAcordeonMEnu>
 
     </HabugerMenuLayuot>
   );
