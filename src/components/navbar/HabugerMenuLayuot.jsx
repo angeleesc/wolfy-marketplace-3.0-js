@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, createContext } from "react";
 import useClickOutSideElements from "../../global-hook/useClickOutSideElements";
+import { useContext } from "react";
 
 const hambugerMenuContext = createContext();
 
@@ -86,3 +87,25 @@ export default function HabugerMenuLayuot({
   );
 }
 
+export function HambugerOptionButton({ onClick, children, ...props }) {
+  const { id } = useContext(hambugerMenuContext);
+  console.log(id);
+
+  return (
+    <button
+      onClick={() => {
+        if (onClick && typeof onClick === "function") {
+          onClick();
+        }
+        console.log(
+          "el boton de opcion de haburguesa esta en menu: " + id
+            ? id
+            : "ninguno"
+        );
+      }}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
