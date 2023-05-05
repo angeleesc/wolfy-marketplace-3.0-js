@@ -24,8 +24,8 @@
             justify-content    : center;
 
             h1 {
-                font-size             : 20px;
-                font-weight           : 800;
+                font-size             : 18px;
+                font-weight           : 700;
                 color                 : theme("colors.wolf-gray-light.2200");
                 // background-color: red;
                 // height             : 100%;
@@ -152,13 +152,15 @@
                 }
 
                 .hambuger-bg-3 {
-                    width           : 100%;
-                    height          : 100%;
-                    position        : fixed;
-                    top             : 0;
-                    left            : 0;
-                    background-color: theme("colors.wolf-gray-dark.400") !important;
-                    z-index         : -20;
+                    width              : 100%;
+                    height             : 100%;
+                    position           : fixed;
+                    top                : 0;
+                    left               : 0;
+                    // background-color: theme("colors.wolf-gray-dark.400") !important;
+                    z-index            : -20;
+                    background-color   : rgba($color: #0f1115, $alpha: 0.5);
+                    backdrop-filter    : blur(20px);
 
                 }
 
@@ -167,18 +169,20 @@
             }
 
             .hambuger-drop-menu-body {
-                position        : fixed;
-                z-index         : -1;
-                width           : 100%;
-                max-width       : 450px;
-                height          : 100%;
-                left            : 0;
-                top             : 0;
-                padding-top     : 60px;
-                overflow        : auto;
-                display         : flex;
-                justify-content : center;
-                background-color: red;
+                position           : fixed;
+                z-index            : -1;
+                width              : 100%;
+                max-width          : 450px;
+                height             : 100%;
+                left               : 0;
+                top                : 0;
+                padding-top        : 60px;
+                overflow           : auto;
+                display            : flex;
+                justify-content    : center;
+                // background-color: red;
+                // background-color: red;
+                background-color   : theme("colors.wolf-gray-dark.300")
             }
 
             &:last-child {
