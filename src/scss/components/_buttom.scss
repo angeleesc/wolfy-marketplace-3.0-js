@@ -70,7 +70,7 @@
 
     &.wolf-btn-primary-2 {
 
-        background-color: theme("colors.wolf-blue-purple.500");
+        background-color   : theme("colors.wolf-blue-purple.500");
         // color           : theme("colors.wolf-gray-light.2000") !important;
 
 
@@ -118,5 +118,25 @@
             background-color: theme("colors.wolf-gray-accent.600");
         }
     }
+
+    &.wolf-btn-white {
+
+        background-color: theme("colors.wolf-gray-light.2000");
+        color           : theme("colors.wolf-gray-dark.400");
+
+        // background-color: red;
+
+        &:focus {
+            background-color: theme("colors.wolf-gray-dark.400");
+            outline         : none;
+        }
+
+        &:hover {
+            background-color: theme("colors.wolf-gray-light.1300");
+
+        }
+    }
+
+
 
 }

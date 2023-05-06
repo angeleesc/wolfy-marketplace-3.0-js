@@ -1,5 +1,10 @@
 import React, { useRef, useState } from "react";
+import HabugerMenuLayuot, { HambugerOptionButton } from "./HabugerMenuLayuot";
+import MenuGridRounded from "../icons/MenuGridRounded";
+import HambugerAcordeonMEnu from "./HambugerAcordeonMEnu";
 import {
+  FaCompass,
+  FaFile,
   FaBars,
   FaDiscord,
   FaFacebook,
@@ -7,18 +12,6 @@ import {
   FaTelegram,
   FaTwitter,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { staticRoutes } from "../../helpers/static-routes";
-import ArbitrumOficialLogo from "../icons/ArbitrumOficialLogo";
-import BinanceOficialLogo from "../icons/BinanceOficialLogo";
-import EthereumOficialLogo from "../icons/EthereumOficialLogo";
-import OptimismLogon from "../icons/OptimismLogon";
-import OptimismOficialLogo from "../icons/OptimismOficialLogo";
-import PoligonOficialLogo from "../icons/PoligonOficialLogo";
-import HabugerMenuLayuot, { HambugerOptionButton } from "./HabugerMenuLayuot";
-import MenuGridRounded from "../icons/MenuGridRounded";
-import HambugerAcordeonMEnu from "./HambugerAcordeonMEnu";
-import { FaCompass, FaFile } from "react-icons/fa";
 import { BsArrowReturnRight } from "react-icons/bs";
 
 export default function HambugerDropmenu({ children }) {
@@ -68,7 +61,26 @@ export default function HambugerDropmenu({ children }) {
           </HambugerOptionButton>
         </HambugerAcordeonMEnu>
         <div className="hambuger-login-secction">
-          <h3>hola</h3>
+          <HambugerOptionButton className="w-[100%] wolf-buttom wolf-btn-white">
+            <span>Conectar wallet</span>
+          </HambugerOptionButton>
+          <div className="flex justify-between mt-[12px]">
+            <HambugerOptionButton className="social-button">
+              <FaFacebook />
+            </HambugerOptionButton>
+            <HambugerOptionButton className="social-button">
+              <FaInstagram />
+            </HambugerOptionButton>
+            <HambugerOptionButton className="social-button">
+              <FaTelegram />
+            </HambugerOptionButton>
+            <HambugerOptionButton className="social-button">
+              <FaDiscord />
+            </HambugerOptionButton>
+            <HambugerOptionButton className="social-button">
+              <FaTwitter />
+            </HambugerOptionButton>
+          </div>
         </div>
       </div>
     </HabugerMenuLayuot>

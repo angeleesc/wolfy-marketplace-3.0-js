@@ -95,6 +95,13 @@
         }
     }
 
+    .social-button {
+        // background-color: red;
+        padding  : 10px;
+        font-size: 20px;
+        color    : theme("colors.wolf-gray-light.2200");
+    }
+
     .habuguer-navabr-section {
 
         width     : 100%;
@@ -210,11 +217,11 @@
             .hambuger-login-secction {
                 // height: 100%;
                 // position           : relative;
-                position           : absolute;
-                bottom             : 0;
-                background-color   : red;
-                width              : 100%;
-                padding            : 15px;
+                position              : absolute;
+                bottom                : 0;
+                // background-color   : red;
+                width                 : 100%;
+                padding               : 15px;
                 // margin-top      : 100%;
             }
 
