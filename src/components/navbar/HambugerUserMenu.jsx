@@ -6,9 +6,12 @@ import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { connetWalletMetamask } from "../../controllers/Web3Controllers";
 import MetamaskOficialLgo from "../icons/MetamaskOficialLgo";
 import { BiUserCircle } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { staticRoutes } from "../../helpers/static-routes";
 
 export default function HambugerUserMenu({}) {
   const { valletAccount, balance, hasWeb3Provider } = useWeb3Context();
+  const navigate = useNavigate();
 
   return (
     <HabugerMenuLayuot
@@ -28,6 +31,9 @@ export default function HambugerUserMenu({}) {
           <div className="user-secction-header">
             <WolfIdentidcon size={90} name={valletAccount} />
             <div className="user-name-secction">
+              <HambugerOptionButton className="wolf-buttom wolf-btn-secondary w-[300px]">
+                ir a perfil
+              </HambugerOptionButton>
               <h3>Anonimous</h3>
               <h5>
                 {valletAccount.substr(0, 10)}...{valletAccount.substr(-8)}{" "}
@@ -35,8 +41,13 @@ export default function HambugerUserMenu({}) {
               <span className="balance">{Number(balance).toFixed(4)} ETH</span>
             </div>
           </div>
-          <div className="mt-[15px] w-[100%]">
-            <HambugerOptionButton className="wolf-buttom wolf-btn-secondary w-[100%]">
+          <div className="mt-[15px] w-[100%] flex flex-col justify-center items-center">
+            <HambugerOptionButton
+              className="wolf-buttom wolf-btn-secondary w-[100%] max-w-[300px]"
+              onClick={() => {
+                navigate(staticRoutes.createNft);
+              }}
+            >
               Crear Nfts
             </HambugerOptionButton>
           </div>
