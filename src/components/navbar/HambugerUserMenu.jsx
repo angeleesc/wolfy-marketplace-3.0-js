@@ -31,8 +31,13 @@ export default function HambugerUserMenu({}) {
           <div className="user-secction-header">
             <WolfIdentidcon size={90} name={valletAccount} />
             <div className="user-name-secction">
-              <HambugerOptionButton className="wolf-buttom wolf-btn-secondary w-[300px]">
-                ir a perfil
+              <HambugerOptionButton
+                onClick={() => {
+                  navigate(staticRoutes.userData(valletAccount));
+                }}
+                className="wolf-buttom bg-wolf-gray-dark-200 w-[100%] max-w-[200px] hover:bg-wolf-gray-light-100"
+              >
+                Ir a perfil
               </HambugerOptionButton>
               <h3>Anonimous</h3>
               <h5>
