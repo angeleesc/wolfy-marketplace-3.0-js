@@ -13,8 +13,13 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { BsArrowReturnRight } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { staticRoutes } from "../../helpers/static-routes";
+import { connetWalletMetamask } from "../../controllers/Web3Controllers";
 
 export default function HambugerDropmenu({ children }) {
+  const navigate = useNavigate();
+
   return (
     <HabugerMenuLayuot icon={<MenuGridRounded />} id={"menu-hamburguesa xd"}>
       <div className="w-[100%] h-[100%] relative">
@@ -26,11 +31,21 @@ export default function HambugerDropmenu({ children }) {
             </>
           }
         >
-          <HambugerOptionButton className="flex items-center">
+          <HambugerOptionButton
+            className="flex items-center"
+            onClick={() => {
+              navigate(staticRoutes.exporersNfts);
+            }}
+          >
             <BsArrowReturnRight className="mr-2" />
             <span>Nfts</span>
           </HambugerOptionButton>
-          <HambugerOptionButton className="flex items-center">
+          <HambugerOptionButton
+            className="flex items-center"
+            onClick={() => {
+              navigate(staticRoutes.exporersColections);
+            }}
+          >
             <BsArrowReturnRight className="mr-2" />
             <span>coleciones</span>
           </HambugerOptionButton>
@@ -61,7 +76,11 @@ export default function HambugerDropmenu({ children }) {
           </HambugerOptionButton>
         </HambugerAcordeonMEnu>
         <div className="hambuger-login-secction">
-          <HambugerOptionButton className="w-[100%] wolf-buttom wolf-btn-white">
+          <HambugerOptionButton 
+          onClick={()=>{
+            connetWalletMetamask()
+          }}
+          className="w-[100%] wolf-buttom wolf-btn-white">
             <span>Conectar wallet</span>
           </HambugerOptionButton>
           <div className="flex justify-between mt-[12px]">
