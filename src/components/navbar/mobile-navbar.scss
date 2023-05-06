@@ -28,7 +28,7 @@
             border-bottom      : 1px solid theme("colors.wolf-gray-dark.800");
 
             span {
-                font-size  : 16px;
+                font-size  : 20px;
                 font-weight: 600;
                 color      : theme("colors.wolf-gray-light.2200");
             }
@@ -46,8 +46,10 @@
                 padding    : 15px;
                 display    : flex;
                 color      : theme("colors.wolf-gray-light.2200");
-                font-size  : 14px;
+                font-size  : 16px;
                 font-weight: 600;
+                position: relative;
+
             }
 
         }
@@ -217,8 +219,8 @@
                 top               : 0;
                 padding-top       : 60px;
                 overflow          : auto;
-                display           : flex;
-                justify-content   : center;
+                // display           : flex;
+                // justify-content   : center;
                 background-color  : theme("colors.wolf-gray-dark.300");
                 animation-name    : circleGrowClipPath2;
                 animation-duration: 1s;

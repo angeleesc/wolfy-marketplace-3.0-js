@@ -8,7 +8,7 @@ export default function HambugerAcordeonMEnu({ title, children }) {
     <div className="wolfy-hambuger-acordeon-menu-container">
       <button className="acordeon-menu-btn" onClick={() => setIsOpen(!isOpen)}>
         <div className="acordeon-menu-btn-title">
-          <span>{title}</span>
+          <span className="flex items-center">{title}</span>
         </div>
         <div className="acordeon-menu-chevron">
           {isOpen ? <FaMinus /> : <FaPlus />}
