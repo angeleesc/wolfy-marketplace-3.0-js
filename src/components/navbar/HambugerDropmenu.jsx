@@ -24,48 +24,53 @@ import { BsArrowReturnRight } from "react-icons/bs";
 export default function HambugerDropmenu({ children }) {
   return (
     <HabugerMenuLayuot icon={<MenuGridRounded />} id={"menu-hamburguesa xd"}>
-      <HambugerAcordeonMEnu
-        title={
-          <>
-            <FaCompass className="mr-2" />
-            <span>Explorar</span>
-          </>
-        }
-      >
-        <HambugerOptionButton className="flex items-center">
-          <BsArrowReturnRight className="mr-2" />
-          <span>Nfts</span>
-        </HambugerOptionButton>
-        <HambugerOptionButton className="flex items-center">
-          <BsArrowReturnRight className="mr-2" />
-          <span>coleciones</span>
-        </HambugerOptionButton>
-      </HambugerAcordeonMEnu>
-      <HambugerAcordeonMEnu
-        title={
-          <>
-            <FaFile className="mr-2" />
-            <span>Recursos</span>
-          </>
-        }
-      >
-        <HambugerOptionButton className="flex items-center">
-          <BsArrowReturnRight className="mr-2" />
-          <span>Sobre Wolfy</span>
-        </HambugerOptionButton>
-        <HambugerOptionButton className="flex items-center">
-          <BsArrowReturnRight className="mr-2" />
-          <span>Whitepaper</span>
-        </HambugerOptionButton>
-        <HambugerOptionButton className="flex items-center">
-          <BsArrowReturnRight className="mr-2" />
-          <span>Auditoria</span>
-        </HambugerOptionButton>
-        <HambugerOptionButton className="flex items-center">
-          <BsArrowReturnRight className="mr-2" />
-          <span>Auditoria 2</span>
-        </HambugerOptionButton>
-      </HambugerAcordeonMEnu>
+      <div className="w-[100%] h-[100%] relative">
+        <HambugerAcordeonMEnu
+          title={
+            <>
+              <FaCompass className="mr-2" />
+              <span>Explorar</span>
+            </>
+          }
+        >
+          <HambugerOptionButton className="flex items-center">
+            <BsArrowReturnRight className="mr-2" />
+            <span>Nfts</span>
+          </HambugerOptionButton>
+          <HambugerOptionButton className="flex items-center">
+            <BsArrowReturnRight className="mr-2" />
+            <span>coleciones</span>
+          </HambugerOptionButton>
+        </HambugerAcordeonMEnu>
+        <HambugerAcordeonMEnu
+          title={
+            <>
+              <FaFile className="mr-2" />
+              <span>Recursos</span>
+            </>
+          }
+        >
+          <HambugerOptionButton className="flex items-center">
+            <BsArrowReturnRight className="mr-2" />
+            <span>Sobre Wolfy</span>
+          </HambugerOptionButton>
+          <HambugerOptionButton className="flex items-center">
+            <BsArrowReturnRight className="mr-2" />
+            <span>Whitepaper</span>
+          </HambugerOptionButton>
+          <HambugerOptionButton className="flex items-center">
+            <BsArrowReturnRight className="mr-2" />
+            <span>Auditoria</span>
+          </HambugerOptionButton>
+          <HambugerOptionButton className="flex items-center">
+            <BsArrowReturnRight className="mr-2" />
+            <span>Auditoria 2</span>
+          </HambugerOptionButton>
+        </HambugerAcordeonMEnu>
+        <div className="hambuger-login-secction">
+          <h3>hola</h3>
+        </div>
+      </div>
     </HabugerMenuLayuot>
   );
 }
