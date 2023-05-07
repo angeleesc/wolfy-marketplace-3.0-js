@@ -11,16 +11,22 @@
     .wolf-pc-navbar-body {
         // background-color: red;
 
-        height             : 60px;
-        width              : 100%;
-        display            : flex;
-        justify-content    : space-between;
-        position           : relative;
-        align-items        : center;
+        height         : 60px;
+        width          : 100%;
+        display        : flex;
+        justify-content: space-between;
+        position       : relative;
+        align-items    : center;
+
         // background-color: red;
+        transition: background-color 1s border-radius 1s;
 
         &.pc-navbar-body-scroll {
-            background-color: red;
+            // background-color: red;
+            background-color          : rgba($color: #13161a, $alpha: 0.5);
+            backdrop-filter           : blur(20px);
+            border-bottom-left-radius : 16px;
+            border-bottom-right-radius: 16px;
         }
 
 
