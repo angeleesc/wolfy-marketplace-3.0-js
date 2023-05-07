@@ -14,6 +14,7 @@ import { useWeb3Context } from "../../context/Web3ContextProvider";
 import {
   getHash,
   hslAnalogoAdobeColor,
+  hslToHex,
 } from "../identicon/controller/hashControllers";
 import { useParams } from "react-router-dom";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
@@ -113,8 +114,6 @@ export default function ProfileHeader() {
   const { valletAccount } = useWeb3Context();
   const { id } = useParams();
 
-
-
   const hash = getHash(id);
   const palete = hslAnalogoAdobeColor(hash);
   console.log("paleta");
@@ -128,7 +127,15 @@ export default function ProfileHeader() {
           <div className="cover-blur-gradien"></div>
         </div>
       ) : (
-        <div className="profile-bg">
+        <div
+          className="profile-bg"
+          style={{
+            backgroundColor: `${hslToHex(...palete.colorC)}`,
+            background: `linear-gradient(180deg, ${hslToHex(
+              ...palete.colorA
+            )}, ${hslToHex(...palete.colorE)} 100%)`,
+          }}
+        >
           <div className="cover-blur-gradien"></div>
         </div>
       )}
@@ -140,9 +147,15 @@ export default function ProfileHeader() {
         </div>
         <div className="profile-body-info">
           <div className="avatar-box">
-         {   <div className="avatar-section-img">
-             { userData.avatarPhoto ? <img src={userData.avatarPhoto} alt="avatar-profile" /> : <WolfIdentidcon name={id} size={130} /> }
-            </div>}
+            {
+              <div className="avatar-section-img">
+                {userData.avatarPhoto ? (
+                  <img src={userData.avatarPhoto} alt="avatar-profile" />
+                ) : (
+                  <WolfIdentidcon name={id} size={130} />
+                )}
+              </div>
+            }
             <div className="user-name-id-section">
               <h3 className="text-[24px] font-bold  text-wolf-gray-light-1800 ">
                 {userData.userName ? userData.userName : "Anonimous"}
