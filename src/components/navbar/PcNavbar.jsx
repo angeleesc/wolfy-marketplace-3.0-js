@@ -41,12 +41,6 @@ export default function PcNavbar() {
     },
   ];
 
-  //  const profilePath =[
-  //   {
-  //     // path
-  //   }
-  //  ]
-
   let defBodyClass = useMemo(() => {
     const explorermodePath = matchRoutes(modeExplorerPath, location);
     console.log(explorermodePath);
@@ -68,7 +62,14 @@ export default function PcNavbar() {
   };
 
   const hadlerScroll = (e) => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
+    const explorermodePath = matchRoutes(modeExplorerPath, location);
+    if (explorermodePath) {
+      console.log("no se aplica el menu dinamico");
+      return;
+    }
+
+    console.log("se aplica los cambios dinamicos");
   };
 
   useEffect(() => {
@@ -79,9 +80,9 @@ export default function PcNavbar() {
 
     window.addEventListener("scroll", hadlerScroll);
     return () => {
-      window.removeEventListener("scroll", hadlerScroll)
+      window.removeEventListener("scroll", hadlerScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="wolf-pc-navbar">
