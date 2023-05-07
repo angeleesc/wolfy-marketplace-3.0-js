@@ -121,13 +121,16 @@
                 }
 
                 .avatar-section-img {
-                    padding         : 8px;
+                    padding         : 3px;
                     background-color: theme("colors.wolf-gray-dark.400");
                     width           : 140px;
                     height          : 140px;
                     position        : absolute;
-                    top             : -70px;
+                    top             : -80px;
                     border-radius   : 50%;
+                    display         : flex;
+                    justify-content : center;
+                    align-items     : center;
 
                     img {
                         width        : 100%;

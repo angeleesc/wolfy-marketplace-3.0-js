@@ -16,6 +16,7 @@ import {
   hslAnalogoAdobeColor,
 } from "../identicon/controller/hashControllers";
 import { useParams } from "react-router-dom";
+import WolfIdentidcon from "../identicon/WolfIdentidcon";
 
 const tempJson = {
   userName: "Angel xd",
@@ -68,9 +69,9 @@ const tempJson = {
       url: "https://www.google.com/",
     },
   ],
-  avatarPhoto:
-    "https://storage.googleapis.com/histories/325227351_157039013782665_5232836476363926556_n.jpg",
-  coverImage: "https://storage.googleapis.com/histories/785.jpg",
+  // avatarPhoto:
+  //   "https://storage.googleapis.com/histories/325227351_157039013782665_5232836476363926556_n.jpg",
+  // coverImage: "https://storage.googleapis.com/histories/785.jpg",
 };
 
 const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
@@ -117,25 +118,29 @@ export default function ProfileHeader() {
   console.log("paleta");
   console.log(palete);
 
-
   return (
     <div className="profile-header-conainer">
-    { userData.coverImage? <div className="profile-bg">
-        <img src={userData.coverImage} alt="cover-bg-image" />
-        <div className="cover-blur-gradien"></div>
-      </div>: <div style={{}} ></div> }
+      {userData.coverImage ? (
+        <div className="profile-bg">
+          <img src={userData.coverImage} alt="cover-bg-image" />
+          <div className="cover-blur-gradien"></div>
+        </div>
+      ) : (
+        <div className="profile-bg">
+          <div className="cover-blur-gradien"></div>
+        </div>
+      )}
       <div className="profile-header-body">
         <div className="cover-section">
-          <img src={userData.coverImage} alt="user-profile-cover-image" />
-          {/* <div className="avatar-section">
-            <img src={userData.avatarPhoto} alt="user-profile-avata0image" />
-          </div> */}
+          {userData.coverImage && (
+            <img src={userData.coverImage} alt="user-profile-cover-image" />
+          )}
         </div>
         <div className="profile-body-info">
           <div className="avatar-box">
-            <div className="avatar-section-img">
-              <img src={userData.avatarPhoto} alt="avatar-profile" />
-            </div>
+         {   <div className="avatar-section-img">
+             { userData.avatarPhoto ? <img src={userData.avatarPhoto} alt="avatar-profile" /> : <WolfIdentidcon/> }
+            </div>}
             <div className="user-name-id-section">
               <h3 className="text-[24px] font-bold  text-wolf-gray-light-1800 ">
                 {userData.userName ? userData.userName : "Anonimous"}
