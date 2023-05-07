@@ -18,10 +18,13 @@ import HabugerMenuLayuot from "./HabugerMenuLayuot";
 import { useWeb3Context } from "../../context/Web3ContextProvider";
 import PcUserSection from "./PcUserSection";
 import {
+  HSBToRGB,
   getColorHslTriald,
   getHash,
   hslAnalogoAdobeColor,
+  hslToHex,
 } from "../identicon/controller/hashControllers";
+import { hslToRgb } from "@mui/material";
 
 // import
 
@@ -87,8 +90,13 @@ export default function PcNavbar() {
   };
 
   const hast = getHash(valletAccount);
-  // const hsl = getColorHslTriald(hast);
-  const anolog = hslAnalogoAdobeColor(hast)
+  const anolog = hslAnalogoAdobeColor(hast);
+
+  for (let analoKey in anolog) {
+    // console.log(hsl)
+    console.log(hslToHex(...anolog[analoKey]));
+    console.log(HSBToRGB(...anolog[analoKey]));
+  }
 
   useEffect(() => {
     // al hacer scroll
@@ -98,7 +106,6 @@ export default function PcNavbar() {
 
     if (valletAccount) {
       console.log("hash xd");
- 
     }
 
     window.addEventListener("scroll", hadlerScroll);
