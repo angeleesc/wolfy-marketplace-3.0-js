@@ -4,17 +4,21 @@ import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useState } from "react";
+import { useRef } from "react";
 
 export default function PcUserSection({ valletAccount, balace }) {
   const [isOpen, setIsOpen] = useState(false);
+  const buttonARef = useRef();
+  const buttonBRef = useRef();
+  const boxRefs = useRef();
 
   return (
     <div className="wof-pc-drop-container ml-1 mr-[15px]">
-      <button className="avatar-zone">
+      <button className="avatar-zone" ref={buttonARef}>
         <WolfIdentidcon size={50} name={valletAccount} />
       </button>
       {isOpen && (
-        <div className="wolf-pc-drop-box">
+        <div className="wolf-pc-drop-box" ref={boxRefs}>
           <div className="user-secttion-header">
             <div className="avatar-section">
               <WolfIdentidcon size={60} name={valletAccount} />
