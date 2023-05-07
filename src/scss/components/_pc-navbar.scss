@@ -119,6 +119,18 @@
                     padding         : 15px;
                     border-radius   : 16px;
                     border          : 1px solid theme("colors.wolf-gray-dark.1200");
+
+                    &::before {
+                        content         : '';
+                        width           : 100%;
+                        // height: 100%;
+                        height          : 25px;
+                        // background-color: red;
+                        position        : absolute;
+                        bottom          : 100%;
+                        left            : 0;
+
+                    }
                 }
 
             }

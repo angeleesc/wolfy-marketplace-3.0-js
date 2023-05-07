@@ -13,7 +13,15 @@ export default function PcUserSection({ valletAccount, balace }) {
   const boxRefs = useRef();
 
   return (
-    <div className="wof-pc-drop-container ml-1 mr-[15px]">
+    <div
+      className="wof-pc-drop-container ml-1 mr-[15px]"
+      onMouseEnter={() => {
+        setIsOpen(true);
+      }}
+      onMouseLeave={() => {
+        setIsOpen(false);
+      }}
+    >
       <button className="avatar-zone" ref={buttonARef}>
         <WolfIdentidcon size={50} name={valletAccount} />
       </button>
