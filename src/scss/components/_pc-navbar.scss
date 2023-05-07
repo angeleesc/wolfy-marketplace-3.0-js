@@ -19,7 +19,11 @@
         align-items        : center;
         // background-color: red;
 
-        
+        &.pc-navbar-body-scroll {
+            background-color: red;
+        }
+
+
 
         h3 {
             // color      : theme('colors.wolf-gray-light.2000');
@@ -123,14 +127,14 @@
                     border          : 1px solid theme("colors.wolf-gray-dark.1200");
 
                     &::before {
-                        content         : '';
-                        width           : 100%;
+                        content            : '';
+                        width              : 100%;
                         // height: 100%;
-                        height          : 25px;
+                        height             : 25px;
                         // background-color: red;
-                        position        : absolute;
-                        bottom          : 100%;
-                        left            : 0;
+                        position           : absolute;
+                        bottom             : 100%;
+                        left               : 0;
 
                     }
                 }

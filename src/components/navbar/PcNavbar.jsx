@@ -65,11 +65,22 @@ export default function PcNavbar() {
     // console.log(window.scrollY);
     const explorermodePath = matchRoutes(modeExplorerPath, location);
     if (explorermodePath) {
-      console.log("no se aplica el menu dinamico");
+      // console.log("no se aplica el menu dinamico");
       return;
     }
 
-    console.log("se aplica los cambios dinamicos");
+    const element = bodyRef.current;
+
+    if (element) {
+      // console.log(element.classList);
+      element.classList.toggle("pc-navbar-body-scroll", window.scrollY > 0);
+
+   
+
+      // console.log(element.classList);
+    }
+
+    // console.log("se aplica los cambios dinamicos");
   };
 
   useEffect(() => {
