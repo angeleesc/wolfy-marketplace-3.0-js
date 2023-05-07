@@ -54,6 +54,9 @@ export default function PcUserSection({ valletAccount, balace }) {
             <Link
               to={staticRoutes.userData(valletAccount)}
               className="flex items-center"
+              onClick={() => {
+                setIsOpen(false);
+              }}
             >
               <FaRegUserCircle className="mr-2 text-wolf-gray-light-2200 text-[24px]" />{" "}
               <h3>Perfil</h3>
