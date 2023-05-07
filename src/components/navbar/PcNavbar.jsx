@@ -16,6 +16,7 @@ import {
 } from "../../controllers/Web3Controllers";
 import HabugerMenuLayuot from "./HabugerMenuLayuot";
 import { useWeb3Context } from "../../context/Web3ContextProvider";
+import PcUserSection from "./PcUserSection";
 
 // import
 
@@ -60,7 +61,6 @@ export default function PcNavbar() {
     }
   };
 
-
   return (
     <div className="wolf-pc-navbar">
       <div className={defBodyClass} ref={bodyRef}>
@@ -102,9 +102,7 @@ export default function PcNavbar() {
           </WolfTooltip>
 
           {valletAccount ? (
-            <button className="avatar-zone ml-1 mr-[15px]">
-              <WolfIdentidcon size={50} name={valletAccount} />
-            </button>
+            <PcUserSection valletAccount={valletAccount} />
           ) : (
             <WolfTooltip title="iniciar seccion">
               <button

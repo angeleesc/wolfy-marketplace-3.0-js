@@ -39,6 +39,7 @@
 
 
 
+
         &.mode-explorer {
             background-color: theme("colors.wolf-gray-dark.300");
 
@@ -103,6 +104,20 @@
                     background-color: theme("colors.wolf-gray-dark.1000");
                 }
 
+
+            }
+
+            .wof-pc-drop-container {
+                position: relative;
+
+                .user-secttion-header {
+                    background-color: theme("colors.wolf-gray-dark.400");
+                    position        : absolute;
+                    top             : calc(100% + 20px);
+                    right           : 0;
+                    width           : 300px;
+                    padding         : 15px;
+                }
 
             }
 
