@@ -17,6 +17,11 @@ import {
 import HabugerMenuLayuot from "./HabugerMenuLayuot";
 import { useWeb3Context } from "../../context/Web3ContextProvider";
 import PcUserSection from "./PcUserSection";
+import {
+  getColorHslTriald,
+  getHash,
+  hslAnalogoAdobeColor,
+} from "../identicon/controller/hashControllers";
 
 // import
 
@@ -75,19 +80,26 @@ export default function PcNavbar() {
       // console.log(element.classList);
       element.classList.toggle("pc-navbar-body-scroll", window.scrollY > 0);
 
-   
-
       // console.log(element.classList);
     }
 
     // console.log("se aplica los cambios dinamicos");
   };
 
+  const hast = getHash(valletAccount);
+  // const hsl = getColorHslTriald(hast);
+  const anolog = hslAnalogoAdobeColor(hast)
+
   useEffect(() => {
     // al hacer scroll
     // 1 verificamos si en que ruta esta
     // si esta en la ruta del explorado no hace nada
     // pero si esta en otra ruta cambiara el color de fondo
+
+    if (valletAccount) {
+      console.log("hash xd");
+ 
+    }
 
     window.addEventListener("scroll", hadlerScroll);
     return () => {

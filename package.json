@@ -33,6 +33,7 @@
     "react-router-dom": "^6.7.0",
     "sass": "^1.58.3",
     "sort-by": "^1.2.0",
+    "string-hash": "^1.1.3",
     "swiper": "^9.0.4",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
