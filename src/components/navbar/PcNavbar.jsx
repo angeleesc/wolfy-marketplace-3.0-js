@@ -41,6 +41,12 @@ export default function PcNavbar() {
     },
   ];
 
+  //  const profilePath =[
+  //   {
+  //     // path
+  //   }
+  //  ]
+
   let defBodyClass = useMemo(() => {
     const explorermodePath = matchRoutes(modeExplorerPath, location);
     console.log(explorermodePath);
@@ -60,6 +66,22 @@ export default function PcNavbar() {
       console.log(error);
     }
   };
+
+  const hadlerScroll = (e) => {
+    console.log(window.scrollY);
+  };
+
+  useEffect(() => {
+    // al hacer scroll
+    // 1 verificamos si en que ruta esta
+    // si esta en la ruta del explorado no hace nada
+    // pero si esta en otra ruta cambiara el color de fondo
+
+    window.addEventListener("scroll", hadlerScroll);
+    return () => {
+      window.removeEventListener("scroll", hadlerScroll)
+    };
+  }, []);
 
   return (
     <div className="wolf-pc-navbar">
