@@ -23,17 +23,27 @@ export default function ExplorerDropMenu() {
         <div className="drop-menu-iten">
           <ul>
             <li>
-              <Link to={staticRoutes.exporersNfts}>
+              <Link
+                to={staticRoutes.exporersNfts}
+                onClick={() => {
+                  setdrop(false);
+                }}
+              >
                 <h3>Nfts</h3>
               </Link>
             </li>
             <li>
-              <Link to={staticRoutes.exporersColections}>
+              <Link
+                to={staticRoutes.exporersColections}
+                onClick={() => {
+                  setdrop(false);
+                }}
+              >
                 <h3>Coleciones</h3>
               </Link>
             </li>
           </ul>
-          <div className="w-[100%] h-[1px] bg-wolf-blue-purple-600 my-[15px]"></div>
+          {/* <div className="w-[100%] h-[1px] bg-wolf-blue-purple-600 my-[15px]"></div>
           <span className="text-wolf-gray-light-1200 text-[14px]">
             Eplorar por blockchain
           </span>
@@ -58,7 +68,7 @@ export default function ExplorerDropMenu() {
                 <h3>Arbitrum</h3>
               </Link>
             </li>
-          </ul>
+          </ul> */}
         </div>
       )}
     </div>
