@@ -1,5 +1,8 @@
 import React from "react";
 import WolfIdentidcon from "../identicon/WolfIdentidcon";
+import { Link } from "react-router-dom";
+import { staticRoutes } from "../../helpers/static-routes";
+import { FaRegUserCircle } from "react-icons/fa";
 
 export default function PcUserSection({ valletAccount, balace }) {
   return (
@@ -24,12 +27,22 @@ export default function PcUserSection({ valletAccount, balace }) {
             <h3>Balance</h3>
             <div className="token-box">
               <div className="flex justify-between items-center">
-                <span className="symbol" >ETH</span>
+                <span className="symbol">ETH</span>
                 <span className="value">{Number(balace).toFixed(4)}</span>
               </div>
             </div>
           </div>
         )}
+
+        <div className="p-[10px]">
+          <Link
+            to={staticRoutes.userData(valletAccount)}
+            className="flex items-center"
+          >
+            <FaRegUserCircle className="mr-2 text-wolf-gray-light-2200 text-[24px]" />{" "}
+            <h3>Perfil</h3>
+          </Link>
+        </div>
       </div>
     </div>
   );
