@@ -89,14 +89,6 @@ export default function PcNavbar() {
     // console.log("se aplica los cambios dinamicos");
   };
 
-  const hast = getHash(valletAccount);
-  const anolog = hslAnalogoAdobeColor(hast);
-
-  for (let analoKey in anolog) {
-    // console.log(hsl)
-    console.log(hslToHex(...anolog[analoKey]));
-    console.log(HSBToRGB(...anolog[analoKey]));
-  }
 
   useEffect(() => {
     // al hacer scroll
@@ -104,9 +96,6 @@ export default function PcNavbar() {
     // si esta en la ruta del explorado no hace nada
     // pero si esta en otra ruta cambiara el color de fondo
 
-    if (valletAccount) {
-      console.log("hash xd");
-    }
 
     window.addEventListener("scroll", hadlerScroll);
     return () => {
