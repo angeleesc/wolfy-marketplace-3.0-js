@@ -111,8 +111,10 @@ const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
 export default function ProfileHeader() {
   const userData = tempJson;
   const { valletAccount } = useWeb3Context();
-
   const { id } = useParams();
+
+
+
   const hash = getHash(id);
   const palete = hslAnalogoAdobeColor(hash);
   console.log("paleta");
@@ -139,7 +141,7 @@ export default function ProfileHeader() {
         <div className="profile-body-info">
           <div className="avatar-box">
          {   <div className="avatar-section-img">
-             { userData.avatarPhoto ? <img src={userData.avatarPhoto} alt="avatar-profile" /> : <WolfIdentidcon/> }
+             { userData.avatarPhoto ? <img src={userData.avatarPhoto} alt="avatar-profile" /> : <WolfIdentidcon name={id} size={130} /> }
             </div>}
             <div className="user-name-id-section">
               <h3 className="text-[24px] font-bold  text-wolf-gray-light-1800 ">
