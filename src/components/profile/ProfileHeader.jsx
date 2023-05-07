@@ -10,6 +10,12 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { socialNetworks } from "../../helpers/global-constants";
+import { useWeb3Context } from "../../context/Web3ContextProvider";
+import {
+  getHash,
+  hslAnalogoAdobeColor,
+} from "../identicon/controller/hashControllers";
+import { useParams } from "react-router-dom";
 
 const tempJson = {
   userName: "Angel xd",
@@ -88,14 +94,13 @@ const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
     [socialNetworks.twitter]: `social-n-item bg-wolf-social-twitter`,
     [socialNetworks.instagram]: `social-n-item bg-wolf-social-instagram`,
     [socialNetworks.discord]: `social-n-item bg-wolf-social-discord`,
-
   };
 
   const RenderIconDef = DefIcon[icons];
 
   return (
     <button className={"social-n-item"}>
-      <span className="icon-section" >
+      <span className="icon-section">
         <RenderIconDef />
       </span>
     </button>
@@ -104,13 +109,21 @@ const SocialIconRender = ({ icons = socialNetworks.facebook }) => {
 
 export default function ProfileHeader() {
   const userData = tempJson;
+  const { valletAccount } = useWeb3Context();
+
+  const { id } = useParams();
+  const hash = getHash(id);
+  const palete = hslAnalogoAdobeColor(hash);
+  console.log("paleta");
+  console.log(palete);
+
 
   return (
     <div className="profile-header-conainer">
-      <div className="profile-bg">
+    { userData.coverImage? <div className="profile-bg">
         <img src={userData.coverImage} alt="cover-bg-image" />
         <div className="cover-blur-gradien"></div>
-      </div>
+      </div>: <div style={{}} ></div> }
       <div className="profile-header-body">
         <div className="cover-section">
           <img src={userData.coverImage} alt="user-profile-cover-image" />
@@ -147,7 +160,7 @@ export default function ProfileHeader() {
           {userData.socialContact && Array.isArray(userData.socialContact) && (
             <div className="social-contact-section-box">
               {userData.socialContact.map((socialN, i) => {
-                console.log(socialN.socialName);
+                // console.log(socialN.socialName);
 
                 return (
                   <SocialIconRender

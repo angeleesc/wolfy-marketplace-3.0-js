@@ -7,8 +7,8 @@ export const getHash = (str) => {
 
     let hash = 5381
 
-    console.log("hasheando xd")
-    console.log(str.length)
+    // console.log("hasheando xd")
+    // console.log(str.length)
 
     for (let i = str.length; i >= 0; i--) {
         hash = (hash * 33) ^ str.charCodeAt(i)
@@ -56,18 +56,13 @@ export const hslAnalogoAdobeColor = (hash) => {
 
 
 
-    console.log("colorA", colorA)
-    console.log("colorB", colorB)
-    console.log("colorC", colorC)
-    console.log("colorD", colorD)
-    console.log("colorE", colorE)
+    // console.log("colorA", colorA)
+    // console.log("colorB", colorB)
+    // console.log("colorC", colorC)
+    // console.log("colorD", colorD)
+    // console.log("colorE", colorE)
 
-    console.log("caso negativo")
 
-    const cuadrado = Math.pow((-32 % 360), 2)
-    console.log("cuadrado", cuadrado)
-
-    console.log("caso negativo", Math.sqrt(Math.pow((-32 % 360), 2)))
 
 
     return {
@@ -81,7 +76,7 @@ export const hslAnalogoAdobeColor = (hash) => {
 }
 
 export const hslToHex = (h, s, b) => {
-    console.log("se recibio", "h: ", h, "s :", s, "b: ", b)
+    // console.log("se recibio", "h: ", h, "s :", s, "b: ", b)
 
     s /= 100;
     b /= 100;
