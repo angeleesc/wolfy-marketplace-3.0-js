@@ -110,13 +110,66 @@
             .wof-pc-drop-container {
                 position: relative;
 
-                .user-secttion-header {
+                .wolf-pc-drop-box {
                     background-color: theme("colors.wolf-gray-dark.400");
                     position        : absolute;
                     top             : calc(100% + 20px);
                     right           : 0;
                     width           : 300px;
                     padding         : 15px;
+                    border-radius   : 16px;
+                    border          : 1px solid theme("colors.wolf-gray-dark.1200");
+                }
+
+            }
+
+
+            .token-secction {
+                margin-top: 15px;
+
+                h3 {
+                    color: theme("colors.wolf-gray-light.1000");
+                }
+
+                .token-box {
+                    padding: 10px;
+
+                    .symbol {
+                        // background-color: red ;
+                        font-weight: 600;
+                        color      : theme("colors.wolf-gray-light.1200");
+                    }
+
+                    .value {
+                        font-weight: 700;
+                        color      : theme("colors.wolf-gray-light.1800");
+                    }
+                }
+            }
+
+            .user-secttion-header {
+                display         : flex;
+                align-items     : center;
+                background-color: theme("colors.wolf-gray-dark.700");
+                padding         : 10px;
+                border-radius   : 8px;
+                border          : 1px solid theme("colors.wolf-gray-dark.1000");
+
+                .info-section {
+
+                    margin-left: 15px;
+
+                    h4 {
+                        font-size  : 14px;
+                        font-weight: 600;
+                        color      : theme("colors.wolf-gray-light.2200");
+                    }
+
+                    h6 {
+                        font-size  : 14px;
+                        color      : theme("colors.wolf-gray-light.1000");
+                        font-weight: 600;
+                    }
                 }
 
             }

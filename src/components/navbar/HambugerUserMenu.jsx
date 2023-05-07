@@ -39,9 +39,9 @@ export default function HambugerUserMenu({}) {
               >
                 Ir a perfil
               </HambugerOptionButton>
-              <h3>Anonimous</h3>
+              <h3  >Anonimous</h3>
               <h5>
-                {valletAccount.substr(0, 10)}...{valletAccount.substr(-8)}{" "}
+                {valletAccount.substr(0, 10)}...{valletAccount.substr(-8)}
               </h5>
               <span className="balance">{Number(balance).toFixed(4)} ETH</span>
             </div>

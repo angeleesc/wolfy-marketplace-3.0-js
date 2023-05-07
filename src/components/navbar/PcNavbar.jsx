@@ -102,7 +102,7 @@ export default function PcNavbar() {
           </WolfTooltip>
 
           {valletAccount ? (
-            <PcUserSection valletAccount={valletAccount} />
+            <PcUserSection valletAccount={valletAccount} balace={balance} />
           ) : (
             <WolfTooltip title="iniciar seccion">
               <button
