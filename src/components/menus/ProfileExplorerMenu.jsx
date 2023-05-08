@@ -23,6 +23,16 @@ export default function ProfileExplorerMenu({ setMode, mode }) {
         >
           walllet
         </button>
+        <button
+          className="wolf-buttom wolf-btn-secondary-traparent"
+          onClick={() => {
+            setMode({
+              mode: "myAuctionsBid",
+            });
+          }}
+        >
+          Ofertas Hechas
+        </button>
       </div>
     </div>
   );
