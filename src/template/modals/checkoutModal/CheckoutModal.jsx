@@ -147,10 +147,10 @@ export default function CheckoutModal() {
 
     const checkWallet = await checWaletConected();
     if (!checkWallet) {
-      // console.log("no estas conectado a la wallet");
       setStepProcces(-3);
       return;
     }
+
     // si esta conectamos a la wallet
     // verificamos que este en la blockchain correcta
 
@@ -166,6 +166,7 @@ export default function CheckoutModal() {
     // verivicamos si tiene el balance correcto para al menos una compra
 
     // console.log(orderDAta);
+
     const walletData = await getWaletData();
     let orderDAta;
     setBalace(walletData.balance);
@@ -181,12 +182,23 @@ export default function CheckoutModal() {
         return;
       }
 
+      if (modalData.seller && modalData.seller === walletData.addres) {
+        console.log("es una subasta pero el ofertador es es mismo duano")
+        setStepProcces(-5);
+        return;
+      }
+
       const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
 
       setValue("bid", (currentPrice * 1.05).toString());
       setBesBidder(bBider);
       setAuctionExpirationTime(endTime);
     } else {
+      if (modalData.seller && modalData.seller === walletData.addres) {
+        stepProcces(-4);
+        return;
+      }
+
       orderDAta = await getOrderByid(modalData.orderId);
 
       setPrice(orderDAta.price);
@@ -197,11 +209,11 @@ export default function CheckoutModal() {
     setBalace(walletData.balance);
     setAddress(walletData.addres);
 
-    if (modalData.seller && modalData.seller === walletData.addres) {
-      // console.log("el es duenio de la orden actuacl")
-      setStepProcces(-4);
-      return;
-    }
+    // if (modalData.seller && modalData.seller === walletData.addres) {
+    //   // console.log("el es duenio de la orden actuacl")
+    //   setStepProcces(-4);
+    //   return;
+    // }
 
     setValue("saleMethod", modalData.saleMethod);
 
@@ -426,6 +438,42 @@ export default function CheckoutModal() {
                 </div>
               </form>
             )}
+
+            {
+              stepProcces === -6 &&(
+                <div className="insufficient-balance">
+                <span className="text-wolf-gray-light-1500 text-[14px]">
+                  Useted es el actual dueño de esta nfts que esta en venta en
+                  nuestra marketplace
+                </span>
+                <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                  Deseas Sacarla de venta en nuestra marketplace?
+                </span>
+                <div className="mt-[10px]">
+                  <button
+                    type="button"
+                    className="wolf-buttom w-[100%]  wolf-buttom-primary"
+                    onClick={cancelTokenNow}
+                  >
+                    Si deseo sacar de la venta
+                  </button>
+                  <button
+                    type="button"
+                    className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                    onClick={() => {
+                      dispatch(
+                        closeModal({
+                          modal: keyModalSate.checkoutModal,
+                        })
+                      );
+                    }}
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+              )
+            }
 
             {stepProcces === -5 && (
               <div className="procesing-step loading-data">
