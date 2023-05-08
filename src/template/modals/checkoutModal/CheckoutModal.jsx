@@ -127,13 +127,25 @@ export default function CheckoutModal() {
 
   const cancelActuionNow = async () => {
     console.log("eliminando subasta");
-    await removerOfferSdeSellerHttp(modalData.orderId, address);
+    setStepProcces(1);
+    try {
+      await removerOfferSdeSellerHttp(modalData.orderId, address);
+      setStepProcces(3);
+    } catch (error) {
+      setStepProcces(2);
+    }
+
     // await removerOfferSdeSellerHttp("58", address)
   };
 
   const goFinisAuction = async () => {
-    await finisAuctionHttp(modalData.seller, modalData.orderId);
-
+    setStepProcces(1);
+    try {
+      await finisAuctionHttp(modalData.seller, modalData.orderId);
+      setStepProcces(3);
+    } catch (error) {
+      setStepProcces(2);
+    }
   };
 
   const buyTokenNow = async () => {
