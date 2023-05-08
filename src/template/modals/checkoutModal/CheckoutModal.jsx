@@ -183,8 +183,8 @@ export default function CheckoutModal() {
       }
 
       if (modalData.seller && modalData.seller === walletData.addres) {
-        console.log("es una subasta pero el ofertador es es mismo duano")
-        setStepProcces(-5);
+        console.log("es una subasta pero el ofertador es es mismo duano");
+        setStepProcces(-6);
         return;
       }
 
@@ -439,15 +439,14 @@ export default function CheckoutModal() {
               </form>
             )}
 
-            {
-              stepProcces === -6 &&(
-                <div className="insufficient-balance">
+            {stepProcces === -6 && (
+              <div className="insufficient-balance">
                 <span className="text-wolf-gray-light-1500 text-[14px]">
-                  Useted es el actual dueño de esta nfts que esta en venta en
-                  nuestra marketplace
+                  Useted es el actual dueño de esta nfts de subasta.
                 </span>
                 <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
-                  Deseas Sacarla de venta en nuestra marketplace?
+                  Si cancelas la subasta estando en curso, el dinero
+                  recaudado sera devueltos
                 </span>
                 <div className="mt-[10px]">
                   <button
@@ -455,7 +454,16 @@ export default function CheckoutModal() {
                     className="wolf-buttom w-[100%]  wolf-buttom-primary"
                     onClick={cancelTokenNow}
                   >
-                    Si deseo sacar de la venta
+                    Finalizo la subasta en curso
+                  </button>
+                  <button
+                    type="button"
+                    className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
+                    onClick={() => {
+                      console.log("subasta aceptada");
+                    }}
+                  >
+                    Acepto la oferta Actual de la subasta
                   </button>
                   <button
                     type="button"
@@ -472,8 +480,7 @@ export default function CheckoutModal() {
                   </button>
                 </div>
               </div>
-              )
-            }
+            )}
 
             {stepProcces === -5 && (
               <div className="procesing-step loading-data">
