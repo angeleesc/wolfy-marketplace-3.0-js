@@ -42,8 +42,8 @@ import {
 } from "../../../controllers/auctionControllers";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
-import {formatDistanceStrict} from "date-fns"
-import{ es } from "date-fns/locale"
+import { formatDistanceStrict } from "date-fns";
+import { es } from "date-fns/locale";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-5);
@@ -188,18 +188,18 @@ export default function CheckoutModal() {
       const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
 
       setValue("bid", (currentPrice * 1.05).toString());
-      setBesBidder(bBider === ethers.constants.AddressZero? "Ninguno": bBider);
+      setBesBidder(
+        bBider === ethers.constants.AddressZero ? "Ninguno" : bBider
+      );
       setAuctionExpirationTime(endTime);
       const current = Date.now();
       setIsAuctioFinished(current > endTime);
       setPrice(currentPrice);
 
-
       if (modalData.seller && modalData.seller === walletData.addres) {
         setStepProcces(-6);
         return;
       }
-
     } else {
       if (modalData.seller && modalData.seller === walletData.addres) {
         setStepProcces(-4);
@@ -280,14 +280,24 @@ export default function CheckoutModal() {
                     <span className="key">Disponible :</span>
                     <span className="value">{maxQ}</span>
                   </div>
-              { modalData.saleMethod === saleMethod.auction && price &&  <div className="price-zone-item">
-                    <span className="key">Mejor oferta :</span>
-                    <span className="value">{price}</span>
-                  </div>}
-              { modalData.saleMethod === saleMethod.auction && besBidder &&  <div className="price-zone-item">
-                    <span className="key">Postor :</span>
-                    <span className="value">{besBidder === "Ninguno"? besBidder: `${besBidder.substr(0,6)}...${besBidder.substr(-8)}` }</span>
-                  </div>}
+                  {modalData.saleMethod === saleMethod.auction && price && (
+                    <div className="price-zone-item">
+                      <span className="key">Mejor oferta :</span>
+                      <span className="value">{price}</span>
+                    </div>
+                  )}
+                  {modalData.saleMethod === saleMethod.auction && besBidder && (
+                    <div className="price-zone-item">
+                      <span className="key">Postor :</span>
+                      <span className="value">
+                        {besBidder === "Ninguno"
+                          ? besBidder
+                          : `${besBidder.substr(0, 6)}...${besBidder.substr(
+                              -8
+                            )}`}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -302,11 +312,11 @@ export default function CheckoutModal() {
                   </div>
                   <div className="ml-[15px] wallet-accoutn flex flex-col">
                     <span className="wallet-public-key">
-                      {`${address.substring(0,10)}...${address.substr(-8)}`}
+                      {`${address.substring(0, 10)}...${address.substr(-8)}`}
                     </span>
                     <span className="blochain-name">Optimism</span>
                     <span className="wallet-public-key">
-                    ETH  {`${Number(balace).toFixed(4)}`}
+                      ETH {`${Number(balace).toFixed(4)}`}
                     </span>
                   </div>
                 </div>
@@ -462,27 +472,49 @@ export default function CheckoutModal() {
                 <span className="text-wolf-gray-light-1500 text-[14px]">
                   Useted es el actual dueño de esta nfts de subasta.
                 </span>
-                <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
-                  Si cancelas la subasta estando en curso, el dinero recaudado
-                  sera devueltos
-                </span>
+                {isAuctioFinished ? (
+                  besBidder === "Ninguno" ? (
+                    <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                      Esta subasta finalizo si ninguna oferta
+                    </span>
+                  ) : (
+                    <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                      Si haces cli en aceptar la oferta la nft sera trnaferida
+                      al Mejor posto. pero si rechaza la oferta se devolvera el
+                      dinero al mejor postor
+                    </span>
+                  )
+                ) : (
+                 besBidder != "Ninguno" ?<span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                    Si cancelas la subasta estando en curso, el dinero recaudado
+                    sera devueltos
+                  </span>: <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                    No puedes cancelar la subasta hasta que finalize el tiempo de oferta o tengas una puja en la misma
+                  </span>
+                )}
                 <div className="mt-[10px]">
-                  <button
-                    type="button"
-                    className="wolf-buttom w-[100%]  wolf-buttom-primary"
-                    onClick={cancelTokenNow}
-                  >
-                    Finalizo la subasta en curso
-                  </button>
-                  <button
-                    type="button"
-                    className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
-                    onClick={() => {
-                      // console.log("subasta aceptada");
-                    }}
-                  >
-                    Acepto la oferta Actual de la subasta
-                  </button>
+                  {besBidder !== "Ninguno" && (
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  wolf-buttom-primary"
+                      onClick={cancelTokenNow}
+                    >
+                      {isAuctioFinished
+                        ? "Rechazo la oferta"
+                        : "Finalizo la subasta en curso"}
+                    </button>
+                  )}
+                  {isAuctioFinished && (
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
+                      onClick={() => {
+                        // console.log("subasta aceptada");
+                      }}
+                    >
+                     { besBidder != "Ninguno"? "Acepto la oferta": "Terminar Subasta"}
+                    </button>
+                  )}
                   <button
                     type="button"
                     className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
