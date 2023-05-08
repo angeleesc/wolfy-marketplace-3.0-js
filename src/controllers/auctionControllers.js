@@ -385,6 +385,23 @@ export const removeOfferSideSeller = async (order) => {
     const contract = await conectAuctionContrac()
     const req = await contract.removeOffer(order)
     const transaction = req.wait()
-    console.log(transaction)
+    // console.log(transaction)
+
+}
+
+export const removerOfferSdeSellerHttp = async (order) => {
+
+    try {
+
+        await removeOfferSideSeller(order)
+        console.log("subasta elinimanada del contrato", order)
+
+
+    } catch (error) {
+
+        console.log("ocurrio un error")
+        console.log(error)
+
+    }
 
 }

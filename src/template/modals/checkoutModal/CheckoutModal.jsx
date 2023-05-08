@@ -123,6 +123,12 @@ export default function CheckoutModal() {
     // console.log("resul");
   };
 
+
+  const cancelActuionNow = async()=>{
+    console.log("eliminando subasta")
+    await removerOfferSdeSellerHttp(modalData.orderId)
+  }
+
   const buyTokenNow = async () => {
     const ehtPrice = ethers.utils.parseEther(price.toString());
     setStepProcces(1);
@@ -241,6 +247,8 @@ export default function CheckoutModal() {
     await changeBlochainNetworkMetamas(420);
     await init();
   };
+
+
 
   useEffect(() => {
     init();
