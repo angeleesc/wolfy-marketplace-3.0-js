@@ -39,6 +39,7 @@ import { ethers } from "ethers";
 import {
   bidHttp,
   getAuctionById,
+  removerOfferSdeSellerHttp,
 } from "../../../controllers/auctionControllers";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
@@ -126,7 +127,8 @@ export default function CheckoutModal() {
 
   const cancelActuionNow = async()=>{
     console.log("eliminando subasta")
-    await removerOfferSdeSellerHttp(modalData.orderId)
+    await removerOfferSdeSellerHttp(modalData.orderId, address)
+    // await removerOfferSdeSellerHttp("58", address)
   }
 
   const buyTokenNow = async () => {
@@ -505,7 +507,7 @@ export default function CheckoutModal() {
                     <button
                       type="button"
                       className="wolf-buttom w-[100%]  wolf-buttom-primary"
-                      onClick={cancelTokenNow}
+                      onClick={cancelActuionNow}
                     >
                       {isAuctioFinished
                         ? "Rechazo la oferta"

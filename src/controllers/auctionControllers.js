@@ -389,12 +389,18 @@ export const removeOfferSideSeller = async (order) => {
 
 }
 
-export const removerOfferSdeSellerHttp = async (order) => {
+export const removerOfferSdeSellerHttp = async (order, seller) => {
 
     try {
 
         await removeOfferSideSeller(order)
         console.log("subasta elinimanada del contrato", order)
+
+
+        const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
+        // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+        await axios.delete(endPoint)
+        console.log("subasta eliminada desde la base de datos")
 
 
     } catch (error) {
