@@ -38,6 +38,7 @@ import {
 import { ethers } from "ethers";
 import {
   bidHttp,
+  finisAuctionHttp,
   getAuctionById,
   removerOfferSdeSellerHttp,
 } from "../../../controllers/auctionControllers";
@@ -124,12 +125,16 @@ export default function CheckoutModal() {
     // console.log("resul");
   };
 
-
-  const cancelActuionNow = async()=>{
-    console.log("eliminando subasta")
-    await removerOfferSdeSellerHttp(modalData.orderId, address)
+  const cancelActuionNow = async () => {
+    console.log("eliminando subasta");
+    await removerOfferSdeSellerHttp(modalData.orderId, address);
     // await removerOfferSdeSellerHttp("58", address)
-  }
+  };
+
+  const goFinisAuction = async () => {
+    await finisAuctionHttp(modalData.seller, modalData.orderId);
+
+  };
 
   const buyTokenNow = async () => {
     const ehtPrice = ethers.utils.parseEther(price.toString());
@@ -249,8 +254,6 @@ export default function CheckoutModal() {
     await changeBlochainNetworkMetamas(420);
     await init();
   };
-
-
 
   useEffect(() => {
     init();
@@ -494,12 +497,15 @@ export default function CheckoutModal() {
                       dinero al mejor postor
                     </span>
                   )
-                ) : (
-                 besBidder != "Ninguno" ?<span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                ) : besBidder != "Ninguno" ? (
+                  <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
                     Si cancelas la subasta estando en curso, el dinero recaudado
                     sera devueltos
-                  </span>: <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
-                    No puedes cancelar la subasta hasta que finalize el tiempo de oferta o tengas una puja en la misma
+                  </span>
+                ) : (
+                  <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
+                    No puedes cancelar la subasta hasta que finalize el tiempo
+                    de oferta o tengas una puja en la misma
                   </span>
                 )}
                 <div className="mt-[10px]">
@@ -518,11 +524,11 @@ export default function CheckoutModal() {
                     <button
                       type="button"
                       className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
-                      onClick={() => {
-                        // console.log("subasta aceptada");
-                      }}
+                      onClick={goFinisAuction}
                     >
-                     { besBidder != "Ninguno"? "Acepto la oferta": "Terminar Subasta"}
+                      {besBidder != "Ninguno"
+                        ? "Acepto la oferta"
+                        : "Terminar Subasta"}
                     </button>
                   )}
                   <button

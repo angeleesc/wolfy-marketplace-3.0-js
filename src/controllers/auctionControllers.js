@@ -389,6 +389,29 @@ export const removeOfferSideSeller = async (order) => {
 
 }
 
+
+export const finisAuctionHttp = async (seller, order) => {
+
+    try {
+        await goFinishAuction(order)
+        console.log("subasta terminada del contrato", order)
+        const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
+        // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+
+        await axios.delete(endPoint)
+
+
+
+    } catch (error) {
+
+        console.log("ocurrio un error")
+
+    }
+
+
+
+}
+
 export const removerOfferSdeSellerHttp = async (order, seller) => {
 
     try {
