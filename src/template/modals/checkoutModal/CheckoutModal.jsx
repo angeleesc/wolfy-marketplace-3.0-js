@@ -302,9 +302,12 @@ export default function CheckoutModal() {
                   </div>
                   <div className="ml-[15px] wallet-accoutn flex flex-col">
                     <span className="wallet-public-key">
-                      0x23b05735...4d64f
+                      {`${address.substring(0,10)}...${address.substr(-8)}`}
                     </span>
                     <span className="blochain-name">Optimism</span>
+                    <span className="wallet-public-key">
+                    ETH  {`${Number(balace).toFixed(4)}`}
+                    </span>
                   </div>
                 </div>
                 <div className="w-100% h-[1px] bg-wolf-gray-dark-1000 my-[10px]"></div>
