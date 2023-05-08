@@ -9,7 +9,10 @@ import {
 import { useEffect } from "react";
 import UserCardList from "../list/UserCardList";
 import UserWalletCardList from "../list/UserWalletCardList";
-import { getOrdersByWalletAddres } from "../../controllers/firebaseControllers";
+import {
+  getBuyerBid,
+  getOrdersByWalletAddres,
+} from "../../controllers/firebaseControllers";
 import { saleMethod } from "../../helpers/global-constants";
 import { getNftsByWallet } from "../../controllers/alchemyController";
 import worderin from "../../static-images/wondering.png";
@@ -21,7 +24,6 @@ export default function ProfileExplorer() {
   const [loadind, setLoadind] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [setLastRefIdNftsOnWallet, setSetLastRefIdNftsOnWallet] = useState("");
-  
 
   const mode = searchParams.get("mode");
   const type = searchParams.get("type");
@@ -56,8 +58,22 @@ export default function ProfileExplorer() {
         if (!walletLog) {
           console.log("usete no esta logeado");
           setSearchParams({});
+          return;
         }
-        // verificamos si el usuario es el duenio de la cuenta
+
+        if (walletLog != id) {
+          console.log("usted no es el duenio de la cuenta");
+          setSearchParams({});
+          return;
+        }
+
+        console.log("es el duenio de la cuenta");
+
+        const data = await getBuyerBid(id);
+
+        console.log("se obtuvo");
+        console.log(data);
+
         return;
       }
     }

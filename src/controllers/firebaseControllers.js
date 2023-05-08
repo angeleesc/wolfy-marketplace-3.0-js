@@ -55,7 +55,30 @@ export const getOrdersByWalletAddres = async (wallet, fillter) => {
 }
 
 
-export const getBuyerBid = async(id)=>{
+export const getBuyerBid = async (id) => {
+
+    // console.log("obteniendo la subasta")
+    const endPoint = rootApipaht.local + requestEndPoints.firebase.GETAcutionOrdersBuyer(id)
+    // const endPoint = rootApipaht.porduction + requestEndPoints.firebase.GETAcutionOrdersBuyer(id)
+
+    try {
+
+        const result = await axios.get(endPoint)
+        return {
+            isSuccesRequest: true,
+            ...result.data
+        }
+
+    } catch (error) {
+
+        return {
+            isSuccesRequest: false
+        }
+
+    }
+
+    console.log(endPoint)
+
 
 }
 
