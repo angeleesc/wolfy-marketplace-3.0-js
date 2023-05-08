@@ -100,6 +100,7 @@ export default function ProfileExplorer() {
             orderId: orderData.orderId,
             seller: orderData.seller,
             listingAt: orderData.listingAt,
+            currentPrice: orderData.currentPrice,
             ...(orderData.sellerName
               ? { sellerName: orderData.sellerName }
               : {}),
