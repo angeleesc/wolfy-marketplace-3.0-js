@@ -24,6 +24,7 @@ export default function ProfileExplorer() {
   const [loadind, setLoadind] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [setLastRefIdNftsOnWallet, setSetLastRefIdNftsOnWallet] = useState("");
+  const [buyerAuctionsOrders, setBuyerAuctionsOrders] = useState([]);
 
   const mode = searchParams.get("mode");
   const type = searchParams.get("type");
@@ -70,6 +71,22 @@ export default function ProfileExplorer() {
         console.log("es el duenio de la cuenta");
 
         const data = await getBuyerBid(id);
+
+        const { isSuccess, hasData, orders } = data;
+
+        if (isSuccess && hasData) {
+
+          const ordersToSend = orders.map((order)=>{
+
+            return{
+              ...order,
+              walletLog
+            }
+
+          })
+
+          setBuyerAuctionsOrders(ordersToSend);
+        }
 
         console.log("se obtuvo");
         console.log(data);
