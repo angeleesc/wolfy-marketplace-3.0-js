@@ -133,13 +133,13 @@ export default function ProfileExplorer() {
   return (
     <div className="mt-[30px] px-[30px] min-[700px]:px-[30px] profile-explorer-box">
       <ProfileExplorerMenu setMode={setSearchParams} mode={mode} />
-      {/* {!mode ? (
+      {!mode ? (
         <div className="mb-80px">
           <UserCardList nfts={userNftsOnMarketPlace} />
         </div>
       ) : (
         <UserWalletCardList nfts={userNftsOnWallet} />
-      )} */}
+      )}
     </div>
   );
 }
