@@ -202,7 +202,7 @@ export default function CheckoutModal() {
 
     } else {
       if (modalData.seller && modalData.seller === walletData.addres) {
-        stepProcces(-4);
+        setStepProcces(-4);
         return;
       }
 
