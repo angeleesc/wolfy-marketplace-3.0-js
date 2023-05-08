@@ -132,11 +132,15 @@ export default function ProfileExplorer() {
     <div className="mt-[30px] px-[30px] min-[700px]:px-[30px] profile-explorer-box">
       <ProfileExplorerMenu setMode={setSearchParams} mode={mode} />
       {!mode ? (
-        <div className="mb-80px">
+        <>
+     {   <div className="mb-80px">
           <UserCardList nfts={userNftsOnMarketPlace} />
-        </div>
+        </div>}
+        </>
       ) : (
-        <UserWalletCardList nfts={userNftsOnWallet} />
+        mode === "wallet"? <UserWalletCardList nfts={userNftsOnWallet} />: <div className="" >
+          <h3>Mi Subastas XS</h3>
+        </div>
       )}
     </div>
   );

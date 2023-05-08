@@ -395,8 +395,8 @@ export const finisAuctionHttp = async (seller, order) => {
     try {
         await goFinishAuction(order)
         console.log("subasta terminada del contrato", order)
-        const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
-        // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+        // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
+        const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
 
         await axios.delete(endPoint)
 
@@ -420,8 +420,8 @@ export const removerOfferSdeSellerHttp = async (order, seller) => {
         console.log("subasta elinimanada del contrato", order)
 
 
-        const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
-        // const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+        // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
+        const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost + `/${order}/${seller}`
         await axios.delete(endPoint)
         console.log("subasta eliminada desde la base de datos")
 
