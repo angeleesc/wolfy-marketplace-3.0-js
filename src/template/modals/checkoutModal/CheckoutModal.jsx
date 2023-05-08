@@ -55,6 +55,7 @@ export default function CheckoutModal() {
   const [isSufficientBalance, setIsSufficientBalance] = useState(false);
   const [besBidder, setBesBidder] = useState("");
   const [auctionExpirationTime, setAuctionExpirationTime] = useState(0);
+  const [isAuctioFinished, setIsAuctioFinished] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -182,17 +183,23 @@ export default function CheckoutModal() {
         return;
       }
 
-      if (modalData.seller && modalData.seller === walletData.addres) {
-        console.log("es una subasta pero el ofertador es es mismo duano");
-        setStepProcces(-6);
-        return;
-      }
-
       const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
 
       setValue("bid", (currentPrice * 1.05).toString());
       setBesBidder(bBider);
       setAuctionExpirationTime(endTime);
+      const current = Date.now();
+      if (current > endTime) {
+        console.log("la subasta ha finalizado");
+      } else {
+        console.log("la subasta esta vigente");
+      }
+      setIsAuctioFinished(current > endTime);
+
+      if (modalData.seller && modalData.seller === walletData.addres) {
+        setStepProcces(-6);
+        return;
+      }
     } else {
       if (modalData.seller && modalData.seller === walletData.addres) {
         stepProcces(-4);
@@ -445,8 +452,8 @@ export default function CheckoutModal() {
                   Useted es el actual dueño de esta nfts de subasta.
                 </span>
                 <span className="text-wolf-blue-purple-600   font-semibold text-[16px] my-4 block">
-                  Si cancelas la subasta estando en curso, el dinero
-                  recaudado sera devueltos
+                  Si cancelas la subasta estando en curso, el dinero recaudado
+                  sera devueltos
                 </span>
                 <div className="mt-[10px]">
                   <button
