@@ -19,7 +19,7 @@ export default function ProfileExplorerMenu({ setMode, mode }) {
             setMode({
               mode: "wallet",
             });
-          }}
+         1. }}
         >
           walllet
         </button>

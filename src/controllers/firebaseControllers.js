@@ -55,3 +55,7 @@ export const getOrdersByWalletAddres = async (wallet, fillter) => {
 }
 
 
+export const getBuyerBid = async(id)=>{
+
+}
+

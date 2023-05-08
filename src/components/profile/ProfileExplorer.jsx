@@ -21,6 +21,7 @@ export default function ProfileExplorer() {
   const [loadind, setLoadind] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const [setLastRefIdNftsOnWallet, setSetLastRefIdNftsOnWallet] = useState("");
+  
 
   const mode = searchParams.get("mode");
   const type = searchParams.get("type");
@@ -51,6 +52,12 @@ export default function ProfileExplorer() {
 
       if (mode === "myAuctionsBid") {
         console.log("obteniendo las subasta donde estas haciendo oferta");
+        // verificamos si es usuario esta logeado
+        if (!walletLog) {
+          console.log("usete no esta logeado");
+          setSearchParams({});
+        }
+        // verificamos si el usuario es el duenio de la cuenta
         return;
       }
     }
@@ -133,12 +140,16 @@ export default function ProfileExplorer() {
       <ProfileExplorerMenu setMode={setSearchParams} mode={mode} />
       {!mode ? (
         <>
-     {   <div className="mb-80px">
-          <UserCardList nfts={userNftsOnMarketPlace} />
-        </div>}
+          {
+            <div className="mb-80px">
+              <UserCardList nfts={userNftsOnMarketPlace} />
+            </div>
+          }
         </>
+      ) : mode === "wallet" ? (
+        <UserWalletCardList nfts={userNftsOnWallet} />
       ) : (
-        mode === "wallet"? <UserWalletCardList nfts={userNftsOnWallet} />: <div className="" >
+        <div className="">
           <h3>Mi Subastas XS</h3>
         </div>
       )}

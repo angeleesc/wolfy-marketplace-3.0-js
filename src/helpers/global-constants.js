@@ -140,7 +140,8 @@ export const requestEndPoints = {
     },
     firebase: {
         POSTGetAsk: "/api/v1/firebase/orders-nfts",
-        POSTGetAskByUser: "/api/v1/firebase/orders-by-users"
+        POSTGetAskByUser: "/api/v1/firebase/orders-by-users",
+        GETAcutionOrdersBuyer: (id) => `/oresers-bids/${id}`
     },
     alchemy: {
         getNftsBalanceOnWalet: "/api/v1/alchemy"
@@ -149,7 +150,7 @@ export const requestEndPoints = {
         marketPlaceContractPostNewOrder: "/api/v1/makertplace",
         marketPlaceContractDeletOrder: (orderId, seller) => `/api/v1/makertplace/${orderId}/${seller}`,
         marketplaceUpdateOrderPut: "/api/v1/makertplace",
-        auctionCreatePost : "/api/v1/auction"
+        auctionCreatePost: "/api/v1/auction"
 
     }
 
