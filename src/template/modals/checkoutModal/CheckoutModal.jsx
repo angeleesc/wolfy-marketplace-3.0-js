@@ -42,6 +42,8 @@ import {
 } from "../../../controllers/auctionControllers";
 import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
+import {formatDistanceStrict} from "date-fns"
+import{ es } from "date-fns/locale"
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-5);
@@ -117,8 +119,8 @@ export default function CheckoutModal() {
   // funcion del checkout
   const cancelTokenNow = async () => {
     const result = await goToCancel(modalData.orderId);
-    console.log("resultado");
-    console.log("resul");
+    // console.log("resultado");
+    // console.log("resul");
   };
 
   const buyTokenNow = async () => {
@@ -174,7 +176,7 @@ export default function CheckoutModal() {
     setAddress(walletData.addres);
 
     if (modalData.saleMethod === saleMethod.auction) {
-      console.log("obteniendo la orden de la subasta");
+      // console.log("obteniendo la orden de la subasta");
 
       const auctionData = await getAuctionById(modalData.orderId);
 
@@ -186,20 +188,18 @@ export default function CheckoutModal() {
       const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
 
       setValue("bid", (currentPrice * 1.05).toString());
-      setBesBidder(bBider);
+      setBesBidder(bBider === ethers.constants.AddressZero? "Ninguno": bBider);
       setAuctionExpirationTime(endTime);
       const current = Date.now();
-      if (current > endTime) {
-        console.log("la subasta ha finalizado");
-      } else {
-        console.log("la subasta esta vigente");
-      }
       setIsAuctioFinished(current > endTime);
+      setPrice(currentPrice);
+
 
       if (modalData.seller && modalData.seller === walletData.addres) {
         setStepProcces(-6);
         return;
       }
+
     } else {
       if (modalData.seller && modalData.seller === walletData.addres) {
         stepProcces(-4);
@@ -274,12 +274,20 @@ export default function CheckoutModal() {
                 <div className="price-zone">
                   <div className="price-zone-item">
                     <span className="key">Nombre :</span>
-                    <span className="value">La nft xd</span>
+                    <span className="value">{modalData.nftName}</span>
                   </div>
                   <div className="price-zone-item">
                     <span className="key">Disponible :</span>
                     <span className="value">{maxQ}</span>
                   </div>
+              { modalData.saleMethod === saleMethod.auction && price &&  <div className="price-zone-item">
+                    <span className="key">Mejor oferta :</span>
+                    <span className="value">{price}</span>
+                  </div>}
+              { modalData.saleMethod === saleMethod.auction && besBidder &&  <div className="price-zone-item">
+                    <span className="key">Postor :</span>
+                    <span className="value">{besBidder === "Ninguno"? besBidder: `${besBidder.substr(0,6)}...${besBidder.substr(-8)}` }</span>
+                  </div>}
                 </div>
               </div>
             )}
@@ -467,7 +475,7 @@ export default function CheckoutModal() {
                     type="button"
                     className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
                     onClick={() => {
-                      console.log("subasta aceptada");
+                      // console.log("subasta aceptada");
                     }}
                   >
                     Acepto la oferta Actual de la subasta
