@@ -29,11 +29,19 @@ export default function BidsCardList({ bids }) {
                 )}
               </div>
               <div className="bid-card-content">
-                <h3>
-                  {metadata && metadata.nftName
-                    ? metadata.nftName
-                    : "Desconocido"}
+                <h3 className="title">
+                  <span className="key">NFT :</span>
+                  <span className="value">
+                    {metadata && metadata.nftName
+                      ? metadata.nftName
+                      : "Desconocido"}
+                  </span>
                 </h3>
+                <div className="price-zone">
+                  <span>Puja Mas alta</span>
+                  <h3>{currentPrice? currentPrice: "desconocida"}</h3>
+                </div>
+                {/* <span>{}</span> */}
               </div>
             </div>
           );
