@@ -212,6 +212,8 @@ export default function CheckoutModal() {
 
       const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
 
+      //verificamos si la subasta esta finalizada 
+
       setValue("bid", (currentPrice * 1.05).toString());
       setBesBidder(
         bBider === ethers.constants.AddressZero ? "Ninguno" : bBider
