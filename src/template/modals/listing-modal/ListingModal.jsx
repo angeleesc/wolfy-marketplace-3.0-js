@@ -49,6 +49,47 @@ export default function ListingModal() {
 
   const listingValidationSchema = yup.object({
     nftPrice: yup.string().required("El precio es requerido"),
+    auctionMinutes: yup.string().when("salesMethod", {
+      is: (salesMethod) => {
+        return salesMethod === saleMethod.auction;
+      },
+      then: yup
+        .string()
+        .test("max-day", "El maximo de Minutos es de 60", (value) => {
+          if (Number(value) <= 60) return true;
+          return false;
+        })
+        .required("el campo de Minutos es requerido"),
+      otherwise: yup.string().notRequired(),
+    }),
+    auctionDays: yup.string().when("salesMethod", {
+      is: (salesMethod) => {
+        return salesMethod === saleMethod.auction;
+      },
+      then: yup
+        .string()
+        .test("max-day", "El maximo de dias es de 60", (value) => {
+          console.log("valor a evaluar");
+          console.log(value);
+          if (Number(value) <= 60) return true;
+          return false;
+        })
+        .required("el campo de dias es requerido"),
+      otherwise: yup.string().notRequired(),
+    }),
+    auctionHours: yup.string().when("salesMethod", {
+      is: (salesMethod) => {
+        return salesMethod === saleMethod.auction;
+      },
+      then: yup
+        .string()
+        .test("max-day", "El maximo de horas es de 24", (value) => {
+          if (value <= 24) return true;
+          return false;
+        })
+        .required("el campo de Horas es requerido"),
+      otherwise: yup.string().notRequired(),
+    }),
   });
 
   const resolver = useYupValidationResolver(listingValidationSchema);
@@ -72,7 +113,6 @@ export default function ListingModal() {
 
   const dispatch = useDispatch();
 
-
   const onSubmit = async (data) => {
     console.log("vendido");
     console.log(data);
@@ -84,8 +124,8 @@ export default function ListingModal() {
       const resultListing = await goToSell([modalData.tokenId], data.nftPrice);
     }
 
-    if(data.salesMethod === saleMethod.auction){
-      console.log("se pndra como subasta")
+    if (data.salesMethod === saleMethod.auction) {
+      console.log("se pndra como subasta");
     }
 
     setStepProccess(4);
@@ -449,61 +489,66 @@ export default function ListingModal() {
                       }
                     />
 
-                    
-            {saleMethodWacth === saleMethod.auction && (
-              <div className="mt-[20px]">
-                <h3 className="my-[15px]">Tiempo de la subasta Duracion*</h3>
-                <div className="flex">
-                  <TextFieldInputGroup
-                    textLabel={"Dias"}
-                    info={
-                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
-                    }
-                    register={register("auctionDays")}
-                    type="number"
-                    step="1"
-                    onWheel={preventScroll}
-                    placeholder="Ej 1 dia"
-                    errorMessage={
-                      errors.auctionDays ? errors.auctionDays.message : ""
-                    }
-                  />
-                </div>
+                    {saleMethodWacth === saleMethod.auction && (
+                      <div className="mt-[20px]">
+                        <h3 className="my-[15px]">
+                          Tiempo de la subasta Duracion*
+                        </h3>
+                        <div className="flex">
+                          <TextFieldInputGroup
+                            textLabel={"Dias"}
+                            info={
+                              "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
+                            }
+                            register={register("auctionDays")}
+                            type="number"
+                            step="1"
+                            onWheel={preventScroll}
+                            placeholder="Ej 1 dia"
+                            errorMessage={
+                              errors.auctionDays
+                                ? errors.auctionDays.message
+                                : ""
+                            }
+                          />
+                        </div>
 
-                <div className="mt-[10px] flex">
-                  <div className="mr-1 w-[50%] ">
-                    <TextFieldInputGroup
-                      textLabel={"Horas *"}
-                      info={"Maximo 24 Horas"}
-                      register={register("auctionHours")}
-                      type="number"
-                      step="1"
-                      onWheel={preventScroll}
-                      placeholder="Ej 10 horas"
-                      errorMessage={
-                        errors.auctionHours ? errors.auctionHours.message : ""
-                      }
-                    />
-                  </div>
-                  <div className="ml-1 w-[50%]">
-                    <TextFieldInputGroup
-                      textLabel={"Minutos"}
-                      info={"Maximo 60 minutos"}
-                      register={register("auctionMinutes")}
-                      type="number"
-                      step="1"
-                      onWheel={preventScroll}
-                      placeholder="Ej 10 minutos"
-                      errorMessage={
-                        errors.auctionMinutes
-                          ? errors.auctionMinutes.message
-                          : ""
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
+                        <div className="mt-[10px] flex">
+                          <div className="mr-1 w-[50%] ">
+                            <TextFieldInputGroup
+                              textLabel={"Horas *"}
+                              info={"Maximo 24 Horas"}
+                              register={register("auctionHours")}
+                              type="number"
+                              step="1"
+                              onWheel={preventScroll}
+                              placeholder="Ej 10 horas"
+                              errorMessage={
+                                errors.auctionHours
+                                  ? errors.auctionHours.message
+                                  : ""
+                              }
+                            />
+                          </div>
+                          <div className="ml-1 w-[50%]">
+                            <TextFieldInputGroup
+                              textLabel={"Minutos"}
+                              info={"Maximo 60 minutos"}
+                              register={register("auctionMinutes")}
+                              type="number"
+                              step="1"
+                              onWheel={preventScroll}
+                              placeholder="Ej 10 minutos"
+                              errorMessage={
+                                errors.auctionMinutes
+                                  ? errors.auctionMinutes.message
+                                  : ""
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     <div className="mt-[15px]">
                       <button
