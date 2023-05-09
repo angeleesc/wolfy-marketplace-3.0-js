@@ -45,7 +45,7 @@ export default function ListingModal() {
     (state) => state.modals.listingModal.dataToProccess
   );
 
-  console.log(modalData);
+  // console.log(modalData);
 
   const listingValidationSchema = yup.object({
     nftPrice: yup.string().required("El precio es requerido"),
@@ -444,6 +444,62 @@ export default function ListingModal() {
                         errors.nftPrice ? errors.nftPrice.message : ""
                       }
                     />
+
+                    
+            {saleMethodWacth === saleMethod.auction && (
+              <div className="mt-[20px]">
+                <h3 className="my-[15px]">Tiempo de la subasta Duracion*</h3>
+                <div className="flex">
+                  <TextFieldInputGroup
+                    textLabel={"Dias"}
+                    info={
+                      "El ramgo maximo de la subasta es de 60 dia partiendo con el dia actual"
+                    }
+                    register={register("auctionDays")}
+                    type="number"
+                    step="1"
+                    onWheel={preventScroll}
+                    placeholder="Ej 1 dia"
+                    errorMessage={
+                      errors.auctionDays ? errors.auctionDays.message : ""
+                    }
+                  />
+                </div>
+
+                <div className="mt-[10px] flex">
+                  <div className="mr-1 w-[50%] ">
+                    <TextFieldInputGroup
+                      textLabel={"Horas *"}
+                      info={"Maximo 24 Horas"}
+                      register={register("auctionHours")}
+                      type="number"
+                      step="1"
+                      onWheel={preventScroll}
+                      placeholder="Ej 10 horas"
+                      errorMessage={
+                        errors.auctionHours ? errors.auctionHours.message : ""
+                      }
+                    />
+                  </div>
+                  <div className="ml-1 w-[50%]">
+                    <TextFieldInputGroup
+                      textLabel={"Minutos"}
+                      info={"Maximo 60 minutos"}
+                      register={register("auctionMinutes")}
+                      type="number"
+                      step="1"
+                      onWheel={preventScroll}
+                      placeholder="Ej 10 minutos"
+                      errorMessage={
+                        errors.auctionMinutes
+                          ? errors.auctionMinutes.message
+                          : ""
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
 
                     <div className="mt-[15px]">
                       <button
