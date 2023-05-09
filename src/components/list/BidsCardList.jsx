@@ -74,10 +74,12 @@ export default function BidsCardList({ bids }) {
                 </div>
               </div>
               <div className="bid-zone">
-                <div className="footer-secciotn">
+                <div className="footer-secciotn w-[100%]">
                   {curentTime > _seconds * 1000 ? (
                     isBestBider ? (
-                      <button className="wolf-button">Reclamar Nft</button>
+                      <button className="wolf-buttom wolf-btn-primary-2 w-[100%]">
+                        Reclamar Nft
+                      </button>
                     ) : (
                       <div>Subasta Finalizada</div>
                     )
