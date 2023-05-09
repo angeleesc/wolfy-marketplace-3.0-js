@@ -73,23 +73,23 @@ export default function BidsCardList({ bids }) {
                   {/* <span>{}</span> */}
                 </div>
               </div>
-              <div className="footer-secciotn">
-                {curentTime > _seconds * 1000 ? (
-                  isBestBider ? (
-                    <div>Prude reclamar</div>
+              <div className="bid-zone">
+                <div className="footer-secciotn">
+                  {curentTime > _seconds * 1000 ? (
+                    isBestBider ? (
+                      <button className="wolf-button">Reclamar Nft</button>
+                    ) : (
+                      <div>Subasta Finalizada</div>
+                    )
                   ) : (
-                    <div>Subasta Finalizada</div>
-                  )
-                ) : (
-                  <div className="bid-zone">
                     <div className="bid-zone-content">
                       <p>
                         <span>Termina</span> <span>{"xd"}</span>
                       </p>
                       <h3>5 horas</h3>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           );
