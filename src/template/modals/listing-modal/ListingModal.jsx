@@ -84,6 +84,10 @@ export default function ListingModal() {
       const resultListing = await goToSell([modalData.tokenId], data.nftPrice);
     }
 
+    if(data.salesMethod === saleMethod.auction){
+      console.log("se pndra como subasta")
+    }
+
     setStepProccess(4);
   };
 
