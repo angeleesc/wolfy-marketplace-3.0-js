@@ -8,7 +8,7 @@ export default function BidsCardList({ bids }) {
   const curentTime = Date.now();
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mb-[100px]">
       <div className="bids-card-list">
         {bids.map((bid, i) => {
           const {
