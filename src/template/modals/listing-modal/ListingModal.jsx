@@ -72,14 +72,6 @@ export default function ListingModal() {
 
   const dispatch = useDispatch();
 
-  // const goToSell = async () => {
-  //   const result = await readyTosell3(
-  //     [tokenId],
-  //     "0.0004",
-  //     smartContracts.ERC721UUPS
-  //   );
-  //   console.log("operacion exitoxa listing modadl");
-  // };
 
   const onSubmit = async (data) => {
     console.log("vendido");
@@ -414,7 +406,7 @@ export default function ListingModal() {
                                 <TagBlack />
                               </div>
                             </button>
-                            {/* <button
+                            <button
                               className="boton-group-box"
                               type="button"
                               onClick={() => {
@@ -430,7 +422,7 @@ export default function ListingModal() {
                                 <h4>Subasta</h4>
                                 <ClockBlack />
                               </div>
-                            </button> */}
+                            </button>
                           </div>
                         );
                       }}
