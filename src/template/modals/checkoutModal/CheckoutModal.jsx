@@ -60,6 +60,9 @@ export default function CheckoutModal() {
   const [besBidder, setBesBidder] = useState("");
   const [auctionExpirationTime, setAuctionExpirationTime] = useState(0);
   const [isAuctioFinished, setIsAuctioFinished] = useState(false);
+  const [succesMessage, setSuccesMessage] = useState(
+    "La operacio fue realizada sin complicaciones"
+  );
 
   const dispatch = useDispatch();
 
@@ -145,6 +148,7 @@ export default function CheckoutModal() {
       setStepProcces(3);
     } catch (error) {
       setStepProcces(2);
+
     }
   };
 
@@ -156,7 +160,10 @@ export default function CheckoutModal() {
       setStepProcces(3);
     } catch (error) {
       setStepProcces(2);
+      setSuccesMessage("Felicitaciones la nft esta en su wallet. pueder ir a la seccion de wallet en su perfil para verificar")
+
     }
+
   };
 
   const bidTokenNow = async () => {
@@ -165,8 +172,11 @@ export default function CheckoutModal() {
     try {
       await bidHttp(modalData.orderId, bidWatch);
       setStepProcces(3);
+      setSuccesMessage("Felicitaciones su orferta ya fue propuesta")
+
     } catch (error) {
       setStepProcces(2);
+
     }
   };
 
@@ -211,6 +221,7 @@ export default function CheckoutModal() {
       }
 
       const { currentPrice, bestBidder: bBider, endTime } = auctionData.data;
+      const currentTime = Date.now();
 
       //verificamos si la subasta esta finalizada
 
@@ -228,7 +239,9 @@ export default function CheckoutModal() {
         return;
       }
 
-      if (bBider === walletData.addres) {
+      if (currentTime > endTime) {
+        setStepProcces(-7);
+        return;
       }
     } else {
       if (modalData.seller && modalData.seller === walletData.addres) {
@@ -779,20 +792,41 @@ export default function CheckoutModal() {
 
             {stepProcces === 3 && (
               <div className="succes-proccess">
-                <h3>Operacion finalizada correctamente</h3>
-                <WolfHappy />
-                <span className="text-[14px] text-wolf-gray-light-800">
-                  Usted es ahoara el due;o de su nueva nft
-                </span>
-                <span className="text-[14px] text-wolf-gray-light-800">
-                  Para saber mas puede hacer click de la operacion
+                <h3 className="text-center mb-3">
+                  Operacion finalizada correctamente
+                </h3>
+
+                <div className="flex w-[100%] justify-center ">
+                  <WolfHappy />
+                </div>
+
+                <span className="text-[14px] text-wolf-gray-light-800 block text-center">
+                  {succesMessage}
                 </span>
 
-                <div className="mt-[10px] flex flex-col">
-                  <span className="text-[14px] text-wolf-gray-light-2200 font-semibold">
+                {/* <div className="mt-[10px] flex flex-col p-[10px] ">
+                  <span className="text-[14px] text-wolf-gray-light-1200 font-semibold">
                     Id de la Trasancion
                   </span>
-                  <span className="">0xea4e613b...0365b31912</span>
+                  <span className="text-[16px] font-semibold text-wolf-gray-light-2000">
+                    0xea4e613b...0365b31912
+                  </span>
+                </div> */}
+
+                <div className="mt-[10px]">
+                  <button
+                    type="button"
+                    className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
+                    onClick={() => {
+                      dispatch(
+                        closeModal({
+                          modal: keyModalSate.checkoutModal,
+                        })
+                      );
+                    }}
+                  >
+                    Finalizar
+                  </button>
                 </div>
               </div>
             )}
