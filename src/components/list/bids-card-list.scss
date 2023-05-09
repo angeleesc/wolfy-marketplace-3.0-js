@@ -7,11 +7,12 @@
     .bid-card {
         padding         : 15px;
         width           : 100%;
+        max-width       : 280px;
         min-height      : 120px;
         background-color: theme("colors.wolf-gray-dark.400");
         border-radius   : 16px;
         border          : 1px solid theme("colors.wolf-gray-dark.800");
-        display         : flex;
+        // display         : flex;
 
         .bid-card-multimendia {
             width           : 100px;
@@ -46,14 +47,27 @@
                     margin-right: 10px;
                 }
 
-                .price-zone {
-                    margin-top: 15px;
 
-                    span {
-                        font-size: 12px;
-                        color    : theme("colors.wolf-gray-light.200");
-                    }
+
+            }
+
+            .price-zone {
+                // background-color: red;
+                margin-top: 10px;
+
+                span {
+                    color      : theme("colors.wolf-gray-light.1000");
+                    font-size  : 12px;
+                    line-height: 12px;
                 }
+
+                h3 {
+                    font-size  : 20px;
+                    line-height: 20px;
+                    font-weight: 700;
+                }
+
+
 
             }
         }
