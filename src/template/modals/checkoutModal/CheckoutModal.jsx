@@ -489,7 +489,36 @@ export default function CheckoutModal() {
 
             {stepProcces === -7 && (
               <div className="winner-section">
-                <h3>Secion del ganador de la subasta</h3>
+                <h3>Subasta Finalizada</h3>
+                {besBidder === address ? (
+                  <>
+                    <h3 className="winner-h3">
+                      Felicidades Eres el ganador puedes reclamas
+                    </h3>
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
+                      onClick={goFinisAuction}
+                    >
+                      Reclamar Nft
+                    </button>
+                    <button
+                      type="button"
+                      className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                      onClick={() => {
+                        dispatch(
+                          closeModal({
+                            modal: keyModalSate.checkoutModal,
+                          })
+                        );
+                      }}
+                    >
+                      Cancelar
+                    </button>
+                  </>
+                ) : (
+                  <>No eres el ganador no puede reclamar</>
+                )}
               </div>
             )}
 

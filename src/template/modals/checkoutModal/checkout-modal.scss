@@ -82,11 +82,26 @@
 .winner-section {
 
     // background-color: red;
+
+    // background-color: red;
     h3 {
-        font-size : 18px;
-        text-align: center;
+        font-size  : 17px;
+        text-align : center;
         font-weight: 600;
-        
+
+    }
+
+    .winner-h3 {
+        color    : theme("colors.wolf-gray-light.1100");
+        font-size: 16px;
+    }
+
+    span {
+        font-size : 14px;
+        text-align: center;
+        display   : block;
+        padding   : 15px;
+        color     : theme("colors.wolf-gray-light.1200");
     }
 }
 
