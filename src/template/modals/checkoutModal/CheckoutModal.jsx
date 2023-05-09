@@ -245,7 +245,7 @@ export default function CheckoutModal() {
     setBalace(walletData.balance);
     setAddress(walletData.addres);
     setValue("saleMethod", modalData.saleMethod);
-    setStepProcces(-7);
+    setStepProcces(0);
   };
 
   const conectWalletMetamas = async () => {
