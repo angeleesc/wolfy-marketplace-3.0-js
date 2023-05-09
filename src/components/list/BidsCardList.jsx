@@ -28,6 +28,13 @@ export default function BidsCardList({ bids }) {
                   <img src={metadata.image} alt="" />
                 )}
               </div>
+              <div className="bid-card-content">
+                <h3>
+                  {metadata && metadata.nftName
+                    ? metadata.nftName
+                    : "Desconocido"}
+                </h3>
+              </div>
             </div>
           );
         })}
