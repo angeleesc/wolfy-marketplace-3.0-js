@@ -1,10 +1,13 @@
 import React from "react";
 import "./bids-card-list.scss";
+import { useDispatch } from "react-redux";
+import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
 
 export default function BidsCardList({ bids }) {
   //obtenemos la carta de la subasta
   // luego la renderizamos
 
+  const dispatch = useDispatch();
   const curentTime = Date.now();
 
   return (
@@ -22,6 +25,7 @@ export default function BidsCardList({ bids }) {
             currentPrice,
             endTime,
             seller,
+            saleMethod
           } = bid;
 
           // console.log(endTime);
@@ -77,7 +81,29 @@ export default function BidsCardList({ bids }) {
                 <div className="footer-secciotn w-[100%]">
                   {curentTime > _seconds * 1000 ? (
                     isBestBider ? (
-                      <button className="wolf-buttom wolf-btn-primary-2 w-[100%]">
+                      <button
+                        className="wolf-buttom wolf-btn-primary-2 w-[100%]"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          dispatch(
+                            openModal({
+                              modal: keyModalSate.checkoutModal,
+                              data: {
+                                // order,
+                                orderId,
+                                ...(metadata && metadata.image
+                                  ? { nftCover: metadata.image }
+                                  : {}),
+                                ...(metadata && metadata.nftName
+                                  ? { metadata: metadata.metadata }
+                                  : {}),
+                              ...(bestBidder? {bestBidder}: {}),
+                                saleMethod,
+                              },
+                            })
+                          );
+                        }}
+                      >
                         Reclamar Nft
                       </button>
                     ) : (
