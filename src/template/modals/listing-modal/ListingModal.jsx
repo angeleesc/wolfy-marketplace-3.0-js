@@ -120,12 +120,14 @@ export default function ListingModal() {
     setStepProccess(2);
 
     if (data.salesMethod === saleMethod.sales) {
-      const resultAprove = await aporveTransaction();
+      const resultAprove = await aporveTransaction(smartContracts.market );
       const resultListing = await goToSell([modalData.tokenId], data.nftPrice);
     }
 
     if (data.salesMethod === saleMethod.auction) {
       console.log("se pndra como subasta");
+      const resultAprove = await aporveTransaction(smartContracts.Auction );
+
     }
 
     setStepProccess(4);
@@ -490,8 +492,8 @@ export default function ListingModal() {
                     />
 
                     {saleMethodWacth === saleMethod.auction && (
-                      <div className="mt-[20px]">
-                        <h3 className="my-[15px]">
+                      <div className="mt-[10px]">
+                        <h3 className="my-[10px]">
                           Tiempo de la subasta Duracion*
                         </h3>
                         <div className="flex">
