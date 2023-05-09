@@ -37,6 +37,8 @@ import {
 } from "../../../controllers/Web3Controllers";
 import { useEffect } from "react";
 import { aporveTransaction } from "../../../controllers/ERC721Controllers";
+import { goToAuctionHttp } from "../../../controllers/auctionControllers";
+import { hoursToSeconds, minutesToSeconds } from "date-fns";
 
 export default function ListingModal() {
   const [stepProccess, setStepProccess] = useState(2);
@@ -120,7 +122,7 @@ export default function ListingModal() {
     setStepProccess(2);
 
     if (data.salesMethod === saleMethod.sales) {
-      const resultAprove = await aporveTransaction(smartContracts.market );
+      const resultAprove = await aporveTransaction(smartContracts.market);
       const resultListing = await goToSell([modalData.tokenId], data.nftPrice);
     }
 
@@ -128,6 +130,14 @@ export default function ListingModal() {
       console.log("se pndra como subasta");
       const resultAprove = await aporveTransaction(smartContracts.Auction );
 
+      const sHours = hoursToSeconds(Number(data.auctionHours));
+      const sDays = hoursToSeconds(Number(data.auctionDays) * 24);
+      const sMinutes = minutesToSeconds(Number(data.auctionMinutes));
+
+      const duration = sHours + sDays + sMinutes;
+      const resultListin = await goToAuctionHttp(modalData.contaract, [modalData.tokenId],  data.nftPrice, duration)
+     
+      console.log(modalData);
     }
 
     setStepProccess(4);
