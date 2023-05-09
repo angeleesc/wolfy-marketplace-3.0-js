@@ -16,6 +16,7 @@ import {
 import { saleMethod } from "../../helpers/global-constants";
 import { getNftsByWallet } from "../../controllers/alchemyController";
 import worderin from "../../static-images/wondering.png";
+import BidsCardList from "../list/BidsCardList";
 
 export default function ProfileExplorer() {
   const { id } = useParams();
@@ -75,15 +76,12 @@ export default function ProfileExplorer() {
         const { isSuccess, hasData, orders } = data;
 
         if (isSuccess && hasData) {
-
-          const ordersToSend = orders.map((order)=>{
-
-            return{
+          const ordersToSend = orders.map((order) => {
+            return {
               ...order,
-              walletLog
-            }
-
-          })
+              walletLog,
+            };
+          });
 
           setBuyerAuctionsOrders(ordersToSend);
         }
@@ -182,9 +180,7 @@ export default function ProfileExplorer() {
       ) : mode === "wallet" ? (
         <UserWalletCardList nfts={userNftsOnWallet} />
       ) : (
-        <div className="">
-          <h3>Mi Subastas XS</h3>
-        </div>
+        <BidsCardList bids={buyerAuctionsOrders} />
       )}
     </div>
   );
