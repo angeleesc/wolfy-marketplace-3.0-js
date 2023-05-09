@@ -227,6 +227,9 @@ export default function CheckoutModal() {
         setStepProcces(-6);
         return;
       }
+
+      if (bBider === walletData.addres) {
+      }
     } else {
       if (modalData.seller && modalData.seller === walletData.addres) {
         setStepProcces(-4);
@@ -234,7 +237,6 @@ export default function CheckoutModal() {
       }
 
       orderDAta = await getOrderByid(modalData.orderId);
-
       setPrice(orderDAta.price);
       setMaxQ(orderDAta.quantity);
       if (Number(orderDAta.quantity) === 1) setDisableQuantityField(true);
@@ -242,17 +244,8 @@ export default function CheckoutModal() {
 
     setBalace(walletData.balance);
     setAddress(walletData.addres);
-
-    // if (modalData.seller && modalData.seller === walletData.addres) {
-    //   // console.log("el es duenio de la orden actuacl")
-    //   setStepProcces(-4);
-    //   return;
-    // }
-
     setValue("saleMethod", modalData.saleMethod);
-
-    setStepProcces(0);
-    // console.log("estas conectado a una wallet");
+    setStepProcces(-7);
   };
 
   const conectWalletMetamas = async () => {
@@ -350,153 +343,155 @@ export default function CheckoutModal() {
                 <div className="w-100% h-[1px] bg-wolf-gray-dark-1000 my-[10px]"></div>
               </div>
             )}
-            {stepProcces === 0 &&
-              (modalData.saleMethod === saleMethod.auction &&
-              isAuctioFinished ? (
-                <div>Seccion de subasta finalizada para el comprador</div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit(onSubmit)}
-                  className="bill-checkout-zone px-[15px]"
-                >
-                  {modalData.saleMethod === saleMethod.sales && (
-                    <>
-                      <span className="text-wolf-gray-light-1000 text-[14px]">
-                        Cantidad a comprar *
-                      </span>
-                      <div className="counter-quantity mb-[15px]">
-                        <Controller
-                          control={control}
-                          name="cuantity"
-                          render={({ field: { onChange, value } }) => (
-                            <button
-                              type="button"
-                              className="counter-btn mr-2"
-                              onClick={() => {
-                                // console.log("aumentado");
-                                if (Number(value) + 1 > Number(maxQ)) return;
-                                // console.log(value);
-                                onChange(Number(value) + 1);
-                              }}
-                              disabled={disableQuantityField}
-                            >
-                              <MdOutlineAddCircle />
-                            </button>
-                          )}
-                        />
+            {stepProcces === 0 && (
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="bill-checkout-zone px-[15px]"
+              >
+                {modalData.saleMethod === saleMethod.sales && (
+                  <>
+                    <span className="text-wolf-gray-light-1000 text-[14px]">
+                      Cantidad a comprar *
+                    </span>
+                    <div className="counter-quantity mb-[15px]">
+                      <Controller
+                        control={control}
+                        name="cuantity"
+                        render={({ field: { onChange, value } }) => (
+                          <button
+                            type="button"
+                            className="counter-btn mr-2"
+                            onClick={() => {
+                              // console.log("aumentado");
+                              if (Number(value) + 1 > Number(maxQ)) return;
+                              // console.log(value);
+                              onChange(Number(value) + 1);
+                            }}
+                            disabled={disableQuantityField}
+                          >
+                            <MdOutlineAddCircle />
+                          </button>
+                        )}
+                      />
 
-                        <Controller
-                          control={control}
-                          name="cuantity"
-                          render={({ field: { onChange, value } }) => (
-                            <WTextFields
-                              id="checkout-quantity"
-                              type="number"
-                              onWheel={preventScroll}
-                              readOnly={isReadMode}
-                              value={value}
-                              disabled={disableQuantityField}
-                              onClick={() => {
-                                setIsReadMode(false);
-                                // console.log(isReadMode);
-                              }}
-                              onChange={(e) => {
-                                if (!isReadMode) {
-                                  // console.log("se puede editar");
-                                  onChange(e.target.value);
-                                  return;
-                                }
-                                // console.log("no se puede editar");
-                              }}
-                              onBlur={() => {
-                                setIsReadMode(true);
-                              }}
-                            />
-                          )}
-                        />
+                      <Controller
+                        control={control}
+                        name="cuantity"
+                        render={({ field: { onChange, value } }) => (
+                          <WTextFields
+                            id="checkout-quantity"
+                            type="number"
+                            onWheel={preventScroll}
+                            readOnly={isReadMode}
+                            value={value}
+                            disabled={disableQuantityField}
+                            onClick={() => {
+                              setIsReadMode(false);
+                              // console.log(isReadMode);
+                            }}
+                            onChange={(e) => {
+                              if (!isReadMode) {
+                                // console.log("se puede editar");
+                                onChange(e.target.value);
+                                return;
+                              }
+                              // console.log("no se puede editar");
+                            }}
+                            onBlur={() => {
+                              setIsReadMode(true);
+                            }}
+                          />
+                        )}
+                      />
 
-                        <Controller
-                          control={control}
-                          name="cuantity"
-                          render={({ field: { onChange, value } }) => (
-                            <button
-                              type="button"
-                              className="counter-btn ml-2"
-                              onClick={() => {
-                                // console.log("aumentado");
-                                // console.log(value);
-                                if (Number(value) - 1 <= 0) return;
-                                onChange(Number(value) - 1);
-                              }}
-                              disabled={disableQuantityField}
-                            >
-                              <MdOutlineRemoveCircle />
-                            </button>
-                          )}
-                        />
-                      </div>
-                    </>
-                  )}
-
-                  {modalData.saleMethod === saleMethod.auction && (
-                    <div className="mb-[10px]">
-                      <WTextFields
-                        register={register("bid")}
-                        textLabel={"Puja Minima *"}
-                        step="0.00000001"
-                        placeholder="Ej: ETH"
-                        id="checkout-bid"
-                        type="number"
-                        onWheel={preventScroll}
-                        errorMessage={errors.bid ? errors.bid.message : ""}
+                      <Controller
+                        control={control}
+                        name="cuantity"
+                        render={({ field: { onChange, value } }) => (
+                          <button
+                            type="button"
+                            className="counter-btn ml-2"
+                            onClick={() => {
+                              // console.log("aumentado");
+                              // console.log(value);
+                              if (Number(value) - 1 <= 0) return;
+                              onChange(Number(value) - 1);
+                            }}
+                            disabled={disableQuantityField}
+                          >
+                            <MdOutlineRemoveCircle />
+                          </button>
+                        )}
                       />
                     </div>
-                  )}
+                  </>
+                )}
 
-                  <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
-                  <div className="bill-checkout-item mt-[5px]">
-                    <span className="bill-key">Precio</span>{" "}
-                    <span className="bill-value">{price} ETH</span>
+                {modalData.saleMethod === saleMethod.auction && (
+                  <div className="mb-[10px]">
+                    <WTextFields
+                      register={register("bid")}
+                      textLabel={"Puja Minima *"}
+                      step="0.00000001"
+                      placeholder="Ej: ETH"
+                      id="checkout-bid"
+                      type="number"
+                      onWheel={preventScroll}
+                      errorMessage={errors.bid ? errors.bid.message : ""}
+                    />
                   </div>
-                  <div className="bill-checkout-item">
-                    <span className="bill-key">Cantidad</span>{" "}
-                    <span className="bill-value">{quantityWatch}</span>
-                  </div>
-                  <div className="bill-checkout-item mb-[5px] ">
-                    <span className="bill-key">Comision del la platafomar</span>{" "}
-                    <span className="bill-value">0</span>
-                  </div>
-                  <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
+                )}
 
-                  <div className="mt-[10px]">
-                    <div>
+                <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
+                <div className="bill-checkout-item mt-[5px]">
+                  <span className="bill-key">Precio</span>{" "}
+                  <span className="bill-value">{price} ETH</span>
+                </div>
+                <div className="bill-checkout-item">
+                  <span className="bill-key">Cantidad</span>{" "}
+                  <span className="bill-value">{quantityWatch}</span>
+                </div>
+                <div className="bill-checkout-item mb-[5px] ">
+                  <span className="bill-key">Comision del la platafomar</span>{" "}
+                  <span className="bill-value">0</span>
+                </div>
+                <div className="w-[100%] h-[1px] bg-wolf-gray-dark-1000"></div>
+
+                <div className="mt-[10px]">
+                  <div>
+                    <button
+                      type="submit"
+                      className="wolf-buttom wolf-buttom-primary w-[100%]"
+                    >
+                      {modalData.saleMethod === saleMethod.auction
+                        ? "hacer una puja"
+                        : "Comprar Ahora"}
+                    </button>
+                    <div className="mt-[10px]">
                       <button
-                        type="submit"
-                        className="wolf-buttom wolf-buttom-primary w-[100%]"
+                        type="button"
+                        className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
+                        onClick={() => {
+                          dispatch(
+                            closeModal({
+                              modal: keyModalSate.checkoutModal,
+                            })
+                          );
+                        }}
                       >
-                        {modalData.saleMethod === saleMethod.auction
-                          ? "hacer una puja"
-                          : "Comprar Ahora"}
+                        Cancelar
                       </button>
-                      <div className="mt-[10px]">
-                        <button
-                          type="button"
-                          className="wolf-buttom w-[100%]  hover:bg-wolf-blue-200"
-                          onClick={() => {
-                            dispatch(
-                              closeModal({
-                                modal: keyModalSate.checkoutModal,
-                              })
-                            );
-                          }}
-                        >
-                          Cancelar
-                        </button>
-                      </div>
                     </div>
                   </div>
-                </form>
-              ))}
+                </div>
+              </form>
+            )}
+
+            {stepProcces === -7 && (
+              <div className="winner-section">
+                <h3>Secion del ganador de la subasta</h3>
+              </div>
+            )}
 
             {stepProcces === -6 && (
               <div className="insufficient-balance">
