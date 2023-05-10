@@ -4,10 +4,12 @@ import { BiReset } from "react-icons/bi";
 
 export default function MultimediaZone({ value, reset, name }) {
   const { type } = value[0];
-  console.log("el tipo recibido es", type);
+  console.log(value);
+  // console.log("el tipo recibido es", type);
 
-  // if (type==="video/mp4") return <div>es un video</div>;
-  // if(ind)
+
+
+
   if (type.indexOf("image") >= 0) {
     const url = URL.createObjectURL(value[0]);
     // console.log(value);

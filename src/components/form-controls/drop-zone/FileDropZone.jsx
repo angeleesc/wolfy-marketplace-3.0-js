@@ -24,14 +24,24 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
     console.log(file.path);
     console.log(file.size);
 
-    const isImageFormatCompatible = /(jpg|png|jpeg|webp|avif|svg)/g
+    const isImageFormatCompatible = /(jpg|png|jpeg|webp|avif|svg|gif)/g;
+    const isVideoFormatCompactible = /(webm|mp4|)/g;
 
     if (!isImageFormatCompatible.test(file.path)) {
+
+      if(isVideoFormatCompactible){
+        console.log("evaluando video")
+        return {
+          code: "formato-incopatible",
+          message: "el formato de video no es compatible para hacer una metadata",
+        }; 
+      }
+
       console.log("no es un formato compatible");
       return {
-        code:"formato-incopatible",
-        message: "el formato no es compatible para hacer una metadata"
-      }
+        code: "formato-incopatible",
+        message: "el formato no es compatible para hacer una metadata",
+      }; 
     }
 
     // 100000000
@@ -74,7 +84,7 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
           })}
         >
           <input {...getInputProps()} />
-          {value ? (
+          {value && value.length > 0 ? (
             <MultimediaZone value={value} reset={reset} name={name} />
           ) : (
             <div className="input-content">
