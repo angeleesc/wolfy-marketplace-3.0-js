@@ -1,7 +1,11 @@
 import React, { useCallback, useMemo } from "react";
 import "./file-drop-zone.scss";
 import { useDropzone } from "react-dropzone";
-import { isImageFileRegEx, isVideoFileRegEx } from "../../../helpers/regEx";
+import {
+  isImageFileRegEx,
+  isImageFormatCompatible,
+  isVideoFileRegEx,
+} from "../../../helpers/regEx";
 import MultimediaZone from "./MultimediaZone";
 
 export default function FileDropZone({ name, onChange, value, reset, error }) {
@@ -15,8 +19,24 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
   // console.log(fileReader)
 
   const fileValidator = (file) => {
-    console.log("archivo a");
-    console.log("file");
+    console.log("archivo a evaluar ");
+
+    console.log(file.path);
+    console.log(file.size);
+
+    const isImageFormatCompatible = /(jpg|png|jpeg|webp|avif|svg)/g
+
+    if (!isImageFormatCompatible.test(file.path)) {
+      console.log("no es un formato compatible");
+      return {
+        code:"formato-incopatible",
+        message: "el formato no es compatible para hacer una metadata"
+      }
+    }
+
+    // 100000000
+    // 6070189
+    console.log("es un formato compatible XD");
     return null;
   };
 
