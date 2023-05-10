@@ -25,7 +25,7 @@ export default function BidsCardList({ bids }) {
             currentPrice,
             endTime,
             seller,
-            saleMethod
+            saleMethod,
           } = bid;
 
           // console.log(endTime);
@@ -42,81 +42,83 @@ export default function BidsCardList({ bids }) {
           const { _seconds } = endTime;
 
           return (
-            <div className="bid-card" key={"my-auction-oofer-" + i}>
-              <div className="flex">
-                <div className="bid-card-multimendia">
-                  {metadata && metadata.image && (
-                    <img src={metadata.image} alt="" />
-                  )}
-                </div>
-                <div className="bid-card-content">
-                  <h3 className="title">
-                    <span className="key">NFT :</span>
-                    <span className="value">
-                      {metadata && metadata.nftName
-                        ? metadata.nftName
-                        : "Desconocido"}
-                    </span>
-                  </h3>
-                  <div className="price-zone">
-                    <span>Puja reazilada</span>
-                    <h3
-                      className={
-                        isBestBider ? "text-green-500" : "text-red-600"
-                      }
-                    >
-                      {currentPrice ? currentPrice : "desconocida"}
+            <div className="flex justify-center w-[100%]">
+              <div className="bid-card" key={"my-auction-oofer-" + i}>
+                <div className="flex">
+                  <div className="bid-card-multimendia">
+                    {metadata && metadata.image && (
+                      <img src={metadata.image} alt="" />
+                    )}
+                  </div>
+                  <div className="bid-card-content">
+                    <h3 className="title">
+                      <span className="key">NFT :</span>
+                      <span className="value">
+                        {metadata && metadata.nftName
+                          ? metadata.nftName
+                          : "Desconocido"}
+                      </span>
                     </h3>
-                  </div>
-
-                  <div className="price-zone">
-                    <span>Eres el mejor postor</span>
-                    <h3>{isBestBider ? "SI" : "NO"}</h3>
-                  </div>
-
-                  {/* <span>{}</span> */}
-                </div>
-              </div>
-              <div className="bid-zone">
-                <div className="footer-secciotn w-[100%]">
-                  {curentTime > _seconds * 1000 ? (
-                    isBestBider ? (
-                      <button
-                        className="wolf-buttom wolf-btn-primary-2 w-[100%]"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          dispatch(
-                            openModal({
-                              modal: keyModalSate.checkoutModal,
-                              data: {
-                                // order,
-                                orderId,
-                                ...(metadata && metadata.image
-                                  ? { nftCover: metadata.image }
-                                  : {}),
-                                ...(metadata && metadata.nftName
-                                  ? { metadata: metadata.metadata }
-                                  : {}),
-                              ...(bestBidder? {bestBidder}: {}),
-                                saleMethod,
-                              },
-                            })
-                          );
-                        }}
+                    <div className="price-zone">
+                      <span>Puja reazilada</span>
+                      <h3
+                        className={
+                          isBestBider ? "text-green-500" : "text-red-600"
+                        }
                       >
-                        Reclamar Nft
-                      </button>
-                    ) : (
-                      <div>Subasta Finalizada</div>
-                    )
-                  ) : (
-                    <div className="bid-zone-content">
-                      <p>
-                        <span>Termina</span> <span>{"xd"}</span>
-                      </p>
-                      <h3>5 horas</h3>
+                        {currentPrice ? currentPrice : "desconocida"}
+                      </h3>
                     </div>
-                  )}
+
+                    <div className="price-zone">
+                      <span>Eres el mejor postor</span>
+                      <h3>{isBestBider ? "SI" : "NO"}</h3>
+                    </div>
+
+                    {/* <span>{}</span> */}
+                  </div>
+                </div>
+                <div className="bid-zone">
+                  <div className="footer-secciotn w-[100%]">
+                    {curentTime > _seconds * 1000 ? (
+                      isBestBider ? (
+                        <button
+                          className="wolf-buttom wolf-btn-primary-2 w-[100%]"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(
+                              openModal({
+                                modal: keyModalSate.checkoutModal,
+                                data: {
+                                  // order,
+                                  orderId,
+                                  ...(metadata && metadata.image
+                                    ? { nftCover: metadata.image }
+                                    : {}),
+                                  ...(metadata && metadata.nftName
+                                    ? { metadata: metadata.metadata }
+                                    : {}),
+                                  ...(bestBidder ? { bestBidder } : {}),
+                                  saleMethod,
+                                },
+                              })
+                            );
+                          }}
+                        >
+                          Reclamar Nft
+                        </button>
+                      ) : (
+                        <div>Subasta Finalizada</div>
+                      )
+                    ) : (
+                      <div className="bid-zone-content">
+                        <p>
+                          <span>Termina</span> <span>{"xd"}</span>
+                        </p>
+                        <h3>5 horas</h3>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
