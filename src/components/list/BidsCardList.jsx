@@ -2,6 +2,8 @@ import React from "react";
 import "./bids-card-list.scss";
 import { useDispatch } from "react-redux";
 import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
+import { formatDistanceStrict } from "date-fns";
+import { es } from "date-fns/locale";
 
 export default function BidsCardList({ bids }) {
   //obtenemos la carta de la subasta
@@ -40,11 +42,14 @@ export default function BidsCardList({ bids }) {
           // caso contrario ponemos un div de subasta finalizada
 
           const { _seconds } = endTime;
+          const distance = formatDistanceStrict(curentTime, _seconds * 1000, {
+            locale: es,
+          });
 
           return (
             <div className="flex justify-center w-[100%]">
               <div className="bid-card" key={"my-auction-oofer-" + i}>
-                <div className="flex">
+                <div className="flex  ">
                   <div className="bid-card-multimendia">
                     {metadata && metadata.image && (
                       <img src={metadata.image} alt="" />
@@ -112,10 +117,15 @@ export default function BidsCardList({ bids }) {
                       )
                     ) : (
                       <div className="bid-zone-content">
-                        <p>
-                          <span>Termina</span> <span>{"xd"}</span>
+                        <p className="text-[13px]">
+                          <span className="text-wolf-gray-light-800">
+                            Finaliza :
+                          </span>{" "}
+                          <span>{distance}</span>
                         </p>
-                        <h3>5 horas</h3>
+                        <button className="wolf-buttom w-[100%] wolf-btn-white">
+                          Hacer Otra oferta
+                        </button>
                       </div>
                     )}
                   </div>
