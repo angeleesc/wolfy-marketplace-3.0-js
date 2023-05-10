@@ -135,6 +135,11 @@
             background-color: theme("colors.wolf-gray-light.1300");
 
         }
+
+        &:disabled{
+            // background-color:;
+            opacity: 30%;
+        }
     }
 
 

@@ -47,8 +47,11 @@ export default function BidsCardList({ bids }) {
           });
 
           return (
-            <div className="flex justify-center w-[100%]">
-              <div className="bid-card" key={"my-auction-oofer-" + i}>
+            <div
+              className="flex justify-center w-[100%]"
+              key={"my-auction-oofer-" + i}
+            >
+              <div className="bid-card">
                 <div className="flex  ">
                   <div className="bid-card-multimendia">
                     {metadata && metadata.image && (
@@ -88,7 +91,7 @@ export default function BidsCardList({ bids }) {
                     {curentTime > _seconds * 1000 ? (
                       isBestBider ? (
                         <button
-                          className="wolf-buttom wolf-btn-primary-2 w-[100%]"
+                          className="wolf-buttom w-[100%] wolf-btn-white"
                           onClick={(e) => {
                             e.stopPropagation();
                             dispatch(
@@ -113,7 +116,12 @@ export default function BidsCardList({ bids }) {
                           Reclamar Nft
                         </button>
                       ) : (
-                        <div>Subasta Finalizada</div>
+                        <button
+                          className="wolf-buttom w-[100%] wolf-btn-white"
+                          disabled="true"
+                        >
+                          Subasta Finalizada
+                        </button>
                       )
                     ) : (
                       <div className="bid-zone-content">
@@ -123,7 +131,29 @@ export default function BidsCardList({ bids }) {
                           </span>{" "}
                           <span>{distance}</span>
                         </p>
-                        <button className="wolf-buttom w-[100%] wolf-btn-white">
+                        <button
+                          className="wolf-buttom w-[100%] wolf-btn-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(
+                              openModal({
+                                modal: keyModalSate.checkoutModal,
+                                data: {
+                                  // order,
+                                  orderId,
+                                  ...(metadata && metadata.image
+                                    ? { nftCover: metadata.image }
+                                    : {}),
+                                  ...(metadata && metadata.nftName
+                                    ? { metadata: metadata.metadata }
+                                    : {}),
+                                  ...(bestBidder ? { bestBidder } : {}),
+                                  saleMethod,
+                                },
+                              })
+                            );
+                          }}
+                        >
                           Hacer Otra oferta
                         </button>
                       </div>
