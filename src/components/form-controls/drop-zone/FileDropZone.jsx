@@ -14,6 +14,12 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
 
   // console.log(fileReader)
 
+  const fileValidator = (file) => {
+    console.log("archivo a");
+    console.log("file");
+    return null;
+  };
+
   const {
     getRootProps,
     getInputProps,
@@ -26,6 +32,7 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
     onDrop,
     noClick: true,
     multiple: false,
+    validator: fileValidator,
   });
 
   const className = useMemo(() => {
