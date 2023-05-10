@@ -31,6 +31,16 @@ export default function MultimediaZone({ value, reset, name }) {
   if (type.indexOf("video") >= 0) {
     return (
       <div className="multimedia-box-container">
+        <WolfTooltip title="resetear" arrow>
+          <button
+            className="reset-button"
+            onClick={() => {
+              reset(name);
+            }}
+          >
+            <BiReset />
+          </button>
+        </WolfTooltip>
         <video loop autoPlay muted>
           <source src={URL.createObjectURL(value[0])} type={type}></source>
         </video>
