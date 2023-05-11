@@ -186,7 +186,7 @@ export default function ListingModal() {
       }
 
       setListingProcessStatus(stateProcessMint.success);
-
+      
       console.log(modalData);
     }
 
