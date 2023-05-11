@@ -2,7 +2,7 @@ export const staticRoutes = {
     root: "/",
     exporersNfts: "explorer-nfts",
     exporersColections: "explorer-collections",
-    tokenInfoData: (id)=> `/token/${id?id:":id"}`,
+    tokenInfoData: (id, collection, tokenId)=> `/token/${id?id:"nft"}/${collection? collection: "none"}/${tokenId? tokenId: "none"}`,
     colectionInfoData: (id,)=> `/collection/${id?id:":id"}/`,
     userData: (id)=> `/user/${id?id:":id"}`,
     createNft: "create-new-nft",

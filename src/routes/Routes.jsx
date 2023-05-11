@@ -37,7 +37,7 @@ const router = createBrowserRouter([
                 element: <ColectionsExplorer />
             },
             {
-                path: "token/:id",
+                path: "token/:id/:collection/:tokenId",
                 element: <TokenFullInfoData />
             },
             {
