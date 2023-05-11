@@ -28,20 +28,19 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
     const isVideoFormatCompactible = /(webm|mp4|)/g;
 
     if (!isImageFormatCompatible.test(file.path)) {
-
-      if(isVideoFormatCompactible){
-        console.log("evaluando video")
+      if (isVideoFormatCompactible) {
+        console.log("evaluando video");
         return {
           code: "formato-incopatible",
-          message: "el formato de video no es compatible para hacer una metadata",
-        }; 
+          message: "el formato de video todavia no lo podemos prosesar",
+        };
       }
 
       console.log("no es un formato compatible");
       return {
         code: "formato-incopatible",
         message: "el formato no es compatible para hacer una metadata",
-      }; 
+      };
     }
 
     // 100000000
@@ -57,6 +56,7 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
     isDragActive,
     isDragAccept,
     isDragReject,
+    fileRejections,
     open,
   } = useDropzone({
     onDrop,
@@ -64,6 +64,9 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
     multiple: false,
     validator: fileValidator,
   });
+
+  console.log("archivos rechazados");
+  console.log(fileRejections);
 
   const className = useMemo(() => {
     if (isFocused) return "wolf-dropzone on-focus relative";
@@ -91,9 +94,24 @@ export default function FileDropZone({ name, onChange, value, reset, error }) {
               <span className="text-[12px] info-header">
                 Arrastra y suelta el archivo aqui
               </span>
-              <span className="info-content">
-                Archivos soportado PNG, JPG, WEBP, MP4 o MP3 maximo 100mb.
+              <span className="info-content text-center">
+                Archivos soportado PNG, JPG, WEBP, MP4 o MP3 maximo 100mb. nota
+                no estamos prosesando archivo de videos hasta la siguente
+                vesrsion
               </span>
+              {fileRejections &&
+                fileRejections.length > 0 &&
+                fileRejections.map(({ errors, file }, i) => {
+                  return (
+                    <div key={"error-de-archivo-" + i} className="mt-2">
+                      {errors && errors.length > 0 && (
+                        <h3 className="text-wollf-red-200 text-center">
+                          {errors[0].message}
+                        </h3>
+                      )}
+                    </div>
+                  );
+                })}
               <button
                 type="button"
                 onClick={open}
