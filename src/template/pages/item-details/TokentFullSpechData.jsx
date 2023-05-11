@@ -7,6 +7,8 @@ import { MdLoyalty, MdAnalytics, MdHistory } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
 import {
   itemDetaisTabOption,
+  requestEndPoints,
+  rootApipaht,
   saleMethod,
 } from "../../../helpers/global-constants";
 import WolfSad from "../../../components/icons/WolfSad";
@@ -14,6 +16,7 @@ import WolfDoubtful from "../../../components/icons/WolfDoubtful";
 import NftHistoriDisplay from "../../../components/nft-history/NftHistoriDisplay";
 import PriceZoen from "../../../components/price-zone/PriceZoen";
 import { useEffect } from "react";
+import axios from "axios";
 
 const temJson2 = {
   history: [
@@ -262,6 +265,18 @@ export default function TokentFullSpechData() {
 
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
+    const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
+    // const endPont = rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData
+
+    const result = await axios.get(endPont, {
+      params: {
+        collection,
+        id,
+        tokenId,
+      },
+    });
+
+    console.log(result.data);
   };
 
   useEffect(() => {

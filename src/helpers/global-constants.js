@@ -144,13 +144,14 @@ export const requestEndPoints = {
         GETAcutionOrdersBuyer: (id) => `/api/v1/firebase/oresers-bids/${id}`
     },
     alchemy: {
-        getNftsBalanceOnWalet: "/api/v1/alchemy"
+        getNftsBalanceOnWalet: "/api/v1/alchemy",
+        getFullNftData: "/api/v1/alchemy/nft"
     },
     eventSeverEndpoint: {
         marketPlaceContractPostNewOrder: "/api/v1/makertplace",
         marketPlaceContractDeletOrder: (orderId, seller) => `/api/v1/makertplace/${orderId}/${seller}`,
         marketplaceUpdateOrderPut: "/api/v1/makertplace",
-        auctionCreatePost: "/api/v1/auction"
+        auctionCreatePost: "/api/v1/auction/"
 
     }
 
