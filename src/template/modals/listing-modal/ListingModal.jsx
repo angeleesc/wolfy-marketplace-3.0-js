@@ -10,6 +10,7 @@ import {
   saleMethod,
   saleMethodOptions,
   smartContracts,
+  stateProcessMint,
 } from "../../../helpers/global-constants";
 import wondering from "../../../static-images/wondering.png";
 import "./.lidting-modal.scss";
@@ -42,6 +43,14 @@ import { hoursToSeconds, minutesToSeconds } from "date-fns";
 
 export default function ListingModal() {
   const [stepProccess, setStepProccess] = useState(2);
+  const [aproveStep, setAproveStep] = useState(false);
+  const [aproveStateProcess, setAproveStateProcess] = useState(
+    stateProcessMint.checking
+  );
+  const [stepListing, setStepListing] = useState(false);
+  const [listingProcessStatus, setListingProcessStatus] = useState(
+    stateProcessMint.checking
+  );
 
   const modalData = useSelector(
     (state) => state.modals.listingModal.dataToProccess
@@ -128,15 +137,20 @@ export default function ListingModal() {
 
     if (data.salesMethod === saleMethod.auction) {
       console.log("se pndra como subasta");
-      const resultAprove = await aporveTransaction(smartContracts.Auction );
+      const resultAprove = await aporveTransaction(smartContracts.Auction);
 
       const sHours = hoursToSeconds(Number(data.auctionHours));
       const sDays = hoursToSeconds(Number(data.auctionDays) * 24);
       const sMinutes = minutesToSeconds(Number(data.auctionMinutes));
 
       const duration = sHours + sDays + sMinutes;
-      const resultListin = await goToAuctionHttp(modalData.contaract, [modalData.tokenId],  data.nftPrice, duration)
-     
+      const resultListin = await goToAuctionHttp(
+        modalData.contaract,
+        [modalData.tokenId],
+        data.nftPrice,
+        duration
+      );
+
       console.log(modalData);
     }
 
