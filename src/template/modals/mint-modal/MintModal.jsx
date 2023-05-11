@@ -139,8 +139,23 @@ export default function MintModal() {
       if (rest.salesMethod === saleMethod.sales) {
         console.log("se pondra a la venta");
 
+        setStepAproveTransaction(true);
         const aproveResult = await aporveTransaction(smartContracts.market);
+        if (!aproveResult.isSucces) {
+          updateAprovetransactionStatus(stateProcessMint.fail);
+          setStepProcess(2);
+          return;
+        }
+
+        updateAprovetransactionStatus(stateProcessMint.success);
+        setStepListinMakePlace(true);
         const res = await goToSell(tokensIds, rest.nftPrice);
+        if (!res.isSuccess) {
+          updateListingStatus(stateProcessMint.fail);
+          setStepProcess(2);
+        }
+
+        updateListingStatus(stateProcessMint.success);
       } else if (rest.salesMethod === saleMethod.auction) {
         console.log("se pondra en subasta");
 
@@ -316,9 +331,9 @@ export default function MintModal() {
                 className="wolf-buttom flex w-[100%] justify-center wolf-btn-primary-2 my-2 "
                 onClick={async () => {
                   try {
-                  const isSucces =   await changeBlochainNetworkMetamas();
+                    const isSucces = await changeBlochainNetworkMetamas();
 
-                  if(!isSucces) throw new Error("No existe la blockchain")
+                    if (!isSucces) throw new Error("No existe la blockchain");
 
                     init();
                   } catch (error) {
