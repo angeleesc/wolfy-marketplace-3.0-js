@@ -157,6 +157,7 @@ export default function MintModal() {
 
         updateListingStatus(stateProcessMint.success);
       } else if (rest.salesMethod === saleMethod.auction) {
+        setStepAproveTransaction(true);
         console.log("se pondra en subasta");
 
         const sHours = hoursToSeconds(Number(rest.auctionHours));
@@ -168,12 +169,27 @@ export default function MintModal() {
         console.log(duration);
 
         const aproveResult = await aporveTransaction(smartContracts.Auction);
+
+        if (!aproveResult.isSucces) {
+          updateAprovetransactionStatus(stateProcessMint.fail);
+          setStepProcess(2);
+          return;
+        }
+
+        updateAprovetransactionStatus(stateProcessMint.success);
+        setStepListinMakePlace(true);
+
         const res = await goToAuctionHttp(
           smartContracts.ERC721UUPS,
           tokensIds,
           rest.nftPrice,
           duration
         );
+
+        if (!res.isSuccess) {
+          updateListingStatus(stateProcessMint.fail);
+          setStepProcess(2);
+        }
       }
     }
 

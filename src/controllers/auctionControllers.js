@@ -112,27 +112,38 @@ export const goToAuction = async (erc721, tokenIds, price, duration) => {
 
 export const goToAuctionHttp = async (erc721, tokenIds, price, duration) => {
 
-    const args = await goToAuction(erc721, tokenIds, price, duration,)
-    if (args.hasEventData && args.data) {
-        const { seller, _duration, _price, _tokenId, id } = args.data
 
-        const dataToSend = {
-            fOrderId: id,
-            fPrice: Number(ethers.utils.formatEther(_price)),
-            seller,
-            duration: _duration
+    try {
+
+        const args = await goToAuction(erc721, tokenIds, price, duration,)
+        if (args.hasEventData && args.data) {
+            const { seller, _duration, _price, _tokenId, id } = args.data
+
+            const dataToSend = {
+                fOrderId: id,
+                fPrice: Number(ethers.utils.formatEther(_price)),
+                seller,
+                duration: _duration
+
+            }
+
+            // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+            const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+            await axios.post(endPoint, dataToSend)
+
+            return {
+                isSuccess: true
+            }
+
 
         }
 
-        // const endPoint = rootApipaht.enventLocal + requestEndPoints.eventSeverEndpoint.auctionCreatePost
-        const endPoint = rootApipaht.eventProducion + requestEndPoints.eventSeverEndpoint.auctionCreatePost
+        throw new Error("Ocurrio un erro mien se registraba en la absae de datos")
 
-        try {
+    } catch (error) {
 
-            await axios.post(endPoint, dataToSend)
-
-        } catch (error) {
-
+        return {
+            isSuccess: false
         }
 
     }
