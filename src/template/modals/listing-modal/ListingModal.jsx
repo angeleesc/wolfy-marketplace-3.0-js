@@ -131,25 +131,61 @@ export default function ListingModal() {
     setStepProccess(2);
 
     if (data.salesMethod === saleMethod.sales) {
+      setAproveStep(true);
+      setAproveStateProcess(stateProcessMint.checking);
       const resultAprove = await aporveTransaction(smartContracts.market);
+
+      if (!resultAprove.isSucces) {
+        setAproveStateProcess(stateProcessMint.fail);
+        setStepProccess(3);
+        return;
+      }
+
+      setAproveStateProcess(stateProcessMint.success);
+      setStepListing(true);
       const resultListing = await goToSell([modalData.tokenId], data.nftPrice);
+      if (!resultListing.isSuccess) {
+        setListingProcessStatus(stateProcessMint.fail);
+        setStepProccess(3);
+        return;
+      }
+      setListingProcessStatus(stateProcessMint.success);
     }
 
     if (data.salesMethod === saleMethod.auction) {
       console.log("se pndra como subasta");
+      setAproveStep(true);
+      setAproveStateProcess(stateProcessMint.checking);
       const resultAprove = await aporveTransaction(smartContracts.Auction);
+      if (!resultAprove.isSucces) {
+        setAproveStateProcess(stateProcessMint.fail);
+        setStepProccess(3);
+        return;
+      }
+
+      setAproveStateProcess(stateProcessMint.success);
+      setStepListing(true);
 
       const sHours = hoursToSeconds(Number(data.auctionHours));
       const sDays = hoursToSeconds(Number(data.auctionDays) * 24);
       const sMinutes = minutesToSeconds(Number(data.auctionMinutes));
 
       const duration = sHours + sDays + sMinutes;
+
       const resultListin = await goToAuctionHttp(
         modalData.contaract,
         [modalData.tokenId],
         data.nftPrice,
         duration
       );
+
+      if (!resultListin.isSuccess) {
+        setListingProcessStatus(stateProcessMint.fail);
+        setStepProccess(3);
+        return;
+      }
+
+      setListingProcessStatus(stateProcessMint.success);
 
       console.log(modalData);
     }
@@ -607,33 +643,49 @@ export default function ListingModal() {
                     <div className="text">
                       <span>aprovando la ransacion</span>
                     </div>
-                    <div className="progress">
-                      <div className="circular-progress">
-                        <CircularProgress size={25} />
+                    {aproveStep && (
+                      <div className="progress">
+                        {aproveStateProcess === stateProcessMint.checking && (
+                          <div className="circular-progress">
+                            <CircularProgress size={25} />
+                          </div>
+                        )}
+                        {aproveStateProcess === stateProcessMint.success && (
+                          <div className="circular-progress">
+                            <Check />
+                          </div>
+                        )}
+                        {aproveStateProcess === stateProcessMint.fail && (
+                          <div className="circular-progress">
+                            <Fail />
+                          </div>
+                        )}
                       </div>
-                      <div className="circular-progress">
-                        <Check />
-                      </div>
-                      <div className="circular-progress">
-                        <Fail />
-                      </div>
-                    </div>
+                    )}
                   </div>
                   <div className="step-listing-process">
                     <div className="text">
                       <span>poniendolo a la venta</span>
                     </div>
-                    <div className="progress">
-                      <div className="circular-progress">
-                        <CircularProgress size={25} />
+                    {stepListing && (
+                      <div className="progress">
+                        {listingProcessStatus === stateProcessMint.checking && (
+                          <div className="circular-progress">
+                            <CircularProgress size={25} />
+                          </div>
+                        )}
+                        {listingProcessStatus === stateProcessMint.success && (
+                          <div className="circular-progress">
+                            <Check />
+                          </div>
+                        )}
+                        {listingProcessStatus === stateProcessMint.fail && (
+                          <div className="circular-progress">
+                            <Fail />
+                          </div>
+                        )}
                       </div>
-                      <div className="circular-progress">
-                        <Check />
-                      </div>
-                      <div className="circular-progress">
-                        <Fail />
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </>
               )}
