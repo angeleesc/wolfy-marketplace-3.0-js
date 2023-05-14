@@ -73,6 +73,7 @@ export default function ExplorerNfts() {
             orderId: orderData.orderId,
             seller: orderData.seller,
             listingAt: orderData.listingAt,
+            id: orderData.id,
             ...(orderData.currentPrice
               ? { currentPrice: orderData.currentPrice }
               : {}),

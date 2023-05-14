@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./token-data.scss";
 import AtributesDisplay from "../../../components/attributes-display/AtributesDisplay";
 import { Link, useParams } from "react-router-dom";
@@ -17,6 +17,7 @@ import NftHistoriDisplay from "../../../components/nft-history/NftHistoriDisplay
 import PriceZoen from "../../../components/price-zone/PriceZoen";
 import { useEffect } from "react";
 import axios from "axios";
+import LoadingSection from "../../../components/loading-section/LoadingSection";
 
 const temJson2 = {
   history: [
@@ -64,8 +65,6 @@ const temjson1 = {
   tokenID: [1],
   saleMethod: saleMethod.sales,
   seller: "0x23b057357893Fb958571f81197823D6B1e84d64f",
-  // sellerName: "angelxd",
-  // sellerAvatar: "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/e/e6/latest/20160801134625/Ninetales_de_Alola.png/1200px-Ninetales_de_Alola.png",
 
   collectionData: {
     collectionName: "Pixelmon - Generation 1",
@@ -256,7 +255,9 @@ const temjson1 = {
 };
 
 export default function TokentFullSpechData() {
-  const nftFullData = temjson1;
+  // const nftFullData = temjson1;
+  const [nftFullData, setNftFullData] = useState(temjson1);
+  const [loading, setLoading] = useState(true);
 
   const [queryParams, setQueryParams] = useSearchParams();
   const tapOption = queryParams.get("tab");
@@ -265,8 +266,9 @@ export default function TokentFullSpechData() {
 
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
-    const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
-    // const endPont = rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData
+    // const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
+    const endPont =
+      rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
 
     const result = await axios.get(endPont, {
       params: {
@@ -283,7 +285,11 @@ export default function TokentFullSpechData() {
     init();
   }, [tapOption]);
 
-  return (
+  return loading ? (
+    <div className="w-[100%] h-[100vh] pt-[60px] flex justify-center items-center ">
+    <LoadingSection />
+    </div>
+  ) : (
     <div className="wolf-item-data-contianer">
       <div className="wolf-item-data-item  w-[100%] min-[700px]:w-[50%] ">
         {

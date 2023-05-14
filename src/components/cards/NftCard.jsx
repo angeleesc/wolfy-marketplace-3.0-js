@@ -42,6 +42,8 @@ export default function NftCard({ cardData }) {
 
   // console.log("es el dueno de la order", walletLog && walletLog === seller);
 
+
+
   const dispatch = useDispatch();
 
   // console.log("es duenio", isOwner);
@@ -52,7 +54,7 @@ export default function NftCard({ cardData }) {
         <div className="multimedia-secction">
           <Link
             className="w-[100%] h-[100%]"
-            to={staticRoutes.tokenInfoData(order)}
+            to={staticRoutes.tokenInfoData(id)}
           >
             {nftCover && <img src={nftCover} alt="cover-img" />}
           </Link>
