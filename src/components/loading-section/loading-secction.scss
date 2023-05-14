@@ -1,0 +1,19 @@
+.loading-secction {
+    // background-color: red;
+
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+
+    h3 {
+        font-size  : 24px;
+        font-weight: 600;
+        color: theme("colors.wolf-gray-light.1500")
+    }
+
+    span {
+        font-size: 16px;
+        color    : theme("colors.wolf-gray-light.1000");
+    }
+}
