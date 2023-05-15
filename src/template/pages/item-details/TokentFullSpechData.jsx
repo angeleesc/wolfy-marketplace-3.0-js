@@ -266,9 +266,8 @@ export default function TokentFullSpechData() {
 
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
-    // const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
-    const endPont =
-      rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
+    const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
+    // const endPont = rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
 
     const result = await axios.get(endPont, {
       params: {
@@ -278,8 +277,18 @@ export default function TokentFullSpechData() {
       },
     });
 
-    // extraemos los datos de la reques
+    const { isSucces, hasData,alchemyMetada, blockChain, chainId, colectionName, metadata, onSale, price, quantity, saleMethod, seller, bestBidder} = result.data;
 
+    if (isSucces && hasData) {
+      console.log("si hay datos de la nft en el sistema");
+
+      // const {} = 
+
+      setLoading(false)
+
+    }
+
+    // extraemos los datos de la reques
 
     console.log(result.data);
   };
@@ -290,7 +299,7 @@ export default function TokentFullSpechData() {
 
   return loading ? (
     <div className="w-[100%] h-[100vh] pt-[60px] flex justify-center items-center ">
-    <LoadingSection />
+      <LoadingSection />
     </div>
   ) : (
     <div className="wolf-item-data-contianer">
