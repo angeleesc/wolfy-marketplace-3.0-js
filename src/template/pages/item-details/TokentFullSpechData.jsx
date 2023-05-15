@@ -285,6 +285,7 @@ export default function TokentFullSpechData() {
       chainId,
       colectionName,
       metadata,
+      endTime,
       onSale,
       price,
       quantity,
@@ -308,9 +309,18 @@ export default function TokentFullSpechData() {
             ...(alchemyMetada.multimediaData.description
               ? { description: alchemyMetada.multimediaData.description }
               : {}),
-              image: alchemyMetada.multimediaData.image
+            image: alchemyMetada.multimediaData.image,
           };
         }
+      }
+
+      if (saleMethod) {
+        dataToSend.price = price;
+        dataToSend.saleMethod = saleMethod;
+        dataToSend.seller = seller;
+        // if(endTime) dataToSend.endTime = endTime
+        if (bestBidder) dataToSend.bestBidder = bestBidder;
+        if (endTime) dataToSend.endTime = endTime;
       }
 
       console.log(dataToSend);
@@ -472,6 +482,8 @@ export default function TokentFullSpechData() {
             seller={nftFullData.seller}
             sellerAvatar={nftFullData.sellerAvatar}
             sellerName={nftFullData.sellerName}
+            endTime = {nftFullData.endTime}
+            bestBidder = {nftFullData.bestBidder}
           />
         </div>
       </div>
