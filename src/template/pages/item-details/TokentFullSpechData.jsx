@@ -277,24 +277,50 @@ export default function TokentFullSpechData() {
       },
     });
 
-    const { isSucces, hasData,alchemyMetada, blockChain, chainId, colectionName, metadata, onSale, price, quantity, saleMethod, seller, bestBidder} = result.data;
+    const {
+      isSucces,
+      hasData,
+      alchemyMetada,
+      blockChain,
+      chainId,
+      colectionName,
+      metadata,
+      onSale,
+      price,
+      quantity,
+      saleMethod,
+      seller,
+      bestBidder,
+    } = result.data;
 
     if (isSucces && hasData) {
       console.log("si hay datos de la nft en el sistema");
-   
-      const dataToSend = {}
 
-      if(alchemyMetada){
+      const dataToSend = {};
 
-        // if(alchemyMetada.multi)
+      if (alchemyMetada) {
+        if (alchemyMetada.multimediaData) {
+          dataToSend.metadata = {
+            ...(alchemyMetada.multimediaData.name
+              ? { name: alchemyMetada.multimediaData.name }
+              : { name: `${colectionName} #${tokenId}` }),
 
+            ...(alchemyMetada.multimediaData.description
+              ? { description: alchemyMetada.multimediaData.description }
+              : {}),
+              image: alchemyMetada.multimediaData.image
+          };
+        }
       }
 
+      console.log(dataToSend);
 
-      // const {} = 
+      setNftFullData({
+        ...nftFullData,
+        ...dataToSend,
+      });
 
-      setLoading(false)
-
+      setLoading(false);
     }
 
     // extraemos los datos de la reques
