@@ -281,6 +281,15 @@ export default function TokentFullSpechData() {
 
     if (isSucces && hasData) {
       console.log("si hay datos de la nft en el sistema");
+   
+      const dataToSend = {}
+
+      if(alchemyMetada){
+
+        // if(alchemyMetada.multi)
+
+      }
+
 
       // const {} = 
 
