@@ -278,6 +278,9 @@ export default function TokentFullSpechData() {
       },
     });
 
+    // extraemos los datos de la reques
+
+
     console.log(result.data);
   };
 
