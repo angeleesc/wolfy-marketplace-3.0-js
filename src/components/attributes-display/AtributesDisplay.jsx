@@ -90,6 +90,7 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
     });
   } else {
     attributes.map((atribute, i) => {
+      console.log("no tienes atrubutos de referencia");
       basicAtributes.push(atribute);
     });
   }
@@ -120,206 +121,219 @@ export default function AtributesDisplay({ attributes, trayCollectionDef }) {
             );
           })}
       </div>
-      <h3 className="mt-[30px] flex items-center mb-[30px] font-semibold text-wolf-gray-light-1600">
-        <span>Estadisticas</span>
-        <MdBarChart className="ml-2" />
-      </h3>
-      <div className="number-atributes-container mb-[20px]">
-        {numberAtributes.length > 0 &&
-          numberAtributes.map((atribute, i) => {
-            return (
-              <div
-                className="number-atribute-item"
-                key={"number-atributes-" + i}
-              >
-                <span className="atribute-n-key">
-                  {atribute["trait_type"]
-                    ? atribute["trait_type"]
-                    : "Propiedad"}
-                </span>
-                <span className="atribute-n-value">
-                  {atribute["value"] ? atribute["value"] : "Valor ?"}
+      {numberAtributes.length > 0 && (
+        <>
+          <h3 className="mt-[30px] flex items-center mb-[30px] font-semibold text-wolf-gray-light-1600">
+            <span>Estadisticas</span>
+            <MdBarChart className="ml-2" />
+          </h3>
+          <div className="number-atributes-container mb-[20px]">
+            {numberAtributes.map((atribute, i) => {
+              return (
+                <div
+                  className="number-atribute-item"
+                  key={"number-atributes-" + i}
+                >
+                  <span className="atribute-n-key">
+                    {atribute["trait_type"]
+                      ? atribute["trait_type"]
+                      : "Propiedad"}
+                  </span>
+                  <span className="atribute-n-value">
+                    {atribute["value"] ? atribute["value"] : "Valor ?"}
+                    {atribute["range"] && (
+                      <span> {` de ${atribute["range"]}`} </span>
+                    )}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+      {rangeAtribute.length > 0 && (
+        <>
+          <h3 className="mt-[30px] flex items-center mb-[30px] font-semibold text-wolf-gray-light-1600">
+            <span>Niveles</span> <MdStars className="ml-2" />
+          </h3>
+          <div className="range-atributes-container my-[15px]">
+            {rangeAtribute.map((atribute, i) => {
+              return (
+                <React.Fragment key={"range-atribute-" + i}>
+                  <div className="range-atributes-item">
+                    <span className="range-a-key">
+                      {atribute["trait_type"]
+                        ? atribute["trait_type"]
+                        : "Propiedad"}
+                    </span>
+                    <span className="range-a-value">
+                      {atribute["value"]}
+                      {atribute["range"] && ` de ${atribute["range"]}`}
+                    </span>
+                  </div>
                   {atribute["range"] && (
-                    <span> {` de ${atribute["range"]}`} </span>
+                    <WLinearProgressBar
+                      className="mb-[12px]"
+                      variant="determinate"
+                      value={parseInt(
+                        (atribute["value"] * 100) / atribute["range"]
+                      )}
+                    />
                   )}
-                </span>
-              </div>
-            );
-          })}
-      </div>
-      <h3 className="mt-[30px] flex items-center mb-[30px] font-semibold text-wolf-gray-light-1600">
-        <span>Niveles</span> <MdStars className="ml-2" />
-      </h3>
-
-      <div className="range-atributes-container my-[15px]">
-        {rangeAtribute.map((atribute, i) => {
-          return (
-            <React.Fragment key={"range-atribute-" + i}>
-              <div className="range-atributes-item">
-                <span className="range-a-key">
-                  {atribute["trait_type"]
-                    ? atribute["trait_type"]
-                    : "Propiedad"}
-                </span>
-                <span className="range-a-value">
-                  {atribute["value"]}
-                  {atribute["range"] && ` de ${atribute["range"]}`}
-                </span>
-              </div>
-              {atribute["range"] && (
-                <WLinearProgressBar
-                  className="mb-[12px]"
-                  variant="determinate"
-                  value={parseInt(
-                    (atribute["value"] * 100) / atribute["range"]
+                  {i < rangeAtribute.length - 1 && (
+                    <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 mb-[5px]" />
                   )}
-                />
-              )}
-              {i < rangeAtribute.length - 1 && (
-                <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 mb-[5px]" />
-              )}
-            </React.Fragment>
-          );
-        })}
-      </div>
+                </React.Fragment>
+              );
+            })}
+          </div>
+        </>
+      )}
+      {boostPercentageAtributes.length > 0 && (
+        <>
+          <h3 className="mt-[30px] mb-[30px] flex items-center font-semibold text-wolf-gray-light-1600">
+            <span>Impulsos</span>
+            <BsFillLightningChargeFill className="ml-2" />
+          </h3>
 
-      <h3 className="mt-[30px] mb-[30px] flex items-center font-semibold text-wolf-gray-light-1600">
-        <span>Impulsos</span>
-        <BsFillLightningChargeFill className="ml-2" />
-      </h3>
+          <div className="atribute-boots-continer">
+            {boostPercentageAtributes.length > 1 &&
+              boostPercentageAtributes.map((atribute, i) => {
+                // console.log("atributito", atribute);
 
-      <div className="atribute-boots-continer">
-        {boostPercentageAtributes.length > 1 &&
-          boostPercentageAtributes.map((atribute, i) => {
-            // console.log("atributito", atribute);
-
-            return (
-              <div
-                className="boost-percentage-item mt-[10px]"
-                key={"boostPercentageAtributes-" + i}
-              >
-                <span className="boots-key mb-[10px]">
-                  {atribute["trait_type"]
-                    ? atribute["trait_type"]
-                    : "Propiedad"}
-                </span>
-                {atribute["value"] >= 0 ? (
-                  <Box sx={{ position: "relative", display: "inline-flex" }}>
-                    <CircularProgress
-                      sx={{
-                        position: "absolute",
-                        color: "#23272f",
-                        backgroundColor: "#0c0d10",
-                        borderRadius: "50%",
-                      }}
-                      size={80}
-                      variant="determinate"
-                      value={100}
-                    />
-                    <CircularProgress
-                      size={80}
-                      variant="determinate"
-                      value={parseInt(atribute["value"])}
-                      sx={{
-                        // position: "absolute",
-                        color: "#3B43DD",
-                        borderRadius: "50%",
-                      }}
-                    />
-                    <Box
-                      sx={{
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                        position: "absolute",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <span className="text-wolf-gray-light-2000 text-[15px] font-semibold">
-                        {`${atribute["value"]}%`}
-                      </span>
-                    </Box>
-                  </Box>
-                ) : (
-                  <div>
-                    <span>???</span>
+                return (
+                  <div
+                    className="boost-percentage-item mt-[10px]"
+                    key={"boostPercentageAtributes-" + i}
+                  >
+                    <span className="boots-key mb-[10px]">
+                      {atribute["trait_type"]
+                        ? atribute["trait_type"]
+                        : "Propiedad"}
+                    </span>
+                    {atribute["value"] >= 0 ? (
+                      <Box
+                        sx={{ position: "relative", display: "inline-flex" }}
+                      >
+                        <CircularProgress
+                          sx={{
+                            position: "absolute",
+                            color: "#23272f",
+                            backgroundColor: "#0c0d10",
+                            borderRadius: "50%",
+                          }}
+                          size={80}
+                          variant="determinate"
+                          value={100}
+                        />
+                        <CircularProgress
+                          size={80}
+                          variant="determinate"
+                          value={parseInt(atribute["value"])}
+                          sx={{
+                            // position: "absolute",
+                            color: "#3B43DD",
+                            borderRadius: "50%",
+                          }}
+                        />
+                        <Box
+                          sx={{
+                            top: 0,
+                            left: 0,
+                            bottom: 0,
+                            right: 0,
+                            position: "absolute",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <span className="text-wolf-gray-light-2000 text-[15px] font-semibold">
+                            {`${atribute["value"]}%`}
+                          </span>
+                        </Box>
+                      </Box>
+                    ) : (
+                      <div>
+                        <span>???</span>
+                      </div>
+                    )}
+                    {
+                      <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 my-[12px]"></div>
+                    }
                   </div>
-                )}
-                {
-                  <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 my-[12px]"></div>
-                }
-              </div>
-            );
-          })}
+                );
+              })}
 
-        {boostPercentageAtributes.length > 0 &&
-          boostNumberAtributes.map((atribute, i) => {
-            return (
-              <div
-                className="boost-percentage-item mt-[10px]"
-                key={"boostPercentageAtributes-" + i}
-              >
-                <span className="boots-key mb-[10px]">
-                  {atribute["trait_type"]
-                    ? atribute["trait_type"]
-                    : "Propiedad"}
-                </span>
-                {atribute["value"] >= 0 ? (
-                  <Box sx={{ position: "relative", display: "inline-flex" }}>
-                    <CircularProgress
-                      sx={{
-                        position: "absolute",
-                        color: "#23272f",
-                        backgroundColor: "#0c0d10",
-                        borderRadius: "50%",
-                      }}
-                      size={80}
-                      variant="determinate"
-                      value={100}
-                    />
-                    <CircularProgress
-                      size={80}
-                      variant="determinate"
-                      value={100}
-                      sx={{
-                        // position: "absolute",
-                        color: "#3B43DD",
-                        borderRadius: "50%",
-                      }}
-                    />
-                    <Box
-                      sx={{
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                        position: "absolute",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <span className="text-wolf-gray-light-2000 text-[15px] font-semibold">
-                        {`${atribute["value"]}`}
-                      </span>
-                    </Box>
-                  </Box>
-                ) : (
-                  <div>
-                    <span>???</span>
+            {boostPercentageAtributes.length > 0 &&
+              boostNumberAtributes.map((atribute, i) => {
+                return (
+                  <div
+                    className="boost-percentage-item mt-[10px]"
+                    key={"boostPercentageAtributes-" + i}
+                  >
+                    <span className="boots-key mb-[10px]">
+                      {atribute["trait_type"]
+                        ? atribute["trait_type"]
+                        : "Propiedad"}
+                    </span>
+                    {atribute["value"] >= 0 ? (
+                      <Box
+                        sx={{ position: "relative", display: "inline-flex" }}
+                      >
+                        <CircularProgress
+                          sx={{
+                            position: "absolute",
+                            color: "#23272f",
+                            backgroundColor: "#0c0d10",
+                            borderRadius: "50%",
+                          }}
+                          size={80}
+                          variant="determinate"
+                          value={100}
+                        />
+                        <CircularProgress
+                          size={80}
+                          variant="determinate"
+                          value={100}
+                          sx={{
+                            // position: "absolute",
+                            color: "#3B43DD",
+                            borderRadius: "50%",
+                          }}
+                        />
+                        <Box
+                          sx={{
+                            top: 0,
+                            left: 0,
+                            bottom: 0,
+                            right: 0,
+                            position: "absolute",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <span className="text-wolf-gray-light-2000 text-[15px] font-semibold">
+                            {`${atribute["value"]}`}
+                          </span>
+                        </Box>
+                      </Box>
+                    ) : (
+                      <div>
+                        <span>???</span>
+                      </div>
+                    )}
+
+                    {
+                      <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 my-[12px]"></div>
+                    }
                   </div>
-                )}
-
-                {
-                  <div className="w-[100%] h-[1px] bg-wolf-gray-dark-800 my-[12px]"></div>
-                }
-              </div>
-            );
-          })}
-      </div>
+                );
+              })}
+          </div>
+        </>
+      )}
     </>
   );
 }

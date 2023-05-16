@@ -310,6 +310,10 @@ export default function TokentFullSpechData() {
               ? { description: alchemyMetada.multimediaData.description }
               : {}),
             image: alchemyMetada.multimediaData.image,
+
+            ...(alchemyMetada.multimediaData.attributes
+              ? { attributes: alchemyMetada.multimediaData.attributes }
+              : {}),
           };
         }
       }
@@ -482,8 +486,8 @@ export default function TokentFullSpechData() {
             seller={nftFullData.seller}
             sellerAvatar={nftFullData.sellerAvatar}
             sellerName={nftFullData.sellerName}
-            endTime = {nftFullData.endTime}
-            bestBidder = {nftFullData.bestBidder}
+            endTime={nftFullData.endTime}
+            bestBidder={nftFullData.bestBidder}
           />
         </div>
       </div>
