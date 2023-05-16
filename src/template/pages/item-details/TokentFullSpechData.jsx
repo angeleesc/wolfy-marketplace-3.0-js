@@ -75,81 +75,81 @@ const temjson1 = {
     owners: 2864,
     isColectionVerified: true,
     isAuthorVerified: true,
-    defAtributes: [
-      {
-        trait_type: "Species",
-        rarity: 2,
-        // value: "Spout",
-      },
-      {
-        trait_type: "Origin",
-        rarity: 20,
-      },
-      {
-        trait_type: "Rarity",
-        rarity: 37,
-      },
-      {
-        trait_type: "HP",
-        range: 109,
-      },
-      {
-        trait_type: "Attack",
-        range: 104,
-      },
-      {
-        trait_type: "Defense",
-        range: 103,
-      },
-      {
-        trait_type: "Special Attack",
-        range: 104,
-      },
-      {
-        trait_type: "Special Defense",
-        range: 101,
-      },
-      {
-        trait_type: "Affinity",
-        range: 100,
-      },
-      {
-        display_type: "boost_number",
-        trait_type: "Luck",
-        boost: true,
-      },
-      {
-        display_type: "boost_percentage",
-        trait_type: "Reward Multiplier",
-      },
-      {
-        trait_type: "Level",
-        range: 20,
-      },
-      {
-        trait_type: "Unknown",
-        range: 20,
-      },
-      {
-        trait_type: "Trainer Claimed",
-        rarity: 54,
-      },
-      {
-        trait_type: "Generation",
-        display_type: "number",
-        range: 1,
-      },
-      {
-        trait_type: "Evolution",
-        display_type: "number",
-        range: 1,
-      },
-      {
-        trait_type: "Hatched On",
-        display_type: "date",
-        value: 1645990096,
-      },
-    ],
+    // defAtributes: [
+    //   {
+    //     trait_type: "Species",
+    //     rarity: 2,
+    //     // value: "Spout",
+    //   },
+    //   {
+    //     trait_type: "Origin",
+    //     rarity: 20,
+    //   },
+    //   {
+    //     trait_type: "Rarity",
+    //     rarity: 37,
+    //   },
+    //   {
+    //     trait_type: "HP",
+    //     range: 109,
+    //   },
+    //   {
+    //     trait_type: "Attack",
+    //     range: 104,
+    //   },
+    //   {
+    //     trait_type: "Defense",
+    //     range: 103,
+    //   },
+    //   {
+    //     trait_type: "Special Attack",
+    //     range: 104,
+    //   },
+    //   {
+    //     trait_type: "Special Defense",
+    //     range: 101,
+    //   },
+    //   {
+    //     trait_type: "Affinity",
+    //     range: 100,
+    //   },
+    //   {
+    //     display_type: "boost_number",
+    //     trait_type: "Luck",
+    //     boost: true,
+    //   },
+    //   {
+    //     display_type: "boost_percentage",
+    //     trait_type: "Reward Multiplier",
+    //   },
+    //   {
+    //     trait_type: "Level",
+    //     range: 20,
+    //   },
+    //   {
+    //     trait_type: "Unknown",
+    //     range: 20,
+    //   },
+    //   {
+    //     trait_type: "Trainer Claimed",
+    //     rarity: 54,
+    //   },
+    //   {
+    //     trait_type: "Generation",
+    //     display_type: "number",
+    //     range: 1,
+    //   },
+    //   {
+    //     trait_type: "Evolution",
+    //     display_type: "number",
+    //     range: 1,
+    //   },
+    //   {
+    //     trait_type: "Hatched On",
+    //     display_type: "date",
+    //     value: 1645990096,
+    //   },
+    // ],
 
     authorAvartar:
       "https://i.seadn.io/gcs/files/281a2fe422ac5614e9d32fad1f93b09d.png?auto=format&w=256",
