@@ -18,6 +18,7 @@ import PriceZoen from "../../../components/price-zone/PriceZoen";
 import { useEffect } from "react";
 import axios from "axios";
 import LoadingSection from "../../../components/loading-section/LoadingSection";
+import { differenceInSeconds } from "date-fns";
 
 const temJson2 = {
   history: [
@@ -258,6 +259,7 @@ export default function TokentFullSpechData() {
   // const nftFullData = temjson1;
   const [nftFullData, setNftFullData] = useState(temjson1);
   const [loading, setLoading] = useState(true);
+  const [endAction, setEndAction] = useState(false);
 
   const [queryParams, setQueryParams] = useSearchParams();
   const tapOption = queryParams.get("tab");
@@ -333,6 +335,13 @@ export default function TokentFullSpechData() {
         ...nftFullData,
         ...dataToSend,
       });
+
+      const currentTime = Date.now();
+
+      const difTime = differenceInSeconds(currentTime, endTime);
+      if (difTime < 0) {
+        setEndAction(true);
+      }
 
       setLoading(false);
     }

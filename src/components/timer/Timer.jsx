@@ -1,7 +1,25 @@
 import React from "react";
 import "./timer.scss";
+import { differenceInSeconds } from "date-fns";
+import { useEffect } from "react";
 
 export default function Timer({ timeRef }) {
+  const updateTime = async () => {
+    if (timeRef) {
+      const currentTime = Date.now();
+
+      const dif = differenceInSeconds(timeRef, currentTime);
+      console.log("falta");
+      console.log(dif);
+
+      //  const diferentRef =
+    }
+  };
+
+  useEffect(() => {
+    updateTime();
+  }, []);
+
   return (
     <div className="timer-container">
       <div className="timer-item">
