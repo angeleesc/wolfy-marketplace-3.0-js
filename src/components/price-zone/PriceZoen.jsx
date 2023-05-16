@@ -16,6 +16,7 @@ export default function PriceZoen({
   sellerAvatar,
   endTime,
   bestBidder,
+  isEndAuction,
 }) {
   return (
     <div className="sale-info-price">
@@ -90,14 +91,22 @@ export default function PriceZoen({
             </div>
           </div>
           <div className="flex justify-center button-zone-container">
-            <div className="button-zone-item">
-              <Timer timeRef={endTime} />
-            </div>
-            <div className="button-zone-item">
-              <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
-                <span>Hacer puja</span>
-              </button>
-            </div>
+            {isEndAuction ? (
+              <>
+                <div className="button-zone-item">
+                  <Timer timeRef={endTime} />
+                </div>
+                <div className="button-zone-item">
+                  <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                    <span>Hacer puja</span>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="w-[100%] h-[100%] flex justify-center items-center">
+                <h3>Subasta finalizada</h3>
+              </div>
+            )}
           </div>
         </>
       )}

@@ -497,6 +497,7 @@ export default function TokentFullSpechData() {
             sellerName={nftFullData.sellerName}
             endTime={nftFullData.endTime}
             bestBidder={nftFullData.bestBidder}
+            isEndAuction ={ endAction }
           />
         </div>
       </div>
