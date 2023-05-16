@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import LoadingSection from "../../../components/loading-section/LoadingSection";
 import { differenceInSeconds } from "date-fns";
+import WolfIdentidcon from "../../../components/identicon/WolfIdentidcon";
 
 const temJson2 = {
   history: [
@@ -269,7 +270,8 @@ export default function TokentFullSpechData() {
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
     // const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
-    const endPont = rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
+    const endPont =
+      rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
 
     const result = await axios.get(endPont, {
       params: {
@@ -318,6 +320,44 @@ export default function TokentFullSpechData() {
               : {}),
           };
         }
+
+        if (alchemyMetada.collectionData) {
+          dataToSend.collectionData = {
+            ...(alchemyMetada.collectionData.floorPrice
+              ? { floorPrice: alchemyMetada.collectionData.floorPrice }
+              : {}),
+            ...(alchemyMetada.collectionData.collectionName
+              ? { collectionName: alchemyMetada.collectionData.collectionName }
+              : { collectionName: colectionName }),
+            ...(alchemyMetada.collectionData.imageUrl
+              ? { coverImg: alchemyMetada.collectionData.imageUrl }
+              : {}),
+            ...(alchemyMetada.collectionData.description
+              ? {
+                  collectionDescription:
+                    alchemyMetada.collectionData.description,
+                }
+              : {}),
+            ...(alchemyMetada.collectionData.externalUrl
+              ? { externalUrl: alchemyMetada.collectionData.externalUrl }
+              : {}),
+            ...(alchemyMetada.collectionData.discordUrl
+              ? { discordUrl: alchemyMetada.collectionData.discordUrl }
+              : {}),
+            ...(alchemyMetada.collectionData.twitterUsername
+              ? {
+                  twitterUsername: alchemyMetada.collectionData.twitterUsername,
+                }
+              : {}),
+            ...(alchemyMetada.collectionData.lastIngestedAt
+              ? { lastIngestedAt: alchemyMetada.collectionData.lastIngestedAt }
+              : {}),
+          };
+        }
+      } else {
+        dataToSend.collectionData = {
+          collectionName: colectionName,
+        };
       }
 
       if (saleMethod) {
@@ -329,7 +369,13 @@ export default function TokentFullSpechData() {
         if (endTime) dataToSend.endTime = endTime;
       }
 
+      dataToSend.collectionData = {
+        collectionName: colectionName,
+      };
+
+
       console.log(dataToSend);
+      dataToSend.nftAddres = collection
 
       setNftFullData({
         ...nftFullData,
@@ -403,10 +449,14 @@ export default function TokentFullSpechData() {
               className="title-zone"
             >
               <div className="avatar-zone">
-                <img
-                  src={nftFullData.collectionData.coverImg}
-                  alt="colection-cover"
-                />
+                {nftFullData.collectionData.coverImg ? (
+                  <img
+                    src={nftFullData.collectionData.coverImg}
+                    alt="colection-cover"
+                  />
+                ) : (
+                  <WolfIdentidcon name={nftFullData.nftAddres} />
+                )}
               </div>
               <div className="text-zone">
                 <h3>{nftFullData.collectionData.collectionName}</h3>
@@ -497,8 +547,8 @@ export default function TokentFullSpechData() {
             sellerName={nftFullData.sellerName}
             endTime={nftFullData.endTime}
             bestBidder={nftFullData.bestBidder}
-            isEndAuction ={ endAction }
-            setEndAction= {setEndAction}
+            isEndAuction={endAction}
+            setEndAction={setEndAction}
           />
         </div>
       </div>
