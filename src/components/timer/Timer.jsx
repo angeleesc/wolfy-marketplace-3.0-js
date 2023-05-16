@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./timer.scss";
 import { differenceInSeconds } from "date-fns";
 import { useEffect } from "react";
@@ -22,10 +22,28 @@ export default function Timer({ timeRef, setEndAction }) {
         return;
       }
 
-      const days = parseInt(dif / 86400);
-      const daysR = dif % 86400;
+      const daysD = parseInt(dif / 86400);
+      const hoursD = Math.floor((dif / (1 * 60 * 60)) % 24);
+      const minutesD = Math.floor((dif / 1 / 60) % 60);
+      const secondsD = Math.floor(dif % 60);
 
-      console.log("dias: ", days);
+      setDays(daysD);
+      setHours(hoursD);
+      setMinutes(minutesD);
+      setSecconsd(secondsD);
+
+      console.log(
+        "dias: ",
+        daysD,
+        "horas: ",
+        hoursD,
+        "munutos: ",
+        minutesD,
+        "Segundos: ",
+        secondsD
+      );
+
+      // console.log("dias: ", days);
 
       //  const diferentRef =
     }
@@ -37,22 +55,30 @@ export default function Timer({ timeRef, setEndAction }) {
 
   return (
     <div className="timer-container">
-      <div className="timer-item">
-        <span>Dias</span>
-        <h3>360</h3>
-      </div>
-      <div className="timer-item">
-        <span>Horas</span>
-        <h3>24</h3>
-      </div>
-      <div className="timer-item">
-        <span>Min</span>
-        <h3>60</h3>
-      </div>
-      <div className="timer-item">
-        <span>Seg</span>
-        <h3>60</h3>
-      </div>
+      {days > 0 && (
+        <div className="timer-item">
+          <span>Dias</span>
+          <h3>{days}</h3>
+        </div>
+      )}
+      {hours > 0 && (
+        <div className="timer-item">
+          <span>Horas</span>
+          <h3> {hours} </h3>
+        </div>
+      )}
+      {minutes > 0 && (
+        <div className="timer-item">
+          <span>Min</span>
+          <h3>{minutes}</h3>
+        </div>
+      )}
+      {secconsd > 0 && (
+        <div className="timer-item">
+          <span>Seg</span>
+          <h3>{secconsd}</h3>
+        </div>
+      )}
     </div>
   );
 }
