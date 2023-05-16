@@ -4,13 +4,28 @@ import { differenceInSeconds } from "date-fns";
 import { useEffect } from "react";
 
 export default function Timer({ timeRef, setEndAction }) {
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [secconsd, setSecconsd] = useState(0);
+
   const updateTime = async () => {
     if (timeRef) {
       const currentTime = Date.now();
 
       const dif = differenceInSeconds(timeRef, currentTime);
+
       console.log("falta");
       console.log(dif);
+      if (dif < 0) {
+        setEndAction(false);
+        return;
+      }
+
+      const days = parseInt(dif / 86400);
+      const daysR = dif % 86400;
+
+      console.log("dias: ", days);
 
       //  const diferentRef =
     }
@@ -38,15 +53,6 @@ export default function Timer({ timeRef, setEndAction }) {
         <span>Seg</span>
         <h3>60</h3>
       </div>
-      <button
-        className="bg-red-500"
-        onClick={() => {
-          console.log("sbasta finaliza xd")
-          setEndAction(false);
-        }}
-      >
-        X
-      </button>
     </div>
   );
 }
