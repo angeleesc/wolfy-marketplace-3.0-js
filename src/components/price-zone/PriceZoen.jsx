@@ -18,9 +18,9 @@ export default function PriceZoen({
 }) {
   return (
     <div className="sale-info-price">
-      <div className="flex justify-between">
-        {saleMethod === saleMethosOption.sales && (
-          <>
+      {saleMethod === saleMethosOption.sales && (
+        <>
+          <div className="flex justify-between">
             <div className="flex w-[100%] justify-between items-center flex-col-reverse min-[600px]:flex-row ">
               <Link to={staticRoutes.userData(seller)}>
                 <div className="flex items-start my-3 ">
@@ -46,21 +46,21 @@ export default function PriceZoen({
                 </h3>
               </div>
             </div>
-            <div className="flex justify-center button-zone-container">
-              <div className="button-zone-item">
-                <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
-                  Comprar Ahora
-                </button>
-              </div>
-              <div className="button-zone-item">
-                <button className="wolf-buttom wolf-btn-primary-2 w-[100%]">
-                  <MdOutlineAddShoppingCart />
-                </button>
-              </div>
+          </div>
+          <div className="flex justify-center button-zone-container">
+            <div className="button-zone-item">
+              <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                Comprar Ahora
+              </button>
             </div>
-          </>
-        )}
-      </div>
+            <div className="button-zone-item">
+              <button className="wolf-buttom wolf-btn-primary-2 w-[100%]">
+                <MdOutlineAddShoppingCart />
+              </button>
+            </div>
+          </div>
+        </>
+      )}
       {saleMethod === saleMethosOption.auction && (
         <>
           <div className="flex w-[100%] justify-between items-center flex-col-reverse min-[600px]:flex-row ">
@@ -88,7 +88,6 @@ export default function PriceZoen({
               </h3>
             </div>
           </div>
-          
         </>
       )}
     </div>
