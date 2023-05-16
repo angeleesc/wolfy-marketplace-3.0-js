@@ -90,7 +90,14 @@ export default function PriceZoen({
             </div>
           </div>
           <div className="flex justify-center button-zone-container">
-            <Timer timeRef={endTime} />
+            <div className="button-zone-item">
+              <Timer timeRef={endTime} />
+            </div>
+            <div className="button-zone-item">
+              <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                <span>Hacer puja</span>
+              </button>
+            </div>
           </div>
         </>
       )}
