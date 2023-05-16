@@ -50,7 +50,8 @@ export default function Timer({ timeRef, setEndAction }) {
   };
 
   useEffect(() => {
-    updateTime();
+    const interval = setInterval(() => updateTime(), 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
