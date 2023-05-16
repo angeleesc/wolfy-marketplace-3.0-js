@@ -17,6 +17,7 @@ export default function PriceZoen({
   endTime,
   bestBidder,
   isEndAuction,
+  setEndAction
 }) {
   return (
     <div className="sale-info-price">
@@ -94,7 +95,7 @@ export default function PriceZoen({
             {isEndAuction ? (
               <>
                 <div className="button-zone-item">
-                  <Timer timeRef={endTime} />
+                  <Timer timeRef={endTime} setEndAction={setEndAction} />
                 </div>
                 <div className="button-zone-item">
                   <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">

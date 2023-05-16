@@ -3,7 +3,7 @@ import "./timer.scss";
 import { differenceInSeconds } from "date-fns";
 import { useEffect } from "react";
 
-export default function Timer({ timeRef }) {
+export default function Timer({ timeRef, setEndAction }) {
   const updateTime = async () => {
     if (timeRef) {
       const currentTime = Date.now();
@@ -38,6 +38,7 @@ export default function Timer({ timeRef }) {
         <span>Seg</span>
         <h3>60</h3>
       </div>
+      <button className="bg-red-500" >X</button>
     </div>
   );
 }
