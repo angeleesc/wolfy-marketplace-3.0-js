@@ -1,4 +1,21 @@
-.timer-container{
-    display: flex;
-    
+.timer-container {
+    display        : flex;
+    justify-content: space-between;
+    padding        : 0 5px;
+
+    .timer-item {
+        span {
+            // color: red;
+            font-size  : 12px;
+            font-weight: 600;
+            color      : theme("colors.wolf-gray-light.1000");
+            line-height: 12px;
+        }
+
+        h3 {
+            font-size  : 16px;
+            line-height: 16px;
+            font-weight: 600;
+        }
+    }
 }
