@@ -268,8 +268,8 @@ export default function TokentFullSpechData() {
 
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
-    const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
-    // const endPont = rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
+    // const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
+    const endPont = rootApipaht.porduction + requestEndPoints.alchemy.getFullNftData;
 
     const result = await axios.get(endPont, {
       params: {
