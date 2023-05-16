@@ -5,6 +5,7 @@ import WolfIdentidcon from "../identicon/WolfIdentidcon";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
+import Timer from "../timer/Timer";
 
 export default function PriceZoen({
   price,
@@ -87,6 +88,9 @@ export default function PriceZoen({
                 {price} ETH
               </h3>
             </div>
+          </div>
+          <div className="flex justify-center button-zone-container">
+            <Timer timeRef={endTime} />
           </div>
         </>
       )}
