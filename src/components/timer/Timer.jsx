@@ -38,7 +38,15 @@ export default function Timer({ timeRef, setEndAction }) {
         <span>Seg</span>
         <h3>60</h3>
       </div>
-      <button className="bg-red-500" >X</button>
+      <button
+        className="bg-red-500"
+        onClick={() => {
+          console.log("sbasta finaliza xd")
+          setEndAction(false);
+        }}
+      >
+        X
+      </button>
     </div>
   );
 }
