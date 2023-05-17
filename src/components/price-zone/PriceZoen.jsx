@@ -17,7 +17,14 @@ export default function PriceZoen({
   endTime,
   bestBidder,
   isEndAuction,
-  setEndAction
+  setEndAction,
+  order,
+  orderId,
+  nftCover,
+  nftName,
+  // saleMethod,
+  walletLog,
+  // seller,
 }) {
   return (
     <div className="sale-info-price">

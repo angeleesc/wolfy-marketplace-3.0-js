@@ -20,6 +20,7 @@ import axios from "axios";
 import LoadingSection from "../../../components/loading-section/LoadingSection";
 import { differenceInSeconds } from "date-fns";
 import WolfIdentidcon from "../../../components/identicon/WolfIdentidcon";
+import { useWeb3Context } from "../../../context/Web3ContextProvider";
 
 const temJson2 = {
   history: [
@@ -264,9 +265,10 @@ export default function TokentFullSpechData() {
 
   const [queryParams, setQueryParams] = useSearchParams();
   const tapOption = queryParams.get("tab");
-
   const { collection, id, tokenId } = useParams();
 
+  const { valletAccount } = useWeb3Context()
+ 
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
     // const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
@@ -399,6 +401,11 @@ export default function TokentFullSpechData() {
 
   useEffect(() => {
     init();
+
+    if(tapOption === itemDetaisTabOption.history){
+      console.log("obteniendo los datos del historial")
+    }
+
   }, [tapOption]);
 
   return loading ? (
@@ -481,7 +488,7 @@ export default function TokentFullSpechData() {
             >
               <span>Propiedad</span> <MdAnalytics className="ml-2" />
             </button>
-            <button
+            {/* <button
               className={`wolf-buttom flex justify-center items-center ${
                 tapOption === itemDetaisTabOption.history
                   ? "wolf-button-active"
@@ -494,7 +501,7 @@ export default function TokentFullSpechData() {
               }}
             >
               <span>Historial</span> <MdHistory className="ml-2" />
-            </button>
+            </button> */}
             <button
               className={`wolf-buttom flex justify-center items-center ${
                 tapOption === itemDetaisTabOption.bid
@@ -549,6 +556,7 @@ export default function TokentFullSpechData() {
             bestBidder={nftFullData.bestBidder}
             isEndAuction={endAction}
             setEndAction={setEndAction}
+            // valletAccount
           />
         </div>
       </div>
