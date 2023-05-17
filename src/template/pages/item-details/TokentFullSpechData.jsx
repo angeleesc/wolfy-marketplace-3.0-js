@@ -502,20 +502,23 @@ export default function TokentFullSpechData() {
             >
               <span>Historial</span> <MdHistory className="ml-2" />
             </button> */}
-            <button
-              className={`wolf-buttom flex justify-center items-center ${
-                tapOption === itemDetaisTabOption.bid
-                  ? "wolf-button-active"
-                  : ""
-              }`}
-              onClick={() => {
-                setQueryParams({
-                  tab: itemDetaisTabOption.bid,
-                });
-              }}
-            >
-              <span>Ofertas</span> <MdAnalytics className="ml-2" />
-            </button>
+            {nftFullData.saleMethod &&
+              nftFullData.saleMethod === saleMethod.auction && (
+                <button
+                  className={`wolf-buttom flex justify-center items-center ${
+                    tapOption === itemDetaisTabOption.bid
+                      ? "wolf-button-active"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    setQueryParams({
+                      tab: itemDetaisTabOption.bid,
+                    });
+                  }}
+                >
+                  <span>Ofertas</span> <MdAnalytics className="ml-2" />
+                </button>
+              )}
           </div>
 
           {!tapOption && (
@@ -565,7 +568,6 @@ export default function TokentFullSpechData() {
             nftName={nftFullData.name}
             orderId={nftFullData.orderId}
             order={nftFullData.orderId}
-            
 
             // valletAccount
           />
