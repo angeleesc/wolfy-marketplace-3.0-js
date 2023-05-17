@@ -27,7 +27,7 @@ export default function PriceZoen({
             <div className="flex w-[100%] justify-between items-center flex-col-reverse min-[600px]:flex-row ">
               <Link to={staticRoutes.userData(seller)}>
                 <div className="flex items-start my-3 ">
-                  <WolfIdentidcon size={40} />
+                  <WolfIdentidcon size={40} name={seller} />
                   <div className="h-[100%] ml-2 flex flex-col justify-center">
                     <span className="text-[12px] text-wolf-gray-light-1000">
                       Vendedor
