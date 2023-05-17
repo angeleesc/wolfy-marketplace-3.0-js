@@ -267,7 +267,6 @@ export default function TokentFullSpechData() {
   const [queryParams, setQueryParams] = useSearchParams();
   const tapOption = queryParams.get("tab");
   const { collection, id, tokenId } = useParams();
-
   const { valletAccount } = useWeb3Context();
 
   const init = async () => {
