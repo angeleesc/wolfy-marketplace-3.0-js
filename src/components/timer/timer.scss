@@ -2,8 +2,14 @@
     display        : flex;
     justify-content: space-between;
     padding        : 0 5px;
+    max-width      : 210px;
+    // background-color: red;
 
     .timer-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         span {
             // color: red;
             font-size  : 12px;

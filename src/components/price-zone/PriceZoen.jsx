@@ -59,9 +59,15 @@ export default function PriceZoen({
           </div>
           <div className="flex justify-center button-zone-container">
             <div className="button-zone-item">
-              <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
-                Comprar Ahora
-              </button>
+              {walletLog && walletLog === seller ? (
+                <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                  Sacar de la venta
+                </button>
+              ) : (
+                <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                  Comprar Ahora
+                </button>
+              )}
             </div>
             <div className="button-zone-item">
               <button className="wolf-buttom wolf-btn-primary-2 w-[100%]">
@@ -105,9 +111,15 @@ export default function PriceZoen({
                   <Timer timeRef={endTime} setEndAction={setEndAction} />
                 </div>
                 <div className="button-zone-item">
-                  <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
-                    <span>Hacer puja</span>
-                  </button>
+                  {walletLog && walletLog === seller ? (
+                    <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                      <span>Cancelar subasta</span>
+                    </button>
+                  ) : (
+                    <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                      <span>Hacer puja</span>
+                    </button>
+                  )}
                 </div>
               </>
             ) : (
