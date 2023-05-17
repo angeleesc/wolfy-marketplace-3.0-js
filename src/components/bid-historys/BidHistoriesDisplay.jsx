@@ -1,4 +1,5 @@
 import React from "react";
+import "./hisotry-display.scss"
 
 export default function BidHistoriesDisplay({ orderDb }) {
   console.log("orden de subasta a consultar");
