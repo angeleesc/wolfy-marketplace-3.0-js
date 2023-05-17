@@ -21,6 +21,7 @@ import LoadingSection from "../../../components/loading-section/LoadingSection";
 import { differenceInSeconds } from "date-fns";
 import WolfIdentidcon from "../../../components/identicon/WolfIdentidcon";
 import { useWeb3Context } from "../../../context/Web3ContextProvider";
+import BidHistoriesDisplay from "../../../components/bid-historys/BidHistoriesDisplay";
 
 const temJson2 = {
   history: [
@@ -542,13 +543,16 @@ export default function TokentFullSpechData() {
             </>
           )}
 
-
           {
-            // tapOption === 
+            // tapOption ===
           }
 
           {tapOption === itemDetaisTabOption.history && (
             <NftHistoriDisplay nftHistory={temJson2.history} />
+          )}
+
+          {tapOption === itemDetaisTabOption.bid && (
+            <BidHistoriesDisplay orderDb={id} />
           )}
         </div>
         <div className="price-zone">
