@@ -542,6 +542,11 @@ export default function TokentFullSpechData() {
             </>
           )}
 
+
+          {
+            // tapOption === 
+          }
+
           {tapOption === itemDetaisTabOption.history && (
             <NftHistoriDisplay nftHistory={temJson2.history} />
           )}
