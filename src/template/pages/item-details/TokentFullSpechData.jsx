@@ -267,8 +267,8 @@ export default function TokentFullSpechData() {
   const tapOption = queryParams.get("tab");
   const { collection, id, tokenId } = useParams();
 
-  const { valletAccount } = useWeb3Context()
- 
+  const { valletAccount } = useWeb3Context();
+
   const init = async () => {
     console.log("obteniendo los datos desder la bse de datos");
     // const endPont = rootApipaht.local + requestEndPoints.alchemy.getFullNftData;
@@ -289,6 +289,7 @@ export default function TokentFullSpechData() {
       alchemyMetada,
       blockChain,
       chainId,
+      orderId,
       colectionName,
       metadata,
       endTime,
@@ -366,6 +367,7 @@ export default function TokentFullSpechData() {
         dataToSend.price = price;
         dataToSend.saleMethod = saleMethod;
         dataToSend.seller = seller;
+        dataToSend.orderId = orderId;
         // if(endTime) dataToSend.endTime = endTime
         if (bestBidder) dataToSend.bestBidder = bestBidder;
         if (endTime) dataToSend.endTime = endTime;
@@ -375,9 +377,8 @@ export default function TokentFullSpechData() {
         collectionName: colectionName,
       };
 
-
       console.log(dataToSend);
-      dataToSend.nftAddres = collection
+      dataToSend.nftAddres = collection;
 
       setNftFullData({
         ...nftFullData,
@@ -402,10 +403,9 @@ export default function TokentFullSpechData() {
   useEffect(() => {
     init();
 
-    if(tapOption === itemDetaisTabOption.history){
-      console.log("obteniendo los datos del historial")
+    if (tapOption === itemDetaisTabOption.history) {
+      console.log("obteniendo los datos del historial");
     }
-
   }, [tapOption]);
 
   return loading ? (
@@ -556,6 +556,17 @@ export default function TokentFullSpechData() {
             bestBidder={nftFullData.bestBidder}
             isEndAuction={endAction}
             setEndAction={setEndAction}
+            walletLog={valletAccount}
+            nftCover={
+              nftFullData.metadata["image"]
+                ? nftFullData.metadata["image"]
+                : null
+            }
+            nftName={nftFullData.name}
+            orderId={nftFullData.orderId}
+            order={nftFullData.orderId}
+            
+
             // valletAccount
           />
         </div>

@@ -15,8 +15,8 @@ export default function Timer({ timeRef, setEndAction }) {
 
       const dif = differenceInSeconds(timeRef, currentTime);
 
-      console.log("falta");
-      console.log(dif);
+      // console.log("falta");
+      // console.log(dif);
       if (dif < 0) {
         setEndAction(false);
         return;
@@ -32,16 +32,16 @@ export default function Timer({ timeRef, setEndAction }) {
       setMinutes(minutesD);
       setSecconsd(secondsD);
 
-      console.log(
-        "dias: ",
-        daysD,
-        "horas: ",
-        hoursD,
-        "munutos: ",
-        minutesD,
-        "Segundos: ",
-        secondsD
-      );
+      // console.log(
+      //   "dias: ",
+      //   daysD,
+      //   "horas: ",
+      //   hoursD,
+      //   "munutos: ",
+      //   minutesD,
+      //   "Segundos: ",
+      //   secondsD
+      // );
 
       // console.log("dias: ", days);
 
@@ -68,13 +68,13 @@ export default function Timer({ timeRef, setEndAction }) {
           <h3> {hours} </h3>
         </div>
       )}
-      {minutes > 0 && (
+      {(
         <div className="timer-item">
           <span>Min</span>
           <h3>{minutes}</h3>
         </div>
       )}
-      {secconsd > 0 && (
+      {(
         <div className="timer-item">
           <span>Seg</span>
           <h3>{secconsd}</h3>
