@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import MobileNavbar from "../navbar/MobileNavbar";
 import PcNavbar from "../navbar/PcNavbar";
+import CheckoutModal from "../../template/modals/checkoutModal/CheckoutModal";
+import { useSelector } from "react-redux";
 
 
 export default function WollfyLayout({ isProtected, children, rediredTo }) {
   const [isMobile, setIsMobile] = useState(
     window.innerWidth < 800 ? true : false
   );
+
+  const modalState = useSelector((state) => state.modals);
+
 
   const changeMenu = () => {
     console.log(window.innerWidth);
@@ -48,6 +53,8 @@ export default function WollfyLayout({ isProtected, children, rediredTo }) {
     <>
       {isMobile === true ? <MobileNavbar/> : <PcNavbar />}
       {children ? children : <Outlet />}
+      {modalState.checkoutModal.open && <CheckoutModal />}
+
     </>
   );
 }

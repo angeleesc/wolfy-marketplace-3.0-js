@@ -6,6 +6,8 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { staticRoutes } from "../../helpers/static-routes";
 import Timer from "../timer/Timer";
+import { useDispatch } from "react-redux";
+import { keyModalSate, openModal } from "../../features/modals/modalsSlice";
 
 export default function PriceZoen({
   price,
@@ -26,6 +28,8 @@ export default function PriceZoen({
   walletLog,
   // seller,
 }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="sale-info-price">
       {saleMethod === saleMethosOption.sales && (
@@ -60,11 +64,47 @@ export default function PriceZoen({
           <div className="flex justify-center button-zone-container">
             <div className="button-zone-item">
               {walletLog && walletLog === seller ? (
-                <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                <button
+                  className="wolf-buttom wolf-btn-primary-2 w-[100%] "
+                  onClick={() => {
+                    dispatch(
+                      openModal({
+                        modal: keyModalSate.checkoutModal,
+                        data: {
+                          order,
+                          orderId,
+                          nftCover,
+                          nftName,
+                          saleMethod,
+                          walletLog,
+                          seller,
+                        },
+                      })
+                    );
+                  }}
+                >
                   Sacar de la venta
                 </button>
               ) : (
-                <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                <button
+                  className="wolf-buttom wolf-btn-primary-2 w-[100%] "
+                  onClick={() => {
+                    dispatch(
+                      openModal({
+                        modal: keyModalSate.checkoutModal,
+                        data: {
+                          order,
+                          orderId,
+                          nftCover,
+                          nftName,
+                          saleMethod,
+                          walletLog,
+                          seller,
+                        },
+                      })
+                    );
+                  }}
+                >
                   Comprar Ahora
                 </button>
               )}
@@ -112,11 +152,47 @@ export default function PriceZoen({
                 </div>
                 <div className="button-zone-item">
                   {walletLog && walletLog === seller ? (
-                    <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] "
+                      onClick={() => {
+                        dispatch(
+                          openModal({
+                            modal: keyModalSate.checkoutModal,
+                            data: {
+                              order,
+                              orderId,
+                              nftCover,
+                              nftName,
+                              saleMethod,
+                              walletLog,
+                              seller,
+                            },
+                          })
+                        );
+                      }}
+                    >
                       <span>Cancelar subasta</span>
                     </button>
                   ) : (
-                    <button className="wolf-buttom wolf-btn-primary-2 w-[100%] ">
+                    <button
+                      className="wolf-buttom wolf-btn-primary-2 w-[100%] "
+                      onClick={() => {
+                        dispatch(
+                          openModal({
+                            modal: keyModalSate.checkoutModal,
+                            data: {
+                              order,
+                              orderId,
+                              nftCover,
+                              nftName,
+                              saleMethod,
+                              walletLog,
+                              seller,
+                            },
+                          })
+                        );
+                      }}
+                    >
                       <span>Hacer puja</span>
                     </button>
                   )}

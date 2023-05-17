@@ -46,10 +46,11 @@ import * as yup from "yup";
 import { useYupValidationResolver } from "../../../global-hook/useYupValidatonResolver";
 import { formatDistanceStrict } from "date-fns";
 import { es } from "date-fns/locale";
+import { useNavigate } from "react-router-dom";
+import { staticRoutes } from "../../../helpers/static-routes";
 
 export default function CheckoutModal() {
   const [stepProcces, setStepProcces] = useState(-5);
-
   const [isReadMode, setIsReadMode] = useState(true);
   const [price, setPrice] = useState(0);
   const [maxQ, setMaxQ] = useState(1);
@@ -63,6 +64,8 @@ export default function CheckoutModal() {
   const [succesMessage, setSuccesMessage] = useState(
     "La operacio fue realizada sin complicaciones"
   );
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -148,7 +151,6 @@ export default function CheckoutModal() {
       setStepProcces(3);
     } catch (error) {
       setStepProcces(2);
-
     }
   };
 
@@ -160,10 +162,10 @@ export default function CheckoutModal() {
       setStepProcces(3);
     } catch (error) {
       setStepProcces(2);
-      setSuccesMessage("Felicitaciones la nft esta en su wallet. pueder ir a la seccion de wallet en su perfil para verificar")
-
+      setSuccesMessage(
+        "Felicitaciones la nft esta en su wallet. pueder ir a la seccion de wallet en su perfil para verificar"
+      );
     }
-
   };
 
   const bidTokenNow = async () => {
@@ -172,11 +174,9 @@ export default function CheckoutModal() {
     try {
       await bidHttp(modalData.orderId, bidWatch);
       setStepProcces(3);
-      setSuccesMessage("Felicitaciones su orferta ya fue propuesta")
-
+      setSuccesMessage("Felicitaciones su orferta ya fue propuesta");
     } catch (error) {
       setStepProcces(2);
-
     }
   };
 
@@ -818,6 +818,8 @@ export default function CheckoutModal() {
                     type="button"
                     className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
                     onClick={() => {
+                      navigate(staticRoutes.exporersNfts);
+
                       dispatch(
                         closeModal({
                           modal: keyModalSate.checkoutModal,
@@ -826,6 +828,21 @@ export default function CheckoutModal() {
                     }}
                   >
                     Finalizar
+                  </button>
+                  <button
+                    type="button"
+                    className="wolf-buttom w-[100%]  wolf-buttom-primary my-3"
+                    onClick={() => {
+                      navigate(staticRoutes.userData(address));
+
+                      dispatch(
+                        closeModal({
+                          modal: keyModalSate.checkoutModal,
+                        })
+                      );
+                    }}
+                  >
+                    Ir a perfil
                   </button>
                 </div>
               </div>
