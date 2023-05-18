@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./hisotry-display.scss";
 import { requestEndPoints, rootApipaht } from "../../helpers/global-constants";
 import axios from "axios";
+import LoadingSection from "../loading-section/LoadingSection";
 
 export default function BidHistoriesDisplay({ orderDb }) {
   //   console.log("orden de subasta a consultar");
   //   console.log(orderDb);
   const [loading, setLoading] = useState(true);
-
   const [bids, setBids] = useState([]);
 
   const init = async () => {
@@ -20,6 +20,7 @@ export default function BidHistoriesDisplay({ orderDb }) {
       const result = await axios.get(endPont);
 
       console.log(result.data);
+      setLoading(false)
     }
   };
 
@@ -29,7 +30,19 @@ export default function BidHistoriesDisplay({ orderDb }) {
 
   return (
     <div className="bid-histories-display">
-      <h3>Ofertas</h3>
+      {loading ? (
+        <div className="loading-section">
+          <LoadingSection />
+        </div>
+      ) : bids.length > 0 ? (
+        <div className="bisd-list">
+          <h3>Ofertas disponible</h3>
+        </div>
+      ) : (
+        <div className="not-bis-diplay">
+          <h3>Sin ofertas</h3>
+        </div>
+      )}
     </div>
   );
 }
