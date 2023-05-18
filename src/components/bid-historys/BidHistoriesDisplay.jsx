@@ -49,25 +49,27 @@ export default function BidHistoriesDisplay({ orderDb }) {
           <span className="text-[14px] text-center font-semibold text-wolf-gray-light-1200 block w-[100%]">
             Aqui estan los top 10 de mejores ofertas hecha para esta nft
           </span>
-          {bids.map((bid, kei) => {
-            return (
-              <div key={orderDb + "-" + kei} className="bid-list-item">
-                <div className="bidder-section">
+          <div>
+            {bids.map((bid, kei) => {
+              return (
+                <div key={orderDb + "-" + kei} className="bid-list-item">
+                  <div className="bidder-section">
                     <WolfIdentidcon size={30} name={bid.bidder} />
-                  <div className="ml-2" >
-                    <span>postor</span>
-                    <h4>{`${bid.bidder.substring(0, 5)}...${bid.bidder.substr(
-                      -5
-                    )}`}</h4>
+                    <div className="ml-2">
+                      <span>postor</span>
+                      <h4>{`${bid.bidder.substring(0, 5)}...${bid.bidder.substr(
+                        -5
+                      )}`}</h4>
+                    </div>
+                  </div>
+                  <div className="bid-section">
+                    <span>puja</span>
+                    <h4>{bid.bid}</h4>
                   </div>
                 </div>
-                <div className="bid-sectio">
-                  <span>puja</span>
-                  <h4>{bid.bid}</h4>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       ) : (
         <div className="flex flex-col items-center mt-[15px] p-[10px] bg-wolf-gray-dark-400 border border-wolf-gray-dark-800 rounded-[16px]">

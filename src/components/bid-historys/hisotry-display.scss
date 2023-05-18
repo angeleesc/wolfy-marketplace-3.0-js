@@ -3,6 +3,8 @@
     // background-color: red;
     width: 100%;
 
+    
+    
     .bid-list-item {
         background-color: theme("colors.wolf-gray-dark.400");
         width           : 100%;
@@ -13,6 +15,17 @@
         border          : 1px solid theme("colors.wolf-gray-dark.800");
         border-radius   : 8px;
 
+        &:first-child{
+            .bid-section{
+                h4{
+                    // background-color: red;
+                    font-size: 20px;
+                    color: theme("colors.wolf-blue-purple.700");
+                }
+            }
+        }
+
+      
         .bidder-section {
 
             display    : flex;
@@ -28,6 +41,21 @@
                 font-size  : 14px;
                 color      : theme("colors.wolf-gray-light.1800");
                 font-weight: 600;
+            }
+        }
+
+        .bid-section {
+            // background-color: red;
+            span {
+                font-size  : 12px;
+                font-weight: 600;
+                color      : theme("colors.wolf-gray-light.1000");
+            }
+
+            h4 {
+                font-size: 16px;
+                font-weight: 700;
+
             }
         }
 
