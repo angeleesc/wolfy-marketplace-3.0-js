@@ -1,6 +1,7 @@
 import React from "react";
 import "./wolf-hero-v2.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
+import WolfSwiperSlide from "./wolfSwiperSlide";
 
 // esta seccion esta dividido de dos formas
 // colleciones destacadas
@@ -26,14 +27,16 @@ export default function Hero() {
             <h3>Gaming</h3>
           </button>
         </div>
-        <div className="mt-[20px]">
+        <div className="wolf-v2-swiper-box">
           <Swiper
             spaceBetween={50}
             slidesPerView={1}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>
+              <WolfSwiperSlide />
+            </SwiperSlide>
             <SwiperSlide>Slide 2</SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>
