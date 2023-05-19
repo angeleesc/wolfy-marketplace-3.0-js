@@ -16,9 +16,10 @@ export default function BidHistoriesDisplay({ orderDb }) {
     if (orderDb) {
       console.log("obteniendo los datos desder la bse de datos");
 
-      // const endPont = rootApipaht.porduction + requestEndPoints.firebase.GETAuctionBids;
       const endPont =
-        rootApipaht.local + requestEndPoints.firebase.GETAuctionBids(orderDb);
+        rootApipaht.porduction + requestEndPoints.firebase.GETAuctionBids(orderDb );
+      // const endPont =
+      //   rootApipaht.local + requestEndPoints.firebase.GETAuctionBids(orderDb);
       const result = await axios.get(endPont);
 
       console.log(result.data);
