@@ -1,5 +1,6 @@
 import React from "react";
 import "./wolf-hero-v2.scss";
+import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import WolfSwiperSlide from "./wolfSwiperSlide";
 
