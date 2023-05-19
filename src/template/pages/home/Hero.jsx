@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import "./wolf-hero-v2.scss";
 import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import WolfSwiperSlide from "./wolfSwiperSlide";
 
 // esta seccion esta dividido de dos formas
@@ -14,6 +14,18 @@ import WolfSwiperSlide from "./wolfSwiperSlide";
 // la nft mas barata
 
 export default function Hero() {
+  const slideRef = useRef(null);
+
+  const handlePref = useCallback(() => {
+    if (!slideRef.current) return;
+    slideRef.current.swiper.slidePrev();
+  });
+
+  const handleNext = useCallback(() => {
+    if (!slideRef.current) return;
+    slideRef.current.swiper.slideNext();
+  });
+
   return (
     <div className="wolf-hero-v2">
       <section className="swiper-section">
@@ -29,11 +41,14 @@ export default function Hero() {
           </button>
         </div>
         <div className="wolf-v2-swiper-box">
+          <button onClick={handlePref}> Anterior</button>
+          <button onClick={handleNext}>Siguiente</button>
           <Swiper
             spaceBetween={50}
             slidesPerView={1}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
+            ref={slideRef}
           >
             <SwiperSlide>
               <WolfSwiperSlide />

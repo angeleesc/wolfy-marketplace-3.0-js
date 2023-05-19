@@ -94,7 +94,7 @@ export default () => {
     if (!slideRef.current) return;
     slideRef.current.swiper.slidePrev()
 
-  }, [])
+  })
 
   const handleNext = useCallback(() => {
 
