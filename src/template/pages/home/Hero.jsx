@@ -3,6 +3,13 @@ import "./wolf-hero-v2.scss";
 import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import WolfSwiperSlide from "./wolfSwiperSlide";
+import {
+  requestEndPoints,
+  rootApipaht,
+} from "../../../helpers/global-constants";
+import axios from "axios";
+import { useEffect } from "react";
+import { Skeleton } from "@mui/material";
 
 // esta seccion esta dividido de dos formas
 // colleciones destacadas
@@ -14,19 +21,20 @@ import WolfSwiperSlide from "./wolfSwiperSlide";
 // la nft mas barata
 
 export default function Hero() {
+  const [loadind, setLoadind] = useState(true);
+  const [heroData, setHeroData] = useState([]);
 
-const [loadind, setLoadind] = useState(true)
+  const slideRef = useRef(null);
 
-    const slideRef = useRef(null);
+  const init = async () => {
+    const endpoint = rootApipaht.local + requestEndPoints.firebase.GetHeroData;
+    // const endpoint = rootApipaht.porduction + requestEndPoints.firebase.GetHeroData
 
-    const init = ()=>{
+    const result = await axios.get(endpoint);
+    console.log(result.data);
 
-
-      // const endpoint = 
-
-
-    }
-
+    // setLoadind(false);
+  };
 
   const handlePref = useCallback(() => {
     if (!slideRef.current) return;
@@ -37,6 +45,10 @@ const [loadind, setLoadind] = useState(true)
     if (!slideRef.current) return;
     slideRef.current.swiper.slideNext();
   });
+
+  useEffect(() => {
+    init();
+  }, []);
 
   return (
     <div className="wolf-hero-v2">
@@ -53,23 +65,36 @@ const [loadind, setLoadind] = useState(true)
           </button>
         </div>
         <div className="wolf-v2-swiper-box">
-          <button onClick={handlePref}> Anterior</button>
-          <button onClick={handleNext}>Siguiente</button>
-          <Swiper
-            spaceBetween={50}
-            slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-            ref={slideRef}
-          >
-            <SwiperSlide>
+          {loadind ? (
+            <div className=" loading-section w-[100%] h-[100%]" >
+              <Skeleton
+                variant="rectangular"
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </div>
+          ) : (
+            <>
+              <button onClick={handlePref}> Anterior</button>
+              <button onClick={handleNext}>Siguiente</button>
+              <Swiper
+                spaceBetween={50}
+                slidesPerView={1}
+                onSlideChange={() => console.log("slide change")}
+                onSwiper={(swiper) => console.log(swiper)}
+                ref={slideRef}
+              >
+                {/* <SwiperSlide>
               <WolfSwiperSlide />
             </SwiperSlide>
             <SwiperSlide>Slide 2</SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            ...
-          </Swiper>
+            <SwiperSlide>Slide 4</SwiperSlide> */}
+              </Swiper>
+            </>
+          )}
         </div>
       </section>
     </div>
