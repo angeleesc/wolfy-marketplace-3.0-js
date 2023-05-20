@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import "./wolf-hero-v2.scss";
 import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -14,7 +14,19 @@ import WolfSwiperSlide from "./wolfSwiperSlide";
 // la nft mas barata
 
 export default function Hero() {
-  const slideRef = useRef(null);
+
+const [loadind, setLoadind] = useState(true)
+
+    const slideRef = useRef(null);
+
+    const init = ()=>{
+
+
+      // const endpoint = 
+
+
+    }
+
 
   const handlePref = useCallback(() => {
     if (!slideRef.current) return;

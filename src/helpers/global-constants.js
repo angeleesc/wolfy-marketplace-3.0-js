@@ -142,7 +142,8 @@ export const requestEndPoints = {
         POSTGetAsk: "/api/v1/firebase/orders-nfts",
         POSTGetAskByUser: "/api/v1/firebase/orders-by-users",
         GETAcutionOrdersBuyer: (id) => `/api/v1/firebase/oresers-bids/${id}`,
-        GETAuctionBids: (id)=>`/api/v1/firebase//bids/${id}`
+        GETAuctionBids: (id)=>`/api/v1/firebase/bids/${id}`,
+        GetHeroData: "/api/v1/firebase/featured-nfts-hero"
     },
     alchemy: {
         getNftsBalanceOnWalet: "/api/v1/alchemy",
