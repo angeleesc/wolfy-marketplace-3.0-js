@@ -69,15 +69,36 @@
             }
         }
 
-        .wolf-v2-swiper-box{
+        .wolf-v2-swiper-box {
             margin-top: 20px;
-            position: relative;
-            height          : calc(100% - 120px);
+            position  : relative;
+            height    : calc(100% - 120px);
 
         }
 
 
     }
 
+    .hero-loading-section {
+
+
+
+        .MuiSkeleton-root {
+            // background-color: red;
+            background-color: theme('colors.wolf-blue-purple.600');
+            border-radius: 16px;
+
+            &::after {
+                background        : rgb(79, 86, 224);
+                background        : linear-gradient(90deg, rgba(79, 86, 224, 1) 0%, rgba(59, 67, 221, 1) 50%, rgba(79, 86, 224, 1) 100%);
+                width             : 100%;
+                animation-duration: 3s;
+            }
+
+
+
+        }
+
+    }
 
 }

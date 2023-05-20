@@ -66,9 +66,10 @@ export default function Hero() {
         </div>
         <div className="wolf-v2-swiper-box">
           {loadind ? (
-            <div className=" loading-section w-[100%] h-[100%]" >
+            <div className="hero-loading-section w-[100%] h-[100%]" >
               <Skeleton
                 variant="rectangular"
+                animation="wave"
                 sx={{
                   width: "100%",
                   height: "100%",
