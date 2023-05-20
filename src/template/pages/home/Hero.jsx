@@ -94,8 +94,10 @@ export default function Hero() {
       {
         heroData.map((heroFeatured, i)=>{
 
-          return <SwiperSlide key={"wolf-hero-feautred-"+i} >
-          <WolfSwiperSlide />
+          return <SwiperSlide key={"wolf-hero-feautred-"+i} 
+          // className="w"
+          >
+          <WolfSwiperSlide data={heroFeatured} />
         </SwiperSlide>
 
         })
