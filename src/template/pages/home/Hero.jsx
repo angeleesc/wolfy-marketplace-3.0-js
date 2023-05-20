@@ -31,7 +31,7 @@ export default function Hero() {
     // const endpoint = rootApipaht.porduction + requestEndPoints.firebase.GetHeroData
 
     const result = await axios.get(endpoint);
-    console.log(result.data);
+    // console.log(result.data);
 
     setLoadind(false);
     setHeroData(result.data.heroData);
@@ -89,20 +89,23 @@ export default function Hero() {
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}
                 loop
-              >
-      
-      {
-        heroData.map((heroFeatured, i)=>{
-
-          return <SwiperSlide key={"wolf-hero-feautred-"+i} 
-          // className="w"
-          >
-          <WolfSwiperSlide data={heroFeatured} />
-        </SwiperSlide>
-
-        })
-      }
-
+                className="h-[100%]"
+              > 
+                {heroData.map((heroFeatured, i) => {
+                  return (
+                    <SwiperSlide
+                      key={"wolf-hero-feautred-" + i}
+                 style={
+                  {
+                    height: "100%"
+                  }
+                 }
+                      // className="w"
+                    >
+                      <WolfSwiperSlide data={heroFeatured} />
+                    </SwiperSlide>
+                  );
+                })}
               </Swiper>
             </>
           ) : (
