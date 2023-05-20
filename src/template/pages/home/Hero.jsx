@@ -33,7 +33,9 @@ export default function Hero() {
     const result = await axios.get(endpoint);
     console.log(result.data);
 
-    // setLoadind(false);
+    setLoadind(false);
+    setHeroData(result.data.heroData);
+    // setHeroData(result.data.heroData);
   };
 
   const handlePref = useCallback(() => {
@@ -66,7 +68,7 @@ export default function Hero() {
         </div>
         <div className="wolf-v2-swiper-box">
           {loadind ? (
-            <div className="hero-loading-section w-[100%] h-[100%]" >
+            <div className="hero-loading-section w-[100%] h-[100%]">
               <Skeleton
                 variant="rectangular"
                 animation="wave"
@@ -76,7 +78,7 @@ export default function Hero() {
                 }}
               />
             </div>
-          ) : (
+          ) : heroData.length > 0 ? (
             <>
               <button onClick={handlePref}> Anterior</button>
               <button onClick={handleNext}>Siguiente</button>
@@ -86,15 +88,25 @@ export default function Hero() {
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}
+                loop
               >
-                {/* <SwiperSlide>
-              <WolfSwiperSlide />
-            </SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide> */}
+      
+      {
+        heroData.map((heroFeatured, i)=>{
+
+          return <SwiperSlide key={"wolf-hero-feautred-"+i} >
+          <WolfSwiperSlide />
+        </SwiperSlide>
+
+        })
+      }
+
               </Swiper>
             </>
+          ) : (
+            <div className="error-section">
+              <h3>Sin resultados destacados</h3>
+            </div>
           )}
         </div>
       </section>
