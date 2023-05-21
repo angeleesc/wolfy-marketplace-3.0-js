@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useEffect } from "react";
 import { Skeleton } from "@mui/material";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // esta seccion esta dividido de dos formas
 // colleciones destacadas
@@ -28,7 +29,8 @@ export default function Hero() {
 
   const init = async () => {
     // const endpoint = rootApipaht.local + requestEndPoints.firebase.GetHeroData;
-    const endpoint = rootApipaht.porduction + requestEndPoints.firebase.GetHeroData
+    const endpoint =
+      rootApipaht.porduction + requestEndPoints.firebase.GetHeroData;
 
     const result = await axios.get(endpoint);
     // console.log(result.data);
@@ -80,8 +82,18 @@ export default function Hero() {
             </div>
           ) : heroData.length > 0 ? (
             <>
-              <button onClick={handlePref}> Anterior</button>
-              <button onClick={handleNext}>Siguiente</button>
+              <button
+                className="wolf-v2-swiper-button wolf-v2-swiper-button-left"
+                onClick={handlePref}
+              >
+                <FaChevronLeft />
+              </button>
+              <button
+                className="wolf-v2-swiper-button wolf-v2-swiper-button-left"
+                onClick={handleNext}
+              >
+                <FaChevronRight />
+              </button>
               <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
@@ -90,16 +102,14 @@ export default function Hero() {
                 ref={slideRef}
                 loop
                 className="h-[100%] rounded-[16px]"
-              > 
+              >
                 {heroData.map((heroFeatured, i) => {
                   return (
                     <SwiperSlide
                       key={"wolf-hero-feautred-" + i}
-                 style={
-                  {
-                    height: "100%"
-                  }
-                 }
+                      style={{
+                        height: "100%",
+                      }}
                       // className="w"
                     >
                       <WolfSwiperSlide data={heroFeatured} />

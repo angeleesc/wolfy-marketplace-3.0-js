@@ -70,13 +70,29 @@
         }
 
         .wolf-v2-swiper-box {
-            margin-top: 20px;
-            position  : relative;
-            height    : calc(100% - 120px);
+            margin-top : 20px;
+            position   : relative;
+            height     : calc(100% - 120px);
+            display    : flex;
+            align-items: center;
 
         }
 
 
+
+    }
+
+    .wolf-v2-swiper-button {
+        width           : 40px;
+        height          : 40px;
+        background-color: theme("colors.wolf-gray-dark.1100");
+        border-radius   : 50%;
+        color           : theme("colors.wolf-gray-light.1200");
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        position        : absolute;
+        z-index         : 20;
     }
 
     .swipe-box {
