@@ -55,8 +55,16 @@ export default function Hero() {
     init();
   }, []);
 
+
+
   return (
     <div className="wolf-hero-v2">
+
+      {
+        heroData.length > 0 && heroData[0].metadata && heroData[0].metadata.image && <div className="hero-cover-bg" >
+         <img src={heroData[0].metadata.image} alt="" />
+        </div>
+      }
 
       <section className="swiper-section">
         <div className="hero-swiper-section-tab-menu">
@@ -101,7 +109,7 @@ export default function Hero() {
                 slidesPerView={1}
                 onSlideChange={(swipe) =>{ 
                   // console.log(swipe)
-                  setCurretbgIndex(swiper.realIndex)
+                  setCurretbgIndex(swipe.realIndex)
                 }}
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}

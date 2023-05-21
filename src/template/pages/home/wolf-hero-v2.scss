@@ -7,6 +7,18 @@
     height    : 100vh;
     position  : relative;
 
+    .hero-cover-bg {
+        width   : 100%;
+        height  : 100%;
+        position: absolute;
+
+        img {
+            width     : 100%;
+            height    : 100%;
+            object-fit: cover;
+        }
+    }
+
     .swiper-section {
         // background-color: theme("colors.wolf-blue-purple.700");
         width        : 100%;
