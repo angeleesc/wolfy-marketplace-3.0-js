@@ -97,7 +97,7 @@ export default function Hero() {
               <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
-                onSlideChange={() => console.log("slide change")}
+                onSlideChange={(swipe) => console.log(swipe)}
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}
                 loop
