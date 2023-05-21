@@ -158,8 +158,9 @@
                 padding : 15px;
 
                 span {
-                    color: theme("colors.wolf-gray-light.1500");
+                    color      : theme("colors.wolf-gray-light.1500");
                     font-weight: 600;
+                    line-height: 16px;
                 }
 
                 h3 {
