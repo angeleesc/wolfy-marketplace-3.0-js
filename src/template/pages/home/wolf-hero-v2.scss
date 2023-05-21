@@ -146,6 +146,11 @@
             // background-color: red;
             background-color   : rgba(#13161a, 0.4);
 
+            .siwpe-avatar-section-item {
+                margin-right: 15px;
+            }
+
+
             .swipe-info-body {
                 // background-color: red;
                 position: absolute;
@@ -153,9 +158,9 @@
                 padding : 15px;
 
                 h3 {
-                    font-size: 24px;
+                    font-size  : 24px;
                     font-weight: 700;
-                    color: theme("colors.wolf-gray-light.2200");
+                    color      : theme("colors.wolf-gray-light.2200");
 
                 }
 
