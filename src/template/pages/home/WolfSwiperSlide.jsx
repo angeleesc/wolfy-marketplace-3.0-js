@@ -26,12 +26,13 @@ export default function WolfSwiperSlide({ data }) {
                     {data.collectionFace ? (
                       <img src={data.collectionFace} alt="collection-face-photo" />
                     ) : (
-                      <WolfIdentidcon name={data.colection} size={42} />
+                      <WolfIdentidcon name={data.colection} size={60} />
                     )}
                   </Link>
                 </div>
             {metadata.nftName && <h3>{metadata.nftName}</h3>}
           </div>
+          <div className="swipe-sale-info" ></div>
         </div>
       </div>
     </div>
