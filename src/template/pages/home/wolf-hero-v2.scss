@@ -194,12 +194,19 @@
 
         .wolf-btn-hero {
             // background-color: red;
-            width           : 100%;
-            max-width       : 300px;
-            font-size       : 16px;
-            font-weight     : 700;
-            background-color: rgba($color: #000000, $alpha: 1.0);
-            margin-top      : 10px;
+            width              : 100%;
+            // max-width       : 300px;
+            max-width          : 400px;
+            font-size          : 16px;
+            font-weight        : 700;
+            background-color   : rgba($color: #4D5668, $alpha: 0.2);
+            backdrop-filter    : blur(20px);
+            margin-top         : 10px;
+            // transition: ;
+
+            &:hover{
+                background-color: theme("colors.wolf-blue-purple.600");
+            }
         }
 
     }
