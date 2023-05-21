@@ -5,6 +5,7 @@ import "./wolfy-hero.scss";
 import { useCallback, useRef, useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { Navigation } from "swiper";
+import { useWeb3Context } from "../../context/Web3ContextProvider";
 
 const tempJson = [
   {
@@ -86,7 +87,10 @@ export default () => {
 
   // const nextButtonRef = useRef(null)
   const [curretbgIndex, setCurretbgIndex] = useState(0)
+  
+  
   const slideRef = useRef(null)
+
 
 
   const handlePref = useCallback(() => {

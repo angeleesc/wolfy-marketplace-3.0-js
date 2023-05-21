@@ -7,6 +7,7 @@ import { BsFillTagFill } from "react-icons/bs";
 import { ImClock } from "react-icons/im";
 import { keyModalSate, openModal } from "../../../features/modals/modalsSlice";
 import { useDispatch } from "react-redux";
+import { useWeb3Context } from "../../../context/Web3ContextProvider";
 
 export default function WolfSwiperSlide({ data }) {
   console.log("datos obtenidos del swipert");
@@ -14,6 +15,8 @@ export default function WolfSwiperSlide({ data }) {
   const { type, metadata } = data;
   console.log(metadata);
   const dispatch = useDispatch()
+  const { valletAccount }= useWeb3Context()
+
 
   return (
     <div className="swipe-box">
@@ -68,6 +71,8 @@ export default function WolfSwiperSlide({ data }) {
                     nftCover: metadata.image,
                     nftName: metadata.nftName,
                     saleMethod: data.saleMethod,
+                    seller: data.seller,
+                    ...(valletAccount? {walletLog: valletAccount}: {})
                   },
                 })
               );
