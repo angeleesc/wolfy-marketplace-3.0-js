@@ -95,6 +95,14 @@
         z-index         : 20;
     }
 
+    .wolf-v2-swiper-button-left {
+        left: -20px;
+    }
+
+    .wolf-v2-swiper-button-right {
+        right: -20px;
+    }
+
     .swipe-box {
         background-color: theme("colors.wolf-gray-dark.400");
         width           : 100%;

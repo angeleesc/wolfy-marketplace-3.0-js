@@ -89,7 +89,7 @@ export default function Hero() {
                 <FaChevronLeft />
               </button>
               <button
-                className="wolf-v2-swiper-button wolf-v2-swiper-button-left"
+                className="wolf-v2-swiper-button wolf-v2-swiper-button-right"
                 onClick={handleNext}
               >
                 <FaChevronRight />
