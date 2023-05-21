@@ -157,6 +157,11 @@
                 bottom  : 0;
                 padding : 15px;
 
+                display        : flex;
+                width          : 100%;
+                flex-wrap      : wrap;
+                justify-content: space-between;
+
                 span {
                     color      : theme("colors.wolf-gray-light.1500");
                     font-weight: 600;
@@ -176,7 +181,9 @@
 
         .swipe-sale-info {
 
-            margin: 10px 0;
+            margin   : 10px 0;
+            width    : 100%;
+            max-width: 400px;
 
             .price-info {
                 // color: red;
@@ -204,7 +211,7 @@
             margin-top         : 10px;
             // transition: ;
 
-            &:hover{
+            &:hover {
                 background-color: theme("colors.wolf-blue-purple.600");
             }
         }
