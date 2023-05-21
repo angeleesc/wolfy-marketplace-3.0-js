@@ -5,12 +5,15 @@ import WolfIdentidcon from "../../../components/identicon/WolfIdentidcon";
 import { saleMethod } from "../../../helpers/global-constants";
 import { BsFillTagFill } from "react-icons/bs";
 import { ImClock } from "react-icons/im";
+import { keyModalSate, openModal } from "../../../features/modals/modalsSlice";
+import { useDispatch } from "react-redux";
 
 export default function WolfSwiperSlide({ data }) {
   console.log("datos obtenidos del swipert");
   console.log(data);
   const { type, metadata } = data;
   console.log(metadata);
+  const dispatch = useDispatch()
 
   return (
     <div className="swipe-box">
@@ -52,7 +55,24 @@ export default function WolfSwiperSlide({ data }) {
                 : data.currentPrice}{" "}
               ETH
             </h4>
-            <button className="wolf-buttom wolf-btn-hero" >
+            <button className="wolf-buttom wolf-btn-hero" 
+            
+            onClick={(e) => {
+          
+              dispatch(
+                openModal({
+                  modal: keyModalSate.checkoutModal,
+                  data: {
+                    order: data.orderId,
+                    orderId: data.orderId,
+                    nftCover: metadata.image,
+                    nftName: metadata.nftName,
+                    saleMethod: data.saleMethod,
+                  },
+                })
+              );
+            }}
+            >
 
               {
                 data.saleMethod === saleMethod.sales? "Comprar ahora": "Hacer una puja"
