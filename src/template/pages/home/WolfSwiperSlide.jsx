@@ -10,13 +10,13 @@ export default function WolfSwiperSlide({ data }) {
     {
       metadata.image && <img className="swiper-image" src={metadata.image} alt="swiper-image" />
     }
-    {/* <div className="swiper-nft-info" >
+    <div className="swiper-nft-info" >
 
       <div className="swipe-info-body">
         {metadata.nftName && <h3>{metadata.nftName}</h3> }
       </div>
 
 
-    </div> */}
+    </div>
   </div>;
 }
