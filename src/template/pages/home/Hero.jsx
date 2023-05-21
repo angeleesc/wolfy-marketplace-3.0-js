@@ -24,7 +24,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 export default function Hero() {
   const [loadind, setLoadind] = useState(true);
   const [heroData, setHeroData] = useState([]);
-  const [curretbgIndex, setCurretbgIndex] = useState(0)
+  const [curretbgIndex, setCurretbgIndex] = useState(0);
 
   const slideRef = useRef(null);
 
@@ -55,16 +55,16 @@ export default function Hero() {
     init();
   }, []);
 
-
-
   return (
     <div className="wolf-hero-v2">
-
-      {
-        heroData.length > 0 && heroData[0].metadata && heroData[0].metadata.image && <div className="hero-cover-bg" >
-         <img src={heroData[0].metadata.image} alt="" />
-        </div>
-      }
+      {heroData.length > 0 &&
+        heroData[curretbgIndex].metadata &&
+        heroData[curretbgIndex].metadata.image && (
+          <div className="hero-cover-bg">
+            <div className="blur-filler"></div>
+            <img src={heroData[curretbgIndex].metadata.image} alt="" />
+          </div>
+        )}
 
       <section className="swiper-section">
         <div className="hero-swiper-section-tab-menu">
@@ -107,9 +107,9 @@ export default function Hero() {
               <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
-                onSlideChange={(swipe) =>{ 
+                onSlideChange={(swipe) => {
                   // console.log(swipe)
-                  setCurretbgIndex(swipe.realIndex)
+                  setCurretbgIndex(swipe.realIndex);
                 }}
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}
