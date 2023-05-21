@@ -52,7 +52,15 @@ export default function WolfSwiperSlide({ data }) {
                 : data.currentPrice}{" "}
               ETH
             </h4>
+            <button className="wolf-buttom wolf-btn-hero" >
+
+              {
+                data.saleMethod === saleMethod.sales? "Comprar ahora": "Hacer una puja"
+              }
+
+            </button>
           </div>
+
         </div>
       </div>
     </div>
