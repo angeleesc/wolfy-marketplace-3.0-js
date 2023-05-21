@@ -6,6 +6,8 @@ export default function WolfSwiperSlide({ data }) {
   const { type, metadata } = data;
 
   return <div className="swipe-box" >
-    <h3>swipe xd</h3>
+    {
+      metadata.image && <img className="swiper-image" src={metadata.image} alt="swiper-image" />
+    }
   </div>;
 }

@@ -27,8 +27,8 @@ export default function Hero() {
   const slideRef = useRef(null);
 
   const init = async () => {
-    const endpoint = rootApipaht.local + requestEndPoints.firebase.GetHeroData;
-    // const endpoint = rootApipaht.porduction + requestEndPoints.firebase.GetHeroData
+    // const endpoint = rootApipaht.local + requestEndPoints.firebase.GetHeroData;
+    const endpoint = rootApipaht.porduction + requestEndPoints.firebase.GetHeroData
 
     const result = await axios.get(endpoint);
     // console.log(result.data);
@@ -89,7 +89,7 @@ export default function Hero() {
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}
                 loop
-                className="h-[100%]"
+                className="h-[100%] rounded-[16px]"
               > 
                 {heroData.map((heroFeatured, i) => {
                   return (
