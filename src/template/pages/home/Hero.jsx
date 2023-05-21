@@ -24,6 +24,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 export default function Hero() {
   const [loadind, setLoadind] = useState(true);
   const [heroData, setHeroData] = useState([]);
+  const [curretbgIndex, setCurretbgIndex] = useState(0)
 
   const slideRef = useRef(null);
 
@@ -99,6 +100,7 @@ export default function Hero() {
                 slidesPerView={1}
                 onSlideChange={(swipe) =>{ 
                   // console.log(swipe)
+                  setCurretbgIndex(swiper.realIndex)
                 }}
                 onSwiper={(swiper) => console.log(swiper)}
                 ref={slideRef}
