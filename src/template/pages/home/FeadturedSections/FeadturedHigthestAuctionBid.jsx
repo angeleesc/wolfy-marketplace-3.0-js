@@ -3,6 +3,6 @@ import FeacturedSwiper from './featured-swiper/FeacturedSwiper'
 
 export default function FeadturedHigthestAuctionBid() {
   return (
-   <FeacturedSwiper title={"Nfts en ofertas"} />
+   <FeacturedSwiper title={"Subastas destacadas"} />
   )
 }
