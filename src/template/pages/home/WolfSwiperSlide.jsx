@@ -14,9 +14,8 @@ export default function WolfSwiperSlide({ data }) {
   console.log(data);
   const { type, metadata } = data;
   console.log(metadata);
-  const dispatch = useDispatch()
-  const { valletAccount }= useWeb3Context()
-
+  const dispatch = useDispatch();
+  const { valletAccount } = useWeb3Context();
 
   return (
     <div className="swipe-box">
@@ -24,6 +23,8 @@ export default function WolfSwiperSlide({ data }) {
         <img className="swiper-image" src={metadata.image} alt="swiper-image" />
       )}
       <div className="swiper-nft-info">
+        {data.adsMessage && <h3 className="ads-message" >{data.adsMessage}</h3>}
+
         <div className="swipe-info-body">
           {/* collectionFace */}
           <div className="flex items-center">
@@ -41,7 +42,8 @@ export default function WolfSwiperSlide({ data }) {
             </div>
             <div>
               <span>collecion {data.colectionName} </span>
-              {metadata.nftName && <h3>{metadata.nftName}</h3>}</div>
+              {metadata.nftName && <h3>{metadata.nftName}</h3>}
+            </div>
           </div>
           <div className="swipe-sale-info">
             <span className="price-info">
@@ -58,34 +60,30 @@ export default function WolfSwiperSlide({ data }) {
                 : data.currentPrice}{" "}
               ETH
             </h4>
-            <button className="wolf-buttom wolf-btn-hero" 
-            
-            onClick={(e) => {
-          
-              dispatch(
-                openModal({
-                  modal: keyModalSate.checkoutModal,
-                  data: {
-                    order: data.orderId,
-                    orderId: data.orderId,
-                    nftCover: metadata.image,
-                    nftName: metadata.nftName,
-                    saleMethod: data.saleMethod,
-                    seller: data.seller,
-                    ...(valletAccount? {walletLog: valletAccount}: {})
-                  },
-                })
-              );
-            }}
+            <button
+              className="wolf-buttom wolf-btn-hero"
+              onClick={(e) => {
+                dispatch(
+                  openModal({
+                    modal: keyModalSate.checkoutModal,
+                    data: {
+                      order: data.orderId,
+                      orderId: data.orderId,
+                      nftCover: metadata.image,
+                      nftName: metadata.nftName,
+                      saleMethod: data.saleMethod,
+                      seller: data.seller,
+                      ...(valletAccount ? { walletLog: valletAccount } : {}),
+                    },
+                  })
+                );
+              }}
             >
-
-              {
-                data.saleMethod === saleMethod.sales? "Comprar ahora": "Hacer una puja"
-              }
-
+              {data.saleMethod === saleMethod.sales
+                ? "Comprar ahora"
+                : "Hacer una puja"}
             </button>
           </div>
-
         </div>
       </div>
     </div>

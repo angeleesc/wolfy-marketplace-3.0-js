@@ -15,13 +15,13 @@
         .blur-filler {
             // background-color: red;
             background-color: rgba($color: #2a2f39, $alpha: 0.5);
-            background: linear-gradient(180deg, rgba(#2a2f39, .0) 0%, rgba(#08090a,1) 100%);
+            background      : linear-gradient(180deg, rgba(#2a2f39, .0) 0%, rgba(#08090a, 1) 100%);
 
 
             backdrop-filter: blur(20px);
-            width           : 100%;
-            height          : 100%;
-            position        : absolute;
+            width          : 100%;
+            height         : 100%;
+            position       : absolute;
         }
 
         img {
@@ -170,6 +170,15 @@
             top                : 0;
             // background-color: red;
             background-color   : rgba(#13161a, 0.4);
+            display            : flex;
+            justify-content    : center;
+            align-items        : center;
+
+            .ads-message{
+                font-size: 24px;
+                font-weight: 700;
+                color: theme("colors.wolf-gray-light.2200")
+            }
 
             .siwpe-avatar-section-item {
                 margin-right: 15px;
