@@ -2,11 +2,11 @@ import React, { useCallback, useRef, useState } from "react";
 import "./wolf-hero-v2.scss";
 import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import WolfSwiperSlide from "./wolfSwiperSlide";
+import WolfSwiperSlide from "../wolfSwiperSlide";
 import {
   requestEndPoints,
   rootApipaht,
-} from "../../../helpers/global-constants";
+} from "../../../../helpers/global-constants";
 import axios from "axios";
 import { useEffect } from "react";
 import { Skeleton } from "@mui/material";
