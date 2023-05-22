@@ -5,10 +5,10 @@ import FeadturedHigthestAuctionBid from "../template/pages/home/FeadturedSection
 
 export default function Home() {
   return (
-    <div>
+    <>
       {/* <HeroSwiper /> */}
       <Hero/>
       <FeadturedHigthestAuctionBid/>
-    </div>
+    </>
   );
 }
