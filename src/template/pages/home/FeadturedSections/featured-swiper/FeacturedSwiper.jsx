@@ -14,9 +14,44 @@ export default function FeacturedSwiper({ data, loading, title, query = {} }) {
 
       <Swiper
         spaceBetween={50}
-        slidesPerView={3}
+
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
+
+        breakpoints={
+          {
+            300: {
+              // width: 300,
+              slidesPerView: 1,
+            }, 
+
+            600: {
+              // width: 600,
+              slidesPerView: 2
+            }, 
+
+            850: {
+              // width: 600,
+              slidesPerView: 3
+            }, 
+
+            1100: {
+              // width: 1100, 
+              slidesPerView: 4
+            },
+
+            1400: {
+              // width: 1300,
+              slidesPerView: 5
+            },
+            1500: {
+              // width: 1500,
+              slidesPerView: 6
+            }
+
+          }
+        }
+
       >
         {loadingCard.map((key, i) => {
           return <SwiperSlide key={title+"-"+i}>
