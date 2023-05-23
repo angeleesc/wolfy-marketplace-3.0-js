@@ -2,6 +2,7 @@ import React from "react";
 import "./feactures-swiper.scss";
 
 import { SwiperSlide, Swiper } from "swiper/react";
+import NffCardV2 from "../../../../../components/cards/NffCardV2";
 
 export default function FeacturedSwiper({ data, loading, title, query = {} }) {
   const loadingCard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -55,7 +56,7 @@ export default function FeacturedSwiper({ data, loading, title, query = {} }) {
       >
         {loadingCard.map((key, i) => {
           return <SwiperSlide key={title+"-"+i}>
-            Slide {key}
+            <NffCardV2 loading={loading} data={data} />
           </SwiperSlide>;
         })}
       </Swiper>
