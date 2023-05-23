@@ -1,4 +1,5 @@
 import React from "react";
+import "./nft-card-v2.scss"
 
 export default function NffCardV2({ data, loading }) {
   return loading ? (
