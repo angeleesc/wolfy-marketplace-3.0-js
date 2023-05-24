@@ -20,23 +20,25 @@ export default function FeadturedHigthestAuctionBid() {
     console.log(endpoint);
 
     const query = [
-      // {
-      //   type: "where",
-      //   index: "saleMethod",
-      //   operator: "==",
-      //   value: saleMethod.auction,
-      //   valueType: "string"
-      // },
       {
         type: "where",
         index: "endTime",
         operator: ">=",
         value: Date.now(),
-        valueType: "date"
-      }
+        valueType: "date",
+      },
+      {
+        type: "orderBy",
+        index: "endTime",
+        orderDirection: "desc",
+      },
+      {
+        type: "orderBy",
+        index: "currentPrice",
+        orderDirection: "desc",
+      },
     ];
 
-    
     const result = await axios.get(endpoint, {
       params: {
         query: JSON.stringify(query),
@@ -44,11 +46,19 @@ export default function FeadturedHigthestAuctionBid() {
     });
 
     console.log(result.data);
+
+    
   };
 
   useEffect(() => {
     init();
   }, []);
 
-  return <FeacturedSwiper title={"Subastas destacadas"} loading={laoding} />;
+  return (
+    <FeacturedSwiper
+      title={"Subastas destacadas"}
+      loading={laoding}
+      data={nftsData}
+    />
+  );
 }
