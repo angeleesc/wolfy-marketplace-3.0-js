@@ -3,6 +3,7 @@ import "./feactures-swiper.scss";
 
 import { SwiperSlide, Swiper } from "swiper/react";
 import NffCardV2 from "../../../../../components/cards/NffCardV2";
+import WolfDoubtful from "../../../../../components/icons/WolfDoubtful";
 
 const breakpoints = {
   300: {
@@ -58,18 +59,23 @@ export default function FeacturedSwiper({ data, loading, title }) {
             );
           })}
         </Swiper>
-      ) : (
-     data.length > 0 ?   <Swiper
+      ) : data.length > 0 ? (
+        <Swiper
           spaceBetween={50}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           breakpoints={breakpoints}
         >
-          <SwiperSlide >
+          <SwiperSlide>
             <h3>Cargado xd</h3>
           </SwiperSlide>
-        </Swiper>: <div className="not-result-data" >
-          <h3>Sin Resultado</h3>
+        </Swiper>
+      ) : (
+        <div className="not-result-data">
+          <div className="flex  flex-col justify-center items-center">
+            <h4>Mensase sin resultado</h4>
+            <WolfDoubtful />
+          </div>
         </div>
       )}
     </section>

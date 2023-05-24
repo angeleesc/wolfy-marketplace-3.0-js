@@ -14,6 +14,9 @@ export default function FeadturedHigthestAuctionBid() {
   const [nftsData, setNftsData] = useState([]);
 
   const init = async () => {
+
+    setLaoding(true)
+
     const endpoint =
       rootApipaht.local + requestEndPoints.firebase.GETOrdersByQuery;
 
@@ -50,7 +53,9 @@ export default function FeadturedHigthestAuctionBid() {
     const { isSuccess, hasData, orders } = result.data;
 
     if(isSuccess && hasData){
-      // setNftsData(orders)
+      setNftsData([])
+    }else{
+      setNftsData([])
     }
 
     setLaoding(false)
