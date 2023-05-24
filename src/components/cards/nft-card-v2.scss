@@ -1,4 +1,5 @@
-.laoding-card, .nft-card-v2 {
+.laoding-card,
+.nft-card-v2 {
     // background-color: red;
     width           : 100%;
     max-width       : 300px;
@@ -30,7 +31,7 @@
     .MuiSkeleton-root {
         // background-color: red;
         // background-color   : theme('colors.wolf-gray-dark.300');
-        background-color   : #13161a;
+        background-color      : #13161a;
         // border-radius   : 16px;
         // position           : absolute;
         // bottom             : -20px;
@@ -55,6 +56,14 @@
 
 
 .nft-card-v2 {
-    background-color: red;
+    // background-color: red;
     // height: ;
+    display              : grid;
+    grid-template-columns: 1fr;
+    grid-template-rows   : 220px 1fr;
+    grid-template-areas: "multimedia" "content";
+
+
+
+
 }
