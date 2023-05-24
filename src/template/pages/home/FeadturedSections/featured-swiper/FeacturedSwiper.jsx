@@ -36,7 +36,12 @@ const breakpoints = {
   },
 };
 
-export default function FeacturedSwiper({ data, loading, title }) {
+export default function FeacturedSwiper({
+  data,
+  loading,
+  title,
+  onEmptyResulMessage,
+}) {
   // const loadingCard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const loadingCard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -73,7 +78,11 @@ export default function FeacturedSwiper({ data, loading, title }) {
       ) : (
         <div className="not-result-data">
           <div className="flex  flex-col justify-center items-center">
-            <h4>Mensase sin resultado</h4>
+            <h4>
+              {onEmptyResulMessage
+                ? onEmptyResulMessage
+                : "Mensase sin resultado"}
+            </h4>
             <WolfDoubtful />
           </div>
         </div>

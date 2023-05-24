@@ -73,6 +73,7 @@ export default function FeadturedHigthestAuctionBid() {
       title={"Subastas destacadas"}
       loading={laoding}
       data={nftsData}
+      onEmptyResulMessage={"Actuamente no hay subasta destacadas"}
     />
   );
 }
