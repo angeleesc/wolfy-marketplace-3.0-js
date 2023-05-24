@@ -4,10 +4,9 @@ import "./feactures-swiper.scss";
 import { SwiperSlide, Swiper } from "swiper/react";
 import NffCardV2 from "../../../../../components/cards/NffCardV2";
 
-export default function FeacturedSwiper({ data, loading, title, query = {} }) {
+export default function FeacturedSwiper({ data, loading, title}) {
   const loadingCard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  const init = async () => {};
 
   return (
     <section className="feactured-section">

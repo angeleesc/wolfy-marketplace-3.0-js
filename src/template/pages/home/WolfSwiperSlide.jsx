@@ -11,9 +11,9 @@ import { useWeb3Context } from "../../../context/Web3ContextProvider";
 
 export default function WolfSwiperSlide({ data }) {
   console.log("datos obtenidos del swipert");
-  console.log(data);
+  // console.log(data);
   const { type, metadata } = data;
-  console.log(metadata);
+  // console.log(metadata);
   const dispatch = useDispatch();
   const { valletAccount } = useWeb3Context();
 
