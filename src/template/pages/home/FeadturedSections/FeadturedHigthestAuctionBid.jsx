@@ -47,12 +47,21 @@ export default function FeadturedHigthestAuctionBid() {
 
     console.log(result.data);
 
-    
+    const { isSuccess, hasData, orders } = result.data;
+
+    if(isSuccess && hasData){
+      // setNftsData(orders)
+    }
+
+    setLaoding(false)
+
   };
 
   useEffect(() => {
     init();
   }, []);
+
+
 
   return (
     <FeacturedSwiper

@@ -3,11 +3,22 @@
     padding: 15px 30px;
     margin : 15px 0;
 
-    h3{
-        font-size: 24px;
+    h3 {
+        font-size  : 24px;
         font-weight: 700;
-        color: theme("colors.wolf-gray-light.2100");
-        margin: 20px 0;
+        color      : theme("colors.wolf-gray-light.2100");
+        margin     : 20px 0;
     }
 
+}
+
+
+.not-result-data {
+    background-color: theme("colors.wolf-gray-dark.400");
+    padding         : 16px;
+    border          : 1px solid theme("colors.wolf-gray-dark.700");
+    border-radius   : 16px;
+    display         : flex;
+    justify-content : center;
+    min-height      : 280px;
 }
