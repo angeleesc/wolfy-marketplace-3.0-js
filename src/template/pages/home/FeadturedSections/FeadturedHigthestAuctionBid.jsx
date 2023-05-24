@@ -13,6 +13,8 @@ export default function FeadturedHigthestAuctionBid() {
   const [laoding, setLaoding] = useState(true);
   const [nftsData, setNftsData] = useState([]);
 
+  const [hasError, setHasError] = useState(false)
+
   const init = async () => {
 
     setLaoding(true)
@@ -42,20 +44,35 @@ export default function FeadturedHigthestAuctionBid() {
       },
     ];
 
-    const result = await axios.get(endpoint, {
-      params: {
-        query: JSON.stringify(query),
-      },
-    });
+   
+    try {
+      
+      const result = await axios.get(endpoint, {
+        params: {
+          query: JSON.stringify(query),
+        },
+      });
+  
+      console.log(result.data);
+  
+      const { isSuccess, hasData, orders } = result.data;
+  
+      if(isSuccess && hasData){
+        setNftsData(orders)
+        setHasError(false)
+      }else{
+        setNftsData([])
+        setHasError(false)
+      }
+  
 
-    console.log(result.data);
+    } catch (error) {
 
-    const { isSuccess, hasData, orders } = result.data;
+      // console.log("ocurrio un erro")
 
-    if(isSuccess && hasData){
-      setNftsData([])
-    }else{
-      setNftsData([])
+      setHasError(true)
+
+      
     }
 
     setLaoding(false)
@@ -74,6 +91,8 @@ export default function FeadturedHigthestAuctionBid() {
       loading={laoding}
       data={nftsData}
       onEmptyResulMessage={"Actuamente no hay subasta destacadas"}
+      onErroRmessage ={"lo siento pero ocurrio un error"}
+      hasErrorRequest = {hasError}
     />
   );
 }

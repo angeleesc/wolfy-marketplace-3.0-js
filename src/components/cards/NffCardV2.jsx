@@ -6,12 +6,16 @@ export default function NffCardV2({ data, loading }) {
   return loading ? (
     <div className="laoding-card">
       <div className="img-skeletor">
-        <Skeleton animation="wave" className="skeletor-text" sx={{
-          position:"absolute",
-          right: 15,
-          width: 80,
-          bottom: 10
-        }} />
+        <Skeleton
+          animation="wave"
+          className="skeletor-text"
+          sx={{
+            position: "absolute",
+            right: 15,
+            width: 80,
+            bottom: 10,
+          }}
+        />
         <div className="info-skeletor">
           <Skeleton
             variant="circular"
@@ -21,14 +25,13 @@ export default function NffCardV2({ data, loading }) {
             sx={{
               position: "absolute",
               bottom: -20,
-              left: 20
+              left: 20,
             }}
           />
-       
         </div>
       </div>
     </div>
   ) : (
-    <div></div>
+    <div className="nft-card-v2"></div>
   );
 }

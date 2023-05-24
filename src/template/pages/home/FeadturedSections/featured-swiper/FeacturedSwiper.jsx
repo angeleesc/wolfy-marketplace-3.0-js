@@ -41,6 +41,7 @@ export default function FeacturedSwiper({
   loading,
   title,
   onEmptyResulMessage,
+  hasErrorRequest,
 }) {
   // const loadingCard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const loadingCard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -59,7 +60,7 @@ export default function FeacturedSwiper({
           {loadingCard.map((key, i) => {
             return (
               <SwiperSlide key={title + "-" + i}>
-                <NffCardV2 loading={loading} data={data} />
+                <NffCardV2 loading={loading} data={data[0]} />
               </SwiperSlide>
             );
           })}
@@ -71,15 +72,21 @@ export default function FeacturedSwiper({
           onSwiper={(swiper) => console.log(swiper)}
           breakpoints={breakpoints}
         >
-          <SwiperSlide>
-            <h3>Cargado xd</h3>
-          </SwiperSlide>
+          {data.map((dataD, i) => {
+            return (
+              <SwiperSlide key={title+"-"+i} >
+                <NffCardV2 loading={loading} data={dataD} />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       ) : (
         <div className="not-result-data">
           <div className="flex  flex-col justify-center items-center">
             <h4>
-              {onEmptyResulMessage
+              {hasErrorRequest
+                ? "ocurrio un error"
+                : onEmptyResulMessage
                 ? onEmptyResulMessage
                 : "Mensase sin resultado"}
             </h4>
