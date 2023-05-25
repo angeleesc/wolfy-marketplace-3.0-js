@@ -88,13 +88,13 @@
         width           : 90%;
         background-color: theme("colors.wolf-blue-purple.500");
         z-index         : -10;
-        transform       : translateY(10px);
+        // transform       : translateY(10px);
     }
     &::after {
         width           : 80%;
         background-color: theme("colors.wolf-blue-purple.600");
         z-index         : -15;
-        transform       : translateY(20px);
+        // transform       : translateY(20px);
     }
 
 
