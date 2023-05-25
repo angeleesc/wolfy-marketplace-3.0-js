@@ -2,6 +2,48 @@ import React from "react";
 import "./nft-card-v2.scss";
 import { Skeleton } from "@mui/material";
 
+const NftCardV2Render = ({ data }) => {
+  const {
+    blockChain,
+    chainId,
+    colection,
+    colectionName,
+    colectionSymbol,
+    currentPrice,
+    endTime,
+    initPrice,
+    listingAt,
+    metadata,
+    onSale,
+    orderId,
+    price,
+    saleMethod,
+    seller,
+    id,
+  } = data;
+
+  return (
+    <div className="nft-card-v2">
+      <div className="nft-card-v2-body">
+        <div className="multimedia-zone">
+          {metadata && metadata.thumbnail ? (
+            <img
+              src={metadata.thumbnail}
+              alt={"thumbnails-" + saleMethod + "-" + orderId}
+            />
+          ) : metadata.image ? (
+            <img
+              src={metadata.thumbnail}
+              alt={"thumbnails-" + saleMethod + "-" + orderId}
+            />
+          ) : null}
+        </div>
+        <div className="content-zone"></div>
+      </div>
+    </div>
+  );
+};
+
 export default function NffCardV2({ data, loading }) {
   return loading ? (
     <div className="laoding-card">
@@ -32,13 +74,6 @@ export default function NffCardV2({ data, loading }) {
       </div>
     </div>
   ) : (
-    <div className="nft-card-v2">
-
-<div className="multimedia-zone" >
-  <h3>XD</h3>
-</div>
-<div className="content-zone" ></div>
-
-    </div>
+    <NftCardV2Render data={data} />
   );
 }
