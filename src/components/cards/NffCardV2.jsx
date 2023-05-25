@@ -32,6 +32,13 @@ export default function NffCardV2({ data, loading }) {
       </div>
     </div>
   ) : (
-    <div className="nft-card-v2"></div>
+    <div className="nft-card-v2">
+
+<div className="multimedia-zone" >
+  <h3>XD</h3>
+</div>
+<div className="content-zone" ></div>
+
+    </div>
   );
 }

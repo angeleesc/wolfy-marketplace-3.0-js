@@ -61,7 +61,12 @@
     display              : grid;
     grid-template-columns: 1fr;
     grid-template-rows   : 220px 1fr;
-    grid-template-areas: "multimedia" "content";
+    grid-template-areas  : "multimedia""content";
+
+    .multimedia-zone {
+        background-color: theme("colors.wolf-gray-dark.300");
+        border-radius   : 10px;
+    }
 
 
 
