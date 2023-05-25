@@ -1,12 +1,14 @@
 import React from "react";
 import "./nft-card-v2.scss";
 import { Skeleton } from "@mui/material";
+import WolfIdentidcon from "../identicon/WolfIdentidcon";
 
 const NftCardV2Render = ({ data }) => {
   const {
     blockChain,
     chainId,
     colection,
+    collectionFace,
     colectionName,
     colectionSymbol,
     currentPrice,
@@ -26,6 +28,20 @@ const NftCardV2Render = ({ data }) => {
     <div className="nft-card-v2">
       <div className="nft-card-v2-body">
         <div className="multimedia-zone">
+          <div className="nft-info">
+            <div className="nft-info-box">
+              <div className="colection-avatar-zone">
+                {collectionFace ? (
+                  <img src={collectionFace} alt="colection-face" />
+                ) : (
+                  <WolfIdentidcon size={46} name={colection} />
+                )}
+              </div>
+              <div className="nft-info-content">
+                
+              </div>
+            </div>
+          </div>
           {metadata && metadata.thumbnail ? (
             <img
               src={metadata.thumbnail}

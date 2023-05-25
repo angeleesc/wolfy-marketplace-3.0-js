@@ -81,6 +81,8 @@
         top                   : 0;
         // left               : 0;
         border-radius         : 16px;
+        transition            : transform .5s;
+
 
     }
 
@@ -88,13 +90,24 @@
         width           : 90%;
         background-color: theme("colors.wolf-blue-purple.500");
         z-index         : -10;
-        // transform       : translateY(10px);
+
     }
+
     &::after {
         width           : 80%;
         background-color: theme("colors.wolf-blue-purple.600");
         z-index         : -15;
-        // transform       : translateY(20px);
+
+    }
+
+    &:hover {
+        &::before {
+            transform: translateY(10px);
+        }
+
+        &::after {
+            transform: translateY(20px);
+        }
     }
 
 
@@ -124,6 +137,25 @@
                 height       : 100%;
                 object-fit   : cover;
                 border-radius: 10px;
+            }
+
+            .nft-info {
+                position           : absolute;
+                left               : 0;
+                right              : 0;
+                border-radius      : 10px;
+                // background-color: theme("colors.wolf-gray-dark.400");
+                background-color   : rgba(#0f1115, 0.15);
+                width              : 100%;
+                height             : 100%;
+                z-index            : 10;
+
+                .nft-info-box {
+                    position: absolute;
+                    bottom  : 0;
+                    padding : 0 15px;
+
+                }
             }
 
         }
